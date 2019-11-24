@@ -7,7 +7,7 @@ import config from '../utils/config.js';
 const authContext = createContext();
 
 class AuthLayer extends Component {
-  
+
   constructor(props) {
     super(props);
     this.updateAuth = this.updateAuth.bind(this);
@@ -19,13 +19,13 @@ class AuthLayer extends Component {
         login: this.login,
         jwtToken: null
     }
-    
+
   }
 
   login(email, password) {
-    return axios.post(`${config.myriade_login_url}/v1/account/login`, 
+    return axios.post(`${config.myriade_login_url}/v1/account/login`,
       {
-        email, 
+        email,
         password
       })
       .then(({data}) => {
