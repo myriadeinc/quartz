@@ -1,3 +1,10 @@
+import { HashRouter as Router } from "react-router-dom";
+import AuthLayer from "./layers/AuthLayer";
+
 export default function App() {
-  return <h1>Temp</h1>;
+  return (
+    <Router>
+      <AuthLayer></AuthLayer>
+    </Router>
+  );
 }
