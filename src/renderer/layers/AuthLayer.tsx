@@ -6,7 +6,7 @@ import config from "../utils/config";
 import * as ROUTES from "../utils/routes";
 
 const ACCESS_TOKEN = "access_token";
-const authContext = createContext({});
+const authContext = createContext({} as any);
 
 interface AuthLayerProps {}
 interface AuthLayerState {
@@ -38,7 +38,7 @@ class AuthLayer extends Component<AuthLayerProps, AuthLayerState> {
 
   componentDidMount() {
     if (localStorage.hasOwnProperty(ACCESS_TOKEN)) {
-      let decodedToken = decode(localStorage.getItem(ACCESS_TOKEN)!);
+      let decodedToken = decode(localStorage.getItem(ACCESS_TOKEN)!) as any;
       let expired = Date.now() > decodedToken.exp;
       this.setState({ authenticated: !expired });
     }
@@ -66,7 +66,7 @@ class AuthLayer extends Component<AuthLayerProps, AuthLayerState> {
 
   updateAuth(accessToken: string) {
     localStorage.setItem(ACCESS_TOKEN, accessToken);
-    let decodedToken = decode(accessToken);
+    let decodedToken = decode(accessToken) as any;
     this.setState({
       miner: {
         id: decodedToken.sub,
@@ -87,15 +87,13 @@ class AuthLayer extends Component<AuthLayerProps, AuthLayerState> {
   }
 }
 
-export class ProtectedRoute extends Component {
-  render() {
-    return this.props.authenticated ? (
-      <Route path={this.props.path} component={this.props.component} />
-    ) : (
-      <Redirect to={ROUTES.LOGIN} />
-    );
-  }
-}
+export const ProtectedRoute = (props: any) => {
+  return props.authenticated ? (
+    <Route path={props.path} component={props.component} />
+  ) : (
+    <Redirect to={ROUTES.LOGIN} />
+  );
+};
 
 export const AuthConsumer = authContext.Consumer;
 

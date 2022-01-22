@@ -14,19 +14,17 @@ import {
   Link,
 } from "@mui/material";
 
-class LoginPage extends Component<any, any> {
+class SignUpPage extends Component<any, any> {
   vantaRef: any;
   vantaEffect: any;
   constructor(props: any) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
+      loggin_in: false,
+      error: false,
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.dismissError = this.dismissError.bind(this);
-    this.emailChange = this.emailChange.bind(this);
-    this.passwordChange = this.passwordChange.bind(this);
     this.vantaRef = React.createRef();
   }
 
@@ -42,29 +40,14 @@ class LoginPage extends Component<any, any> {
     if (this.vantaEffect) this.vantaEffect.destroy();
   }
 
-  emailChange(e: any) {
-    this.setState({ email: e.target.value });
-  }
-
-  passwordChange(e: any) {
-    this.setState({ password: e.target.value });
-  }
-
   handleLogin(e: any) {
-    const email = this.state.email;
-    const password = this.state.password;
+    e.preventDefault();
+    const email = e.target.elements.email.value;
+    const password = e.target.elements.password.value;
     this.setState({ logging_in: true });
     return this.props.login(email, password).catch((err: any) => {
       this.setState({ loggin_in: false, error: true });
     });
-  }
-
-  dismissError() {
-    this.setState({ error: false });
-  }
-
-  displayError() {
-    return <Alert>Login failed. Try again</Alert>;
   }
 
   render() {
@@ -93,27 +76,17 @@ class LoginPage extends Component<any, any> {
                 fullWidth
                 label="Email"
                 variant="standard"
-                onChange={this.emailChange}
-              />
-              <TextField
-                style={tfStyle}
-                fullWidth
-                label="Password"
-                variant="standard"
-                onChange={this.passwordChange}
-                type="password"
               />
               <Button
                 fullWidth
                 style={{ backgroundColor: "orange", marginBottom: "12px" }}
                 variant="contained"
-                onClick={this.handleLogin}
               >
                 Login
               </Button>
               <Typography variant="body1">
                 Don't have an account? Sign up{" "}
-                <Link underline="none" href="signup">
+                <Link underline="none" href={ROUTES.SIGN_UP}>
                   here
                 </Link>
               </Typography>{" "}
@@ -125,4 +98,4 @@ class LoginPage extends Component<any, any> {
   }
 }
 
-export default LoginPage;
+export default SignUpPage;

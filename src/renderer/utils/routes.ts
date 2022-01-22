@@ -1,8 +1,7 @@
 export const SIGN_UP = "/signup";
-export const LOGIN = "/login";
 export const PASSWORD_FORGET = "/forgotpassword";
 export const DASHBOARD = "/dashboard";
-export const LANDING = "/";
+export const LOGIN = "/";
 export const GAMEROOM = "/gameroom";
 export const COOKIES = "/cookies";
 export const PRIVACY = "/privacy";

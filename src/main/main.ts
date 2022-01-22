@@ -47,6 +47,7 @@ const createWindow = async () => {
   mainWindow = new BrowserWindow({
     width: 1920,
     height: 1080,
+    frame: false,
   });
 
   mainWindow.loadURL(resolveHtmlPath("index.html"));
