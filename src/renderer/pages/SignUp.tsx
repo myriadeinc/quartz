@@ -2,17 +2,10 @@ import React from "react";
 import { Component } from "react";
 import WAVES from "vanta/dist/vanta.waves.min";
 
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 import * as ROUTES from "../utils/routes";
-import {
-  Grid,
-  Paper,
-  TextField,
-  Typography,
-  Button,
-  Link,
-} from "@mui/material";
+import { Grid, Paper, TextField, Typography, Button } from "@mui/material";
 
 class SignUpPage extends Component<any, any> {
   vantaRef: any;
@@ -24,7 +17,6 @@ class SignUpPage extends Component<any, any> {
       error: false,
     };
     this.handleLogin = this.handleLogin.bind(this);
-    this.dismissError = this.dismissError.bind(this);
     this.vantaRef = React.createRef();
   }
 
@@ -85,10 +77,8 @@ class SignUpPage extends Component<any, any> {
                 Login
               </Button>
               <Typography variant="body1">
-                Don't have an account? Sign up{" "}
-                <Link underline="none" href={ROUTES.SIGN_UP}>
-                  here
-                </Link>
+                Already have an account? Log in{" "}
+                <Link to={ROUTES.LOGIN}>here</Link>
               </Typography>{" "}
             </Paper>
           </Grid>

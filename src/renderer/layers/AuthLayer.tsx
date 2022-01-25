@@ -51,7 +51,19 @@ class AuthLayer extends Component<AuthLayerProps, AuthLayerState> {
         password,
       })
       .then(({ data }) => {
-        return this.updateAuth(data.accessToken);
+        const { accessToken } = data;
+        localStorage.setItem(ACCESS_TOKEN, accessToken);
+        let decodedToken = decode(accessToken) as any;
+        console.log(decodedToken);
+        this.setState({
+          miner: {
+            id: decodedToken.sub,
+            address: decodedToken.account.address,
+            name: decodedToken.account.name,
+          },
+          jwtToken: accessToken,
+          authenticated: true,
+        });
       });
   }
 
@@ -65,7 +77,9 @@ class AuthLayer extends Component<AuthLayerProps, AuthLayerState> {
   }
 
   updateAuth(accessToken: string) {
+    console.log(accessToken);
     localStorage.setItem(ACCESS_TOKEN, accessToken);
+    console.log(localStorage);
     let decodedToken = decode(accessToken) as any;
     this.setState({
       miner: {
