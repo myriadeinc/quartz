@@ -1,6 +1,5 @@
 import { Avatar, Drawer, Grid, List, Typography } from "@mui/material";
 import { Card } from "react-bootstrap";
-import { DashboardRoute } from "renderer/interfaces/pages/dashboard";
 import { dashboardRoutes } from "renderer/utils/dashboard";
 
 export const Sidebar = () => {
@@ -70,7 +69,7 @@ export const Sidebar = () => {
 
         <Grid item sm={12}>
           <List>
-            {dashboardRoutes.map((route: DashboardRoute) => (
+            {dashboardRoutes.map((route) => (
               <Typography style={{ marginTop: "8px" }}>{route.name}</Typography>
             ))}
           </List>

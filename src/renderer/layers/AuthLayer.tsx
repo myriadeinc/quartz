@@ -1,4 +1,4 @@
-import { Component, createContext } from "react";
+import { Component, ComponentType, createContext } from "react";
 import { Redirect, Route } from "react-router-dom";
 import decode from "jwt-decode";
 import axios from "axios";
@@ -6,29 +6,22 @@ import config from "../utils/config";
 import * as ROUTES from "../utils/routes";
 
 const ACCESS_TOKEN = "access_token";
-const authContext = createContext({} as any);
+const authContext = createContext({} as AuthLayerState);
 
-interface AuthLayerProps {}
 interface AuthLayerState {
-  miner: any;
   authenticated: boolean;
-  logout: any;
-  login: any;
-  jwtToken: any;
-  accessToken: string;
+  logout: () => void;
+  login: (email: string, password: string) => void;
 }
 
-class AuthLayer extends Component<AuthLayerProps, AuthLayerState> {
-  constructor(props: AuthLayerProps) {
+class AuthLayer extends Component<{}, AuthLayerState> {
+  constructor(props: {}) {
     super(props);
 
     this.state = {
-      miner: null,
       authenticated: false,
       logout: this.logout,
       login: this.login,
-      jwtToken: null,
-      accessToken: "",
     };
 
     this.updateAuth = this.updateAuth.bind(this);
@@ -56,12 +49,6 @@ class AuthLayer extends Component<AuthLayerProps, AuthLayerState> {
         let decodedToken = decode(accessToken) as any;
         console.log(decodedToken);
         this.setState({
-          miner: {
-            id: decodedToken.sub,
-            address: decodedToken.account.address,
-            name: decodedToken.account.name,
-          },
-          jwtToken: accessToken,
           authenticated: true,
         });
       });
@@ -71,23 +58,12 @@ class AuthLayer extends Component<AuthLayerProps, AuthLayerState> {
     localStorage.removeItem(ACCESS_TOKEN);
     this.setState({
       authenticated: false,
-      accessToken: "",
-      miner: null,
     });
   }
 
   updateAuth(accessToken: string) {
-    console.log(accessToken);
     localStorage.setItem(ACCESS_TOKEN, accessToken);
-    console.log(localStorage);
-    let decodedToken = decode(accessToken) as any;
     this.setState({
-      miner: {
-        id: decodedToken.sub,
-        address: decodedToken.account.address,
-        name: decodedToken.account.name,
-      },
-      jwtToken: accessToken,
       authenticated: true,
     });
   }
@@ -101,7 +77,13 @@ class AuthLayer extends Component<AuthLayerProps, AuthLayerState> {
   }
 }
 
-export const ProtectedRoute = (props: any) => {
+interface ProtectedRouteProps {
+  path: string;
+  component: ComponentType;
+  authenticated: boolean;
+}
+
+export const ProtectedRoute = (props: ProtectedRouteProps) => {
   return props.authenticated ? (
     <Route path={props.path} component={props.component} />
   ) : (
