@@ -81,11 +81,12 @@ interface ProtectedRouteProps {
   path: string;
   component: ComponentType;
   authenticated: boolean;
+  exact?: boolean;
 }
 
 export const ProtectedRoute = (props: ProtectedRouteProps) => {
   return props.authenticated ? (
-    <Route path={props.path} component={props.component} />
+    <Route path={props.path} component={props.component} exact={props.exact} />
   ) : (
     <Redirect to={ROUTES.LOGIN} />
   );

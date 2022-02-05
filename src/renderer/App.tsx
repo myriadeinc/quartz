@@ -5,6 +5,9 @@ import * as ROUTES from "./utils/routes";
 import "./styles/app.css";
 import SignUpPage from "./pages/SignUp";
 import { Dashboard } from "./pages/Dashboard";
+import { createTheme, ThemeProvider } from "@mui/material";
+
+const darkTheme = createTheme({ palette: { mode: "dark" } });
 
 export default function App() {
   return (
@@ -12,7 +15,7 @@ export default function App() {
       <AuthLayer>
         <AuthConsumer>
           {({ authenticated, login }) => (
-            <>
+            <ThemeProvider theme={darkTheme}>
               <Route
                 exact
                 path={ROUTES.LOGIN}
@@ -21,13 +24,12 @@ export default function App() {
                 )}
               />
               <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-              {/* Protected Routes that need authentication */}
               <ProtectedRoute
                 path={ROUTES.DASHBOARD}
                 component={Dashboard}
                 authenticated={authenticated}
               />
-            </>
+            </ThemeProvider>
           )}
         </AuthConsumer>
       </AuthLayer>

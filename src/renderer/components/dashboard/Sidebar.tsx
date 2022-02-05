@@ -1,80 +1,106 @@
-import { Avatar, Drawer, Grid, List, Typography } from "@mui/material";
-import { Card } from "react-bootstrap";
+import {
+  Avatar,
+  Drawer,
+  Grid,
+  List,
+  Typography,
+  Card,
+  Divider,
+} from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import { Link } from "react-router-dom";
+import { MinerConsumer } from "renderer/pages/Dashboard";
 import { dashboardRoutes } from "renderer/utils/dashboard";
 
-export const Sidebar = () => {
+const useStyles = makeStyles({
+  grid: {
+    marginTop: "16px",
+  },
+});
+
+interface SidebarProps {
+  path: string;
+}
+
+export const Sidebar = (props: SidebarProps) => {
+  const classes = useStyles();
+
   return (
-    <Drawer
-      sx={{
-        width: 360,
-        flexShrink: 0,
-        "& .MuiDrawer-paper": {
-          width: 360,
-          boxSizing: "border-box",
-          backgroundColor: "#202225",
-          color: "white",
-        },
-      }}
-      variant="permanent"
-      anchor="left"
-    >
-      <Grid
-        container
-        justifyContent="center"
-        alignItems="center"
-        textAlign="center"
-      >
-        <Grid item sm={12}>
-          <Avatar
-            style={{
-              width: "100px",
-              height: "100px",
-              marginTop: "32px",
-              margin: "auto",
-            }}
+    <MinerConsumer>
+      {(miner) => (
+        <Drawer
+          sx={{
+            width: 360,
+            flexShrink: 0,
+            "& .MuiDrawer-paper": {
+              width: 360,
+              boxSizing: "border-box",
+              backgroundColor: "#202225",
+              padding: "36px",
+            },
+          }}
+          variant="permanent"
+          anchor="left"
+        >
+          <Grid
+            container
+            justifyContent="center"
+            alignItems="center"
+            textAlign="center"
           >
-            B
-          </Avatar>
-        </Grid>
-        <Grid item sm={12}>
-          <Typography variant="h2">
-            blele<Typography>#182</Typography>
-          </Typography>
-        </Grid>
-        <Grid item sm={12}>
-          <Card
-            style={{
-              padding: "16px 16px 0px 16px",
-              borderRadius: "1rem",
-            }}
-          >
-            <p>
-              <strong>Mining Credits: {0} </strong>
-              <i
-                className={["fa fa-refresh"].join(" ")}
+            <Grid item sm={12}>
+              <Avatar
                 style={{
-                  float: "right",
+                  width: "120px",
+                  height: "120px",
+                  marginTop: "32px",
+                  margin: "auto",
                 }}
-                aria-hidden="true"
-                onClick={() => {}}
-              ></i>
-            </p>
-            <p>
-              <i className="fab fa-monero" /> Monero Balance: {`0 ($0 USD)`}
-            </p>
-          </Card>
-
-          <hr />
-        </Grid>
-
-        <Grid item sm={12}>
-          <List>
-            {dashboardRoutes.map((route) => (
-              <Typography style={{ marginTop: "8px" }}>{route.name}</Typography>
-            ))}
-          </List>
-        </Grid>
-      </Grid>
-    </Drawer>
+              >
+                {miner.name}
+              </Avatar>
+            </Grid>
+            <Grid item sm={12} className={classes.grid}>
+              <Typography variant="h3">
+                {miner.name}
+                <span style={{ fontSize: "1rem" }}>{`#${miner.shortId}`}</span>
+              </Typography>
+              <Typography>{miner.email}</Typography>
+            </Grid>
+            <Grid item sm={12} className={classes.grid}>
+              <Card
+                style={{
+                  padding: "16px",
+                  borderRadius: "1rem",
+                }}
+              >
+                <Typography>Mining Credits: {miner.mcBalance}</Typography>
+                <Typography>Monero Balance: {miner.xmrBalance}</Typography>
+              </Card>
+            </Grid>
+            <Grid item sm={12} className={classes.grid}>
+              <Divider />
+            </Grid>
+            <Grid item sm={12}>
+              <List>
+                {dashboardRoutes.map(
+                  (route) =>
+                    route.visible && (
+                      <Link
+                        to={`${props.path}${route.ref}`}
+                        style={{ textDecoration: "none", color: "white" }}
+                      >
+                        <Typography style={{ marginTop: "8px" }}>
+                          {route.name}
+                        </Typography>
+                      </Link>
+                    )
+                )}
+              </List>
+            </Grid>
+          </Grid>
+        </Drawer>
+      )}
+    </MinerConsumer>
   );
 };
