@@ -55,6 +55,7 @@ export interface IHistory {
 }
 
 export interface IFriend {
+  id: number;
   name: string;
   status: string;
   avatar: string;

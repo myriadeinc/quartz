@@ -13,6 +13,26 @@ import { MinerConsumer } from "renderer/pages/Dashboard";
 import { dashboardRoutes } from "renderer/utils/dashboard";
 
 const useStyles = makeStyles({
+  usernameStyle: {
+    fontSize: "2vw",
+    "@media screen and (max-width: 1200px)" : {
+      fontSize: "1.4rem",
+    }
+  },
+  subtitle: {
+    fontSize: "1vw",
+    "@media screen and (max-width: 1200px)" : {
+      fontSize: "0.7rem",
+    }
+  },
+  drawerStyle: {
+    "& .MuiDrawer-paper": {
+      width: "20vw",
+      "@media screen and (max-width: 1200px)" : {
+        width: 240,
+      }
+    }
+  },
   grid: {
     marginTop: "16px",
   },
@@ -29,11 +49,10 @@ export const Sidebar = (props: SidebarProps) => {
     <MinerConsumer>
       {(miner) => (
         <Drawer
+          className={classes.drawerStyle}
           sx={{
-            width: 360,
             flexShrink: 0,
             "& .MuiDrawer-paper": {
-              width: 360,
               boxSizing: "border-box",
               backgroundColor: "#202225",
               padding: "36px",
@@ -61,11 +80,11 @@ export const Sidebar = (props: SidebarProps) => {
               </Avatar>
             </Grid>
             <Grid item sm={12} className={classes.grid}>
-              <Typography variant="h3">
+              <Typography className={classes.usernameStyle}>
                 {miner.name}
-                <span style={{ fontSize: "1rem" }}>{`#${miner.shortId}`}</span>
+                <span className={classes.subtitle}>{`#${miner.shortId}`}</span>
               </Typography>
-              <Typography>{miner.email}</Typography>
+              <Typography className={classes.subtitle}>{miner.email}</Typography>
             </Grid>
             <Grid item sm={12} className={classes.grid}>
               <Card
