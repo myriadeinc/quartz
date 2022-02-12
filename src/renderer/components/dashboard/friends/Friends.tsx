@@ -10,6 +10,13 @@ import {
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { IFriend } from "renderer/interfaces/pages/dashboard";
+import bear from "../../../../assets/avatars/Bear.png";
+import bird from "../../../../assets/avatars/Bird.png";
+import bunny from "../../../../assets/avatars/Bunny.png";
+import cat from "../../../../assets/avatars/Cat.png";
+import cheetah from "../../../../assets/avatars/Cheetah.png";
+import cobra from "../../../../assets/avatars/Cobra.png";
+import cow from "../../../../assets/avatars/Cow.png";
 
 const useStyles = makeStyles({
   cardStyle: {
@@ -38,43 +45,43 @@ const dummyData = [
   {
     name: "Salt.Mine",
     status: "mining",
-    avatar: "A",
+    avatar: bear,
     id: 69
   },
   {
     name: "Ashousha",
     status: "mining",
-    avatar: "A",
+    avatar: bird,
     id: 74
   },
   {
     name: "SenorToots",
     status: "mining",
-    avatar: "A",
+    avatar: bunny,
     id: 32
   },
   {
     name: "ratatouille",
     status: "mining",
-    avatar: "A",
+    avatar: cat,
     id: 89
   },
   {
     name: "SingingPancakes",
     status: "offline",
-    avatar: "A",
+    avatar: cheetah,
     id: 2
   },
   {
     name: "DellaSaucy",
     status: "offline",
-    avatar: "A",
+    avatar: cobra,
     id: 6
   },
   {
     name: "BlunterFoil",
     status: "offline",
-    avatar: "A",
+    avatar: cow,
     id: 16
   },
 ] as IFriend[];
@@ -158,17 +165,15 @@ const Friend = (props: IFriend) => {
             style={{
               border: "3px solid #76FF02",
             }}
-          >
-              {avatar}
-          </Avatar> :
+            src={avatar}
+          /> :
           <Avatar 
             className={classes.avatarStyle}
             style={{
               border: "3px solid #F11503",
             }}
-          >
-              {avatar}
-          </Avatar>
+            src={avatar}
+          />
         }
       </ListItemAvatar>
 
