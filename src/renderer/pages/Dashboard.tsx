@@ -4,10 +4,17 @@ import { createContext, useEffect, useRef, useState } from "react";
 import { Switch } from "react-router-dom";
 import { Sidebar } from "renderer/components/dashboard/Sidebar";
 import { AuthConsumer, ProtectedRoute } from "renderer/layers/AuthLayer";
+import { makeStyles } from "@mui/styles";
 import { dashboardRoutes } from "renderer/utils/dashboard";
 import config from "renderer/utils/config";
 import { Miner } from "renderer/interfaces/pages/dashboard";
 // import WAVES from "vanta/dist/vanta.waves.min";
+
+const useStyles = makeStyles({
+  // container: {
+  //   // paddingLeft: "10px"
+  // }
+});
 
 const minerContext = createContext({} as Miner);
 
@@ -26,6 +33,7 @@ export const Dashboard = (props: any) => {
     avgHashrate: "0",
   } as Miner);
   const myRef = useRef(null);
+  const classes = useStyles();
 
   useEffect(() => {
     if (!vantaEffect) {
@@ -141,6 +149,7 @@ export const Dashboard = (props: any) => {
             style={{ minHeight: "100vh", backgroundColor: "#36393e" }}
           >
             <Sidebar path={props.match.path} />
+            {/* <div className={classes.container}> */}
             <Switch>
               {dashboardRoutes.map(
                 (view) =>
@@ -154,6 +163,7 @@ export const Dashboard = (props: any) => {
                   )
               )}
             </Switch>
+            {/* </div> */}
           </Grid>
         </minerContext.Provider>
       )}

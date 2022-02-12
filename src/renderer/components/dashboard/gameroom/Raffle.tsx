@@ -1,13 +1,33 @@
-import { Card, Grid, Grow, Typography } from "@mui/material";
+import { Card, Grid, Grow, LinearProgress, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { IRaffle } from "renderer/interfaces/pages/dashboard";
 
 const useStyles = makeStyles({
   card: {
-    padding: "16px",
+    padding: "16px 16px 6px 16px",
     margin: "16px",
-    backgroundColor: "#202225",
+    background: "linear-gradient(#202225 70%, #313438 70%)",
+    maxWidth: "300px",
   },
+  subtitle: {
+    color: "#999999",
+    marginBottom: "10px"
+  },
+  progressStyle: {
+    height: "10px",
+    borderRadius: 5,
+    margin: "30px 0px 5px 0px"
+  },
+  bodyStyle: {
+    fontSize: "0.8rem",
+    fontWeight: "300",
+  },
+  purchaseDetailsStyle: {
+    fontWeight: "300",
+    display: "flex",
+    width: "100%",
+    justifyContent: "center"
+  }
 });
 
 interface RaffleProps {
@@ -22,11 +42,37 @@ export const Raffle = (props: RaffleProps) => {
     <Grid item sm={6} md={4}>
       <Grow in={true} timeout={props.timeout}>
         <Card className={classes.card}>
-          <Typography>{props.raffle.public.prizeAmount}</Typography>
-          <Typography>{props.raffle.public.prizeAmount}</Typography>
-          <Typography>{props.raffle.public.title}</Typography>
-          <Typography>
+          <Typography variant="h5">
+            ${props.raffle.public.prizeAmount}USD
+          </Typography>
+          <Typography 
+            className={classes.subtitle}
+            variant="body1"
+          >
+            {props.raffle.public.prizeAmount}XMR
+          </Typography>
+          <Typography
+            className={classes.bodyStyle}
+            style={{color: "#F78549"}}
+            variant="body1"
+          >
+            {props.raffle.public.title}
+          </Typography>
+          <Typography
+            className={classes.bodyStyle}
+            variant="body1"
+          >
             Ticket Price: {props.raffle.public.entryPrice} MC
+          </Typography>
+          <LinearProgress 
+            className={classes.progressStyle} 
+            variant="determinate" value={50} 
+          />
+          <Typography 
+            className={classes.purchaseDetailsStyle}
+            variant="caption"
+          >
+            12345 of 99999 purchased
           </Typography>
         </Card>
       </Grow>

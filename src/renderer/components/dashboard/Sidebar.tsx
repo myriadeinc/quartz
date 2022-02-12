@@ -11,6 +11,9 @@ import { makeStyles } from "@mui/styles";
 import { NavLink, Redirect } from "react-router-dom";
 import { MinerConsumer } from "renderer/pages/Dashboard";
 import { dashboardRoutes } from "renderer/utils/dashboard";
+import octopus from "../../../assets/avatars/Octopus.png"
+import discord from "../../../assets/support-logos/discord.png"
+import email from "../../../assets/support-logos/email.png"
 
 const useStyles = makeStyles({
   usernameStyle: {
@@ -36,6 +39,14 @@ const useStyles = makeStyles({
   grid: {
     marginTop: "16px",
   },
+  imgContainers: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center"
+  },
+  imgStyle: {
+    margin: "4px"
+  }
 });
 
 interface SidebarProps {
@@ -74,10 +85,10 @@ export const Sidebar = (props: SidebarProps) => {
                   height: "120px",
                   marginTop: "32px",
                   margin: "auto",
+                  border: "4px solid #76FF02"
                 }}
-              >
-                {miner.name}
-              </Avatar>
+                src={octopus}
+              />
             </Grid>
             <Grid item sm={12} className={classes.grid}>
               <Typography className={classes.usernameStyle}>
@@ -130,6 +141,10 @@ export const Sidebar = (props: SidebarProps) => {
               <Redirect to="/dashboard"></Redirect>
             </Grid>
           </Grid>
+          <div className={classes.imgContainers}>
+            <img className={classes.imgStyle} src={discord} height="30"></img>
+            <img className={classes.imgStyle} src={email} height="28"></img>
+          </div>
         </Drawer>
       )}
     </MinerConsumer>
