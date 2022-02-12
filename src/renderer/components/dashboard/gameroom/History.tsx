@@ -1,5 +1,5 @@
 import { TabContext, TabPanel } from "@mui/lab";
-import { Card, Grid, Tab, Tabs, Typography } from "@mui/material";
+import { Card, Grid, Tab, Tabs } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useState } from "react";
 import { IHistory } from "renderer/interfaces/pages/dashboard";

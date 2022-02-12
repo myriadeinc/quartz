@@ -53,3 +53,9 @@ export interface IHistory {
   purchased: number;
   winner: string;
 }
+
+export interface IFriend {
+  name: string;
+  status: string;
+  avatar: string;
+}

@@ -2,9 +2,9 @@ import { Card, Grid, Grow, Typography } from "@mui/material";
 
 import { Card as BCard } from "react-bootstrap";
 import { MinerConsumer } from "renderer/pages/Dashboard";
+import { FriendMenu } from "../friends/Friends";
 
 import Chart from "./Chart";
-import { Friends } from "./Friends";
 
 export const Analytics = () => {
   return (
@@ -93,7 +93,11 @@ export const Analytics = () => {
             </Grow>
           </Grid>
           <Grid item sm={4} style={{ height: "600px", padding: "16px" }}>
-            <Friends />
+            <Grow in={true} timeout={2000}>
+              <div style={{ height: "100%" }}>
+                <FriendMenu />
+              </div>
+            </Grow>
           </Grid>
         </Grid>
       )}
