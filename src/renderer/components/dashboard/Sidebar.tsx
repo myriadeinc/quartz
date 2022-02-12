@@ -8,7 +8,7 @@ import {
   Divider,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { Link } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { MinerConsumer } from "renderer/pages/Dashboard";
 import { dashboardRoutes } from "renderer/utils/dashboard";
 
@@ -91,6 +91,7 @@ export const Sidebar = (props: SidebarProps) => {
                 style={{
                   padding: "16px",
                   borderRadius: "1rem",
+                  backgroundColor: "#2f3136",
                 }}
               >
                 <Typography>Mining Credits: {miner.mcBalance}</Typography>
@@ -98,24 +99,35 @@ export const Sidebar = (props: SidebarProps) => {
               </Card>
             </Grid>
             <Grid item sm={12} className={classes.grid}>
-              <Divider />
+              <Divider 
+                style={{ 
+                  margin: "12px 0px 12px 0px",
+                }}
+              />
             </Grid>
             <Grid item sm={12}>
               <List>
                 {dashboardRoutes.map(
                   (route) =>
                     route.visible && (
-                      <Link
+                      <NavLink
                         to={`${props.path}${route.ref}`}
                         style={{ textDecoration: "none", color: "white" }}
                       >
-                        <Typography style={{ marginTop: "8px" }}>
+                        <Typography 
+                          style={{ 
+                            marginTop: "8px",
+                            fontSize: "1.5rem",
+                            fontWeight: "300"
+                          }}
+                        >
                           {route.name}
                         </Typography>
-                      </Link>
+                      </NavLink>
                     )
                 )}
               </List>
+              <Redirect to="/dashboard"></Redirect>
             </Grid>
           </Grid>
         </Drawer>

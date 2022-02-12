@@ -1,4 +1,5 @@
-import { Card, Button, Grid, Grow, Typography } from "@mui/material";
+import * as React from "react";
+import { Card, Button, Grid, Grow, MenuItem, Select, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { Card as BCard } from "react-bootstrap";
 import { MinerConsumer } from "renderer/pages/Dashboard";
@@ -7,6 +8,7 @@ import Chart from "./Chart";
 import blueBg from "../../../../assets/Blue-Box.png";
 import greenBg from "../../../../assets/Green-Box.png";
 import orangeBg from "../../../../assets/Orange-Box.png";
+import { ConstructionOutlined } from "@mui/icons-material";
 
 const useStyles = makeStyles({
   cardStyle: {
@@ -30,11 +32,28 @@ const useStyles = makeStyles({
     '&:hover': {
       backgroundColor: "#ea5e00ca",
     }
+  },
+  chartContainer: {
+    display: "flex",
+    justifyContent: "space-between"
+  },
+  selectContainer: {
+    height: "100%",
+    display: "flex",
+    alignSelf: "flex-end",
+  },
+  selectStyle: {
+    height: "3rem",
   }
 });
 
 export const Analytics = () => {
+  const [scale, setScale] = React.useState('1h');
   const classes = useStyles();
+
+  const handleOnChange = (event: React.MouseEvent<unknown>) => {
+    setScale(event.target.value)
+  }
 
   return (
     <MinerConsumer>
@@ -59,7 +78,7 @@ export const Analytics = () => {
                 className={classes.cardStyle}
               >
                 <Typography variant="h5">Average Hashrate (1hr)</Typography>
-                <Typography variant="h3">{miner.avgHashrate} H/sec</Typography>
+                <Typography variant="h3">0 H/sec</Typography>
               </Card>
             </Grow>
           </Grid>
@@ -75,7 +94,7 @@ export const Analytics = () => {
                 className={classes.cardStyle}
               >
                 <Typography variant="h5">Pool Hashrate</Typography>
-                <Typography variant="h3">0.00 H/sec</Typography>
+                <Typography variant="h3">0 H/sec</Typography>
               </Card>
             </Grow>
           </Grid>
@@ -108,15 +127,33 @@ export const Analytics = () => {
                 }}
               >
                 <BCard.Header>
-                  <Typography variant="h3" style={{ padding: "16px" }}>
-                    Historical Metrics
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    style={{ paddingLeft: "16px", paddingBottom: "16px" }}
-                  >
-                    See how your hashrate changes over time.
-                  </Typography>
+                  <div className={classes.chartContainer}>
+                    <div>
+                      <Typography variant="h3" style={{ padding: "16px" }}>
+                        Historical Metrics
+                      </Typography>
+                      <Typography
+                        variant="body1"
+                        style={{ paddingLeft: "16px", paddingBottom: "16px" }}
+                      >
+                        See how your hashrate changes over time.
+                      </Typography>
+                    </div>
+                    <div className={classes.selectContainer}>
+                      <Select
+                        className={classes.selectStyle}
+                        value={scale}
+                        onChange={handleOnChange}
+                        displayEmpty
+                        inputProps={{ 'aria-label': 'Without label' }}
+                      >
+                        <MenuItem value={"1h"}>1H</MenuItem>
+                        <MenuItem value={"1d"}>1D</MenuItem>
+                        <MenuItem value={"1w"}>1W</MenuItem>
+                        <MenuItem value={"1m"}>1M</MenuItem>
+                      </Select>
+                    </div>
+                  </div>
                 </BCard.Header>
                 <BCard.Body style={{ height: "100%" }}>
                   <Chart />
