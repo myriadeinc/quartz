@@ -8,7 +8,7 @@ import {
   Divider,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { MinerConsumer } from "renderer/pages/Dashboard";
 import { dashboardRoutes } from "renderer/utils/dashboard";
 import octopus from "../../../assets/avatars/Octopus.png"
@@ -16,6 +16,17 @@ import discord from "../../../assets/support-logos/discord.png"
 import email from "../../../assets/support-logos/email.png"
 
 const useStyles = makeStyles({
+  drawerStyle: {
+    "& .MuiDrawer-paper": {
+      width: "20vw",
+      boxSizing: "border-box",
+      backgroundColor: "#202225",
+      padding: "36px",
+      "@media screen and (max-width: 1200px)" : {
+        width: 240,
+      },
+    }
+  },
   usernameStyle: {
     fontSize: "2vw",
     "@media screen and (max-width: 1200px)" : {
@@ -28,24 +39,18 @@ const useStyles = makeStyles({
       fontSize: "0.7rem",
     }
   },
-  drawerStyle: {
-    "& .MuiDrawer-paper": {
-      width: "20vw",
-      "@media screen and (max-width: 1200px)" : {
-        width: 240,
-      }
-    }
-  },
   grid: {
     marginTop: "16px",
   },
   imgContainers: {
     width: "100%",
+    height: "100%",
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    alignItems: "flex-end"
   },
   imgStyle: {
-    margin: "4px"
+    margin: "0px 10px"
   }
 });
 
@@ -61,14 +66,6 @@ export const Sidebar = (props: SidebarProps) => {
       {(miner) => (
         <Drawer
           className={classes.drawerStyle}
-          sx={{
-            flexShrink: 0,
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-              backgroundColor: "#202225",
-              padding: "36px",
-            },
-          }}
           variant="permanent"
           anchor="left"
         >
@@ -138,12 +135,15 @@ export const Sidebar = (props: SidebarProps) => {
                     )
                 )}
               </List>
-              <Redirect to="/dashboard"></Redirect>
             </Grid>
           </Grid>
           <div className={classes.imgContainers}>
-            <img className={classes.imgStyle} src={discord} height="30"></img>
-            <img className={classes.imgStyle} src={email} height="28"></img>
+            <a href="https://myriade.io/#/" target="_blank">
+              <img className={classes.imgStyle} src={discord} height="30" />
+            </a>
+            <a href="https://myriade.io/#/" target="_blank">
+              <img className={classes.imgStyle} src={email} height="24" style={{marginBottom: "4px"}} />
+            </a>
           </div>
         </Drawer>
       )}

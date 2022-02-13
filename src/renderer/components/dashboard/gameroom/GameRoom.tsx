@@ -89,7 +89,6 @@ export const GameRoom = () => {
     <Grid
       container
       item
-      style={{ width: "calc(100% - 360px)", marginLeft: "360px" }}
     >
       <Grid item sm={12} className={classes.grid}>
         <Typography variant="h5">Current Drawings</Typography>

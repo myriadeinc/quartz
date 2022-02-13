@@ -87,11 +87,12 @@ const dummyData = [
 ] as IFriend[];
 
 export const Friends = () => {
+  const classes = useStyles();
+
   return (
     <Grid
       container
       item
-      style={{ width: "calc(100% - 360px)", marginLeft: "360px" }}
     >
       <Grid item sm={6}>
         <Grow in={true}>

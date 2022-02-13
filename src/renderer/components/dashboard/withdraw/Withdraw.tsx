@@ -13,6 +13,9 @@ import { MinerConsumer } from "renderer/pages/Dashboard";
 import { EnhancedWithdrawTable } from "./WithdrawTable";
 
 const useStyles = makeStyles({
+  grid: {
+    padding: "16px 16px 16px 96px",
+  },
   tableContainer: {
     backgroundColor: "#1E1E1E",
     marginTop: "16px",
@@ -30,13 +33,9 @@ export const Withdraw = () => {
     <Grid
       container
       item
-      style={{
-        width: "calc(100% - 360px)",
-        marginLeft: "360px",
-        padding: "16px",
-      }}
       alignItems={"center"}
       justifyContent={"center"}
+      className={classes.grid}
     >
       <Grid item sm={12} style={{ color: "white" }}>
         <Typography variant="h4">Withdraw your XMR</Typography>
