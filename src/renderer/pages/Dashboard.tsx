@@ -11,9 +11,14 @@ import { Miner } from "renderer/interfaces/pages/dashboard";
 // import WAVES from "vanta/dist/vanta.waves.min";
 
 const useStyles = makeStyles({
-  // container: {
-  //   // paddingLeft: "10px"
-  // }
+  wrapper: {
+    width: "80vw", 
+    marginLeft: "20vw",
+    "@media screen and (max-width: 1200px)" : {
+      width: "calc(100% - 240)",
+      marginLeft: 240,
+    }
+  },
 });
 
 const minerContext = createContext({} as Miner);
@@ -149,21 +154,27 @@ export const Dashboard = (props: any) => {
             style={{ minHeight: "100vh", backgroundColor: "#36393e" }}
           >
             <Sidebar path={props.match.path} />
-            {/* <div className={classes.container}> */}
-            <Switch>
-              {dashboardRoutes.map(
-                (view) =>
-                  view.visible && (
-                    <ProtectedRoute
-                      exact={view.name == "Dashboard"}
-                      path={`${props.match.path}${view.ref}`}
-                      component={view.component}
-                      authenticated={authenticated}
-                    />
-                  )
-              )}
-            </Switch>
-            {/* </div> */}
+            <Grid
+              container
+              item
+              className={classes.wrapper}
+              alignItems={"center"}
+              justifyContent={"center"}
+            >
+              <Switch>
+                {dashboardRoutes.map(
+                  (view) =>
+                    view.visible && (
+                      <ProtectedRoute
+                        exact={view.name == "Dashboard"}
+                        path={`${props.match.path}${view.ref}`}
+                        component={view.component}
+                        authenticated={authenticated}
+                      />
+                    )
+                )}
+              </Switch>
+            </Grid>
           </Grid>
         </minerContext.Provider>
       )}

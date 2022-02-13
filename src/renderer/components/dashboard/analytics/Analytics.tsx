@@ -18,7 +18,10 @@ const useStyles = makeStyles({
     height: "194px",
     padding: "16px",
     margin: "16px",
-    borderRadius: "20px"
+    borderRadius: "20px",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "100%",
   },
   buttonStyle: {
     backgroundColor: "#EA5E00",
@@ -61,20 +64,13 @@ export const Analytics = () => {
         <Grid
           container
           item
-          style={{ width: "calc(100% - 360px)", marginLeft: "360px" }}
           alignItems={"center"}
           justifyContent={"center"}
         >
           <Grid item sm={4}>
             <Grow in={true}>
               <Card
-                style={{
-                  backgroundImage:
-                    `url(${blueBg})`,
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "100%",
-                }}
+                style={{ backgroundImage: `url(${blueBg})` }}
                 className={classes.cardStyle}
               >
                 <Typography variant="h5">Average Hashrate (1hr)</Typography>
@@ -85,12 +81,7 @@ export const Analytics = () => {
           <Grid item sm={4}>
             <Grow in={true} timeout={500}>
               <Card
-                style={{
-                  backgroundImage: `url(${greenBg})`,
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                  backgroundSize: "100%",
-                }}
+                style={{ backgroundImage: `url(${greenBg})` }}
                 className={classes.cardStyle}
               >
                 <Typography variant="h5">Pool Hashrate</Typography>
@@ -101,13 +92,7 @@ export const Analytics = () => {
           <Grid item sm={4}>
             <Grow in={true} timeout={1000}>
               <Card
-                style={{
-                  backgroundImage:
-                    `url(${orangeBg})`,
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "100%",
-                }}
+                style={{ backgroundImage: `url(${orangeBg})` }}
                 className={classes.cardStyle}
               >
                 <Typography variant="h5">Referrer Bonus</Typography>
@@ -165,7 +150,9 @@ export const Analytics = () => {
             <Grow in={true} timeout={2000}>
               <div style={{ height: "100%" }}>
                 <FriendMenu />
-                <Button className={classes.buttonStyle} variant="contained">View More</Button>
+                <Button className={classes.buttonStyle} variant="contained">
+                  View More
+                </Button>
               </div>
             </Grow>
           </Grid>
