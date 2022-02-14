@@ -183,6 +183,12 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
+  const convertDateTime = (unixTimestamp: number) => {
+    const timestampMilli: number = unixTimestamp * 1000;
+    const date: Date = new Date(timestampMilli);
+    return date.toString();
+  };
+
   return (
     <Box sx={{ width: "100%" }}>
       <Paper sx={{ width: "100%", mb: 2 }}>
@@ -235,7 +241,9 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                       </TableCell>
                       <TableCell align="right">{row.tickets}</TableCell>
                       <TableCell align="right">{row.amount}</TableCell>
-                      <TableCell align="right">{row.purchased}</TableCell>
+                      <TableCell align="right">
+                        {convertDateTime(row.purchased)}
+                      </TableCell>
                       <TableCell align="right">{row.winner}</TableCell>
                     </TableRow>
                   );

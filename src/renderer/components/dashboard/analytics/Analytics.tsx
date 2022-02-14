@@ -15,13 +15,29 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
-    height: "194px",
+    width: "22vw",
+    height: "calc(22vw * 0.5)",
+    minWidth: "220px",
+    minHeight: "110px",
     padding: "16px",
     margin: "16px",
     borderRadius: "20px",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    backgroundSize: "100%",
+    backgroundSize: "100%"
+  },
+  cardTitleStyle: {
+    fontSize: "2vw",
+    marginBottom: -15,
+    "@media screen and (max-width: 1000px)" : {
+      fontSize: "20px"
+    }
+  },
+  cardSubtitleStyle: {
+    fontSize: "3vw",
+    "@media screen and (max-width: 1000px)" : {
+      fontSize: "30px"
+    }
   },
   buttonStyle: {
     backgroundColor: "#EA5E00",
@@ -64,8 +80,6 @@ export const Analytics = () => {
         <Grid
           container
           item
-          alignItems={"center"}
-          justifyContent={"center"}
         >
           <Grid item sm={4}>
             <Grow in={true}>
@@ -73,8 +87,12 @@ export const Analytics = () => {
                 style={{ backgroundImage: `url(${blueBg})` }}
                 className={classes.cardStyle}
               >
-                <Typography variant="h5">Average Hashrate (1hr)</Typography>
-                <Typography variant="h3">0 H/sec</Typography>
+                <Typography className={classes.cardTitleStyle}>
+                  Average Hashrate (1hr)
+                </Typography>
+                <Typography className={classes.cardSubtitleStyle}>
+                  0 H/sec
+                </Typography>
               </Card>
             </Grow>
           </Grid>
@@ -84,8 +102,12 @@ export const Analytics = () => {
                 style={{ backgroundImage: `url(${greenBg})` }}
                 className={classes.cardStyle}
               >
-                <Typography variant="h5">Pool Hashrate</Typography>
-                <Typography variant="h3">0 H/sec</Typography>
+                <Typography className={classes.cardTitleStyle}>
+                  Pool Hashrate
+                </Typography>
+                <Typography className={classes.cardSubtitleStyle}>
+                  0 H/sec
+                </Typography>
               </Card>
             </Grow>
           </Grid>
@@ -95,8 +117,12 @@ export const Analytics = () => {
                 style={{ backgroundImage: `url(${orangeBg})` }}
                 className={classes.cardStyle}
               >
-                <Typography variant="h5">Referrer Bonus</Typography>
-                <Typography variant="h3">0 MC</Typography>
+                <Typography className={classes.cardTitleStyle}>
+                  Referrer Bonus
+                </Typography>
+                <Typography className={classes.cardSubtitleStyle}>
+                  0 MC
+                </Typography>
               </Card>
             </Grow>
           </Grid>
@@ -148,7 +174,7 @@ export const Analytics = () => {
           </Grid>
           <Grid item sm={4} style={{ height: "600px", padding: "16px" }}>
             <Grow in={true} timeout={2000}>
-              <div style={{ height: "100%" }}>
+              <div>
                 <FriendMenu />
                 <Button className={classes.buttonStyle} variant="contained">
                   View More
