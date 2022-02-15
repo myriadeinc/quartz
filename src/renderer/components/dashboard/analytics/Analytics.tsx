@@ -126,6 +126,7 @@ export const Analytics = () => {
               </Card>
             </Grow>
           </Grid>
+          
           <Grid item sm={8} style={{ height: "600px", padding: "16px" }}>
             <Grow in={true} timeout={1500}>
               <BCard
@@ -172,6 +173,7 @@ export const Analytics = () => {
               </BCard>
             </Grow>
           </Grid>
+
           <Grid item sm={4} style={{ height: "600px", padding: "16px" }}>
             <Grow in={true} timeout={2000}>
               <div>
@@ -182,6 +184,7 @@ export const Analytics = () => {
               </div>
             </Grow>
           </Grid>
+        
         </Grid>
       )}
     </MinerConsumer>
