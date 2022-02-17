@@ -7,10 +7,12 @@ import { EnhancedTable } from "./HistoryTable";
 
 const useStyles = makeStyles({
   grid: {
-    padding: "16px",
+    padding: "5vh",
+    margin: "1vh 2.5vw 3vh 2.5vw",
+    justifyContent: "center",
   },
   card: {
-    padding: "16px",
+    padding: "6px 6px 6px 6px",
   },
 });
 

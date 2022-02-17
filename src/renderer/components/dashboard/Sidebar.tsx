@@ -11,36 +11,59 @@ import { makeStyles } from "@mui/styles";
 import { NavLink } from "react-router-dom";
 import { MinerConsumer } from "renderer/pages/Dashboard";
 import { dashboardRoutes } from "renderer/utils/dashboard";
-import octopus from "../../../assets/avatars/Octopus.png"
-import discord from "../../../assets/support-logos/discord.png"
-import email from "../../../assets/support-logos/email.png"
+import octopus from "../../../assets/avatars/Octopus.png";
+import discord from "../../../assets/support-logos/discord.png";
+import email from "../../../assets/support-logos/email.png";
+import settings from "../../../assets/support-logos/settings.png";
+import twitter from "../../../assets/support-logos/twitter.png";
+import monero from "../../../assets/support-logos/monero.png";
 
 const useStyles = makeStyles({
   drawerStyle: {
     "& .MuiDrawer-paper": {
       width: "20vw",
       boxSizing: "border-box",
-      backgroundColor: "#202225",
-      padding: "36px",
-      "@media screen and (max-width: 1200px)" : {
-        width: 240,
+      backgroundColor: "#282b30",
+      padding: "15px",
+      "@media screen and (max-width: 1000px)" : {
+        width: 200,
       },
     }
   },
-  usernameStyle: {
-    fontSize: "2vw",
+  balance: {
+    fontSize: "0.8vw",
     "@media screen and (max-width: 1200px)" : {
-      fontSize: "1.4rem",
+      fontSize: "0.6rem",
+    }
+  },
+  balanceMc: {
+    fontSize: "0.8vw",
+    "@media screen and (max-width: 1200px)" : {
+      fontSize: "0.6rem",
+    }
+  },
+  balanceTitle: {
+    fontSize: "0.8vw",
+    fontWeight: "550",
+    "@media screen and (max-width: 1200px)" : {
+      fontSize: "0.6rem",
+    }
+  },
+  usernameStyle: {
+    fontSize: "2.2vw",
+    "@media screen and (max-width: 1200px)" : {
+      fontSize: "1.7rem",
     }
   },
   subtitle: {
     fontSize: "1vw",
-    "@media screen and (max-width: 1200px)" : {
+    "@media screen and (max-width: 1000px)" : {
       fontSize: "0.7rem",
     }
   },
   grid: {
     marginTop: "16px",
+
   },
   imgContainers: {
     width: "100%",
@@ -50,8 +73,26 @@ const useStyles = makeStyles({
     alignItems: "flex-end"
   },
   imgStyle: {
-    margin: "0px 10px"
-  }
+    margin: "0px 7px",
+
+  },
+  moneroImgStyle: {
+    margin: "0px 10px",
+    padding: "0vh 0vh 0.05vh 0vh",
+    width: "1vw",
+    "@media screen and (max-width: 1000px)" : {
+      width: "0.7rem",
+    }
+  },
+  balanceCard: {
+    padding: "0.3vw",
+    margin: "0vw 1.5vw 0vw 1.5vw",
+    borderRadius: "0.5rem",
+    backgroundColor: "#36393e",
+    "@media screen and (max-width: 1000px)" : {
+      margin: "0vw 0.7rem 0vw 0.7rem",
+    }
+  },
 });
 
 interface SidebarProps {
@@ -95,15 +136,15 @@ export const Sidebar = (props: SidebarProps) => {
               <Typography className={classes.subtitle}>{miner.email}</Typography>
             </Grid>
             <Grid item sm={12} className={classes.grid}>
-              <Card
-                style={{
-                  padding: "16px",
-                  borderRadius: "1rem",
-                  backgroundColor: "#2f3136",
-                }}
-              >
-                <Typography>Mining Credits: {miner.mcBalance}</Typography>
-                <Typography>Monero Balance: {miner.xmrBalance}</Typography>
+              <Card className={classes.balanceCard}>
+                <Typography className={classes.balanceTitle}>Mining Credits:  </Typography>
+                <Typography className={classes.balanceMc}>{miner.mcBalance}</Typography>
+            
+                <Typography className={classes.balanceTitle}>    
+                <a><img className={classes.moneroImgStyle} src={monero} height="100%" style={{margin: "0px 0.2vw -0.25vh 0px"}} />
+            </a>
+            Monero Balance: </Typography>
+                <Typography className={classes.balance}>{miner.xmrBalance} ($4.26 USD) </Typography>
               </Card>
             </Grid>
             <Grid item sm={12} className={classes.grid}>
@@ -125,7 +166,7 @@ export const Sidebar = (props: SidebarProps) => {
                         <Typography 
                           style={{ 
                             marginTop: "8px",
-                            fontSize: "1.5rem",
+                            fontSize: "1.2rem",
                             fontWeight: "300"
                           }}
                         >
@@ -138,11 +179,17 @@ export const Sidebar = (props: SidebarProps) => {
             </Grid>
           </Grid>
           <div className={classes.imgContainers}>
-            <a href="https://myriade.io/#/" target="_blank">
-              <img className={classes.imgStyle} src={discord} height="30" />
+          <a href="https://myriade.io/#/" target="_blank">
+              <img className={classes.imgStyle} src={settings} height="35" />
             </a>
-            <a href="https://myriade.io/#/" target="_blank">
-              <img className={classes.imgStyle} src={email} height="24" style={{marginBottom: "4px"}} />
+            <a href="https://discord.gg/J9Pn7Dk" target="_blank">
+              <img className={classes.imgStyle} src={discord} height="35" />
+            </a>
+            <a href="https://twitter.com/MyriadeInc" target="_blank">
+              <img className={classes.imgStyle} src={twitter} height="35" />
+            </a>
+            <a href="mailto:support@myriade.io" target="_blank">
+              <img className={classes.imgStyle} src={email} height="28" style={{marginBottom: "4px"}} />
             </a>
           </div>
         </Drawer>

@@ -3,11 +3,13 @@ import { makeStyles } from "@mui/styles";
 import { IRaffle } from "renderer/interfaces/pages/dashboard";
 
 const useStyles = makeStyles({
+  
   card: {
-    padding: "16px 16px 6px 16px",
-    margin: "16px",
-    background: "linear-gradient(#202225 70%, #313438 70%)",
+    padding: "16px 6px 6px 16px",
+    margin: "3vh 5vw 3vh 5vw",
+    background: "linear-gradient(#282b30 70%, #36393e 70%)",
     maxWidth: "300px",
+    minWidth: "230px",
   },
   subtitle: {
     color: "#999999",
@@ -39,7 +41,9 @@ export const Raffle = (props: RaffleProps) => {
   const classes = useStyles();
 
   return (
-    <Grid item sm={6} md={4}>
+    <Grid item sm={6} md={4} style={{
+      marginLeft:"0vw"
+    }}>
       <Grow in={true} timeout={props.timeout}>
         <Card className={classes.card}>
           <Typography variant="h5">

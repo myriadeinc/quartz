@@ -15,35 +15,40 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
-    width: "22vw",
-    height: "calc(22vw * 0.5)",
-    minWidth: "220px",
-    minHeight: "110px",
-    padding: "16px",
-    margin: "16px",
+    width: "20vw",
+    height: "calc(20vw * 0.5)",
+    minWidth: "110px",
+    minHeight: "55px",
+    padding: "16px 16px",
+    margin: "16px 1vw 10vh 2vw",
     borderRadius: "20px",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "100%"
   },
   cardTitleStyle: {
-    fontSize: "2vw",
-    marginBottom: -15,
+    fontSize: "1.2vw",
+    flexDirection: "column",
+    marginBottom: -5,
+    marginTop: -10,
     "@media screen and (max-width: 1000px)" : {
-      fontSize: "20px"
     }
   },
   cardSubtitleStyle: {
-    fontSize: "3vw",
+    fontSize: "2.5vw",
     "@media screen and (max-width: 1000px)" : {
-      fontSize: "30px"
     }
+  },
+  friendStyle: {
+    display: "flex",
+    flexDirection: "column",
+    height: "10vh",
   },
   buttonStyle: {
     backgroundColor: "#EA5E00",
     color: "#FFFFFF",
     width: "100%",
-    height: "3.2rem",
+    height: "5vh",
     fontSize: "1.2rem",
     fontWeight: "500",
     borderTopLeftRadius: "0",
@@ -54,16 +59,32 @@ const useStyles = makeStyles({
   },
   chartContainer: {
     display: "flex",
-    justifyContent: "space-between"
+    width: "50vw",
+    justifyContent: "space-between",
+    fontSize: "5rem",
+
   },
   selectContainer: {
+    flexDirection: "column",
     height: "100%",
     display: "flex",
     alignSelf: "flex-end",
+    
   },
   selectStyle: {
-    height: "3rem",
-  }
+    height: "1.8rem",
+    width: "4.5rem",
+    fontSize: "1 rem",
+  },
+  analyticsFriends: {
+    flexDirection: "row",
+    height: "48vh",
+    display: "flex",
+    alignSelf: "flex-end",
+    margin: "0vw 0vw 0vw 1vw",
+
+    
+  },
 });
 
 export const Analytics = () => {
@@ -87,11 +108,11 @@ export const Analytics = () => {
                 style={{ backgroundImage: `url(${blueBg})` }}
                 className={classes.cardStyle}
               >
+                 <Typography className={classes.cardSubtitleStyle}>
+                  0 H/sec
+                </Typography>
                 <Typography className={classes.cardTitleStyle}>
                   Average Hashrate (1hr)
-                </Typography>
-                <Typography className={classes.cardSubtitleStyle}>
-                  0 H/sec
                 </Typography>
               </Card>
             </Grow>
@@ -102,11 +123,11 @@ export const Analytics = () => {
                 style={{ backgroundImage: `url(${greenBg})` }}
                 className={classes.cardStyle}
               >
+                 <Typography className={classes.cardSubtitleStyle}>
+                  0 H/sec
+                </Typography>
                 <Typography className={classes.cardTitleStyle}>
                   Pool Hashrate
-                </Typography>
-                <Typography className={classes.cardSubtitleStyle}>
-                  0 H/sec
                 </Typography>
               </Card>
             </Grow>
@@ -117,36 +138,43 @@ export const Analytics = () => {
                 style={{ backgroundImage: `url(${orangeBg})` }}
                 className={classes.cardStyle}
               >
-                <Typography className={classes.cardTitleStyle}>
-                  Referrer Bonus
-                </Typography>
                 <Typography className={classes.cardSubtitleStyle}>
                   0 MC
+                </Typography>
+                <Typography className={classes.cardTitleStyle}>
+                  Referrer Bonus
                 </Typography>
               </Card>
             </Grow>
           </Grid>
           
-          <Grid item sm={8} style={{ height: "600px", padding: "16px" }}>
+
+
+
+
+          <Grid className={classes.analyticsFriends}>
             <Grow in={true} timeout={1500}>
               <BCard
                 className={"mt-5 mb-5"}
                 style={{
                   color: "white",
-                  height: "55vh",
-                  width: "100%",
-                  backgroundColor: "#202225",
+                  height: "100%",
+                  backgroundColor: "#282b30",
+                  width: "51vw",
+                  marginRight: "20px"
+                  
                 }}
               >
-                <BCard.Header>
+                
+                <BCard.Header >
                   <div className={classes.chartContainer}>
                     <div>
-                      <Typography variant="h3" style={{ padding: "16px" }}>
+                      <Typography  style={{ fontSize: "2vw", padding: "16px 0px 0px 13px" }}>
                         Historical Metrics
                       </Typography>
                       <Typography
                         variant="body1"
-                        style={{ paddingLeft: "16px", paddingBottom: "16px" }}
+                        style={{ fontSize: "1vw", paddingLeft: "16px", paddingBottom: "10px"}}
                       >
                         See how your hashrate changes over time.
                       </Typography>
@@ -164,27 +192,24 @@ export const Analytics = () => {
                         <MenuItem value={"1w"}>1W</MenuItem>
                         <MenuItem value={"1m"}>1M</MenuItem>
                       </Select>
-                    </div>
+                      </div>
                   </div>
                 </BCard.Header>
-                <BCard.Body style={{ height: "100%" }}>
+                <BCard.Body style={{ height: "100%", width: "100%" }}>
                   <Chart />
                 </BCard.Body>
               </BCard>
             </Grow>
-          </Grid>
-
-          <Grid item sm={4} style={{ height: "600px", padding: "16px" }}>
             <Grow in={true} timeout={2000}>
-              <div>
-                <FriendMenu />
+              
+              <div >
+                <FriendMenu/>
                 <Button className={classes.buttonStyle} variant="contained">
                   View More
                 </Button>
               </div>
             </Grow>
           </Grid>
-        
         </Grid>
       )}
     </MinerConsumer>

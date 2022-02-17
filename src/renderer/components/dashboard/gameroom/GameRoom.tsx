@@ -13,7 +13,7 @@ import { Raffle } from "./Raffle";
 
 const useStyles = makeStyles({
   grid: {
-    padding: "16px",
+    padding: "36px 43px 6px 43px",
     color: "white",
   },
 });
@@ -89,20 +89,20 @@ export const GameRoom = () => {
     <Grid
       container
       item
+      alignItems={"left"}
+      justifyContent={"left"}
+      className={classes.grid}
     >
-      <Grid item sm={12} className={classes.grid}>
-        <Typography variant="h5">Current Drawings</Typography>
-      </Grid>
+
       {raffles.map(
         (raffle, index) =>
           raffle.public.type != "STEAM" && (
             <Raffle raffle={raffle} timeout={index * 500} />
           )
       )}
-      <Grid item sm={12} className={classes.grid}>
-        <Typography variant="h5">History</Typography>
-      </Grid>
+
       <History history={history} />
+
     </Grid>
   );
 };

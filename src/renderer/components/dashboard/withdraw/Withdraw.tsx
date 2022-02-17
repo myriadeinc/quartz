@@ -20,7 +20,23 @@ const useStyles = makeStyles({
     backgroundColor: "#1E1E1E",
     marginTop: "16px",
     padding: "16px"
-  }
+  },
+  withdrawButton: {
+    padding: "7px 10px",
+    marginTop: "0vh",
+    borderRadius: "10px",
+    backgroundColor: "#2196f3",
+    '&:hover': {
+      backgroundColor: "#1976d2",
+    },
+  },
+    walletLink: {
+      fontSize: "1vw",
+      fontWeight: "700",
+      padding: "1.5vh 0vh 0vh 0vh",
+      color: "#1976d2",
+
+      },
 });
 
 
@@ -37,6 +53,7 @@ export const Withdraw = () => {
       justifyContent={"center"}
       className={classes.grid}
     >
+
       <Grid item sm={12} style={{ color: "white" }}>
         <Typography variant="h4">Withdraw your XMR</Typography>
         <Typography variant="body1">
@@ -51,12 +68,12 @@ export const Withdraw = () => {
           style={{ 
             padding: "64px", 
             margin: "16px 0px",
-            backgroundColor: "#202225",
+            backgroundColor: "#282b30",
           }}
         >
           {withdrawing ? (
             <div>
-              <Typography variant="h6">XMR Amount</Typography>
+              <Typography>XMR Amount</Typography>
             </div>
           ) : (
             <MinerConsumer>
@@ -72,12 +89,23 @@ export const Withdraw = () => {
                     label="Monero Wallet Address"
                     helperText="e.g. 488tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H"
                   />
+                  <a href="https://paul-myriade.medium.com/how-to-get-yourself-a-monero-xmr-wallet-address-2edb75a0a575" target="_blank" style={{
+                          textDecoration: "none",
+                  }}>
+                  <Typography className={classes.walletLink}>
+                    (Where to get a Monero Wallet address)
+                    </Typography>
+                   </a>
                   {/* <FormControlLabel
                     control={<Checkbox />}
                     label="Use the wallet address I signed up with"
                   /> */}
                   <br />
-                  <Button variant="contained">Withdraw</Button>
+                  <Button variant="contained" className={classes.withdrawButton}><Typography style={{
+                  color: "#ffffff",
+                  fontSize: "1vw",
+                  fontWeight: "500",
+                }}> Withdraw </Typography> </Button>
                 </div>
               )}
             </MinerConsumer>

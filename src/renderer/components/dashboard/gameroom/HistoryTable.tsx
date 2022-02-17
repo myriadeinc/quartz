@@ -186,7 +186,7 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
   const convertDateTime = (unixTimestamp: number) => {
     const timestampMilli: number = unixTimestamp * 1000;
     const date: Date = new Date(timestampMilli);
-    return date.toString();
+    return date.toString().substring(4,21);
   };
 
   return (
