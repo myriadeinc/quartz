@@ -20,11 +20,14 @@ import cow from "../../../../assets/avatars/Cow.png";
 
 const useStyles = makeStyles({
   cardStyle: {
-    height: "100%",
-    backgroundColor: "#2f3136",
+    
+    width: "25vw",
+    height: "57vh",
+    backgroundColor: "#36393e",
     color: "white",
     borderBottomLeftRadius: "0",
     borderBottomRightRadius: "0",
+    
   },
   avatarStyle: {
     height: "54px",
@@ -32,12 +35,13 @@ const useStyles = makeStyles({
     marginRight: "10px"
   },
   nameStyle: {
-    fontSize: "1.5rem"
+    fontSize: "1.2vw",
+    fontWeight: "550",
   },
   subtitleStyle: {
     color: "#EAEAEA",
-    fontSize: "0.9rem",
-    fontWeight: "300"
+    fontSize: "0.9vw",
+    fontWeight: "100"
   }
 });
 
@@ -123,7 +127,7 @@ export const FriendMenu = () => {
       >
         <Typography
           variant="h4"
-          style={{ backgroundColor: "#202225", padding: "16px" }}
+          style={{ backgroundColor: "#282b30", padding: "16px", fontSize: "2vw" }}
         >
           Friends
         </Typography>

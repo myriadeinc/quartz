@@ -14,9 +14,9 @@ const useStyles = makeStyles({
   wrapper: {
     width: "80vw", 
     marginLeft: "20vw",
-    "@media screen and (max-width: 1200px)" : {
-      width: "calc(100% - 240)",
-      marginLeft: 240,
+    "@media screen and (max-width: 1000px)" : {
+      width: "calc(100% - 200)",
+      marginLeft: 200
     }
   },
 });
@@ -151,7 +151,7 @@ export const Dashboard = (props: any) => {
         <minerContext.Provider value={miner}>
           <Grid
             ref={myRef}
-            style={{ minHeight: "100vh", backgroundColor: "#36393e" }}
+            style={{ minHeight: "100vh", backgroundColor: "#1e2124" }}
           >
             <Sidebar path={props.match.path} />
             <Grid

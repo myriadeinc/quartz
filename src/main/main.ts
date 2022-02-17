@@ -45,8 +45,8 @@ const createWindow = async () => {
   }
 
   mainWindow = new BrowserWindow({
-    width: 1920,
-    height: 1080,
+    width: 1400,
+    height: 900,
     frame: true,
   });
 
@@ -88,3 +88,5 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 });
+
+
