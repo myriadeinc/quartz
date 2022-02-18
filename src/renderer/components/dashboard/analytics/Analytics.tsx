@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     minWidth: "110px",
     minHeight: "55px",
     padding: "16px 16px",
-    margin: "16px 1vw 10vh 2vw",
+    margin: "1vh 1vw 13vh 2vw",
     borderRadius: "20px",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",

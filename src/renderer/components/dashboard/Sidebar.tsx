@@ -31,22 +31,31 @@ const useStyles = makeStyles({
     }
   },
   balance: {
-    fontSize: "0.8vw",
+    fontSize: "0.9vw",
     "@media screen and (max-width: 1200px)" : {
-      fontSize: "0.6rem",
+      fontSize: "0.65rem",
     }
   },
   balanceMc: {
-    fontSize: "0.8vw",
+    fontSize: "0.9vw",
+    marginInline: "0vh 0vh 1vh 0vh",
     "@media screen and (max-width: 1200px)" : {
-      fontSize: "0.6rem",
+      fontSize: "0.65rem",
     }
   },
-  balanceTitle: {
-    fontSize: "0.8vw",
+  balanceTitleXmr: {
+    fontSize: "1vw",
+    fontWeight: "550",
+    marginTop: "0.5vh",
+    "@media screen and (max-width: 1200px)" : {
+      fontSize: "0.75rem",
+    }
+  },
+  balanceTitleMc: {
+    fontSize: "1vw",
     fontWeight: "550",
     "@media screen and (max-width: 1200px)" : {
-      fontSize: "0.6rem",
+      fontSize: "0.75rem",
     }
   },
   usernameStyle: {
@@ -93,6 +102,14 @@ const useStyles = makeStyles({
       margin: "0vw 0.7rem 0vw 0.7rem",
     }
   },
+  navigationMenu: {
+    marginTop: "8px",
+    fontSize: "calc(6vw * 0.25)",
+    fontWeight: "300",
+    "@media screen and (max-width: 1000px)" : {
+     fontSize: "0.94rem",
+    }
+  },
 });
 
 interface SidebarProps {
@@ -137,10 +154,10 @@ export const Sidebar = (props: SidebarProps) => {
             </Grid>
             <Grid item sm={12} className={classes.grid}>
               <Card className={classes.balanceCard}>
-                <Typography className={classes.balanceTitle}>Mining Credits:  </Typography>
-                <Typography className={classes.balanceMc}>{miner.mcBalance}</Typography>
+                <Typography display="inline" className={classes.balanceTitleMc}>Mining Credits:  </Typography>
+                <Typography display="inline" className={classes.balanceMc}>{miner.mcBalance}</Typography>
             
-                <Typography className={classes.balanceTitle}>    
+                <Typography className={classes.balanceTitleXmr}>    
                 <a><img className={classes.moneroImgStyle} src={monero} height="100%" style={{margin: "0px 0.2vw -0.25vh 0px"}} />
             </a>
             Monero Balance: </Typography>
@@ -164,12 +181,7 @@ export const Sidebar = (props: SidebarProps) => {
                         style={{ textDecoration: "none", color: "white" }}
                       >
                         <Typography 
-                          style={{ 
-                            marginTop: "8px",
-                            fontSize: "1.2rem",
-                            fontWeight: "300"
-                          }}
-                        >
+                          className={classes.navigationMenu}>
                           {route.name}
                         </Typography>
                       </NavLink>

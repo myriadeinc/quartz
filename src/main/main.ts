@@ -50,6 +50,9 @@ const createWindow = async () => {
     frame: true,
   });
 
+  mainWindow.setMenuBarVisibility(false)
+
+
   mainWindow.loadURL(resolveHtmlPath("index.html"));
 
   mainWindow.on("ready-to-show", () => {

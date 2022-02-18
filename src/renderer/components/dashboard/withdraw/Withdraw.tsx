@@ -14,7 +14,7 @@ import { EnhancedWithdrawTable } from "./WithdrawTable";
 
 const useStyles = makeStyles({
   grid: {
-    padding: "16px 96px 16px 96px",
+    padding: "8vh 96px 16px 96px",
   },
   tableContainer: {
     backgroundColor: "#1E1E1E",
