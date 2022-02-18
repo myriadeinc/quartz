@@ -30,8 +30,8 @@ const useStyles = makeStyles({
     
   },
   avatarStyle: {
-    height: "54px",
-    width: "54px",
+    height: "5.5vh",
+    width: "5.5vh",
     marginRight: "10px"
   },
   nameStyle: {
