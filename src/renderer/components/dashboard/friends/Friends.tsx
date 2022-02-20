@@ -10,13 +10,13 @@ import {
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { IFriend } from "renderer/interfaces/pages/dashboard";
-import bear from "../../../../assets/avatars/Bear.png";
-import bird from "../../../../assets/avatars/Bird.png";
-import bunny from "../../../../assets/avatars/Bunny.png";
-import cat from "../../../../assets/avatars/Cat.png";
-import cheetah from "../../../../assets/avatars/Cheetah.png";
-import cobra from "../../../../assets/avatars/Cobra.png";
-import cow from "../../../../assets/avatars/Cow.png";
+import bear from "../../../../assets/avatars/svg/Bear.svg";
+import bird from "../../../../assets/avatars/svg/Bird.svg";
+import bunny from "../../../../assets/avatars/svg/Bunny.svg";
+import cat from "../../../../assets/avatars/svg/Cat.svg";
+import cheetah from "../../../../assets/avatars/svg/Cheetah.svg";
+import cobra from "../../../../assets/avatars/svg/Cobra.svg";
+import cow from "../../../../assets/avatars/svg/Cow.svg";
 
 const useStyles = makeStyles({
   cardStyle: {
@@ -30,17 +30,18 @@ const useStyles = makeStyles({
     
   },
   avatarStyle: {
-    height: "5.5vh",
-    width: "5.5vh",
-    marginRight: "10px"
+    height: "6vh",
+    width: "6vh",
+    marginRight: "10px",
+    marginTop: "0.4vh",
   },
   nameStyle: {
-    fontSize: "1.2vw",
+    fontSize: "1.4vw",
     fontWeight: "550",
   },
   subtitleStyle: {
     color: "#EAEAEA",
-    fontSize: "0.9vw",
+    fontSize: "0.95vw",
     fontWeight: "100"
   }
 });
@@ -76,18 +77,7 @@ const dummyData = [
     avatar: cheetah,
     id: 2
   },
-  {
-    name: "DellaSaucy",
-    status: "offline",
-    avatar: cobra,
-    id: 6
-  },
-  {
-    name: "BlunterFoil",
-    status: "offline",
-    avatar: cow,
-    id: 16
-  },
+
 ] as IFriend[];
 
 export const Friends = () => {

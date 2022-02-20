@@ -48,6 +48,7 @@ const createWindow = async () => {
     width: 1400,
     height: 900,
     frame: true,
+    icon: "../assets/Myriade-Diamond.ico",
   });
 
   mainWindow.setMenuBarVisibility(false)
