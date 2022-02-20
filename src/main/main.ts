@@ -69,10 +69,11 @@ const createWindow = async () => {
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
+    frame: true,
+    icon: "../assets/Myriade-Diamond.ico",
   });
 
-  mainWindow.setMenuBarVisibility(false)
-
+  mainWindow.setMenuBarVisibility(false);
 
   mainWindow.loadURL(resolveHtmlPath("index.html"));
 

@@ -11,12 +11,12 @@ import { makeStyles } from "@mui/styles";
 import { NavLink } from "react-router-dom";
 import { MinerConsumer } from "renderer/pages/Dashboard";
 import { dashboardRoutes } from "renderer/utils/dashboard";
-import octopus from "../../../assets/avatars/Octopus.png";
-import discord from "../../../assets/support-logos/discord.png";
-import email from "../../../assets/support-logos/email.png";
-import settings from "../../../assets/support-logos/settings.png";
-import twitter from "../../../assets/support-logos/twitter.png";
-import monero from "../../../assets/support-logos/monero.png";
+import octopus from "../../../assets/avatars/svg/octopus.svg";
+import discord from "../../../assets/support-logos/discord.svg";
+import email from "../../../assets/support-logos/email.svg";
+import settings from "../../../assets/support-logos/settings.svg";
+import twitter from "../../../assets/support-logos/twitter.svg";
+import monero from "../../../assets/support-logos/monero.svg";
 
 const useStyles = makeStyles({
   drawerStyle: {
@@ -136,11 +136,11 @@ export const Sidebar = (props: SidebarProps) => {
             <Grid item sm={12}>
               <Avatar
                 style={{
-                  width: "120px",
-                  height: "120px",
-                  marginTop: "32px",
+                  width: "17vh",
+                  height: "17vh",
+                  marginTop: "2vh",
                   margin: "auto",
-                  border: "4px solid #76FF02"
+                  border: "4px solid #76FF02",
                 }}
                 src={octopus}
               />
@@ -192,7 +192,7 @@ export const Sidebar = (props: SidebarProps) => {
           </Grid>
           <div className={classes.imgContainers}>
           <a href="https://myriade.io/#/" target="_blank">
-              <img className={classes.imgStyle} src={settings} height="35" />
+              <img className={classes.imgStyle} src={settings} height="35"/>
             </a>
             <a href="https://discord.gg/J9Pn7Dk" target="_blank">
               <img className={classes.imgStyle} src={discord} height="35" />
@@ -201,7 +201,7 @@ export const Sidebar = (props: SidebarProps) => {
               <img className={classes.imgStyle} src={twitter} height="35" />
             </a>
             <a href="mailto:support@myriade.io" target="_blank">
-              <img className={classes.imgStyle} src={email} height="28" style={{marginBottom: "4px"}} />
+              <img className={classes.imgStyle} src={email} height="41" style={{marginBottom: "-3px"}} />
             </a>
           </div>
         </Drawer>
