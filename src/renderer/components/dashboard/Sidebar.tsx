@@ -59,15 +59,17 @@ const useStyles = makeStyles({
     }
   },
   usernameStyle: {
-    fontSize: "2.2vw",
+    fontSize: "1.8vw",
+    fontWeight: "700",
     "@media screen and (max-width: 1200px)" : {
-      fontSize: "1.7rem",
+      fontSize: "1.35rem",
     }
   },
   subtitle: {
-    fontSize: "1vw",
+    fontSize: "0.9vw",
+    fontWeight: "300",
     "@media screen and (max-width: 1000px)" : {
-      fontSize: "0.7rem",
+      fontSize: "0.65rem",
     }
   },
   grid: {
