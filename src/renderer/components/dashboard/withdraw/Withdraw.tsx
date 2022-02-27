@@ -89,7 +89,7 @@ export const Withdraw = () => {
                     label="Monero Wallet Address"
                     helperText="e.g. 488tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H"
                   />
-                  <a href="https://paul-myriade.medium.com/how-to-get-yourself-a-monero-xmr-wallet-address-2edb75a0a575" target="_blank" style={{
+                  <a href="https://paul-myriade.medium.com/how-to-get-yourself-a-monero-xmr-wallet-address-2edb75a0a575" target="_blank" rel="noopener noreferrer" style={{
                           textDecoration: "none",
                   }}>
                   <Typography className={classes.walletLink}>
@@ -116,6 +116,34 @@ export const Withdraw = () => {
         <div className={classes.tableContainer}>
           <EnhancedWithdrawTable
             data={[
+              {
+                date: "April 10, 2021",
+                type: "XMR",
+                amount: 0.023386790984,
+                status: 0,
+                address: "488tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H",
+              },
+              {
+                date: "April 10, 2021",
+                type: "XMR",
+                amount: 0.023386790984,
+                status: 0,
+                address: "488tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H",
+              },
+              {
+                date: "April 10, 2021",
+                type: "XMR",
+                amount: 0.023386790984,
+                status: 0,
+                address: "488tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H",
+              },
+              {
+                date: "April 10, 2021",
+                type: "XMR",
+                amount: 0.023386790984,
+                status: 0,
+                address: "488tNkZrPN6JsEgekjMnABU4TBzc2Dt29EPAvkRxbANsAnjyPbb3iQ1YBRk1UXcdRsiKc9dhwMVgN5S9cQUiyoogDavup3H",
+              },
               {
                 date: "April 10, 2021",
                 type: "XMR",

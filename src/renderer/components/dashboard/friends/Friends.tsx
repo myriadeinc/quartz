@@ -13,7 +13,7 @@ import { IFriend } from "renderer/interfaces/pages/dashboard";
 import bear from "../../../../assets/avatars/svg/Bear.svg";
 import bird from "../../../../assets/avatars/svg/Bird.svg";
 import bunny from "../../../../assets/avatars/svg/Bunny.svg";
-import cat from "../../../../assets/avatars/svg/Cat.svg";
+import raccoon from "../../../../assets/avatars/svg/Raccoon.svg";
 import cheetah from "../../../../assets/avatars/svg/Cheetah.svg";
 import cobra from "../../../../assets/avatars/svg/Cobra.svg";
 import cow from "../../../../assets/avatars/svg/Cow.svg";
@@ -68,7 +68,7 @@ const dummyData = [
   {
     name: "ratatouille",
     status: "mining",
-    avatar: cat,
+    avatar: raccoon,
     id: 89
   },
   {
