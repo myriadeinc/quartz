@@ -13,9 +13,12 @@ import {
   Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
+import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import Chart from "../analytics/Chart";
+import { Card as BCard } from "react-bootstrap";
 import play from "../../../../assets/mining/playButton.svg";
 import line from "../../../../assets/mining/line.svg";
+import { ViewColumn } from "@mui/icons-material";
 
 declare global {
   interface Window {
@@ -27,14 +30,16 @@ const useStyles = makeStyles({
   playBox: {
     display: "flex",
     flexDirection: "column",
-    marginTop: "7vh",
+    marginTop: "2vh",
+    zIndex: 2,
   },
 
   playButton: {
     display: "flex",
-    marginLeft: "30vw",
+    marginLeft: "31vw",
     width: "20vw",
     height: "20vw",
+    zIndex: 2,
   },
 
   playImage: {
@@ -43,18 +48,23 @@ const useStyles = makeStyles({
     paddingTop: "0.7vw",
     width: "17.5vw",
     height: "17.5vw",
+    zIndex: 99999,
   },
 
   progress: {
-    width: "50vw",
-    height: "50vw",
+    marginTop: "1vh",
+    width: "2vh",
+    height: "2vh",
+    position: "relative",
+    zIndex: 1,
   },
 
   line: {
     display: "flex",
     marginTop: "0.5vh",
-    marginLeft: "22.5vw",
+    marginLeft: "23.5vw",
     width: "35vw",
+    zIndex: 2,
   },
 
   xpCounter: {
@@ -64,18 +74,21 @@ const useStyles = makeStyles({
     fontSize: "2.2vw",
     color: "#FFFFFF",
     fontWeight: 600,
+    zIndex: 2,
   },
 
   nextBonus: {
     display: "flex",
     marginTop: "0.25vh",
     marginLeft: "35vw",
+    zIndex: 2,
   },
 
   nextBonusMiningCredits: {
     display: "flex",
     fontSize: "1.5vw",
     color: "#FFFFFF",
+    zIndex: 2,
   },
 
   bonusAmount: {
@@ -83,6 +96,102 @@ const useStyles = makeStyles({
     fontSize: "1.5vw",
     color: "#FF6500",
     marginLeft: "0.3vw",
+    zIndex: 2,
+  },
+
+  hourestimates: {
+    display: "flex",
+    marginTop: "4vh",
+    marginLeft: "35vw",
+    zIndex: 2,
+  },
+
+  hourEstimate: {
+    display: "flex",
+    fontSize: "1.3vw",
+    color: "#FF6500",
+    zIndex: 2,
+  },
+
+  hourEstimateNumber: {
+    display: "flex",
+    fontSize: "1.3vw",
+    color: "#FFFFFF",
+    marginLeft: "3vw",
+    zIndex: 2,
+  },
+
+  dayestimates: {
+    display: "flex",
+    marginTop: "0.25vh",
+    marginLeft: "35vw",
+    zIndex: 2,
+  },
+
+  dayEstimate: {
+    display: "flex",
+    fontSize: "1.3vw",
+    color: "#FF6500",
+    zIndex: 2,
+  },
+
+  dayEstimateNumber: {
+    display: "flex",
+    fontSize: "1.3vw",
+    color: "#FFFFFF",
+    marginLeft: "3vw",
+    zIndex: 2,
+  },
+
+  lineEstimate: {
+    display: "flex",
+    marginTop: "0.5vh",
+    marginLeft: "31.75vw",
+    width: "19vw",
+    zIndex: 2,
+  },
+
+  analyticsCard: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    marginTop: "3vh",
+    marginLeft: "1vw",
+    marginRight: "1vw",
+    width: "17%",
+    height: "3vh",
+    zIndex: 2,
+  },
+
+  analytics: {
+    fontSize: "2.4vw",
+    textAlign: "center",
+    fontWeight: 700,
+  },
+
+  analyticsTitle: {
+    fontSize: "1.2vw",
+    textAlign: "center",
+    color: "#FFFFFF",
+  },
+
+  chartContainer: {
+    display: "flex",
+    width: "50vw",
+    marginLeft: "2vw",
+    justifyContent: "space-between",
+    fontSize: "5rem",
+  },
+  selectContainer: {
+    flexDirection: "column",
+    height: "100%",
+    display: "flex",
+    alignSelf: "flex-end",
+  },
+  selectStyle: {
+    height: "1.8rem",
+    width: "4.5rem",
+    fontSize: "1 rem",
   },
 });
 
@@ -107,6 +216,7 @@ export const Mining = () => {
   return (
     <Grid container item>
       <Grid
+        item
         style={{
           height: "95vh",
           width: "100%",
@@ -140,16 +250,150 @@ export const Mining = () => {
             21MC
           </Typography>
         </Grid>
+
+        <Grid className={classes.hourestimates}>
+          <Typography display="inline" className={classes.hourEstimate}>
+            0MC
+          </Typography>
+          <Typography display="inline" className={classes.hourEstimateNumber}>
+            1H estimate{" "}
+          </Typography>
+        </Grid>
+
+        <Grid>
+          <img src={line} className={classes.lineEstimate} />
+        </Grid>
+
+        <Grid className={classes.dayestimates}>
+          <Typography display="inline" className={classes.dayEstimate}>
+            0MC
+          </Typography>
+          <Typography display="inline" className={classes.dayEstimateNumber}>
+            1D estimate{" "}
+          </Typography>
+        </Grid>
       </Grid>
 
       <Grid
+        container
+        item
         style={{
-          height: "100vh",
+          height: "120vh",
           backgroundColor: "#282b30",
           width: "100vw",
         }}
       >
-        Bottom Box
+        <Grid className={classes.analyticsCard}>
+          <Typography
+            className={classes.analytics}
+            style={{ color: "#39C298" }}
+          >
+            7358106MC
+          </Typography>
+          <Typography className={classes.analyticsTitle}>
+            Total MC Earned{" "}
+          </Typography>
+        </Grid>
+
+        <Grid className={classes.analyticsCard}>
+          <Typography
+            className={classes.analytics}
+            style={{ color: "#347FF8" }}
+          >
+            923415MC
+          </Typography>
+          <Typography className={classes.analyticsTitle}>
+            MC Earned from Referrals{" "}
+          </Typography>
+        </Grid>
+
+        <Grid className={classes.analyticsCard}>
+          <Typography
+            className={classes.analytics}
+            style={{ color: "#39C298" }}
+          >
+            0.8%
+          </Typography>
+          <Typography className={classes.analyticsTitle}>
+            Mining Bonus from Friends{" "}
+          </Typography>
+        </Grid>
+
+        <Grid className={classes.analyticsCard}>
+          <Typography
+            className={classes.analytics}
+            style={{ color: "#FF0055" }}
+          >
+            323216588
+          </Typography>
+          <Typography className={classes.analyticsTitle}>
+            Accepted Shares (XP){" "}
+          </Typography>
+        </Grid>
+
+        <Grid className={classes.analyticsCard}>
+          <Typography
+            className={classes.analytics}
+            style={{ color: "#347FF8" }}
+          >
+            11:22:51:33
+          </Typography>
+          <Typography className={classes.analyticsTitle}>
+            Total Mining Time{" "}
+          </Typography>
+        </Grid>
+
+        <Grow in={true} timeout={1500}>
+          <BCard
+            className={"mt-5 mb-5"}
+            style={{
+              color: "white",
+              height: "35vh",
+              backgroundColor: "#282b30",
+              width: "80vw",
+              marginTop: "-43vh",
+            }}
+          >
+            <BCard.Header>
+              <div className={classes.chartContainer}>
+                <div>
+                  <Typography
+                    style={{ fontSize: "2vw", padding: "16px 0px 0px 13px" }}
+                  >
+                    Historical Metrics
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    style={{
+                      fontSize: "1vw",
+                      paddingLeft: "16px",
+                      paddingBottom: "10px",
+                    }}
+                  >
+                    See how your hashrate changes over time.
+                  </Typography>
+                </div>
+                <div className={classes.selectContainer}>
+                  <Select
+                    className={classes.selectStyle}
+                    value={scale}
+                    onChange={handleOnChange}
+                    displayEmpty
+                    inputProps={{ "aria-label": "Without label" }}
+                  >
+                    <MenuItem value={"1h"}>1H</MenuItem>
+                    <MenuItem value={"1d"}>1D</MenuItem>
+                    <MenuItem value={"1w"}>1W</MenuItem>
+                    <MenuItem value={"1m"}>1M</MenuItem>
+                  </Select>
+                </div>
+              </div>
+            </BCard.Header>
+            <BCard.Body style={{ height: "100%", width: "100%" }}>
+              <Chart />
+            </BCard.Body>
+          </BCard>
+        </Grow>
       </Grid>
     </Grid>
   );
