@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 
   topStyle: { 
 
-    marginTop: "3vh",
+    marginTop: "5vh",
     marginBottom: "2vh",
     width: "80vw",
     height: "30vh",
@@ -111,6 +111,8 @@ copyCode: {
   
 },
 
+
+
 numberCard: {
   display: "flex",
   flexDirection: "column",
@@ -203,15 +205,15 @@ export const Referrals = () => {
                 </Typography>
 
        <Typography  className={classes.referralExplanation}>
-                  Once your friends sign up with your referral code and start mining for MC, you will earn a comission that comes out of Myriades' 10% fee.  
-                  The higher level your friends get to, the more of our fee you will earn. 
+                  Once your friends sign up with your referral code and start mining for MC, you will earn a commission that comes out of Myriades' 10% fee.  
+                  The higher level your friends get to and the more MC they mine for, the more of our fee you will earn.
                 </Typography>
 
                 <Typography  className={classes.referralExample}>
                 E.x. If your friend is Silver tier and mines 100MC, you will earn 1MC just for referring them.
                 </Typography>
 
-                <Button variant="contained" className={classes.copyCode}>Copy Code</Button>
+                <Button variant="contained" className={classes.copyCode}>Copy Code </Button>
 
 
   
@@ -231,8 +233,8 @@ export const Referrals = () => {
 
 
           <Grid className={classes.earnedCard} >
-          <Typography className={classes.earnedMc} style={{color: "#A4FF5C"}}>564126 MC</Typography>
-          <Typography className={classes.earnedTitle} >Referral MC </Typography>
+          <Typography className={classes.earnedMc} style={{color: "#A4FF5C"}}>56412 MC</Typography>
+          <Typography className={classes.earnedTitle} >Bonus Referral MC </Typography>
           </Grid>
 
                 

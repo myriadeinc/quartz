@@ -141,10 +141,10 @@ export const Analytics = () => {
                 className={classes.cardStyle}
               >
                 <Typography className={classes.cardSubtitleStyle}>
-                  564126 MC
+                  92354 MC
                 </Typography>
                 <Typography className={classes.cardTitleStyle}>
-                  Referral MC
+                  Total Bonus MC Earned
                 </Typography>
               </Card>
             </Grow>
