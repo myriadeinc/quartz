@@ -101,63 +101,116 @@ const useStyles = makeStyles({
 
   hourestimates: {
     display: "flex",
-    marginTop: "4vh",
-    marginLeft: "35vw",
+    marginTop: "2.5vh",
+    marginLeft: "35.2vw",
     zIndex: 2,
   },
 
   hourEstimate: {
     display: "flex",
-    fontSize: "1.3vw",
+    fontSize: "1.1vw",
+    textAlign: "center",
+    width: "3vw",
     color: "#FF6500",
     zIndex: 2,
   },
 
   hourEstimateNumber: {
     display: "flex",
-    fontSize: "1.3vw",
+    fontSize: "1.1vw",
     color: "#FFFFFF",
-    marginLeft: "3vw",
+    marginLeft: "2.7vw",
     zIndex: 2,
   },
 
   dayestimates: {
     display: "flex",
     marginTop: "0.25vh",
-    marginLeft: "35vw",
+    marginLeft: "35.2vw",
     zIndex: 2,
   },
 
   dayEstimate: {
     display: "flex",
-    fontSize: "1.3vw",
+    fontSize: "1.1vw",
+    width: "3vw",
+    textAlign: "center",
     color: "#FF6500",
     zIndex: 2,
   },
 
   dayEstimateNumber: {
     display: "flex",
-    fontSize: "1.3vw",
+    fontSize: "1.1vw",
     color: "#FFFFFF",
-    marginLeft: "3vw",
+    marginLeft: "2.7vw",
     zIndex: 2,
   },
 
   lineEstimate: {
     display: "flex",
     marginTop: "0.5vh",
-    marginLeft: "31.75vw",
-    width: "19vw",
+    marginLeft: "33vw",
+    width: "17vw",
     zIndex: 2,
+  },
+
+  hashrateCard: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    marginTop: "20vh",
+    marginLeft: "27vw",
+    marginRight: "1vw",
+    width: "17%",
+    height: "3vh",
+    zIndex: 2,
+  },
+
+  hashrate: {
+    fontSize: "3vw",
+    textAlign: "center",
+    fontWeight: 700,
+  },
+
+  hashrateTitle: {
+    fontSize: "1.2vw",
+    textAlign: "center",
+    color: "#FFFFFF",
+  },
+
+  miningTimeCard: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-end",
+    marginTop: "-3vh",
+    marginLeft: "42vw",
+    marginRight: "1vw",
+    width: "17%",
+    height: "3vh",
+    zIndex: 2,
+  },
+
+  miningTime: {
+    fontSize: "3vw",
+    textAlign: "center",
+    fontWeight: 700,
+  },
+
+  miningTimeTitle: {
+    fontSize: "1.2vw",
+    textAlign: "center",
+    color: "#FFFFFF",
   },
 
   analyticsCard: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
-    marginTop: "3vh",
+    marginTop: "4vh",
     marginLeft: "1vw",
     marginRight: "1vw",
+    marginBottom: "2.5vh",
     width: "17%",
     height: "3vh",
     zIndex: 2,
@@ -177,8 +230,9 @@ const useStyles = makeStyles({
 
   chartContainer: {
     display: "flex",
-    width: "50vw",
-    marginLeft: "2vw",
+    width: "80vw",
+    marginLeft: "0vw",
+    backgroundColor: "#1e2124",
     justifyContent: "space-between",
     fontSize: "5rem",
   },
@@ -218,7 +272,7 @@ export const Mining = () => {
       <Grid
         item
         style={{
-          height: "95vh",
+          height: "94vh",
           width: "100%",
         }}
       >
@@ -256,7 +310,7 @@ export const Mining = () => {
             0MC
           </Typography>
           <Typography display="inline" className={classes.hourEstimateNumber}>
-            1H estimate{" "}
+            1H MC estimate
           </Typography>
         </Grid>
 
@@ -269,7 +323,28 @@ export const Mining = () => {
             0MC
           </Typography>
           <Typography display="inline" className={classes.dayEstimateNumber}>
-            1D estimate{" "}
+            1D MC estimate{" "}
+          </Typography>
+        </Grid>
+
+        <Grid className={classes.hashrateCard}>
+          <Typography className={classes.hashrate} style={{ color: "#84DFFF" }}>
+            8304 H/s
+          </Typography>
+          <Typography className={classes.hashrateTitle}>
+            Current Hashrate{" "}
+          </Typography>
+        </Grid>
+
+        <Grid className={classes.miningTimeCard}>
+          <Typography
+            className={classes.miningTime}
+            style={{ color: "#93FFD8" }}
+          >
+            02:51:33
+          </Typography>
+          <Typography className={classes.miningTimeTitle}>
+            Current Mining Time{" "}
           </Typography>
         </Grid>
       </Grid>
@@ -283,6 +358,42 @@ export const Mining = () => {
           width: "100vw",
         }}
       >
+        <Grid className={classes.analyticsCard}>
+          <Typography
+            className={classes.analytics}
+            style={{ color: "#39C298" }}
+          >
+            7358106MC
+          </Typography>
+          <Typography className={classes.analyticsTitle}>
+            Total MC Earned{" "}
+          </Typography>
+        </Grid>
+
+        <Grid className={classes.analyticsCard}>
+          <Typography
+            className={classes.analytics}
+            style={{ color: "#347FF8" }}
+          >
+            923415MC
+          </Typography>
+          <Typography className={classes.analyticsTitle}>
+            MC Earned from Referrals{" "}
+          </Typography>
+        </Grid>
+
+        <Grid className={classes.analyticsCard}>
+          <Typography
+            className={classes.analytics}
+            style={{ color: "#39C298" }}
+          >
+            0.8%
+          </Typography>
+          <Typography className={classes.analyticsTitle}>
+            Mining Bonus from Friends{" "}
+          </Typography>
+        </Grid>
+
         <Grid className={classes.analyticsCard}>
           <Typography
             className={classes.analytics}
@@ -349,7 +460,7 @@ export const Mining = () => {
             style={{
               color: "white",
               height: "35vh",
-              backgroundColor: "#282b30",
+              backgroundColor: "#2f3136",
               width: "80vw",
               marginTop: "-43vh",
             }}
@@ -394,6 +505,18 @@ export const Mining = () => {
             </BCard.Body>
           </BCard>
         </Grow>
+
+        <Grid className={classes.analyticsCard}>
+          <Typography
+            className={classes.analytics}
+            style={{ color: "#347FF8" }}
+          >
+            11:22:51:33
+          </Typography>
+          <Typography className={classes.analyticsTitle}>
+            Total Mining Time{" "}
+          </Typography>
+        </Grid>
       </Grid>
     </Grid>
   );
