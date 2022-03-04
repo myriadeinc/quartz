@@ -11,6 +11,7 @@ import { makeStyles } from "@mui/styles";
 import { NavLink } from "react-router-dom";
 import { MinerConsumer } from "renderer/pages/Dashboard";
 import { dashboardRoutes } from "renderer/utils/dashboard";
+import refresh from "../../../assets/refresh.svg";
 import octopus from "../../../assets/avatars/svg/octopus.svg";
 import discord from "../../../assets/support-logos/discord.svg";
 import email from "../../../assets/support-logos/email.svg";
@@ -51,8 +52,11 @@ const useStyles = makeStyles({
       fontSize: "0.75rem",
     }
   },
+
+
   balanceTitleMc: {
     fontSize: "1vw",
+    marginLeft: "1vw",
     fontWeight: "550",
     "@media screen and (max-width: 1200px)" : {
       fontSize: "0.75rem",
@@ -156,8 +160,10 @@ export const Sidebar = (props: SidebarProps) => {
             </Grid>
             <Grid item sm={12} className={classes.grid}>
               <Card className={classes.balanceCard}>
+                
                 <Typography display="inline" className={classes.balanceTitleMc}>Mining Credits:  </Typography>
                 <Typography display="inline" className={classes.balanceMc}>{miner.mcBalance}</Typography>
+                
             
                 <Typography className={classes.balanceTitleXmr}>    
                 <a><img className={classes.moneroImgStyle} src={monero} height="100%" style={{margin: "0px 0.2vw -0.25vh 0px"}} />

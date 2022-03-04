@@ -4,6 +4,7 @@ import { makeStyles } from "@mui/styles";
 import { Card as BCard } from "react-bootstrap";
 import { MinerConsumer } from "renderer/pages/Dashboard";
 import { FriendMenu } from "../friends/Friends";
+import { Friends } from "renderer/components/dashboard/friends/Friends";
 import Chart from "./Chart";
 import blueBg from "../../../../assets/Blue-Box.png";
 import greenBg from "../../../../assets/Green-Box.png";
@@ -48,6 +49,7 @@ const useStyles = makeStyles({
     backgroundColor: "#EA5E00",
     color: "#FFFFFF",
     width: "100%",
+    ref: "/friends",
     height: "5vh",
     fontSize: "1.2rem",
     fontWeight: "500",
@@ -109,7 +111,7 @@ export const Analytics = () => {
                 className={classes.cardStyle}
               >
                  <Typography className={classes.cardSubtitleStyle}>
-                  0 H/sec
+                  8304 H/sec
                 </Typography>
                 <Typography className={classes.cardTitleStyle}>
                   Average Hashrate (1hr)
@@ -139,10 +141,10 @@ export const Analytics = () => {
                 className={classes.cardStyle}
               >
                 <Typography className={classes.cardSubtitleStyle}>
-                  0 MC
+                  564126 MC
                 </Typography>
                 <Typography className={classes.cardTitleStyle}>
-                  Referrer Bonus
+                  Referral MC
                 </Typography>
               </Card>
             </Grow>
@@ -204,7 +206,8 @@ export const Analytics = () => {
               
               <div >
                 <FriendMenu/>
-                <Button className={classes.buttonStyle} variant="contained">
+                <Button className={classes.buttonStyle} variant="contained" >
+                  
                   View More
                 </Button>
               </div>
