@@ -69,6 +69,22 @@ referralCodeTitle: {
 },
 
 
+clipboardButton: {
+    marginLeft: "0.1vw",
+    marginBottom: "0vh",
+    marginTop: "-1vh"
+
+
+
+},
+
+clipboardImage: {
+  width: "1.5vw",
+
+
+
+},
+
 referralExplanation: { 
   color: "#FFFFFF",
   marginLeft: "1vw",
@@ -117,8 +133,8 @@ numberCard: {
   display: "flex",
   flexDirection: "column",
   justifyContent: "flex-end",
-  marginTop: "17vh",
-  marginLeft: "3vw",
+  marginTop: "25vh",
+  marginLeft: "11vw",
   marginRight: "1vw",
   width: "20vw",
   height: "3vh",
@@ -143,7 +159,7 @@ earnedCard: {
   flexDirection: "column",
   justifyContent: "flex-end",
   marginTop: "-3vh",
-  marginLeft: "20vw",
+  marginLeft: "26vw",
   width: "20vw",
   height: "3vh",
   zIndex: 2,
@@ -204,16 +220,20 @@ export const Referrals = () => {
                   myriade.io/myreferralcode
                 </Typography>
 
+                <IconButton className={classes.clipboardButton}>
+                <img src={clipboard} className={classes.clipboardImage}/> 
+                </IconButton>
+
        <Typography  className={classes.referralExplanation}>
                   Once your friends sign up with your referral code and start mining for MC, you will earn a commission that comes out of Myriades' 10% fee.  
-                  The higher level your friends get to and the more MC they mine for, the more of our fee you will earn.
+                  The higher level your friends get to and the more MC they mine for, the more you earn.
                 </Typography>
 
                 <Typography  className={classes.referralExample}>
                 E.x. If your friend is Silver tier and mines 100MC, you will earn 1MC just for referring them.
                 </Typography>
 
-                <Button variant="contained" className={classes.copyCode}>Copy Code </Button>
+                
 
 
   
@@ -234,7 +254,7 @@ export const Referrals = () => {
 
           <Grid className={classes.earnedCard} >
           <Typography className={classes.earnedMc} style={{color: "#A4FF5C"}}>56412 MC</Typography>
-          <Typography className={classes.earnedTitle} >Bonus Referral MC </Typography>
+          <Typography className={classes.earnedTitle} >Bonus Referral MC Earned</Typography>
           </Grid>
 
                 

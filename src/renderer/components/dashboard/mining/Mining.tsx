@@ -370,7 +370,7 @@ export const Mining = () => {
           </Grid>
 
           <Grid className={classes.analyticsCard}>
-          <Typography className={classes.analytics} style={{color: "#39C298"}}>0.8%</Typography>
+          <Typography className={classes.analytics} style={{color: "#39C298"}}>+0.8%</Typography>
           <Typography className={classes.analyticsTitle} >Mining Bonus from Friends </Typography>
           </Grid>
 
