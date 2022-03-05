@@ -6,6 +6,7 @@ import {
   Typography,
   Card,
   Divider,
+  Button,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { NavLink } from "react-router-dom";
@@ -18,6 +19,7 @@ import email from "../../../assets/support-logos/email.svg";
 import settings from "../../../assets/support-logos/settings.svg";
 import twitter from "../../../assets/support-logos/twitter.svg";
 import monero from "../../../assets/support-logos/monero.svg";
+import { autoUpdater } from "electron-updater";
 
 const useStyles = makeStyles({
   drawerStyle: {
@@ -53,6 +55,20 @@ const useStyles = makeStyles({
     }
   },
 
+  levelBox: {
+    backgroundColor: "#8AE9FF",
+    width: "3rem",
+    borderRadius: 5,
+
+    marginTop: "-1.4vh",
+    position: "absolute",
+    zIndex: 99999,
+    "@media screen and (max-width: 1000px)" : {
+      marginLeft: "65px",
+      width: "40px",
+      
+    }
+  },
 
   balanceTitleMc: {
     fontSize: "1vw",
@@ -149,7 +165,10 @@ export const Sidebar = (props: SidebarProps) => {
                   border: "4px solid #76FF02",
                 }}
                 src={octopus}
+                
               />
+            
+
             </Grid>
             <Grid item sm={12} className={classes.grid}>
               <Typography className={classes.usernameStyle}>

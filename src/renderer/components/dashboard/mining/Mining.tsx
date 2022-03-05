@@ -49,10 +49,30 @@ const useStyles = makeStyles({
 
   line: {
     display: "flex",
-    marginTop: "0.5vh",
+    marginTop: "-0vh",
     marginLeft: "23.5vw",
     width: "35vw",
     zIndex: 2,
+
+  },
+
+  currentLevelTitle: {
+    
+    marginTop: "-5vh",
+    marginLeft: "32vw",
+    fontSize: "1.5vw",
+    color: "#FFFFFF",
+
+  },
+
+  currentLevel: {
+    
+    marginTop: "0.25vh",
+    marginLeft: "0.5vw",
+    marginBottom: "-0.5",
+    fontSize: "1.8vw",
+    color: "#955111",
+    fontWeight: 600,
 
   },
 
@@ -159,7 +179,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
-    marginTop: "20vh",
+    marginTop: "17vh",
     marginLeft: "27vw",
     marginRight: "1vw",
     width: "17%",
@@ -291,11 +311,31 @@ export const Mining = () => {
         </IconButton>
         </Grid>
 
+        <CircularProgress variant="determinate" value={85} thickness={0.5} style={{width: "42vw", color: "#EF7C00", marginLeft: "0vw", marginTop: "-1.5vh"}}> 
+
+
+          </CircularProgress>
+
         <Grid>
         <img src={line} className={classes.line}/>
         </Grid>
 
+
+
         <Grid>
+        <Typography display="inline" className={classes.currentLevelTitle}>
+
+            Current Mining Level: 
+
+            </Typography>
+            <Typography display="inline" className={classes.currentLevel}>
+
+            33
+
+            </Typography>
+
+
+
         <Typography className={classes.xpCounter}>
 
                 694 XP Until Level 34
