@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Scrollbars } from "react-custom-scrollbars";
-import { Card, CircularProgress, IconButton, Button, Grid, Grow, MenuItem, Select, Typography } from "@mui/material";
+import { Card, CircularProgress, IconButton, Button, Grid, Grow, Fade, Slide, MenuItem, Select, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import Chart from "../analytics/Chart";
@@ -300,28 +300,35 @@ export const Mining = () => {
       <Grid
       item
       style={{
-        height: "94vh",
+        height: "93.5vh",
         width: "100%"
       }}
       >
-
+        <Grow in={true} timeout={200}>
         <Grid className={classes.playBox}>
         <IconButton className={classes.playButton}>
           <img src={play} className={classes.playImage}/> 
         </IconButton>
         </Grid>
-
+        </Grow>
+        
+        
+        <Fade in={true} timeout={1000}>
         <CircularProgress variant="determinate" value={85} thickness={0.5} style={{width: "42vw", color: "#EF7C00", marginLeft: "0vw", marginTop: "-1.5vh"}}> 
 
 
           </CircularProgress>
+          </Fade>
+        
 
+          <Grow in={true} timeout={200}>
         <Grid>
         <img src={line} className={classes.line}/>
         </Grid>
+        </Grow>
 
 
-
+        <Grow in={true} timeout={400}>
         <Grid>
         <Typography display="inline" className={classes.currentLevelTitle}>
 
@@ -333,6 +340,7 @@ export const Mining = () => {
             33
 
             </Typography>
+            
 
 
 
@@ -342,45 +350,60 @@ export const Mining = () => {
                 
               </Typography>
           </Grid>
+          </Grow>
 
+          <Grow in={true} timeout={800}>
           <Grid className={classes.nextBonus}>
           <Typography display="inline" className={classes.nextBonusMiningCredits}>Next Bonus: </Typography>
           <Typography display="inline" className={classes.bonusAmount}> 21MC</Typography>
           </Grid>
+          </Grow>
 
+          <Grow in={true} timeout={1100}>
           <Grid className={classes.hourestimates}>
           <Typography display="inline" className={classes.hourEstimate}>0MC</Typography>
           <Typography display="inline" className={classes.hourEstimateNumber}>1H MC estimate</Typography>
           </Grid>
-
+          </Grow>
+          
+          
+          <Grow in={true} timeout={1500}>
           <Grid>
         <img src={line} className={classes.lineEstimate}/>
         </Grid>
+        </Grow>
 
+
+        <Grow in={true} timeout={1800}>
         <Grid className={classes.dayestimates}>
           <Typography display="inline" className={classes.dayEstimate}>0MC</Typography>
           <Typography display="inline" className={classes.dayEstimateNumber}>1D MC estimate </Typography>
           </Grid>
-
-
-
-
+          </Grow>
           
+
+
+
+
+          <Slide direction="up" in={true} timeout={800}>
           <Grid className={classes.hashrateCard}>
-          <Typography className={classes.hashrate} style={{color: "#84DFFF"}}>8304 H/s</Typography>
+          <Typography className={classes.hashrate} style={{color: "#93FFD8"}}>8304 H/s</Typography>
           <Typography className={classes.hashrateTitle} >Current Hashrate </Typography>
           </Grid>
+          </Slide>
 
 
-
+          <Slide direction="up" in={true} timeout={800}>
           <Grid className={classes.miningTimeCard} >
-          <Typography className={classes.miningTime} style={{color: "#93FFD8"}}>02:51:33</Typography>
+          <Typography className={classes.miningTime} style={{color: "#84DFFF"}}>02:51:33</Typography>
           <Typography className={classes.miningTimeTitle} >Current Mining Time </Typography>
           </Grid>
+          </Slide>
 
 
           
       </Grid>
+      
       
 
 
@@ -398,31 +421,44 @@ export const Mining = () => {
         width: "100vw"
       }}
       >
- 
+        <Grow in={true} timeout={1700}>
         <Grid className={classes.analyticsCard}>
-          <Typography className={classes.analytics} style={{color: "#39C298"}}>7358106MC</Typography>
+          <Typography className={classes.analytics} style={{color: "#FF9036"}}>7358106MC</Typography>
           <Typography className={classes.analyticsTitle} >Total MC Earned </Typography>
           </Grid>
+          </Grow>
 
+          <Grow in={true} timeout={1700}>
           <Grid className={classes.analyticsCard}>
-          <Typography className={classes.analytics} style={{color: "#347FF8"}}>923415MC</Typography>
+          <Typography className={classes.analytics} style={{color: "#39C298"}}>923415MC</Typography>
           <Typography className={classes.analyticsTitle} >MC Earned from Referrals </Typography>
           </Grid>
+          </Grow>
 
-          <Grid className={classes.analyticsCard}>
-          <Typography className={classes.analytics} style={{color: "#39C298"}}>+0.8%</Typography>
-          <Typography className={classes.analyticsTitle} >Mining Bonus from Friends </Typography>
-          </Grid>
-
-          <Grid className={classes.analyticsCard}>
-          <Typography className={classes.analytics} style={{color: "#FF0055"}}>323216588</Typography>
-          <Typography className={classes.analyticsTitle} >Accepted Shares (XP) </Typography>
-          </Grid>
-
+          <Grow in={true} timeout={1700}>
           <Grid className={classes.analyticsCard}>
           <Typography className={classes.analytics} style={{color: "#347FF8"}}>11:22:51:33</Typography>
           <Typography className={classes.analyticsTitle} >Total Mining Time </Typography>
           </Grid>
+          </Grow>
+
+          <Grow in={true} timeout={1700}>
+          <Grid className={classes.analyticsCard}>
+          <Typography className={classes.analytics} style={{color: "#FF9036"}}>323216588</Typography>
+          <Typography className={classes.analyticsTitle} >Accepted Shares (XP) </Typography>
+          </Grid>
+          </Grow>
+
+          <Grow in={true} timeout={1700}>
+          <Grid className={classes.analyticsCard}>
+          <Typography className={classes.analytics} style={{color: "#39C298"}}>+0.8%</Typography>
+          <Typography className={classes.analyticsTitle} >Mining Bonus from Friends </Typography>
+          </Grid>
+          </Grow>
+
+
+
+          
 
           <Grow in={true} timeout={1500}>
               <BCard

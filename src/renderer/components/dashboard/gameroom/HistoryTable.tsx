@@ -96,6 +96,7 @@ function EnhancedTableHead(props: EnhancedTableHeadProps) {
     };
 
   return (
+    
     <TableHead>
       <TableRow>
         {headCells.map((headCell) => (
