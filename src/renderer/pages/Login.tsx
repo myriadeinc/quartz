@@ -7,6 +7,8 @@ import { Redirect, Link } from "react-router-dom";
 import * as ROUTES from "../utils/routes";
 import { Grid, Paper, TextField, Typography, Button } from "@mui/material";
 
+import logo from "../../assets/login/logo.svg";
+
 class LoginPage extends Component<any, any> {
   vantaRef: any;
   vantaEffect: any;
@@ -28,6 +30,8 @@ class LoginPage extends Component<any, any> {
       el: this.vantaRef.current,
       color: 0x50f,
       waveSpeed: 0.45,
+      mouseControls: false,
+      waveHeight: 19.00
     });
   }
 
@@ -73,27 +77,44 @@ class LoginPage extends Component<any, any> {
       );
     } else {
       return (
+
+     
+
+          
+
         <Grid
           container
           justifyContent="center"
           alignItems="center"
           ref={this.vantaRef}
-          style={{ height: "100vh" }}
+          style={{ height: "100vh", width: "100vw" }}
         >
+
+          <Grid>
+          <a>
+              <img src={logo} height="35" style={{marginBottom: "85vh", marginLeft: "20vw"}} />
+            </a>
+            </Grid>
+         
+
+
           <Grid item sm={2}>
-            <Paper elevation={3} style={{ padding: "16px" }}>
-              <Typography style={tfStyle} variant="h5">
-                Login
+            <Paper elevation={3} style={{ padding: "16px", width: "25vw", height: "40vh", marginLeft: "-20vw", backgroundColor: "#222428",  }}>
+            <Typography style={{fontSize: "1.1vw", marginLeft: "7.7vw", color: "#6A6C70", marginTop: "-1vh", fontWeight: 600}} >
+                WELCOME BACK!
+              </Typography>
+              <Typography style={{fontSize: "1.5vw", marginLeft: "4.5vw", fontWeight: 600}} >
+                Log into your account
               </Typography>
               <TextField
-                style={tfStyle}
+                style={{marginTop: "5vh"}}
                 fullWidth
                 label="Email"
                 variant="standard"
                 onChange={this.emailChange}
               />
               <TextField
-                style={tfStyle}
+                style={{marginTop: "1vh"}}
                 fullWidth
                 label="Password"
                 variant="standard"
@@ -102,15 +123,19 @@ class LoginPage extends Component<any, any> {
               />
               <Button
                 fullWidth
-                style={{ backgroundColor: "orange", marginBottom: "12px" }}
+                style={{ marginTop: "3vh", width: "12vw", marginLeft: "6.5vw", fontSize: "1vw", color: "#FFFFFF", backgroundColor: "#1F28FF" }}
                 variant="contained"
                 onClick={this.handleLogin}
               >
                 Login
               </Button>
-              <Typography variant="body1">
+              <Typography variant="body1" style={{fontSize: "1vw", marginBottom: "0.5vh", marginTop: "3vh"}}>
                 Don't have an account? Sign up{" "}
-                <Link to={ROUTES.SIGN_UP}>here</Link>
+                <Link to={ROUTES.SIGN_UP} style={{color: "#5CE2FF", fontSize: "1vw"}}>here</Link>
+              </Typography>{" "}
+              <Typography variant="body1" style={{fontSize: "1vw", marginBottom: "1vh", marginTop: "0vh"}}>
+                {" "}
+                <Link to={ROUTES.SIGN_UP} style={{color: "#5CE2FF", fontSize: "1vw"}}>Forgot your password?</Link>
               </Typography>{" "}
             </Paper>
           </Grid>

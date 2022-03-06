@@ -49,7 +49,7 @@ const useStyles = makeStyles({
 
   line: {
     display: "flex",
-    marginTop: "-0vh",
+    marginTop: "-2vh",
     marginLeft: "23.5vw",
     width: "35vw",
     zIndex: 2,
