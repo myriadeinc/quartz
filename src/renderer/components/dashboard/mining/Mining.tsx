@@ -8,6 +8,8 @@ import {
   Button,
   Grid,
   Grow,
+  Fade,
+  Slide,
   MenuItem,
   Select,
   Typography,
@@ -288,218 +290,209 @@ export const Mining = () => {
       <Grid
         item
         style={{
-          height: "94vh",
+          height: "93.5vh",
           width: "100%",
         }}
       >
-        <Grid className={classes.playBox}>
-          <IconButton className={classes.playButton}>
-            <img src={play} className={classes.playImage} />
-          </IconButton>
-        </Grid>
+        <Grow in={true} timeout={200}>
+          <Grid className={classes.playBox}>
+            <IconButton className={classes.playButton}>
+              <img src={play} className={classes.playImage} />
+            </IconButton>
+          </Grid>
+        </Grow>
 
-        <CircularProgress
-          variant="determinate"
-          value={85}
-          thickness={0.5}
-          style={{
-            width: "42vw",
-            color: "#EF7C00",
-            marginLeft: "0vw",
-            marginTop: "-1.5vh",
-          }}
-        ></CircularProgress>
+        <Fade in={true} timeout={1000}>
+          <CircularProgress
+            variant="determinate"
+            value={85}
+            thickness={0.5}
+            style={{
+              width: "42vw",
+              color: "#EF7C00",
+              marginLeft: "0vw",
+              marginTop: "-1.5vh",
+            }}
+          ></CircularProgress>
+        </Fade>
 
-        <Grid>
-          <img src={line} className={classes.line} />
-        </Grid>
+        <Grow in={true} timeout={200}>
+          <Grid>
+            <img src={line} className={classes.line} />
+          </Grid>
+        </Grow>
 
-        <Grid>
-          <Typography display="inline" className={classes.currentLevelTitle}>
-            Current Mining Level:
-          </Typography>
-          <Typography display="inline" className={classes.currentLevel}>
-            33
-          </Typography>
+        <Grow in={true} timeout={400}>
+          <Grid>
+            <Typography display="inline" className={classes.currentLevelTitle}>
+              Current Mining Level:
+            </Typography>
+            <Typography display="inline" className={classes.currentLevel}>
+              33
+            </Typography>
 
-          <Typography className={classes.xpCounter}>
-            694 XP Until Level 34
-          </Typography>
-        </Grid>
+            <Typography className={classes.xpCounter}>
+              694 XP Until Level 34
+            </Typography>
+          </Grid>
+        </Grow>
 
-        <Grid className={classes.nextBonus}>
-          <Typography
-            display="inline"
-            className={classes.nextBonusMiningCredits}
-          >
-            Next Bonus:{" "}
-          </Typography>
-          <Typography display="inline" className={classes.bonusAmount}>
-            {" "}
-            21MC
-          </Typography>
-        </Grid>
+        <Grow in={true} timeout={800}>
+          <Grid className={classes.nextBonus}>
+            <Typography
+              display="inline"
+              className={classes.nextBonusMiningCredits}
+            >
+              Next Bonus:{" "}
+            </Typography>
+            <Typography display="inline" className={classes.bonusAmount}>
+              {" "}
+              21MC
+            </Typography>
+          </Grid>
+        </Grow>
 
-        <Grid className={classes.hourestimates}>
-          <Typography display="inline" className={classes.hourEstimate}>
-            0MC
-          </Typography>
-          <Typography display="inline" className={classes.hourEstimateNumber}>
-            1H MC estimate
-          </Typography>
-        </Grid>
+        <Grow in={true} timeout={1100}>
+          <Grid className={classes.hourestimates}>
+            <Typography display="inline" className={classes.hourEstimate}>
+              0MC
+            </Typography>
+            <Typography display="inline" className={classes.hourEstimateNumber}>
+              1H MC estimate
+            </Typography>
+          </Grid>
+        </Grow>
 
-        <Grid>
-          <img src={line} className={classes.lineEstimate} />
-        </Grid>
+        <Grow in={true} timeout={1500}>
+          <Grid>
+            <img src={line} className={classes.lineEstimate} />
+          </Grid>
+        </Grow>
 
-        <Grid className={classes.dayestimates}>
-          <Typography display="inline" className={classes.dayEstimate}>
-            0MC
-          </Typography>
-          <Typography display="inline" className={classes.dayEstimateNumber}>
-            1D MC estimate{" "}
-          </Typography>
-        </Grid>
+        <Grow in={true} timeout={1800}>
+          <Grid className={classes.dayestimates}>
+            <Typography display="inline" className={classes.dayEstimate}>
+              0MC
+            </Typography>
+            <Typography display="inline" className={classes.dayEstimateNumber}>
+              1D MC estimate{" "}
+            </Typography>
+          </Grid>
+        </Grow>
 
-        <Grid className={classes.hashrateCard}>
-          <Typography className={classes.hashrate} style={{ color: "#84DFFF" }}>
-            8304 H/s
-          </Typography>
-          <Typography className={classes.hashrateTitle}>
-            Current Hashrate{" "}
-          </Typography>
-        </Grid>
+        <Typography className={classes.explanation}>
+          For best mining performance / if you are noticing a severe drop in
+          hashrate, we recommend restarting your computer and having Myriade
+          launch on start-up
+        </Typography>
 
-        <Grid className={classes.miningTimeCard}>
-          <Typography
-            className={classes.miningTime}
-            style={{ color: "#93FFD8" }}
-          >
-            02:51:33
-          </Typography>
-          <Typography className={classes.miningTimeTitle}>
-            Current Mining Time{" "}
-          </Typography>
-        </Grid>
+        <Slide direction="up" in={true} timeout={800}>
+          <Grid className={classes.hashrateCard}>
+            <Typography
+              className={classes.hashrate}
+              style={{ color: "#93FFD8" }}
+            >
+              8304 H/s
+            </Typography>
+            <Typography className={classes.hashrateTitle}>
+              Current Hashrate (1h avg){" "}
+            </Typography>
+          </Grid>
+        </Slide>
+
+        <Slide direction="up" in={true} timeout={800}>
+          <Grid className={classes.miningTimeCard}>
+            <Typography
+              className={classes.miningTime}
+              style={{ color: "#84DFFF" }}
+            >
+              02:51:33
+            </Typography>
+            <Typography className={classes.miningTimeTitle}>
+              Current Mining Time{" "}
+            </Typography>
+          </Grid>
+        </Slide>
       </Grid>
 
       <Grid
         container
         item
         style={{
-          height: "120vh",
+          height: "98vh",
           backgroundColor: "#282b30",
           width: "100vw",
         }}
       >
-        <Grid className={classes.analyticsCard}>
-          <Typography
-            className={classes.analytics}
-            style={{ color: "#39C298" }}
-          >
-            7358106MC
-          </Typography>
-          <Typography className={classes.analyticsTitle}>
-            Total MC Earned{" "}
-          </Typography>
-        </Grid>
+        <Grow in={true} timeout={1700}>
+          <Grid className={classes.analyticsCard}>
+            <Typography
+              className={classes.analytics}
+              style={{ color: "#FF9036" }}
+            >
+              7358106MC
+            </Typography>
+            <Typography className={classes.analyticsTitle}>
+              Total MC Earned{" "}
+            </Typography>
+          </Grid>
+        </Grow>
 
-        <Grid className={classes.analyticsCard}>
-          <Typography
-            className={classes.analytics}
-            style={{ color: "#347FF8" }}
-          >
-            923415MC
-          </Typography>
-          <Typography className={classes.analyticsTitle}>
-            MC Earned from Referrals{" "}
-          </Typography>
-        </Grid>
+        <Grow in={true} timeout={1700}>
+          <Grid className={classes.analyticsCard}>
+            <Typography
+              className={classes.analytics}
+              style={{ color: "#39C298" }}
+            >
+              923415MC
+            </Typography>
+            <Typography className={classes.analyticsTitle}>
+              MC Earned from Referrals{" "}
+            </Typography>
+          </Grid>
+        </Grow>
 
-        <Grid className={classes.analyticsCard}>
-          <Typography
-            className={classes.analytics}
-            style={{ color: "#39C298" }}
-          >
-            0.8%
-          </Typography>
-          <Typography className={classes.analyticsTitle}>
-            Mining Bonus from Friends{" "}
-          </Typography>
-        </Grid>
+        <Grow in={true} timeout={1700}>
+          <Grid className={classes.analyticsCard}>
+            <Typography
+              className={classes.analytics}
+              style={{ color: "#347FF8" }}
+            >
+              11:22:51:33
+            </Typography>
+            <Typography className={classes.analyticsTitle}>
+              Total Mining Time{" "}
+            </Typography>
+          </Grid>
+        </Grow>
 
-        <Grid className={classes.analyticsCard}>
-          <Typography
-            className={classes.analytics}
-            style={{ color: "#39C298" }}
-          >
-            7358106MC
-          </Typography>
-          <Typography className={classes.analyticsTitle}>
-            Total MC Earned{" "}
-          </Typography>
-        </Grid>
+        <Grow in={true} timeout={1700}>
+          <Grid className={classes.analyticsCard}>
+            <Typography
+              className={classes.analytics}
+              style={{ color: "#FF9036" }}
+            >
+              323216588
+            </Typography>
+            <Typography className={classes.analyticsTitle}>
+              Accepted Shares (XP){" "}
+            </Typography>
+          </Grid>
+        </Grow>
 
-        <Grid className={classes.analyticsCard}>
-          <Typography
-            className={classes.analytics}
-            style={{ color: "#39C298" }}
-          >
-            7358106MC
-          </Typography>
-          <Typography className={classes.analyticsTitle}>
-            Total MC Earned{" "}
-          </Typography>
-        </Grid>
-
-        <Grid className={classes.analyticsCard}>
-          <Typography
-            className={classes.analytics}
-            style={{ color: "#347FF8" }}
-          >
-            923415MC
-          </Typography>
-          <Typography className={classes.analyticsTitle}>
-            MC Earned from Referrals{" "}
-          </Typography>
-        </Grid>
-
-        <Grid className={classes.analyticsCard}>
-          <Typography
-            className={classes.analytics}
-            style={{ color: "#39C298" }}
-          >
-            +0.8%
-          </Typography>
-          <Typography className={classes.analyticsTitle}>
-            Mining Bonus from Friends{" "}
-          </Typography>
-        </Grid>
-
-        <Grid className={classes.analyticsCard}>
-          <Typography
-            className={classes.analytics}
-            style={{ color: "#FF0055" }}
-          >
-            323216588
-          </Typography>
-          <Typography className={classes.analyticsTitle}>
-            Accepted Shares (XP){" "}
-          </Typography>
-        </Grid>
-
-        <Grid className={classes.analyticsCard}>
-          <Typography
-            className={classes.analytics}
-            style={{ color: "#347FF8" }}
-          >
-            11:22:51:33
-          </Typography>
-          <Typography className={classes.analyticsTitle}>
-            Total Mining Time{" "}
-          </Typography>
-        </Grid>
+        <Grow in={true} timeout={1700}>
+          <Grid className={classes.analyticsCard}>
+            <Typography
+              className={classes.analytics}
+              style={{ color: "#39C298" }}
+            >
+              +0.8%
+            </Typography>
+            <Typography className={classes.analyticsTitle}>
+              Mining Bonus from Friends{" "}
+            </Typography>
+          </Grid>
+        </Grow>
 
         <Grow in={true} timeout={1500}>
           <BCard
@@ -509,7 +502,7 @@ export const Mining = () => {
               height: "35vh",
               backgroundColor: "#2f3136",
               width: "80vw",
-              marginTop: "-43vh",
+              marginTop: "6vh",
             }}
           >
             <BCard.Header>
@@ -553,104 +546,152 @@ export const Mining = () => {
           </BCard>
         </Grow>
 
-        <Grid className={classes.analyticsCard}>
-          <Typography
-            className={classes.analytics}
-            style={{ color: "#39C298" }}
-          >
-            0.8%
-          </Typography>
-          <Typography className={classes.analyticsTitle}>
-            Mining Bonus from Friends{" "}
-          </Typography>
-        </Grid>
+        <Grid
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            marginLeft: "7.3vw",
+            marginTop: "15vh",
+          }}
+        >
+          <Card display="inline" className={classes.selectorCard}>
+            <Typography
+              variant="body1"
+              style={{
+                fontSize: "1.9vw",
+                marginLeft: "1.2vw",
+                marginTop: "1.3vh",
+              }}
+            >
+              Mining Allocation
+            </Typography>
 
-        <Grid className={classes.analyticsCard}>
-          <Typography
-            className={classes.analytics}
-            style={{ color: "#FF0055" }}
-          >
-            323216588
-          </Typography>
-          <Typography className={classes.analyticsTitle}>
-            Accepted Shares (XP){" "}
-          </Typography>
-        </Grid>
+            <Typography
+              variant="body1"
+              style={{
+                fontSize: "0.9vw",
+                marginLeft: "-25vw",
+                marginTop: "2.5vh",
+                marginBottom: "0.8vh",
+                textAlign: "center",
+              }}
+            >
+              10%
+            </Typography>
+            <Typography
+              variant="body1"
+              style={{
+                fontSize: "0.9vw",
+                marginLeft: "25.1vw",
+                marginTop: "-3.5vh",
+                marginBottom: "-1vh",
+                textAlign: "center",
+              }}
+            >
+              90%
+            </Typography>
+            <Typography
+              variant="body1"
+              display="inline"
+              style={{
+                fontSize: "1.2vw",
+                marginLeft: "1.6vw",
+                marginTop: "0vh",
+              }}
+            >
+              XMR
+            </Typography>
 
-        <Grid className={classes.analyticsCard}>
-          <Typography
-            className={classes.analytics}
-            style={{ color: "#347FF8" }}
-          >
-            11:22:51:33
-          </Typography>
-          <Typography className={classes.analyticsTitle}>
-            Total Mining Time{" "}
-          </Typography>
-        </Grid>
+            <Slider
+              aria-label="Temperature"
+              defaultValue={90}
+              display="inline"
+              step={10}
+              marks
+              min={0}
+              max={100}
+              style={{ marginLeft: "1vw", width: "20vw", height: "0.6vh" }}
+            />
 
-        <Grow in={true} timeout={1500}>
-          <BCard
-            className={"mt-5 mb-5"}
-            style={{
-              color: "white",
-              height: "35vh",
-              backgroundColor: "#2f3136",
-              width: "80vw",
-              marginTop: "-43vh",
-            }}
-          >
-            <BCard.Header>
-              <div className={classes.chartContainer}>
-                <div>
-                  <Typography
-                    style={{ fontSize: "2vw", padding: "16px 0px 0px 13px" }}
-                  >
-                    Historical Metrics
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    style={{
-                      fontSize: "1vw",
-                      paddingLeft: "16px",
-                      paddingBottom: "10px",
-                    }}
-                  >
-                    See how your hashrate changes over time.
-                  </Typography>
-                </div>
-                <div className={classes.selectContainer}>
-                  <Select
-                    className={classes.selectStyle}
-                    value={scale}
-                    onChange={handleOnChange}
-                    displayEmpty
-                    inputProps={{ "aria-label": "Without label" }}
-                  >
-                    <MenuItem value={"1h"}>1H</MenuItem>
-                    <MenuItem value={"1d"}>1D</MenuItem>
-                    <MenuItem value={"1w"}>1W</MenuItem>
-                    <MenuItem value={"1m"}>1M</MenuItem>
-                  </Select>
-                </div>
-              </div>
-            </BCard.Header>
-            <BCard.Body style={{ height: "100%", width: "100%" }}>
-              <Chart />
-            </BCard.Body>
-          </BCard>
-        </Grow>
+            <Typography
+              variant="body1"
+              display="inline"
+              style={{ fontSize: "1.2vw", marginLeft: "1.8vw" }}
+            >
+              MC
+            </Typography>
+          </Card>
 
-        <Grid className={classes.analyticsCard}>
-          <Typography
-            className={classes.analytics}
-            style={{ color: "#347FF8" }}
-          >
-            11:22:51:33
-          </Typography>
-          <Typography className={classes.analyticsTitle}>
-            Total Mining Time{" "}
-          </Typography>
+          <Card display="inline" className={classes.cpuInfoCard}>
+            <Typography
+              variant="body1"
+              style={{
+                fontSize: "1.9vw",
+                marginLeft: "1.2vw",
+                marginTop: "1.3vh",
+              }}
+            >
+              CPU Stats
+            </Typography>
+            <Typography
+              variant="body1"
+              style={{
+                fontSize: "1.2vw",
+                marginLeft: "-12vw",
+                marginTop: "-0.6vh",
+                textAlign: "center",
+              }}
+            >
+              Ryzen 7 5700x
+            </Typography>
+            <Typography
+              variant="body1"
+              style={{
+                fontSize: "1.8vw",
+                marginLeft: "-12vw",
+                marginTop: "1vh",
+                textAlign: "center",
+              }}
+            >
+              64°C
+            </Typography>
+            <Typography
+              variant="body1"
+              style={{
+                fontSize: "1.8vw",
+                marginLeft: "15.5vw",
+                marginTop: "-4.7vh",
+                textAlign: "center",
+                marginBottom: "-1.5vh",
+              }}
+            >
+              54%
+            </Typography>
+            <Typography
+              variant="body1"
+              display="inline"
+              style={{
+                fontSize: "1.4vw",
+                fontWeight: 700,
+                marginLeft: "2.5vw",
+                color: "#00B2FF",
+              }}
+            >
+              Temperature
+            </Typography>
+            <Typography
+              variant="body1"
+              display="inline"
+              style={{
+                fontSize: "1.4vw",
+                fontWeight: 700,
+                marginLeft: "7vw",
+                color: "#F57E22",
+              }}
+            >
+              Usage
+            </Typography>
+          </Card>
         </Grid>
       </Grid>
     </Grid>

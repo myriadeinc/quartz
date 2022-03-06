@@ -6,6 +6,7 @@ import {
   Grid,
   TextField,
   Typography,
+  Grow,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { useState } from "react";
@@ -54,6 +55,7 @@ export const Withdraw = () => {
       className={classes.grid}
     >
 
+      <Grow in={true} timeout={300}>
       <Grid item sm={12} style={{ color: "white" }}>
         <Typography variant="h4">Withdraw your XMR</Typography>
         <Typography variant="body1">
@@ -62,6 +64,10 @@ export const Withdraw = () => {
           more to process.
         </Typography>
       </Grid>
+      </Grow>
+
+
+      <Grow in={true} timeout={500}>
       <Grid item sm={12}>
         <Card
           elevation={0}
@@ -112,6 +118,7 @@ export const Withdraw = () => {
           )}
         </Card>
       </Grid>
+      </Grow>
       <Grid item sm={12}>
         <div className={classes.tableContainer}>
           <EnhancedWithdrawTable

@@ -1,4 +1,4 @@
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Grow } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -101,7 +101,9 @@ export const GameRoom = () => {
           )
       )}
 
+
       <History history={history} />
+
 
     </Grid>
   );
