@@ -1,17 +1,37 @@
 import * as React from "react";
 import { Scrollbars } from "react-custom-scrollbars";
-import { Card, CircularProgress, IconButton, Button, Grid, Grow, Fade, Slide, MenuItem, Select, Typography } from "@mui/material";
+import { Card, CircularProgress, IconButton, Button, Grid, Grow, Fade, Slide, MenuItem, Select, Typography, Slider } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
 import Chart from "../analytics/Chart";
 import { Card as BCard } from "react-bootstrap";
 import play from "../../../../assets/mining/playButton.svg";
+import pause from "../../../../assets/mining/pauseButton.svg";
 import line from "../../../../assets/mining/line.svg";
 import { ViewColumn } from "@mui/icons-material";
 
 
 
 const useStyles = makeStyles({
+    restartStatus: {
+    fontSize: "1.1vw",
+    marginTop: "12vh",
+    marginLeft: "1vw",
+    color: "#FF2D2D",
+    textAlign: "center",
+    width: "20vw",
+  },
+
+  explanation: {
+    fontSize: "0.9vw",
+    marginTop: "0.8vh",
+    marginLeft: "1vw",
+    color: "#D0D0D0",
+    width: "20vw",
+    textAlign: "center",
+  },
+  
+  
   playBox: {
     display: "flex",
     flexDirection: "column",
@@ -179,7 +199,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
-    marginTop: "17vh",
+    marginTop: "-3vh",
     marginLeft: "27vw",
     marginRight: "1vw",
     width: "17%",
@@ -272,10 +292,21 @@ const useStyles = makeStyles({
     height: "1.8rem",
     width: "4.5rem",
     fontSize: "1 rem",
-    
+  
   },
 
+  selectorCard: {
+    height: "18vh",
+    width: "31vw",
+   
+  },
 
+  cpuInfoCard: {
+    height: "18vh",
+    width: "25vw",
+   marginLeft: "8vw"
+   
+  },
 
  
 
@@ -304,6 +335,9 @@ export const Mining = () => {
         width: "100%"
       }}
       >
+
+        
+
         <Grow in={true} timeout={200}>
         <Grid className={classes.playBox}>
         <IconButton className={classes.playButton}>
@@ -382,8 +416,17 @@ export const Mining = () => {
           </Grow>
           
 
+          <Typography className={classes.restartStatus}>
 
+          Computer Restart Recommended
 
+          </Typography>
+
+          <Typography className={classes.explanation}>
+
+          For the best mining performance, we recommend having Myriade launch on start up 
+
+          </Typography>
 
           <Slide direction="up" in={true} timeout={800}>
           <Grid className={classes.hashrateCard}>
@@ -416,7 +459,7 @@ export const Mining = () => {
       container
       item
       style={{
-        height: "120vh",
+        height: "98vh",
         backgroundColor: "#282b30",
         width: "100vw"
       }}
@@ -460,6 +503,10 @@ export const Mining = () => {
 
           
 
+
+
+
+
           <Grow in={true} timeout={1500}>
               <BCard
                 className={"mt-5 mb-5"}
@@ -468,7 +515,7 @@ export const Mining = () => {
                   height: "35vh",
                   backgroundColor: "#2f3136",
                   width: "80vw",
-                  marginTop: "-43vh",
+                  marginTop: "6vh",
                 }}
               >
                 
@@ -506,6 +553,70 @@ export const Mining = () => {
                 </BCard.Body>
               </BCard>
             </Grow>
+
+
+
+
+
+
+       <Grid style={{display: "flex", flexDirection: "row", marginLeft: "7.3vw", marginTop: "15vh"}}>
+
+          <Card  display="inline" className={classes.selectorCard}>
+            <Typography variant="body1"  style={{ fontSize: "1.9vw", marginLeft: "1.2vw", marginTop: "1.3vh",}}>
+                       Mining Allocation
+              </Typography>
+
+              <Typography variant="body1"  style={{ fontSize: "0.9vw", marginLeft: "-25vw", marginTop: "2.5vh", marginBottom: "0.8vh", textAlign: "center"}}>
+                       10%
+              </Typography>
+              <Typography variant="body1"  style={{ fontSize: "0.9vw", marginLeft: "25.1vw", marginTop: "-3.5vh", marginBottom: "-1vh", textAlign: "center"}}>
+                       90%
+              </Typography>
+              <Typography variant="body1" display="inline" style={{ fontSize: "1.2vw", marginLeft: "1.6vw", marginTop: "0vh",}}>
+                       XMR
+              </Typography>
+
+               <Slider
+                   aria-label="Temperature"
+                   defaultValue={90}
+                   display="inline"
+                   step={10}
+                   marks
+                   min={0}
+                   max={100}
+                   style={{ marginLeft: "1vw", width: "20vw", height: "0.6vh"}}
+                      />
+
+              <Typography variant="body1" display="inline" style={{ fontSize: "1.2vw", marginLeft: "1.8vw"}}>
+                       MC
+              </Typography>
+            </Card>
+
+
+                <Card display="inline" className={classes.cpuInfoCard} >
+                <Typography variant="body1"  style={{ fontSize: "1.9vw", marginLeft: "1.2vw", marginTop: "1.3vh",}}>
+                       CPU Stats
+              </Typography>
+              <Typography variant="body1"  style={{ fontSize: "1.8vw", marginLeft: "-12vw", marginTop: "1.5vh", textAlign: "center"}}>
+                       64°C
+              </Typography>
+              <Typography variant="body1"  style={{ fontSize: "1.8vw", marginLeft: "15.5vw", marginTop: "-4.7vh", textAlign: "center"}}>
+                       54%
+              </Typography>
+              <Typography variant="body1" display="inline" style={{ fontSize: "1.4vw", fontWeight: 700, marginLeft: "2.5vw", marginTop: "1.1vh", color: "#00B2FF"}}>
+                       Temperature
+              </Typography>
+              <Typography variant="body1" display="inline" style={{ fontSize: "1.4vw", fontWeight: 700, marginLeft: "7vw", marginTop: "1.1vh", color: "#F57E22"}}>
+                       Usage
+              </Typography>
+                </Card>
+
+
+
+
+
+            </Grid>
+           
 
 
 

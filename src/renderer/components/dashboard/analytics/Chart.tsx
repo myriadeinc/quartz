@@ -53,7 +53,7 @@ class Chart extends Component<any, any> {
     return (
       <Card
         elevation={0}
-        style={{ height: "100%", backgroundColor: "#2f3136", padding: "16px" }}
+        style={{ height: "100%", backgroundColor: "#282b30", padding: "16px" }}
       >
         <ResponsiveContainer>
           <AreaChart data={this.getMovingAverage([], 120)}>

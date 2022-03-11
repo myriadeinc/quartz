@@ -45,7 +45,7 @@ const createWindow = async () => {
   }
 
   mainWindow = new BrowserWindow({
-    width: 1400,
+    width: 1600,
     height: 900,
     frame: true,
     icon: "../assets/Myriade-Diamond.ico",
@@ -106,5 +106,8 @@ app.on('browser-window-blur', function () {
   globalShortcut.unregister('CommandOrControl+R');
   globalShortcut.unregister('F5');
 });
+
+
+
 
 
