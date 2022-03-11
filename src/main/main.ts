@@ -63,12 +63,12 @@ const createWindow = async () => {
   }
 
   mainWindow = new BrowserWindow({
-    width: 1920,
-    height: 1080,
     show: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
+    width: 1600,
+    height: 900,
     frame: true,
     icon: "../assets/Myriade-Diamond.ico",
   });

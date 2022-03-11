@@ -168,6 +168,7 @@
     "react-loader-spinner": "^5.0.10",
     "react-router-dom": "~4.3.1",
     "recharts": "^2.1.8",
+    "systeminformation": "^5.11.8",
     "vanta": "^0.5.21"
   }
 }

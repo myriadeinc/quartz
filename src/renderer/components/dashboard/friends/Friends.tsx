@@ -117,7 +117,7 @@ export const FriendMenu = () => {
       >
         <Typography
           variant="h4"
-          style={{ backgroundColor: "#282b30", padding: "16px", fontSize: "2vw" }}
+          style={{ backgroundColor: "#1A1A1A", padding: "16px", fontSize: "2vw" }}
         >
           Friends
         </Typography>

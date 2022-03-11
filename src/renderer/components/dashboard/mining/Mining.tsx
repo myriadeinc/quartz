@@ -19,6 +19,7 @@ import { CircularProgressbarWithChildren } from "react-circular-progressbar";
 import Chart from "../analytics/Chart";
 import { Card as BCard } from "react-bootstrap";
 import play from "../../../../assets/mining/playButton.svg";
+import pause from "../../../../assets/mining/pauseButton.svg";
 import line from "../../../../assets/mining/line.svg";
 import { ViewColumn } from "@mui/icons-material";
 
@@ -29,6 +30,24 @@ declare global {
 }
 
 const useStyles = makeStyles({
+  restartStatus: {
+    fontSize: "1.1vw",
+    marginTop: "12vh",
+    marginLeft: "1vw",
+    color: "#FF2D2D",
+    textAlign: "center",
+    width: "20vw",
+  },
+
+  explanation: {
+    fontSize: "0.9vw",
+    marginTop: "0.8vh",
+    marginLeft: "1vw",
+    color: "#D0D0D0",
+    width: "20vw",
+    textAlign: "center",
+  },
+
   playBox: {
     display: "flex",
     flexDirection: "column",
@@ -177,7 +196,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-end",
-    marginTop: "17vh",
+    marginTop: "-3vh",
     marginLeft: "27vw",
     marginRight: "1vw",
     width: "17%",

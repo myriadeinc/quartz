@@ -12,6 +12,9 @@ import orangeBg from "../../../../assets/Orange-Box.png";
 import { ConstructionOutlined } from "@mui/icons-material";
 
 const useStyles = makeStyles({
+
+  
+  
   cardStyle: {
     display: "flex",
     flexDirection: "column",
@@ -21,7 +24,7 @@ const useStyles = makeStyles({
     minWidth: "110px",
     minHeight: "55px",
     padding: "16px 16px",
-    margin: "2vh 1vw 12.5vh 2vw",
+    margin: "3vh 1vw 10vh 2vw",
     borderRadius: "20px",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
@@ -104,6 +107,7 @@ export const Analytics = () => {
           container
           item
         >
+                    
           <Grid item sm={4}>
             <Grow in={true}>
               <Card
@@ -161,7 +165,7 @@ export const Analytics = () => {
                 style={{
                   color: "white",
                   height: "100%",
-                  backgroundColor: "#282b30",
+                  backgroundColor: "#1A1A1A",
                   width: "51vw",
                   marginRight: "20px"
                   
