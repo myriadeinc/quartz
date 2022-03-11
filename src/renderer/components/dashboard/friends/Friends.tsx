@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     
     width: "25vw",
     height: "57vh",
-    backgroundColor: "#36393e",
+    backgroundColor: "#2f3136",
     color: "white",
     borderBottomLeftRadius: "0",
     borderBottomRightRadius: "0",
