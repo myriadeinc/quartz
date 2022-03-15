@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 
   explanation: {
     fontSize: "0.9vw",
-    marginTop: "0.8vh",
+    marginTop: "12vh",
     marginLeft: "1vw",
     color: "#D0D0D0",
     width: "20vw",
@@ -215,7 +215,7 @@ const useStyles = makeStyles({
   },
 
   hashrateTitle: {
-    fontSize: "1.2vw",
+    fontSize: "1.1vw",
     textAlign: "center",
     color: "#FFFFFF",
   },
@@ -240,7 +240,7 @@ const useStyles = makeStyles({
   },
 
   miningTimeTitle: {
-    fontSize: "1.2vw",
+    fontSize: "1.1vw",
     textAlign: "center",
     color: "#FFFFFF",
   },
@@ -317,9 +317,13 @@ export const Mining = () => {
   const [scale, setScale] = React.useState('1h');
   const classes = useStyles();
 
+
+
   const handleOnChange = (event: React.MouseEvent<unknown>) => {
     setScale(event.target.value)
   }
+
+
   
   return (
 
@@ -416,22 +420,18 @@ export const Mining = () => {
           </Grow>
           
 
-          <Typography className={classes.restartStatus}>
 
-          Computer Restart Recommended
-
-          </Typography>
 
           <Typography className={classes.explanation}>
 
-          For the best mining performance, we recommend having Myriade launch on start up 
+          For best mining performance / if you are noticing a severe drop in hashrate, we recommend restarting your computer and having Myriade launch on start-up
 
           </Typography>
 
           <Slide direction="up" in={true} timeout={800}>
           <Grid className={classes.hashrateCard}>
           <Typography className={classes.hashrate} style={{color: "#93FFD8"}}>8304 H/s</Typography>
-          <Typography className={classes.hashrateTitle} >Current Hashrate </Typography>
+          <Typography className={classes.hashrateTitle} >Current Hashrate (1h avg) </Typography>
           </Grid>
           </Slide>
 
@@ -597,16 +597,19 @@ export const Mining = () => {
                 <Typography variant="body1"  style={{ fontSize: "1.9vw", marginLeft: "1.2vw", marginTop: "1.3vh",}}>
                        CPU Stats
               </Typography>
-              <Typography variant="body1"  style={{ fontSize: "1.8vw", marginLeft: "-12vw", marginTop: "1.5vh", textAlign: "center"}}>
+              <Typography variant="body1"  style={{ fontSize: "1.2vw", marginLeft: "-12vw", marginTop: "-0.6vh", textAlign: "center"}}>
+                       Ryzen 7 5700x 
+              </Typography>
+              <Typography variant="body1"  style={{ fontSize: "1.8vw", marginLeft: "-12vw", marginTop: "1vh", textAlign: "center"}}>
                        64°C
               </Typography>
-              <Typography variant="body1"  style={{ fontSize: "1.8vw", marginLeft: "15.5vw", marginTop: "-4.7vh", textAlign: "center"}}>
+              <Typography variant="body1"  style={{ fontSize: "1.8vw", marginLeft: "15.5vw", marginTop: "-4.7vh", textAlign: "center", marginBottom: "-1.5vh"}}>
                        54%
               </Typography>
-              <Typography variant="body1" display="inline" style={{ fontSize: "1.4vw", fontWeight: 700, marginLeft: "2.5vw", marginTop: "1.1vh", color: "#00B2FF"}}>
+              <Typography variant="body1" display="inline" style={{ fontSize: "1.4vw", fontWeight: 700, marginLeft: "2.5vw",  color: "#00B2FF"}}>
                        Temperature
               </Typography>
-              <Typography variant="body1" display="inline" style={{ fontSize: "1.4vw", fontWeight: 700, marginLeft: "7vw", marginTop: "1.1vh", color: "#F57E22"}}>
+              <Typography variant="body1" display="inline" style={{ fontSize: "1.4vw", fontWeight: 700, marginLeft: "7vw", color: "#F57E22"}}>
                        Usage
               </Typography>
                 </Card>
