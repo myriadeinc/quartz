@@ -1,22 +1,23 @@
 import { Card, Grid, Grow, LinearProgress, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { IRaffle } from "renderer/interfaces/pages/dashboard";
+import monero from "../../../../assets/game-room/monero.svg";
 
 const useStyles = makeStyles({
   
   card: {
     padding: "16px 6px 6px 16px",
-    margin: "3vh 5vw 3vh 5vw",
+    margin: "3vh 2vw 3vh 2vw",
     background: "linear-gradient(#282b30 70%, #36393e 70%)",
-    maxWidth: "300px",
-    minWidth: "230px",
+    minWidth: "310px",
+    minHeight: "100px"
   },
   subtitle: {
     color: "#999999",
     marginBottom: "10px"
   },
   progressStyle: {
-    height: "10px",
+    height: "15px",
     borderRadius: 5,
     margin: "30px 0px 5px 0px"
   },
@@ -29,7 +30,13 @@ const useStyles = makeStyles({
     display: "flex",
     width: "100%",
     justifyContent: "center"
-  }
+  },
+  moneroImgStyle: {
+    margin: "0px 10px",
+    padding: "0vh 0vh 0.05vh 0vh",
+    width: "16px",
+   
+  },
 });
 
 interface RaffleProps {
@@ -53,18 +60,21 @@ export const Raffle = (props: RaffleProps) => {
             className={classes.subtitle}
             variant="body1"
           >
+            <img className={classes.moneroImgStyle} src={monero} height="100%" style={{margin: "0px 0.2vw -0.25vh 0px"}} />
             {props.raffle.public.prizeAmount}XMR
           </Typography>
           <Typography
             className={classes.bodyStyle}
-            style={{color: "#F78549"}}
+            style={{color: "#F78549", marginTop: "40px", fontSize: "1rem"}}
             variant="body1"
+           
           >
             {props.raffle.public.title}
           </Typography>
           <Typography
             className={classes.bodyStyle}
             variant="body1"
+            
           >
             Ticket Price: {props.raffle.public.entryPrice} MC
           </Typography>

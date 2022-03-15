@@ -41,7 +41,7 @@ const useStyles = makeStyles({
 
   explanation: {
     fontSize: "0.9vw",
-    marginTop: "0.8vh",
+    marginTop: "12vh",
     marginLeft: "1vw",
     color: "#D0D0D0",
     width: "20vw",
@@ -211,7 +211,7 @@ const useStyles = makeStyles({
   },
 
   hashrateTitle: {
-    fontSize: "1.2vw",
+    fontSize: "1.1vw",
     textAlign: "center",
     color: "#FFFFFF",
   },
@@ -235,7 +235,7 @@ const useStyles = makeStyles({
   },
 
   miningTimeTitle: {
-    fontSize: "1.2vw",
+    fontSize: "1.1vw",
     textAlign: "center",
     color: "#FFFFFF",
   },
