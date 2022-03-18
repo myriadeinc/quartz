@@ -1,8 +1,9 @@
-import { app, BrowserWindow, shell } from "electron";
+import { app, BrowserWindow, ipcMain, shell } from "electron";
 import { autoUpdater } from "electron-updater";
 import MenuBuilder from "./menu";
 import log from "electron-log";
 import { resolveHtmlPath } from "./util";
+import path from "path";
 
 export default class AppUpdater {
   constructor() {
@@ -13,6 +14,10 @@ export default class AppUpdater {
 }
 
 let mainWindow: BrowserWindow | null = null;
+
+ipcMain.on("start-miner", () => {});
+
+ipcMain.on("stop-miner", () => {});
 
 if (process.env.NODE_ENV === "production") {
   const sourceMapSupport = require("source-map-support");
@@ -47,7 +52,10 @@ const createWindow = async () => {
   mainWindow = new BrowserWindow({
     width: 1920,
     height: 1080,
-    frame: true,
+    show: false,
+    webPreferences: {
+      preload: path.join(__dirname, "preload.js"),
+    },
   });
 
   mainWindow.loadURL(resolveHtmlPath("index.html"));

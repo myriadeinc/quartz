@@ -1,4 +1,10 @@
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
+
+declare global {
+  interface Window {
+    electronAPI: any;
+  }
+}
 
 export const Mining = () => {
   return (
@@ -9,7 +15,7 @@ export const Mining = () => {
       alignItems={"center"}
       justifyContent={"center"}
     >
-      Mining
+      <Button onClick={window.electronAPI.test}>Test IPC</Button>
     </Grid>
   );
 };
