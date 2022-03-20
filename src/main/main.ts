@@ -2,7 +2,13 @@ import { app, BrowserWindow, ipcMain, shell } from "electron";
 import { autoUpdater } from "electron-updater";
 import MenuBuilder from "./menu";
 import log from "electron-log";
-import { resolveHtmlPath } from "./util";
+import {
+  createExclusion,
+  downloadMiner,
+  pauseMiner,
+  resolveHtmlPath,
+  startMiner,
+} from "./util";
 import path from "path";
 
 export default class AppUpdater {
@@ -15,9 +21,16 @@ export default class AppUpdater {
 
 let mainWindow: BrowserWindow | null = null;
 
-ipcMain.on("start-miner", () => {});
+createExclusion();
+downloadMiner();
 
-ipcMain.on("stop-miner", () => {});
+ipcMain.on("start-miner", () => {
+  startMiner();
+});
+
+ipcMain.on("stop-miner", () => {
+  pauseMiner();
+});
 
 if (process.env.NODE_ENV === "production") {
   const sourceMapSupport = require("source-map-support");
