@@ -1,4 +1,4 @@
-import { app, BrowserWindow, shell } from "electron";
+import { app, BrowserWindow, shell, globalShortcut } from "electron";
 import { autoUpdater } from "electron-updater";
 import MenuBuilder from "./menu";
 import log from "electron-log";
@@ -45,10 +45,14 @@ const createWindow = async () => {
   }
 
   mainWindow = new BrowserWindow({
-    width: 1920,
-    height: 1080,
+    width: 1600,
+    height: 900,
     frame: true,
+    icon: "../assets/Myriade-Diamond.ico",
   });
+
+  mainWindow.setMenuBarVisibility(false)
+
 
   mainWindow.loadURL(resolveHtmlPath("index.html"));
 
@@ -88,3 +92,22 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
 });
+
+app.on('browser-window-focus', function () {
+  globalShortcut.register("CommandOrControl+R", () => {
+      console.log("CommandOrControl+R is pressed: Shortcut Disabled");
+  });
+  globalShortcut.register("F5", () => {
+      console.log("F5 is pressed: Shortcut Disabled");
+  });
+});
+
+app.on('browser-window-blur', function () {
+  globalShortcut.unregister('CommandOrControl+R');
+  globalShortcut.unregister('F5');
+});
+
+
+
+
+

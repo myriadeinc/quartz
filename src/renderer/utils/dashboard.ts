@@ -9,8 +9,8 @@ import { Referrals } from "renderer/components/dashboard/referrals/Referrals";
 import { DashboardRoute } from "renderer/interfaces/pages/dashboard";
 
 export const dashboardRoutes: DashboardRoute[] = [
-  { name: "Dashboard", ref: "", component: Analytics, visible: true },
-  { name: "Start Mining", ref: "/mining", component: Mining, visible: true },
+  { name: "Dashboard", ref: "/", component: Analytics, visible: true },
+  { name: "Mining", ref: "/mining", component: Mining, visible: true },
   {
     name: "Gift Cards",
     ref: "/giftcards",

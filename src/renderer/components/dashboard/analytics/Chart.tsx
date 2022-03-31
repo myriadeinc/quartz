@@ -53,7 +53,7 @@ class Chart extends Component<any, any> {
     return (
       <Card
         elevation={0}
-        style={{ height: "100%", backgroundColor: "#2f3136", padding: "16px" }}
+        style={{ height: "100%", backgroundColor: "#282b30", padding: "16px" }}
       >
         <ResponsiveContainer>
           <AreaChart data={this.getMovingAverage([], 120)}>
@@ -69,7 +69,18 @@ class Chart extends Component<any, any> {
               tickFormatter={(unixTime) => moment(unixTime).format("MMM D LT")}
               type="number"
               scale="time"
-            />
+            >
+                <Label
+                    value="Time"
+                    position="insideBottom"
+                    style={{
+                        fill: "white",
+                        textAnchor: "middle",
+                        fontSize: 16,
+                        color: "white"
+                    }}
+                />
+            </XAxis>
             <YAxis
               dataKey="rate"
               axisLine={false}
@@ -85,8 +96,10 @@ class Chart extends Component<any, any> {
                 position="insideLeft"
                 angle={-90}
                 style={{
-                  textAnchor: "middle",
-                  fontSize: 16,
+                    fill: "white",
+                    textAnchor: "middle",
+                    fontSize: 16,
+                    color: "white"
                 }}
               />
             </YAxis>

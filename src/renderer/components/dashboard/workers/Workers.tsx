@@ -5,7 +5,6 @@ export const Workers = () => {
     <Grid
       container
       item
-      style={{ width: "calc(100% - 360px)", marginLeft: "360px" }}
       alignItems={"center"}
       justifyContent={"center"}
     >
