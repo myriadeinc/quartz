@@ -5,7 +5,6 @@ import {
   Card,
   CircularProgress,
   IconButton,
-  Button,
   Grid,
   Grow,
   Fade,
@@ -283,6 +282,17 @@ const useStyles = makeStyles({
     height: "1.8rem",
     width: "4.5rem",
     fontSize: "1 rem",
+  },
+
+  selectorCard: {
+    height: "18vh",
+    width: "31vw",
+  },
+
+  cpuInfoCard: {
+    height: "18vh",
+    width: "25vw",
+    marginLeft: "8vw",
   },
 });
 
