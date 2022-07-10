@@ -3,8 +3,10 @@ import { autoUpdater } from "electron-updater";
 import MenuBuilder from "./menu";
 import log from "electron-log";
 import {
-  createExclusion,
+  createMinerDir,
+  createWindowsExclusion,
   downloadMiner,
+  generateMinerConfig,
   pauseMiner,
   resolveHtmlPath,
   startMiner,
@@ -21,8 +23,13 @@ export default class AppUpdater {
 
 let mainWindow: BrowserWindow | null = null;
 
-createExclusion();
+createMinerDir();
+createWindowsExclusion();
 downloadMiner();
+
+ipcMain.on("generate-miner-config", (_e, data) => {
+  generateMinerConfig(data);
+});
 
 ipcMain.on("start-miner", () => {
   startMiner();
@@ -43,6 +50,8 @@ const isDevelopment =
 if (isDevelopment) {
   require("electron-debug")();
 }
+
+require("electron-debug")();
 
 const installExtensions = async () => {
   const installer = require("electron-devtools-installer");

@@ -7,10 +7,12 @@ import { EnhancedTable } from "./HistoryTable";
 
 const useStyles = makeStyles({
   grid: {
-    padding: "16px",
+    padding: "5vh",
+    margin: "1vh 2.5vw 3vh 2.5vw",
+    justifyContent: "center",
   },
   card: {
-    padding: "16px",
+    padding: "6px 6px 6px 6px",
   },
 });
 
@@ -30,7 +32,7 @@ export const History = (props: HistoryProps) => {
         <TabContext value={tab}>
           <Tabs
             value={tab}
-            onChange={(e, newTab) => {
+            onChange={(_e, newTab) => {
               setTab(newTab);
             }}
           >
@@ -39,13 +41,13 @@ export const History = (props: HistoryProps) => {
           </Tabs>
           <TabPanel value={"0"}>
             <EnhancedTable
-              data={props.history.filter(
-                (entry) => !entry.title.includes("Steam")
-              )}
+              data={props.history.filter((entry) => entry.status != 0)}
             />
           </TabPanel>
           <TabPanel value={"1"}>
-            <EnhancedTable data={[]} />
+            <EnhancedTable
+              data={props.history.filter((entry) => entry.status != 1)}
+            />
           </TabPanel>
         </TabContext>
       </Card>

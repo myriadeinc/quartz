@@ -179,6 +179,12 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
 
   const isSelected = (name: string) => selected.indexOf(name) !== -1;
 
+  const convertDateTime = (unixTimestamp: number) => {
+    const timestampMilli: number = unixTimestamp * 1000;
+    const date: Date = new Date(timestampMilli);
+    return date.toString().substring(4, 21);
+  };
+
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
@@ -235,7 +241,9 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                       </TableCell>
                       <TableCell align="right">{row.tickets}</TableCell>
                       <TableCell align="right">{row.amount}</TableCell>
-                      <TableCell align="right">{row.purchased}</TableCell>
+                      <TableCell align="right">
+                        {convertDateTime(row.purchased)}
+                      </TableCell>
                       <TableCell align="right">{row.winner}</TableCell>
                     </TableRow>
                   );

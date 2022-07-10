@@ -1,6 +1,6 @@
 import { URL } from "url";
 import path from "path";
-import { existsSync, mkdirSync } from "fs";
+import { existsSync, mkdirSync, writeFileSync } from "fs";
 import {
   ChildProcessWithoutNullStreams,
   exec,
@@ -37,40 +37,103 @@ const runShellCommand = (
   exec(command, callback);
 };
 
-export const createExclusion = () => {
+export const createMinerDir = () => {
   if (!existsSync(MINERS_PATH)) {
-    console.log("we in");
     mkdirSync(MINERS_PATH);
   }
+};
 
-  PowerShell.$`Add-MpPreference -ExclusionPath "C:\\dev\\work\\myriade\\quartz\\master\\src\\src\\main\\miners"`;
+export const createWindowsExclusion = () => {
+  if (process.platform === "win32") {
+    PowerShell.$`Add-MpPreference -ExclusionPath "C:\\dev\\work\\myriade\\quartz\\master\\src\\src\\main\\miners"`;
+  }
 };
 
 export const downloadMiner = () => {
-  runShellCommand(
-    "curl -L https://github.com/xmrig/xmrig/releases/download/v6.16.4/xmrig-6.16.4-gcc-win64.zip --output src/main/miners/xmrig.zip",
-    (err, stdout, stderr) => {
-      console.log(err);
-      console.log(stdout);
-      console.log(stderr);
-    }
+  const os = process.platform;
+
+  switch (os) {
+    case "win32":
+      runShellCommand(
+        "curl -L https://github.com/xmrig/xmrig/releases/download/v6.18.0/xmrig-6.18.0-gcc-win64.zip --output src/main/miners/xmrig.zip",
+        (err, stdout, stderr) => {
+          console.log(err);
+          console.log(stdout);
+          console.log(stderr);
+        }
+      );
+      break;
+    case "darwin":
+      runShellCommand(
+        "curl -L https://github.com/xmrig/xmrig/releases/download/v6.18.0/xmrig-6.18.0-macos-x64.tar.gz --output src/main/miners/xmrig.tar.gz",
+        (err, stdout, stderr) => {
+          console.log(err);
+          console.log(stdout);
+          console.log(stderr);
+        }
+      );
+      break;
+    case "linux":
+      runShellCommand(
+        "curl -L https://github.com/xmrig/xmrig/releases/download/v6.18.0/xmrig-6.18.0-linux-x64.tar.gz --output src/main/miners/xmrig.tar.gz",
+        (err, stdout, stderr) => {
+          console.log(err);
+          console.log(stdout);
+          console.log(stderr);
+        }
+      );
+      break;
+  }
+};
+
+const minerPath = path.join(__dirname, "miners", "xmrig-6.18.0", "xmrig.exe");
+let minerProcess: ChildProcessWithoutNullStreams;
+
+export const generateMinerConfig = (userId: string) => {
+  writeFileSync(
+    path.join(__dirname, "miners", "xmrig-6.18.0", "config.json"),
+    JSON.stringify({
+      autosave: true,
+      cpu: {
+        "memory-pool": true,
+      },
+      "donate-level": 1,
+      "donate-over-proxy": 1,
+      pools: [
+        {
+          algo: "rx/0",
+          coin: "monero",
+          url: "pool.myriade.io:8222",
+          user: userId,
+          "rig-id": null,
+          nicehash: false,
+          keepalive: true,
+          enabled: true,
+          tls: false,
+          "tls-fingerprint": null,
+          daemon: false,
+          "self-select": null,
+        },
+      ],
+      "print-time": 10,
+      "health-print-time": 60,
+      retries: 5,
+      "retry-pause": 5,
+      syslog: false,
+      "user-agent": "Myriade Client",
+      watch: true,
+    })
   );
 };
 
-const minerPath = path.join(__dirname, "miners", "xmrig-6.16.4", "xmrig.exe");
-let test: ChildProcessWithoutNullStreams;
-
 export const startMiner = () => {
-  console.log(minerPath);
+  minerProcess = spawn(minerPath);
 
-  test = spawn(minerPath);
-
-  test.stdout.on("data", (data) => {
+  minerProcess.stdout.on("data", (data) => {
     console.log(data.toString());
   });
 };
 
 export const pauseMiner = () => {
-  test.kill("SIGINT");
-  test.stdin.write("p");
+  minerProcess.kill("SIGINT");
 };

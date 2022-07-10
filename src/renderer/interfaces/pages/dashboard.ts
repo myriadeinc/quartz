@@ -54,6 +54,14 @@ export interface IHistory {
   winner: string;
 }
 
+export interface IWithdrawHistory {
+  date: string;
+  type: string;
+  amount: number;
+  status: number;
+  address: string;
+}
+
 export interface IFriend {
   name: string;
   status: string;

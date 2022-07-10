@@ -7,12 +7,22 @@ import { AuthConsumer, ProtectedRoute } from "renderer/layers/AuthLayer";
 import { dashboardRoutes } from "renderer/utils/dashboard";
 import config from "renderer/utils/config";
 import { Miner } from "renderer/interfaces/pages/dashboard";
-// import WAVES from "vanta/dist/vanta.waves.min";
+import { makeStyles } from "@mui/styles";
 
-const minerContext = createContext({} as Miner);
+const useStyles = makeStyles({
+  wrapper: {
+    width: "80vw",
+    marginLeft: "20vw",
+    "@media screen and (max-width: 1000px)": {
+      width: "calc(100% - 200)",
+      marginLeft: 200,
+    },
+  },
+});
+
+const MinerContext = createContext({} as Miner);
 
 export const Dashboard = (props: any) => {
-  const [vantaEffect, setVantaEffect] = useState(0);
   const [selfFetched, setSelfFetched] = useState(false);
   const [creditsFetched, setCreditsFetched] = useState(false);
   const [miner, setMiner] = useState({
@@ -26,22 +36,7 @@ export const Dashboard = (props: any) => {
     avgHashrate: "0",
   } as Miner);
   const myRef = useRef(null);
-
-  useEffect(() => {
-    if (!vantaEffect) {
-      // setVantaEffect(
-      //   WAVES({
-      //     el: myRef.current,
-      //     color: 0x202225,
-      //     waveSpeed: 0.3,
-      //     mouseControls: false,
-      //   })
-      // );
-    }
-    return () => {
-      //if (vantaEffect) vantaEffect.destroy();
-    };
-  }, [vantaEffect]);
+  const classes = useStyles();
 
   useEffect(() => {
     axios
@@ -134,31 +129,40 @@ export const Dashboard = (props: any) => {
 
   return (
     <AuthConsumer>
-      {({ authenticated, logout }) => (
-        <minerContext.Provider value={miner}>
+      {({ authenticated }) => (
+        <MinerContext.Provider value={miner}>
           <Grid
             ref={myRef}
-            style={{ minHeight: "100vh", backgroundColor: "#36393e" }}
+            style={{ minHeight: "100vh", backgroundColor: "#1e2124" }}
           >
             <Sidebar path={props.match.path} />
-            <Switch>
-              {dashboardRoutes.map(
-                (view) =>
-                  view.visible && (
-                    <ProtectedRoute
-                      exact={view.name == "Dashboard"}
-                      path={`${props.match.path}${view.ref}`}
-                      component={view.component}
-                      authenticated={authenticated}
-                    />
-                  )
-              )}
-            </Switch>
+            <Grid
+              container
+              item
+              className={classes.wrapper}
+              alignItems={"center"}
+              justifyContent={"center"}
+            >
+              <Switch>
+                {dashboardRoutes.map(
+                  (view) =>
+                    view.visible && (
+                      <ProtectedRoute
+                        exact={view.name == "Dashboard"}
+                        path={`${props.match.path}${view.ref}`}
+                        component={view.component}
+                        authenticated={authenticated}
+                      />
+                    )
+                )}
+              </Switch>
+            </Grid>
           </Grid>
-        </minerContext.Provider>
+        </MinerContext.Provider>
       )}
     </AuthConsumer>
   );
 };
 
-export const MinerConsumer = minerContext.Consumer;
+export const MinerConsumer = MinerContext.Consumer;
+export default MinerContext;
