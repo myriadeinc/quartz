@@ -103,7 +103,7 @@ export const generateMinerConfig = (userId: string) => {
         {
           algo: "rx/0",
           coin: "monero",
-          url: "pool.myriade.io:8222",
+          url: "pool.myriade.io:12345",
           user: userId,
           "rig-id": null,
           nicehash: false,

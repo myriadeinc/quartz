@@ -10,8 +10,9 @@ import {
   Typography,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IRaffle } from "renderer/interfaces/pages/dashboard";
+import MinerContext from "renderer/pages/Dashboard";
 import monero from "../../../../assets/game-room/monero.svg";
 
 const useStyles = makeStyles({
@@ -70,8 +71,24 @@ interface RaffleProps {
 
 export const Raffle = (props: RaffleProps) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [tickets, setTickets] = useState(1);
+  const miner = useContext(MinerContext);
   const { raffle, timeout, usdConversionRate } = props;
   const classes = useStyles();
+
+  const handleChange = (e: any) => {
+    let newValue = e.target.value;
+    newValue = Math.floor(newValue);
+    setTickets(Math.max(0, newValue));
+  };
+
+  const setTicketsByPct = (pct: number) => {
+    let newValue = Math.floor(
+      (pct * miner.mcBalance) / raffle.public.entryPrice
+    );
+
+    setTickets(newValue);
+  };
 
   return (
     <Grid
@@ -132,16 +149,59 @@ export const Raffle = (props: RaffleProps) => {
             <Typography variant="body1">
               Ticket Price: {raffle.public.entryPrice} MC
             </Typography>
-            <Typography variant="body1">Tickets: </Typography>
-            <Button variant="contained">25%</Button>
-            <Button variant="contained">50%</Button>
-            <Button variant="contained">75%</Button>
-            <Button variant="contained">Max</Button>
-            <TextField defaultValue={1} />
-            <Typography variant="h6">Total Price: 1MC</Typography>
+            <Typography variant="body1" style={{ display: "inline" }}>
+              Tickets:{" "}
+            </Typography>
+            <div
+              style={{ display: "inline", float: "right", marginTop: "8px" }}
+            >
+              <Button
+                variant="contained"
+                onClick={() => setTicketsByPct(0.25)}
+                style={{ marginLeft: "8px" }}
+              >
+                25%
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => setTicketsByPct(0.5)}
+                style={{ marginLeft: "8px" }}
+              >
+                50%
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => setTicketsByPct(0.75)}
+                style={{ marginLeft: "8px" }}
+              >
+                75%
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => setTicketsByPct(1)}
+                style={{ marginLeft: "8px" }}
+              >
+                Max
+              </Button>
+            </div>
+
+            <TextField
+              value={tickets}
+              type="number"
+              onChange={handleChange}
+              fullWidth
+              style={{ margin: "16px 0px" }}
+            />
+            <Typography variant="h6">
+              Total Price: {tickets * raffle.public.entryPrice} MC
+            </Typography>
           </div>
-          <Button variant="outlined">Cancel</Button>
-          <Button variant="contained">Confirm Purchase</Button>
+          <div style={{ float: "right", marginTop: "16px" }}>
+            <Button variant="outlined" style={{ marginRight: "8px" }}>
+              Cancel
+            </Button>
+            <Button variant="contained">Confirm Purchase</Button>
+          </div>
         </Box>
       </Modal>
     </Grid>
