@@ -86,12 +86,12 @@ export const downloadMiner = () => {
   }
 };
 
-const minerPath = path.join(__dirname, "miners", "xmrig-6.18.0", "xmrig.exe");
+const minerPath = path.join(__dirname, "miners", "xmrig-6.18.0 2", "xmrig");
 let minerProcess: ChildProcessWithoutNullStreams;
 
 export const generateMinerConfig = (userId: string) => {
   writeFileSync(
-    path.join(__dirname, "miners", "xmrig-6.18.0", "config.json"),
+    path.join(__dirname, "miners", "xmrig-6.18.0 2", "config.json"),
     JSON.stringify({
       autosave: true,
       cpu: {

@@ -1,17 +1,7 @@
-import {
-  Button,
-  Card,
-  Grid,
-  Grow,
-  MenuItem,
-  Select,
-  Typography,
-} from "@mui/material";
+import { Card, Grid, Grow, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { makeStyles } from "@mui/styles";
-import { Card as BCard } from "react-bootstrap";
 import { MinerConsumer } from "renderer/pages/Dashboard";
-import { FriendMenu } from "../friends/Friends";
 import blueBg from "../../../../assets/Blue-Box.png";
 import greenBg from "../../../../assets/Green-Box.png";
 import orangeBg from "../../../../assets/Orange-Box.png";
@@ -64,12 +54,6 @@ const useStyles = makeStyles({
       backgroundColor: "#ea5e00ca",
     },
   },
-  chartContainer: {
-    display: "flex",
-    width: "50vw",
-    justifyContent: "space-between",
-    fontSize: "5rem",
-  },
   selectContainer: {
     flexDirection: "column",
     height: "100%",
@@ -102,7 +86,7 @@ export const Analytics = () => {
   return (
     <MinerConsumer>
       {(miner) => (
-        <Grid container item>
+        <Grid container>
           <Grid item sm={4}>
             <Grow in={true}>
               <Card
@@ -148,63 +132,7 @@ export const Analytics = () => {
               </Card>
             </Grow>
           </Grid>
-
-          <Grid className={classes.analyticsFriends}>
-            <Grow in={true} timeout={1500}>
-              <BCard
-                className={"mt-5 mb-5"}
-                style={{
-                  color: "white",
-                  height: "100%",
-                  backgroundColor: "#1A1A1A",
-                  width: "51vw",
-                  marginRight: "20px",
-                }}
-              >
-                <BCard.Header>
-                  <div className={classes.chartContainer}>
-                    <div>
-                      <Typography
-                        style={{
-                          fontSize: "2vw",
-                          padding: "16px 0px 0px 13px",
-                        }}
-                      >
-                        Historical Metrics
-                      </Typography>
-                      <Typography
-                        variant="body1"
-                        style={{
-                          fontSize: "1vw",
-                          paddingLeft: "16px",
-                          paddingBottom: "10px",
-                        }}
-                      >
-                        See how your hashrate changes over time.
-                      </Typography>
-                    </div>
-                    <div className={classes.selectContainer}>
-                      <Select
-                        className={classes.selectStyle}
-                        value={scale}
-                        onChange={() => handleOnChange}
-                        displayEmpty
-                        inputProps={{ "aria-label": "Without label" }}
-                      >
-                        <MenuItem value={"1h"}>1H</MenuItem>
-                        <MenuItem value={"1d"}>1D</MenuItem>
-                        <MenuItem value={"1w"}>1W</MenuItem>
-                        <MenuItem value={"1m"}>1M</MenuItem>
-                      </Select>
-                    </div>
-                  </div>
-                </BCard.Header>
-                <BCard.Body style={{ height: "100%", width: "100%" }}>
-                  <Chart />
-                </BCard.Body>
-              </BCard>
-            </Grow>
-          </Grid>
+          <Chart />
         </Grid>
       )}
     </MinerConsumer>
