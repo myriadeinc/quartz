@@ -132,7 +132,9 @@ export const Analytics = () => {
               </Card>
             </Grow>
           </Grid>
-          <Chart />
+          <Grid item sm={12} sx={{ padding: "32px" }}>
+            <Chart />
+          </Grid>
         </Grid>
       )}
     </MinerConsumer>

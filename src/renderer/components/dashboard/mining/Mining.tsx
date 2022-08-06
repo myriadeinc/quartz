@@ -533,58 +533,6 @@ export const Mining = () => {
           </Grid>
         </Grow>
 
-        <Grow in={true} timeout={1500}>
-          <BCard
-            className={"mt-5 mb-5"}
-            style={{
-              color: "white",
-              height: "35vh",
-              backgroundColor: "#2f3136",
-              width: "80vw",
-              marginTop: "6vh",
-            }}
-          >
-            <BCard.Header>
-              <div className={classes.chartContainer}>
-                <div>
-                  <Typography
-                    style={{ fontSize: "2vw", padding: "16px 0px 0px 13px" }}
-                  >
-                    Historical Metrics
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    style={{
-                      fontSize: "1vw",
-                      paddingLeft: "16px",
-                      paddingBottom: "10px",
-                    }}
-                  >
-                    See how your hashrate changes over time.
-                  </Typography>
-                </div>
-                <div className={classes.selectContainer}>
-                  <Select
-                    className={classes.selectStyle}
-                    value={scale}
-                    onChange={() => handleOnChange}
-                    displayEmpty
-                    inputProps={{ "aria-label": "Without label" }}
-                  >
-                    <MenuItem value={"1h"}>1H</MenuItem>
-                    <MenuItem value={"1d"}>1D</MenuItem>
-                    <MenuItem value={"1w"}>1W</MenuItem>
-                    <MenuItem value={"1m"}>1M</MenuItem>
-                  </Select>
-                </div>
-              </div>
-            </BCard.Header>
-            <BCard.Body style={{ height: "100%", width: "100%" }}>
-              <Chart />
-            </BCard.Body>
-          </BCard>
-        </Grow>
-
         <Grid
           style={{
             display: "flex",
