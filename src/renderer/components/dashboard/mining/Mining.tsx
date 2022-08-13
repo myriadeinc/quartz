@@ -7,14 +7,10 @@ import {
   Grow,
   Fade,
   Slide,
-  MenuItem,
-  Select,
   Typography,
   Slider,
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import Chart from "../analytics/Chart";
-import { Card as BCard } from "react-bootstrap";
 import play from "../../../../assets/mining/playButton.svg";
 import pause from "../../../../assets/mining/pauseButton.svg";
 import line from "../../../../assets/mining/line.svg";
@@ -291,7 +287,6 @@ const useStyles = makeStyles({
 });
 
 export const Mining = () => {
-  const [scale, setScale] = React.useState("1h");
   const [mining, setMining] = React.useState(false);
   const [seconds, setSeconds] = React.useState(0);
   const classes = useStyles();
@@ -313,11 +308,6 @@ export const Mining = () => {
       window.electronAPI.startMiner();
     }
     setMining(!mining);
-  };
-
-  const handleOnChange = (event: React.MouseEvent<HTMLInputElement>) => {
-    const target = event.target as HTMLInputElement;
-    setScale(target.value);
   };
 
   return (

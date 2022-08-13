@@ -7,6 +7,9 @@ import {
   createWindowsExclusion,
   downloadMiner,
   generateMinerConfig,
+  getCpu,
+  getCpuTemp,
+  getCpuUsage,
   pauseMiner,
   resolveHtmlPath,
   startMiner,
@@ -104,6 +107,21 @@ const createWindow = async () => {
   mainWindow.webContents.on("new-window", (event, url) => {
     event.preventDefault();
     shell.openExternal(url);
+  });
+
+  ipcMain.on("poll-sys-info", () => {
+    getCpuUsage().then((val) => {
+      mainWindow?.webContents.postMessage("cpu-load", val.currentLoad);
+    });
+    getCpuTemp().then((val) => {
+      mainWindow?.webContents.postMessage("cpu-temp", val.main);
+    });
+  });
+
+  ipcMain.on("get-cpu-info", () => {
+    getCpu().then((val) => {
+      mainWindow?.webContents.postMessage("cpu-model", val.brand);
+    });
   });
 
   // Remove this if your app does not use auto updates

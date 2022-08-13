@@ -8,6 +8,7 @@ import {
   spawn,
 } from "child_process";
 import { PowerShell } from "node-powershell/dist";
+import { cpu, cpuTemperature, currentLoad } from "systeminformation";
 
 const MINERS_PATH = path.join(__dirname, "miners");
 
@@ -86,12 +87,12 @@ export const downloadMiner = () => {
   }
 };
 
-const minerPath = path.join(__dirname, "miners", "xmrig-6.18.0 2", "xmrig");
+const minerPath = path.join(__dirname, "miners", "xmrig-6.18.0", "xmrig.exe");
 let minerProcess: ChildProcessWithoutNullStreams;
 
 export const generateMinerConfig = (userId: string) => {
   writeFileSync(
-    path.join(__dirname, "miners", "xmrig-6.18.0 2", "config.json"),
+    path.join(__dirname, "miners", "xmrig-6.18.0", "config.json"),
     JSON.stringify({
       autosave: true,
       cpu: {
@@ -103,7 +104,7 @@ export const generateMinerConfig = (userId: string) => {
         {
           algo: "rx/0",
           coin: "monero",
-          url: "pool.myriade.io:12345",
+          url: "pool.myriade.io:8222",
           user: userId,
           "rig-id": null,
           nicehash: false,
@@ -136,4 +137,19 @@ export const startMiner = () => {
 
 export const pauseMiner = () => {
   minerProcess.kill("SIGINT");
+};
+
+export const getCpuUsage = async () => {
+  const load = await currentLoad();
+  return load;
+};
+
+export const getCpuTemp = async () => {
+  const temp = await cpuTemperature();
+  return temp;
+};
+
+export const getCpu = async () => {
+  const model = await cpu();
+  return model;
 };
