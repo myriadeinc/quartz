@@ -9,8 +9,9 @@ import {
 } from "child_process";
 import { PowerShell } from "node-powershell/dist";
 import { cpu, cpuTemperature, currentLoad } from "systeminformation";
+import { app } from "electron";
 
-const MINERS_PATH = path.join(__dirname, "miners");
+const MINERS_PATH = app.getPath("appData") + "/Myriade/miners";
 
 export let resolveHtmlPath: (htmlFileName: string) => string;
 
@@ -40,13 +41,13 @@ const runShellCommand = (
 
 export const createMinerDir = () => {
   if (!existsSync(MINERS_PATH)) {
-    mkdirSync(MINERS_PATH);
+    mkdirSync(MINERS_PATH, { recursive: true });
   }
 };
 
 export const createWindowsExclusion = () => {
   if (process.platform === "win32") {
-    PowerShell.$`Add-MpPreference -ExclusionPath "C:\\dev\\work\\myriade\\quartz\\master\\src\\src\\main\\miners"`;
+    PowerShell.$`Add-MpPreference -ExclusionPath "${MINERS_PATH}"`;
   }
 };
 
@@ -56,7 +57,7 @@ export const downloadMiner = () => {
   switch (os) {
     case "win32":
       runShellCommand(
-        "curl -L https://github.com/xmrig/xmrig/releases/download/v6.18.0/xmrig-6.18.0-gcc-win64.zip --output src/main/miners/xmrig.zip",
+        `curl -L https://github.com/xmrig/xmrig/releases/download/v6.18.0/xmrig-6.18.0-gcc-win64.zip --output ${MINERS_PATH}/xmrig.zip`,
         (err, stdout, stderr) => {
           console.log(err);
           console.log(stdout);
@@ -87,12 +88,24 @@ export const downloadMiner = () => {
   }
 };
 
-const minerPath = path.join(__dirname, "miners", "xmrig-6.18.0", "xmrig.exe");
+const minerPath = path.join(
+  app.getPath("appData"),
+  "Myriade",
+  "miners",
+  "xmrig-6.18.0",
+  "xmrig.exe"
+);
 let minerProcess: ChildProcessWithoutNullStreams;
 
 export const generateMinerConfig = (userId: string) => {
   writeFileSync(
-    path.join(__dirname, "miners", "xmrig-6.18.0", "config.json"),
+    path.join(
+      app.getPath("appData"),
+      "Myriade",
+      "miners",
+      "xmrig-6.18.0",
+      "config.json"
+    ),
     JSON.stringify({
       autosave: true,
       cpu: {

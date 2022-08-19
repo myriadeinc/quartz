@@ -18,13 +18,12 @@ const useStyles = makeStyles({
 
 interface HistoryProps {
   history: IHistory[];
+  giftCards?: boolean;
 }
 
 export const History = (props: HistoryProps) => {
   const [tab, setTab] = useState("0");
   const classes = useStyles();
-
-  console.log(props.history);
 
   return (
     <Grid item sm={12} className={classes.grid}>

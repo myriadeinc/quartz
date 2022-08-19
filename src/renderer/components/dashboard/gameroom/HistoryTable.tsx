@@ -70,7 +70,7 @@ const headCells: readonly HeadCell[] = [
   },
   {
     id: "winner",
-    numeric: false,
+    numeric: true,
     disablePadding: false,
     label: "Winner",
   },

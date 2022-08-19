@@ -21,10 +21,13 @@ const useStyles = makeStyles({
 export const GiftCards = () => {
   const [raffles, setRaffles] = useState([] as IRaffle[]);
   const [history, setHistory] = useState([] as IHistory[]);
-  const [USD, setUSD] = useState(130.39);
   const classes = useStyles();
 
   useEffect(() => {
+    updateData();
+  }, []);
+
+  const updateData = () => {
     axios
       .get(`${config.miner_metrics_url}/v1/eventContent/active`)
       .then(({ data }) => {
@@ -37,9 +40,7 @@ export const GiftCards = () => {
         //     "Unable to fetch your data, please check your connection, your login and try again later",
         // });
       });
-  }, []);
 
-  useEffect(() => {
     axios
       .get(`${config.miner_metrics_url}/v1/credits/allEvents`, {
         headers: {
@@ -56,7 +57,7 @@ export const GiftCards = () => {
         //     "Unable to fetch your data, please check your connection, your login and try again later",
         // });
       });
-  }, []);
+  };
 
   const buildHistory = (data: IRawHistory[]) => {
     const historyMap: any = {};
@@ -81,8 +82,6 @@ export const GiftCards = () => {
       history.push(historyMap[entry]);
     }
 
-    console.log(history);
-
     setHistory(history);
   };
 
@@ -100,12 +99,14 @@ export const GiftCards = () => {
             <Raffle
               raffle={raffle}
               timeout={index * 500}
-              usdConversionRate={USD}
+              update={updateData}
+              usdConversionRate={1}
+              steam
             />
           )
       )}
 
-      <History history={history} />
+      <History history={history} giftCards />
     </Grid>
   );
 };

@@ -1,6 +1,5 @@
 import { Analytics } from "renderer/components/dashboard/analytics/Analytics";
 import { Mining } from "renderer/components/dashboard/mining/Mining";
-import { Friends } from "renderer/components/dashboard/friends/Friends";
 import { Workers } from "renderer/components/dashboard/workers/Workers";
 import { Withdraw } from "renderer/components/dashboard/withdraw/Withdraw";
 import { Referrals } from "renderer/components/dashboard/referrals/Referrals";

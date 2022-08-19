@@ -25,6 +25,10 @@ export const Monero = () => {
   const classes = useStyles();
 
   useEffect(() => {
+    updateData();
+  }, []);
+
+  const updateData = () => {
     axios
       .get(`${config.miner_metrics_url}/v1/eventContent/active`)
       .then(({ data }) => {
@@ -37,9 +41,7 @@ export const Monero = () => {
         //     "Unable to fetch your data, please check your connection, your login and try again later",
         // });
       });
-  }, []);
 
-  useEffect(() => {
     axios
       .get(`${config.miner_metrics_url}/v1/credits/allEvents`, {
         headers: {
@@ -56,9 +58,7 @@ export const Monero = () => {
         //     "Unable to fetch your data, please check your connection, your login and try again later",
         // });
       });
-  }, []);
 
-  useEffect(() => {
     axios
       .get(`https://min-api.cryptocompare.com/data/price?fsym=XMR&tsyms=USD`)
       .then((response) => {
@@ -67,7 +67,7 @@ export const Monero = () => {
       .catch((error) => {
         console.error("There was an error!", error);
       });
-  }, []);
+  };
 
   const buildHistory = (data: IRawHistory[]) => {
     const historyMap: any = {};
@@ -110,6 +110,7 @@ export const Monero = () => {
               raffle={raffle}
               timeout={index * 500}
               usdConversionRate={USD}
+              update={updateData}
             />
           )
       )}
