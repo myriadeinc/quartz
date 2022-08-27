@@ -38,7 +38,7 @@ const useStyles = makeStyles({
   progressStyle: {
     height: "15px",
     borderRadius: 5,
-    margin: "30px 0px 5px 0px",
+    margin: "0px 0px 5px 0px",
   },
   bodyStyle: {
     fontSize: "0.8rem",
@@ -54,6 +54,9 @@ const useStyles = makeStyles({
     margin: "0px 10px",
     padding: "0vh 0vh 0.05vh 0vh",
     width: "16px",
+  },
+  bottomPadding: {
+    paddingBottom: "16px",
   },
 });
 
@@ -136,6 +139,7 @@ export const Raffle = (props: RaffleProps) => {
       item
       sm={6}
       md={4}
+      xl={3}
       style={{
         marginLeft: "0vw",
       }}
@@ -145,7 +149,7 @@ export const Raffle = (props: RaffleProps) => {
           {steam && <CardMedia image={getSteamImage()} component="img" />}
           <CardContent className={classes.cardContent}>
             {!steam && (
-              <>
+              <div className={classes.bottomPadding}>
                 <Typography variant="h5">
                   ${(raffle.public.prizeAmount * usdConversionRate).toFixed(2)}{" "}
                   USD
@@ -159,7 +163,7 @@ export const Raffle = (props: RaffleProps) => {
                   />
                   {raffle.public.prizeAmount} XMR
                 </Typography>
-              </>
+              </div>
             )}
             <Typography
               className={classes.bodyStyle}

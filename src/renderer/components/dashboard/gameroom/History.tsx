@@ -7,9 +7,7 @@ import { EnhancedTable } from "./HistoryTable";
 
 const useStyles = makeStyles({
   grid: {
-    padding: "5vh",
-    margin: "1vh 2.5vw 3vh 2.5vw",
-    justifyContent: "center",
+    padding: "16px",
   },
   card: {
     padding: "6px 6px 6px 6px",
@@ -24,6 +22,13 @@ interface HistoryProps {
 export const History = (props: HistoryProps) => {
   const [tab, setTab] = useState("0");
   const classes = useStyles();
+  let data;
+
+  if (props.giftCards) {
+    data = props.history.filter((entry) => entry.title.includes("Steam"));
+  } else {
+    data = props.history.filter((entry) => !entry.title.includes("Steam"));
+  }
 
   return (
     <Grid item sm={12} className={classes.grid}>
@@ -39,14 +44,10 @@ export const History = (props: HistoryProps) => {
             <Tab label="Expired" value={"1"} />
           </Tabs>
           <TabPanel value={"0"}>
-            <EnhancedTable
-              data={props.history.filter((entry) => entry.status != 0)}
-            />
+            <EnhancedTable data={data.filter((entry) => entry.status != 0)} />
           </TabPanel>
           <TabPanel value={"1"}>
-            <EnhancedTable
-              data={props.history.filter((entry) => entry.status != 1)}
-            />
+            <EnhancedTable data={data.filter((entry) => entry.status != 1)} />
           </TabPanel>
         </TabContext>
       </Card>

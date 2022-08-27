@@ -10,7 +10,7 @@ import { Miner } from "renderer/components/dashboard/mining/Miner";
 
 export const dashboardRoutes: DashboardRoute[] = [
   { name: "Dashboard", ref: "/", component: Analytics, visible: true },
-  { name: "Mining", ref: "/mining", component: Mining, visible: true },
+  { name: "Mining", ref: "/mining", component: Miner, visible: true },
   { name: "Game Room", ref: "/gameroom", component: Monero, visible: true },
   {
     name: "Gift Cards",
@@ -18,7 +18,7 @@ export const dashboardRoutes: DashboardRoute[] = [
     component: GiftCards,
     visible: true,
   },
-  { name: "Friends", ref: "/friends", component: Miner, visible: true },
+  { name: "Friends", ref: "/friends", component: Mining, visible: false },
   { name: "Workers", ref: "/workers", component: Workers, visible: false },
   { name: "Withdraw", ref: "/withdraw", component: Withdraw, visible: true },
   {

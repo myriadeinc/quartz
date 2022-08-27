@@ -89,8 +89,14 @@ export const Miner = () => {
         item
         sm={12}
         className={`${classes.centerText} ${classes.gridItem}`}
+        style={{
+          backgroundColor: "#121212",
+          backgroundImage:
+            "linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))",
+          marginBottom: "64px",
+        }}
       >
-        <IconButton onClick={handleMine}>
+        <IconButton onClick={handleMine} style={{ margin: "32px" }}>
           <img src={mining ? pause : play} />
         </IconButton>
       </Grid>
@@ -142,11 +148,11 @@ export const Miner = () => {
         </Typography>
         <Typography variant="body1">Accepted Shares</Typography>
       </Grid>
-      <Grid item sm={12}>
+      <Grid item sm={12} style={{ margin: "64px 0px" }}>
         <Chart />
       </Grid>
       <Grid item sm={6} className={classes.gridItem}>
-        <Paper>
+        <Paper className={classes.gridItem}>
           <Typography variant="h4">Mining Allocation</Typography>
           <Typography variant="body1">MC - {100 - ratio}%</Typography>
           <Slider
@@ -162,8 +168,8 @@ export const Miner = () => {
           <Typography variant="body1">{ratio}% - XMR</Typography>
         </Paper>
       </Grid>
-      <Grid item sm={6}>
-        <Paper>
+      <Grid item sm={6} className={classes.gridItem}>
+        <Paper className={classes.gridItem}>
           <Typography variant="h4">CPU Stats - {cpu}</Typography>
           <Box width="50%" display="inline-block">
             <Typography variant="h5">{cpuTemp}</Typography>
