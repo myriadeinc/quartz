@@ -108,9 +108,10 @@ export const Monero = () => {
           raffle.public.type != "STEAM" && (
             <Raffle
               raffle={raffle}
-              timeout={index * 500}
+              timeout={500}
               usdConversionRate={USD}
               update={updateData}
+              key={index}
             />
           )
       )}

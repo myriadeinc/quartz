@@ -14,6 +14,7 @@ import config from "renderer/utils/config";
 import Chart from "../analytics/Chart";
 import play from "../../../../assets/mining/playButton.svg";
 import pause from "../../../../assets/mining/pauseButton.svg";
+import { getNearestWholeNumStr, isNumStr } from "renderer/utils/nums";
 
 declare var window: any;
 
@@ -39,9 +40,15 @@ export const Miner = () => {
   const [mining, setMining] = useState(false);
 
   useEffect(() => {
-    window.electronAPI.registerHandlers(setCpu, setCpuLoad, setCpuTemp);
+    window.electronAPI.registerHandlers(
+      setCpu,
+      setCpuLoad,
+      setCpuTemp,
+      setMining
+    );
     window.electronAPI.getCPU();
     window.electronAPI.pollSysInfo();
+    window.electronAPI.getMiningStatus();
     setInterval(() => window.electronAPI.pollSysInfo(), 1000 * 5);
 
     axios
@@ -152,9 +159,16 @@ export const Miner = () => {
         <Chart />
       </Grid>
       <Grid item sm={6} className={classes.gridItem}>
-        <Paper className={classes.gridItem}>
-          <Typography variant="h4">Mining Allocation</Typography>
-          <Typography variant="body1">MC - {100 - ratio}%</Typography>
+        <Paper className={classes.gridItem} sx={{ minHeight: "108px" }}>
+          <Typography variant="h4" sx={{ mb: 1 }}>
+            Mining Allocation
+          </Typography>
+          <Typography variant="body1" sx={{ display: "inline-block" }}>
+            MC - {100 - ratio}%
+          </Typography>
+          <Typography variant="body1" sx={{ float: "right" }}>
+            {ratio}% - XMR
+          </Typography>
           <Slider
             defaultValue={90}
             step={10}
@@ -165,20 +179,29 @@ export const Miner = () => {
             onChange={handleChange}
             onChangeCommitted={submitRatio}
           />
-          <Typography variant="body1">{ratio}% - XMR</Typography>
         </Paper>
       </Grid>
       <Grid item sm={6} className={classes.gridItem}>
-        <Paper className={classes.gridItem}>
-          <Typography variant="h4">CPU Stats - {cpu}</Typography>
-          <Box width="50%" display="inline-block">
-            <Typography variant="h5">{cpuTemp}</Typography>
-            <Typography variant="body1">Temperature</Typography>
-          </Box>
-          <Box width="50%" display="inline-block">
-            <Typography variant="h5">{cpuLoad}</Typography>
-            <Typography variant="body1">Usage</Typography>
-          </Box>
+        <Paper className={classes.gridItem} sx={{ minHeight: "108px" }}>
+          <Typography variant="h4" sx={{ mb: 1 }}>
+            CPU Stats - <span style={{ fontSize: "1.5rem" }}>{cpu}</span>
+          </Typography>
+          {isNumStr(cpuTemp) && (
+            <Box width="50%" display="inline-block">
+              <Typography variant="h5">
+                {getNearestWholeNumStr(cpuTemp)}
+              </Typography>
+              <Typography variant="body1">Temperature</Typography>
+            </Box>
+          )}
+          {isNumStr(cpuLoad) && (
+            <Box width="50%" display="inline-block">
+              <Typography variant="h5">
+                {getNearestWholeNumStr(cpuLoad)}%
+              </Typography>
+              <Typography variant="body1">Usage</Typography>
+            </Box>
+          )}
         </Paper>
       </Grid>
     </Grid>

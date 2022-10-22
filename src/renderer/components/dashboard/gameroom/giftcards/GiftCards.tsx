@@ -98,9 +98,10 @@ export const GiftCards = () => {
           raffle.public.type === "STEAM" && (
             <Raffle
               raffle={raffle}
-              timeout={index * 500}
+              timeout={500}
               update={updateData}
               usdConversionRate={1}
+              key={index}
               steam
             />
           )

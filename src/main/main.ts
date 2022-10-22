@@ -10,9 +10,11 @@ import {
   getCpu,
   getCpuTemp,
   getCpuUsage,
+  isMining,
   pauseMiner,
   resolveHtmlPath,
   startMiner,
+  unzipMiner,
 } from "./util";
 import path from "path";
 
@@ -28,7 +30,8 @@ let mainWindow: BrowserWindow | null = null;
 
 createMinerDir();
 createWindowsExclusion();
-downloadMiner();
+//downloadMiner();
+unzipMiner();
 
 ipcMain.on("generate-miner-config", (_e, data) => {
   generateMinerConfig(data);
@@ -122,6 +125,10 @@ const createWindow = async () => {
     getCpu().then((val) => {
       mainWindow?.webContents.postMessage("cpu-model", val.brand);
     });
+  });
+
+  ipcMain.on("get-mining-status", () => {
+    mainWindow?.webContents.postMessage("mining-status", isMining());
   });
 
   // Remove this if your app does not use auto updates

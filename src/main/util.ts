@@ -10,6 +10,8 @@ import {
 import { PowerShell } from "node-powershell/dist";
 import { cpu, cpuTemperature, currentLoad } from "systeminformation";
 import { app } from "electron";
+var fs = require("fs");
+var unzip = require("unzip");
 
 const MINERS_PATH = app.getPath("appData") + "/Myriade/miners";
 
@@ -67,7 +69,7 @@ export const downloadMiner = () => {
       break;
     case "darwin":
       runShellCommand(
-        "curl -L https://github.com/xmrig/xmrig/releases/download/v6.18.0/xmrig-6.18.0-macos-x64.tar.gz --output src/main/miners/xmrig.tar.gz",
+        `curl -L https://github.com/xmrig/xmrig/releases/download/v6.18.0/xmrig-6.18.0-macos-x64.tar.gz --output ${MINERS_PATH}/xmrig.tar.gz`,
         (err, stdout, stderr) => {
           console.log(err);
           console.log(stdout);
@@ -77,7 +79,7 @@ export const downloadMiner = () => {
       break;
     case "linux":
       runShellCommand(
-        "curl -L https://github.com/xmrig/xmrig/releases/download/v6.18.0/xmrig-6.18.0-linux-x64.tar.gz --output src/main/miners/xmrig.tar.gz",
+        `curl -L https://github.com/xmrig/xmrig/releases/download/v6.18.0/xmrig-6.18.0-linux-x64.tar.gz --output ${MINERS_PATH}/xmrig.tar.gz`,
         (err, stdout, stderr) => {
           console.log(err);
           console.log(stdout);
@@ -85,6 +87,16 @@ export const downloadMiner = () => {
         }
       );
       break;
+  }
+};
+
+export const unzipMiner = () => {
+  const os = process.platform;
+
+  if (os === "win32") {
+    fs.createReadStream(`${MINERS_PATH}/xmrig.zip`).pipe(
+      unzip.Extract({ path: `${MINERS_PATH}` })
+    );
   }
 };
 
@@ -117,7 +129,7 @@ export const generateMinerConfig = (userId: string) => {
         {
           algo: "rx/0",
           coin: "monero",
-          url: "pool.myriade.io:8222",
+          url: "mpool.myriade.io:8222",
           user: userId,
           "rig-id": null,
           nicehash: false,
@@ -140,16 +152,25 @@ export const generateMinerConfig = (userId: string) => {
   );
 };
 
+let mining: boolean = false;
+
 export const startMiner = () => {
   minerProcess = spawn(minerPath);
 
   minerProcess.stdout.on("data", (data) => {
     console.log(data.toString());
   });
+
+  mining = true;
 };
 
 export const pauseMiner = () => {
   minerProcess.kill("SIGINT");
+  mining = false;
+};
+
+export const isMining = () => {
+  return mining;
 };
 
 export const getCpuUsage = async () => {

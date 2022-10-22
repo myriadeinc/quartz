@@ -46,8 +46,7 @@ class AuthLayer extends Component<{}, AuthLayerState> {
       .then(({ data }) => {
         const { accessToken } = data;
         localStorage.setItem(ACCESS_TOKEN, accessToken);
-        let decodedToken = decode(accessToken) as any;
-        console.log(decodedToken);
+
         this.setState({
           authenticated: true,
         });

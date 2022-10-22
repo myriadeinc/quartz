@@ -87,6 +87,7 @@
     "@types/react-test-renderer": "^17.0.1",
     "@types/recharts": "^1.8.23",
     "@types/terser-webpack-plugin": "^5.0.4",
+    "@types/unzip": "^0.1.1",
     "@types/webpack-bundle-analyzer": "^4.4.1",
     "@types/webpack-env": "^1.16.3",
     "@typescript-eslint/eslint-plugin": "^5.8.1",
@@ -167,6 +168,7 @@
     "react-router-dom": "~4.3.1",
     "recharts": "^2.1.8",
     "systeminformation": "^5.12.3",
+    "unzip": "^0.1.11",
     "vanta": "^0.5.21"
   }
 }

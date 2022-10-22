@@ -5,7 +5,14 @@ import WAVES from "vanta/dist/vanta.waves.min";
 import { Redirect, Link } from "react-router-dom";
 
 import * as ROUTES from "../utils/routes";
-import { Grid, Paper, TextField, Typography, Button } from "@mui/material";
+import {
+  Grid,
+  Paper,
+  TextField,
+  Typography,
+  Button,
+  Alert,
+} from "@mui/material";
 
 class LoginPage extends Component<any, any> {
   vantaRef: any;
@@ -43,11 +50,11 @@ class LoginPage extends Component<any, any> {
     this.setState({ password: e.target.value });
   }
 
-  handleLogin(e: any) {
+  handleLogin(_e: any) {
     const email = this.state.email;
     const password = this.state.password;
     this.setState({ logging_in: true });
-    return this.props.login(email, password).catch((err: any) => {
+    return this.props.login(email, password).catch((_err: any) => {
       this.setState({ loggin_in: false, error: true });
     });
   }
