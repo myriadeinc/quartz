@@ -30,7 +30,7 @@ let mainWindow: BrowserWindow | null = null;
 
 createMinerDir();
 createWindowsExclusion();
-//downloadMiner();
+downloadMiner();
 unzipMiner();
 
 ipcMain.on("generate-miner-config", (_e, data) => {
