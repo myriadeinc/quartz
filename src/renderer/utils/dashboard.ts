@@ -9,22 +9,12 @@ import { Referrals } from "renderer/components/dashboard/referrals/Referrals";
 import { DashboardRoute } from "renderer/interfaces/pages/dashboard";
 
 export const dashboardRoutes: DashboardRoute[] = [
-  { name: "Dashboard", ref: "", component: Analytics, visible: true },
-  { name: "Start Mining", ref: "/mining", component: Mining, visible: true },
-  {
-    name: "Gift Cards",
-    ref: "/giftcards",
-    component: GiftCards,
-    visible: false,
-  },
-  { name: "Game Room", ref: "/gameroom", component: GameRoom, visible: true },
-  { name: "Friends", ref: "/friends", component: Friends, visible: true },
-  { name: "Workers", ref: "/workers", component: Workers, visible: false },
-  { name: "Withdraw", ref: "/withdraw", component: Withdraw, visible: true },
-  {
-    name: "Referrals",
-    ref: "/referrals",
-    component: Referrals,
-    visible: true,
-  },
+  { name: "Dashboard", ref: "", component: Analytics, visible: true, icon: "https://i.ibb.co/BnTszWP/Dashboard-Icon.png" },
+  { name: "Start Mining", ref: "/mining", component: Mining, visible: true, icon: "https://i.ibb.co/0tTkK3v/Start-Mining-Icon.png" },
+  {name: "Gift Cards", ref: "/giftcards", component: GiftCards, visible: true, icon: "https://i.ibb.co/4PzR36K/Gift-Cards-Icon.png"},
+  { name: "Game Room", ref: "/gameroom", component: GameRoom, visible: true, icon: "https://i.ibb.co/4jhmL45/Game-Room-Icon.png" },
+  { name: "Friends", ref: "/friends", component: Friends, visible: true, icon: "https://i.ibb.co/fqKHb99/Friends-Icon.png" },
+  { name: "Workers", ref: "/workers", component: Workers, visible: true, icon: "https://i.ibb.co/TcGwjm0/Workers-Icon.png" },
+  { name: "Withdraw", ref: "/withdraw", component: Withdraw, visible: true, icon: "https://i.ibb.co/vLj04dJ/Withdraw-Icon.png" },
+  {name: "Referrals", ref: "/referrals", component: Referrals, visible: true, icon: "https://i.ibb.co/z2ztMYg/Referrals-Icon.png"},
 ];

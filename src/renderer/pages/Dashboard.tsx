@@ -138,7 +138,7 @@ export const Dashboard = (props: any) => {
         <minerContext.Provider value={miner}>
           <Grid
             ref={myRef}
-            style={{ minHeight: "100vh", backgroundColor: "#36393e" }}
+            style={{ minHeight: "100vh", backgroundColor: "#080A0F" }}
           >
             <Sidebar path={props.match.path} />
             <Switch>

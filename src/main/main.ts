@@ -1,8 +1,12 @@
 import { app, BrowserWindow, shell } from "electron";
+
 import { autoUpdater } from "electron-updater";
 import MenuBuilder from "./menu";
 import log from "electron-log";
 import { resolveHtmlPath } from "./util";
+
+
+
 
 export default class AppUpdater {
   constructor() {
@@ -44,10 +48,26 @@ const createWindow = async () => {
     await installExtensions();
   }
 
+  app.commandLine.appendSwitch('enable-features=OverlayScrollbar')
+
+
+  const path = require('path');
+  function getPlatformIcon() {
+    if (process.platform === 'win32') {
+      return path.join(__dirname, 'icons', 'icon.ico'); // Windows
+    } else if (process.platform === 'darwin') {
+      return path.join(__dirname, 'icons', 'icon.icns'); // macOS
+    } else {
+      return path.join(__dirname, 'icons', 'icon-512x512.png'); // Linux and others
+    }
+  }
+
   mainWindow = new BrowserWindow({
     width: 1920,
-    height: 1080,
+    height: 1020,
     frame: true,
+    autoHideMenuBar: true,
+    icon: getPlatformIcon()
   });
 
   mainWindow.loadURL(resolveHtmlPath("index.html"));
@@ -67,8 +87,8 @@ const createWindow = async () => {
     mainWindow = null;
   });
 
-  const menuBuilder = new MenuBuilder(mainWindow);
-  menuBuilder.buildMenu();
+  //const menuBuilder = new MenuBuilder(mainWindow);
+  //menuBuilder.buildMenu();
 
   // Open urls in the user's browser
   mainWindow.webContents.on("new-window", (event, url) => {

@@ -1,9 +1,7 @@
 import React from "react";
 import { Component } from "react";
 import WAVES from "vanta/dist/vanta.waves.min";
-
 import { Redirect, Link } from "react-router-dom";
-
 import * as ROUTES from "../utils/routes";
 import { Grid, Paper, TextField, Typography, Button } from "@mui/material";
 
@@ -27,7 +25,12 @@ class LoginPage extends Component<any, any> {
     this.vantaEffect = WAVES({
       el: this.vantaRef.current,
       color: 0x50f,
+      waveHeight: 16.00,
       waveSpeed: 0.45,
+      shininess: 25.00,
+      mouseControls: false,
+      touchControls: false,
+      gyroControls: false,
     });
   }
 
@@ -78,40 +81,76 @@ class LoginPage extends Component<any, any> {
           justifyContent="center"
           alignItems="center"
           ref={this.vantaRef}
-          style={{ height: "100vh" }}
+          style={{height: "100vh",}}
         >
-          <Grid item sm={2}>
-            <Paper elevation={3} style={{ padding: "16px" }}>
-              <Typography style={tfStyle} variant="h5">
+          <Grid>
+            <Paper elevation={3} style={{ 
+              width: '400px',
+              height: '288px',
+              backgroundColor: '#0F141F', }}>
+              <Typography fontFamily="Poppins, sans-serif" style={{paddingTop: '25px', paddingLeft: '20px', color: '#EAEAEA', fontSize: '20px'}}>
                 Login
               </Typography>
-              <TextField
-                style={tfStyle}
+              <div style={{ margin: 'auto', textAlign: 'center' }}>
+              <TextField id="outlined-basic"
+                style={{
+                  width: '360px',
+                  height: '32px',
+                  marginTop: '20px',
+                }}
+                size="small"
                 fullWidth
                 label="Email"
-                variant="standard"
+                variant="outlined"
                 onChange={this.emailChange}
               />
-              <TextField
-                style={tfStyle}
+              </div>
+              <div style={{ margin: 'auto', textAlign: 'center' }}>
+              <TextField id="outlined-basic"
+                style={{
+                  width: '360px',
+                  height: '32px',
+                  marginTop: '23px',
+                }}
+                size="small"
                 fullWidth
                 label="Password"
-                variant="standard"
+                variant="outlined"
                 onChange={this.passwordChange}
                 type="password"
               />
+              </div>
+              <div style={{ margin: 'auto', textAlign: 'center' }}>
               <Button
                 fullWidth
-                style={{ backgroundColor: "orange", marginBottom: "12px" }}
+                style={{ 
+                  backgroundColor: "#FA6F15",
+                  marginTop: "20px",
+                  width: '120px',
+                  height: '32px',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: '#0F141F',
+                 }}
                 variant="contained"
                 onClick={this.handleLogin}
               >
                 Login
               </Button>
-              <Typography variant="body1">
+              </div>
+              <div style={{ margin: 'auto', textAlign: 'center' }}>
+              <Typography fontFamily="Poppins, sans-serif" style={{
+                marginTop: '50px',
+                fontSize: '12px',
+                color: '#EAEAEA'
+              }}>
                 Don't have an account? Sign up{" "}
-                <Link to={ROUTES.SIGN_UP}>here</Link>
+                <Link style={{
+                  fontSize: '12px',
+                  color: '#6C81F5'
+                }} to={ROUTES.SIGN_UP}>HERE</Link>
               </Typography>{" "}
+              </div>
             </Paper>
           </Grid>
         </Grid>

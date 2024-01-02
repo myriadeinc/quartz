@@ -5,6 +5,7 @@ export interface DashboardRoute {
   ref: string;
   component: FC;
   visible: boolean;
+  icon: string;
 }
 
 export interface Miner {

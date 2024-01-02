@@ -59,27 +59,59 @@ class SignUpPage extends Component<any, any> {
           style={{ height: "100vh" }}
         >
           <Grid item sm={2}>
-            <Paper elevation={3} style={{ padding: "16px" }}>
-              <Typography style={tfStyle} variant="h5">
-                Login
+            <Paper elevation={3} style={{
+              width: '400px',
+              height: '250px',
+              backgroundColor: '#0F141F', 
+              }}>
+              <Typography fontFamily="Poppins, sans-serif" style={{paddingTop: '25px', paddingLeft: '20px', color: '#EAEAEA', fontSize: '20px'}}>
+                Sign Up
               </Typography>
+              <div style={{ margin: 'auto', textAlign: 'center' }}>
               <TextField
-                style={tfStyle}
+                style={{
+                  width: '360px',
+                  height: '32px',
+                  marginTop: '20px',
+                }}
+                size="small"
                 fullWidth
                 label="Email"
-                variant="standard"
+                variant="outlined"
               />
+              </div>
+              <div style={{ margin: 'auto', textAlign: 'center' }}>
               <Button
                 fullWidth
-                style={{ backgroundColor: "orange", marginBottom: "12px" }}
+                style={{ 
+                  backgroundColor: "#FA6F15",
+                  marginTop: "25px",
+                  width: '120px',
+                  height: '32px',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  color: '#0F141F',
+                 }}
                 variant="contained"
+                onClick={this.handleLogin}
               >
-                Login
+                Sign Up
               </Button>
-              <Typography variant="body1">
+              </div>
+              <div style={{ margin: 'auto', textAlign: 'center' }}>
+              <Typography fontFamily="Poppins, sans-serif" style={{
+                marginTop: '50px',
+                fontSize: '12px',
+                color: '#EAEAEA'
+                }}>
                 Already have an account? Log in{" "}
-                <Link to={ROUTES.LOGIN}>here</Link>
+                <Link style={{
+                  fontSize: '12px',
+                  color: '#6C81F5'
+                  }}
+                   to={ROUTES.LOGIN}>HERE</Link>
               </Typography>{" "}
+              </div>
             </Paper>
           </Grid>
         </Grid>

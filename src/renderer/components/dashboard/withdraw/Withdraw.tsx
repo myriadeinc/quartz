@@ -8,20 +8,25 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 import { MinerConsumer } from "renderer/pages/Dashboard";
 import { EnhancedTable } from "../gameroom/HistoryTable";
-
 export const Withdraw = () => {
   const [withdrawing, setWithdrawing] = useState(false);
   const [address, setAddress] = useState("");
+  
 
   return (
     <Grid
       container
       item
       style={{
-        width: "calc(100% - 360px)",
-        marginLeft: "360px",
+        width: "1473px", 
+        marginLeft: "406px",
         padding: "16px",
       }}
       alignItems={"center"}

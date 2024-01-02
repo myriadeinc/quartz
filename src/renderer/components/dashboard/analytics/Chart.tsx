@@ -53,9 +53,10 @@ class Chart extends Component<any, any> {
     return (
       <Card
         elevation={0}
-        style={{ height: "100%", backgroundColor: "#2f3136", padding: "16px" }}
+        style={{ height: "440px", width: "975px", backgroundColor: "#0F141F", backgroundImage: 'none', borderRadius: "7px" }}
       >
         <ResponsiveContainer>
+          
           <AreaChart data={this.getMovingAverage([], 120)}>
             <XAxis
               dataKey="time"
@@ -70,6 +71,7 @@ class Chart extends Component<any, any> {
               type="number"
               scale="time"
             />
+            
             <YAxis
               dataKey="rate"
               axisLine={false}

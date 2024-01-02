@@ -50,7 +50,7 @@ export const Friends = () => {
     <Grid
       container
       item
-      style={{ width: "calc(100% - 360px)", marginLeft: "360px" }}
+      style={{ width: "0", marginLeft: "360px" }}
     >
       <Grid item sm={6}>
         <Grow in={true}>
@@ -76,13 +76,14 @@ export const FriendMenu = () => {
       elevation={0}
       style={{
         height: "100%",
-        backgroundColor: "#2f3136",
+        backgroundColor: "#0F141F",
+        borderRadius: "7px",
         color: "white",
       }}
     >
       <Typography
         variant="h4"
-        style={{ backgroundColor: "#202225", padding: "16px" }}
+        style={{ backgroundColor: "#080A0F", padding: "16px", }}
       >
         Friends
       </Typography>

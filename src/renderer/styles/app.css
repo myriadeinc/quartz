@@ -1,3 +1,31 @@
+
 body {
   margin: 0px;
+  overflow-x: hidden;
 }
+
+/* Global Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 9px;  /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #080A0F;  /* Makes the track invisible */
+}
+
+/* Hide horizontal scrollbar */
+::-webkit-scrollbar-horizontal {
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #293040;  /* color of the scroll thumb */
+  border-radius: 10px;  /* roundness of the scroll thumb */
+  border: 3px solid transparent;  /* adjusts border to be transparent */
+}
+
+/* Change thumb color when hovered or clicked */
+::-webkit-scrollbar-thumb:hover {
+  background: #141A29;
+}
+
