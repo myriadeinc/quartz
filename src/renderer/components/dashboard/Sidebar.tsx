@@ -230,7 +230,7 @@ export const Sidebar = (props: SidebarProps) => {
   </List>
 </Grid>
 
-<Grid item sm={12} style={{ marginLeft: '20px', marginTop: "0px" }}>
+<Grid item sm={12} style={{ marginLeft: '20px', marginTop: "240px" }}>
   {/* Contact Support */}
   <Typography fontFamily="Poppins, sans-serif" style={{ fontSize: 18, color: "#8C8C8C" }}>
     CONTACT SUPPORT

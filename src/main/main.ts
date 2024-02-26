@@ -67,8 +67,9 @@ const createWindow = async () => {
     height: 1020,
     frame: true,
     autoHideMenuBar: true,
+    resizable: false,
     icon: getPlatformIcon()
-  });
+    });
 
   mainWindow.loadURL(resolveHtmlPath("index.html"));
 
