@@ -1,9 +1,8 @@
 import { Component, ComponentType, createContext } from "react";
 import { Redirect, Route } from "react-router-dom";
 import decode from "jwt-decode";
-import axios from "axios";
-import config from "../utils/config";
 import * as ROUTES from "../utils/routes";
+import { userLogin } from "services/api.service";
 
 const ACCESS_TOKEN = "access_token";
 const authContext = createContext({} as AuthLayerState);
@@ -37,21 +36,17 @@ class AuthLayer extends Component<{}, AuthLayerState> {
     }
   }
 
-  login(email: string, password: string) {
-    return axios
-      .post(`${config.identity_service_url}/v1/account/login`, {
-        email,
-        password,
-      })
-      .then(({ data }) => {
-        const { accessToken } = data;
-        localStorage.setItem(ACCESS_TOKEN, accessToken);
-        let decodedToken = decode(accessToken) as any;
-        console.log(decodedToken);
+  async login(email: string, password: string) {
+    try {
+      const authenticated = await userLogin(email, password);
+      if (authenticated) {
         this.setState({
           authenticated: true,
         });
-      });
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+    }
   }
 
   logout() {

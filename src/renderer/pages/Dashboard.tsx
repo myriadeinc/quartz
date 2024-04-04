@@ -1,17 +1,16 @@
-import { Grid } from "@mui/material";
-import axios from "axios";
+import Grid from "@mui/material/Grid";
 import { createContext, useEffect, useRef, useState } from "react";
 import { Switch } from "react-router-dom";
 import { Sidebar } from "renderer/components/dashboard/Sidebar";
 import { AuthConsumer, ProtectedRoute } from "renderer/layers/AuthLayer";
 import { dashboardRoutes } from "renderer/utils/dashboard";
-import config from "renderer/utils/config";
 import { Miner } from "renderer/interfaces/pages/dashboard";
+import { fetchCredit, fetchHashrates, selfAccount } from "services/api.service";
 // import WAVES from "vanta/dist/vanta.waves.min";
 
 const minerContext = createContext({} as Miner);
 
-export const Dashboard = (props: any) => {
+const Dashboard = (props: any) => {
   const [vantaEffect, setVantaEffect] = useState(0);
   const [selfFetched, setSelfFetched] = useState(false);
   const [creditsFetched, setCreditsFetched] = useState(false);
@@ -44,101 +43,65 @@ export const Dashboard = (props: any) => {
   }, [vantaEffect]);
 
   useEffect(() => {
-    axios
-      .get(`${config.identity_service_url}/v1/account/self`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
-      })
-      .then(({ data }) => {
-        const minerClone = { ...miner };
-        minerClone.shortId = data.shortId;
-        minerClone.name = data.name;
-        minerClone.email = data.email;
-        minerClone.id = data.id;
-        setMiner(minerClone);
-        setSelfFetched(true);
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
-        // return this.setState({
-        //   error:
-        //     'Unable to fetch your data, please check your connection, your login and try again later',
-        // });
-      });
+    const fetchSelfData = async () => {
+      try {
+        const { minerClone, selfFetched } = await selfAccount(miner);
+        if (selfFetched) {
+          setMiner(minerClone);
+          setSelfFetched(true);
+        }
+      } catch (error) {
+        console.error("Error fetching self account data:", error);
+      }
+    };
+
+    fetchSelfData();
   }, []);
 
   useEffect(() => {
     if (selfFetched) {
-      axios
-        .get(`${config.miner_metrics_url}/v1/stats/credit`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-          },
-        })
-        .then(({ data }) => {
-          const minerClone = { ...miner };
-          minerClone.mcBalance = data.credits;
-          minerClone.xmrBalance = data.monero_balance / Math.pow(10, 12);
-          setMiner(minerClone);
-          setCreditsFetched(true);
-        })
-        .catch((error) => {
-          console.error("There was an error!", error);
-          // return this.setState({
-          //   error:
-          //     "Unable to fetch your data, please check your connection, your login and try again later",
-          // });
-        });
+      const fetchCreditData = async () => {
+        try {
+          const { minerClone, selfFetched } = await fetchCredit(miner);
+          if (selfFetched) {
+            setMiner(minerClone);
+            setCreditsFetched(true);
+          }
+        } catch (error) {
+          console.error("Error fetching self account data:", error);
+        }
+      };
+      fetchCreditData();
     }
   }, [selfFetched]);
 
   useEffect(() => {
     if (creditsFetched) {
-      axios
-        .get(`${config.miner_metrics_url}/v1/stats/hashrates`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-          },
-        })
-        .then(({ data }) => {
-          const minerClone = { ...miner };
-          let avg = 0;
-          let count = 0;
-
-          minerClone.hashrates = data.map((entry: any) => {
-            if (count < 30) {
-              avg += parseInt(entry.rate);
-              count++;
-            }
-
-            return {
-              time: new Date(entry.time).getTime(),
-              rate: entry.rate,
-            };
-          });
-
-          avg /= count;
-          minerClone.avgHashrate = avg.toFixed(2);
-          setMiner(minerClone);
-        })
-        .catch((error) => {
-          console.error("There was an error!", error);
-          // return this.setState({
-          //   error:
-          //     "Unable to fetch your data, please check your connection, your login and try again later",
-          // });
-        });
+      const fetchHashratesData = async () => {
+        try {
+          const { minerClone } = await fetchHashrates(miner);
+          if (minerClone) {
+            setMiner(minerClone);
+          }
+        } catch (error) {
+          console.error("Error fetching self account data:", error);
+        }
+      };
+      fetchHashratesData();
     }
   }, [creditsFetched]);
 
   return (
     <AuthConsumer>
-      {({ authenticated, logout }) => (
+      {({ authenticated }) => (
         <minerContext.Provider value={miner}>
           <Grid
             ref={myRef}
-            style={{ minHeight: "100vh", backgroundColor: "#080A0F" }}
+            style={{
+              minHeight: "100vh",
+              backgroundColor: "#080A0F",
+              width: "100vw",
+            }}
           >
             <Sidebar path={props.match.path} />
             <Switch>
@@ -160,5 +123,5 @@ export const Dashboard = (props: any) => {
     </AuthConsumer>
   );
 };
-
+export default Dashboard;
 export const MinerConsumer = minerContext.Consumer;

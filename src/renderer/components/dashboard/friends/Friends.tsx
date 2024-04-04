@@ -1,57 +1,20 @@
-import {
-  Avatar,
-  Card,
-  Grid,
-  Grow,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  Typography,
-} from "@mui/material";
-import { IFriend } from "renderer/interfaces/pages/dashboard";
+import Grow from "@mui/material/Grow";
+import Avatar from "@mui/material/Avatar";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
 
-const dummyData = [
-  {
-    name: "sfd",
-    status: "mining",
-    avatar: "A",
-  },
-  {
-    name: "sfd",
-    status: "mining",
-    avatar: "A",
-  },
-  {
-    name: "sfd",
-    status: "offline",
-    avatar: "A",
-  },
-  {
-    name: "sfd",
-    status: "offline",
-    avatar: "A",
-  },
-  {
-    name: "sfd",
-    status: "offline",
-    avatar: "A",
-  },
-  ,
-  {
-    name: "sfd",
-    status: "offline",
-    avatar: "A",
-  },
-] as IFriend[];
+import { IFriend } from "renderer/interfaces/pages/dashboard";
+import { dummyData as DUMMY_FRIENDS_DATA } from "const";
 
 export const Friends = () => {
   return (
-    <Grid
-      container
-      item
-      style={{ width: "0", marginLeft: "360px" }}
-    >
+    <Grid container item style={{ width: "0", marginLeft: "360px" }}>
       <Grid item sm={6}>
         <Grow in={true}>
           <div style={{ height: "100%" }}>
@@ -81,24 +44,29 @@ export const FriendMenu = () => {
         color: "white",
       }}
     >
-      <Typography
-        variant="h4"
-        style={{ backgroundColor: "#080A0F", padding: "16px", }}
-      >
-        Friends
-      </Typography>
-
-      {dummyData.length == 0 ? (
-        <div style={{ width: "100%", textAlign: "center", paddingTop: "16px" }}>
-          <Typography variant="body1">No active friends</Typography>
-        </div>
-      ) : (
-        <List>
-          {dummyData.map((friend, index) => (
-            <Friend {...friend} key={index} />
-          ))}
-        </List>
-      )}
+      <Box>
+        <Typography
+          variant="h4"
+          style={{ backgroundColor: "#080A0F", padding: "16px" }}
+        >
+          Friends
+        </Typography>
+      </Box>
+      <Box>
+        {DUMMY_FRIENDS_DATA.length == 0 ? (
+          <div
+            style={{ width: "100%", textAlign: "center", paddingTop: "16px" }}
+          >
+            <Typography variant="body1">No active friends</Typography>
+          </div>
+        ) : (
+          <List>
+            {DUMMY_FRIENDS_DATA.map((friend, index) => (
+              <Friend {...friend} key={index} />
+            ))}
+          </List>
+        )}
+      </Box>
     </Card>
   );
 };

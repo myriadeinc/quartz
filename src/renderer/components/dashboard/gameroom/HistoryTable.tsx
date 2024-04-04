@@ -9,7 +9,8 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import Paper from "@mui/material/Paper";
-import { visuallyHidden } from "@mui/utils";
+import visuallyHidden from "@mui/utils/visuallyHidden";
+import Typography from "@mui/material/Typography";
 import { IHistory } from "renderer/interfaces/pages/dashboard";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -136,7 +137,7 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const rows = props.data;
-
+  console.log("rowsrowsrows", rows);
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
     property: keyof IHistory
@@ -204,52 +205,64 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                 throw new Error("Function not implemented.");
               }}
             />
-            <TableBody>
-              {rows
-                .slice()
-                .sort(getComparator(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  const isItemSelected = isSelected(row.title as string);
-                  const labelId = `enhanced-table-checkbox-${index}`;
+            {rows.length > 0 ? (
+              <TableBody>
+                {rows
+                  .slice()
+                  .sort(getComparator(order, orderBy))
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row, index) => {
+                    const isItemSelected = isSelected(row.title as string);
+                    const labelId = `enhanced-table-checkbox-${index}`;
 
-                  return (
-                    <TableRow
-                      hover
-                      onClick={(event) =>
-                        handleClick(event, row.title as string)
-                      }
-                      role="checkbox"
-                      aria-checked={isItemSelected}
-                      tabIndex={-1}
-                      key={row.title}
-                      selected={isItemSelected}
-                    >
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        padding="none"
+                    return (
+                      <TableRow
+                        hover
+                        onClick={(event) =>
+                          handleClick(event, row.title as string)
+                        }
+                        role="checkbox"
+                        aria-checked={isItemSelected}
+                        tabIndex={-1}
+                        key={row.title}
+                        selected={isItemSelected}
                       >
-                        {row.title}
-                      </TableCell>
-                      <TableCell align="right">{row.tickets}</TableCell>
-                      <TableCell align="right">{row.amount}</TableCell>
-                      <TableCell align="right">{row.purchased}</TableCell>
-                      <TableCell align="right">{row.winner}</TableCell>
-                    </TableRow>
-                  );
-                })}
-              {emptyRows > 0 && (
-                <TableRow
-                  style={{
-                    height: 33 * emptyRows,
-                  }}
-                >
-                  <TableCell colSpan={6} />
+                        <TableCell
+                          component="th"
+                          id={labelId}
+                          scope="row"
+                          padding="none"
+                        >
+                          {row.title}
+                        </TableCell>
+                        <TableCell align="right">{row.tickets}</TableCell>
+                        <TableCell align="right">{row.amount}</TableCell>
+                        <TableCell align="right">{row.purchased}</TableCell>
+                        <TableCell align="right">{row.winner}</TableCell>
+                      </TableRow>
+                    );
+                  })}
+                {emptyRows > 0 && (
+                  <TableRow
+                    style={{
+                      height: 33 * emptyRows,
+                    }}
+                  >
+                    <TableCell colSpan={6} />
+                  </TableRow>
+                )}
+              </TableBody>
+            ) : (
+              <TableBody>
+                <TableRow>
+                  <TableCell colSpan={headCells.length} align="center">
+                    <Typography variant="h3" color="textSecondary">
+                      No data found
+                    </Typography>
+                  </TableCell>
                 </TableRow>
-              )}
-            </TableBody>
+              </TableBody>
+            )}
           </Table>
         </TableContainer>
         <TablePagination

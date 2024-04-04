@@ -1,15 +1,17 @@
-import { Grid, Typography } from "@mui/material";
-import { makeStyles } from "@mui/styles";
-import axios from "axios";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import makeStyles from "@mui/styles/makeStyles";
 import { useEffect, useState } from "react";
 import {
   IHistory,
   IRaffle,
   IRawHistory,
 } from "renderer/interfaces/pages/dashboard";
-import config from "renderer/utils/config";
 import { History } from "./History";
 import { Raffle } from "./Raffle";
+import { fetchActiveEvent, fetchAllEvents } from "services/api.service";
+import { CircularProgressLoader } from "renderer/components/CircularLoader";
 
 const useStyles = makeStyles({
   grid: {
@@ -21,40 +23,38 @@ const useStyles = makeStyles({
 export const GameRoom = () => {
   const [raffles, setRaffles] = useState([] as IRaffle[]);
   const [history, setHistory] = useState([] as IHistory[]);
+  const [isLoading, setIsLoading] = useState(false);
   const classes = useStyles();
 
   useEffect(() => {
-    axios
-      .get(`${config.miner_metrics_url}/v1/eventContent/active`)
-      .then(({ data }) => {
-        setRaffles(data);
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
-        // return this.setState({
-        //   error:
-        //     "Unable to fetch your data, please check your connection, your login and try again later",
-        // });
-      });
+    const fetchActiveEventsData = async () => {
+      try {
+        const activeEventsData = await fetchActiveEvent();
+        if (activeEventsData) {
+          setRaffles(activeEventsData);
+        }
+      } catch (error) {
+        console.error("Error fetching active events data:", error);
+      }
+    };
+    fetchActiveEventsData();
   }, []);
 
   useEffect(() => {
-    axios
-      .get(`${config.miner_metrics_url}/v1/credits/allEvents`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("access_token")}`,
-        },
-      })
-      .then(({ data }) => {
-        buildHistory(data);
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
-        // return this.setState({
-        //   error:
-        //     "Unable to fetch your data, please check your connection, your login and try again later",
-        // });
-      });
+    const fetchAllEventsData = async () => {
+      setIsLoading(true);
+      try {
+        const data = await fetchAllEvents();
+        if (data) {
+          buildHistory(data);
+        }
+      } catch (error) {
+        console.error("Error fetching all events data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchAllEventsData();
   }, []);
 
   const buildHistory = (data: IRawHistory[]) => {
@@ -89,21 +89,31 @@ export const GameRoom = () => {
     <Grid
       container
       item
-      style={{ width: "calc(100% - 360px)", marginLeft: "360px" }}
+      style={{ width: "calc(100% - 406px)", marginLeft: "406px" }}
     >
-      <Grid item sm={12} className={classes.grid}>
-        <Typography variant="h5">Current Drawings</Typography>
-      </Grid>
-      {raffles.map(
-        (raffle, index) =>
-          raffle.public.type != "STEAM" && (
-            <Raffle raffle={raffle} timeout={index * 500} />
-          )
+      {isLoading ? (
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <CircularProgressLoader />
+        </Box>
+      ) : (
+        <>
+          <Grid item sm={12} className={classes.grid}>
+            <Box>
+              <Typography variant="h5">Current Drawings</Typography>
+            </Box>
+          </Grid>
+          {raffles.map(
+            (raffle, index) =>
+              raffle.public.type !== "STEAM" && (
+                <Raffle raffle={raffle} timeout={index * 500} key={index} />
+              )
+          )}
+          <Grid item sm={12} className={classes.grid}>
+            <Typography variant="h5">History</Typography>
+          </Grid>
+          <History history={history} />
+        </>
       )}
-      <Grid item sm={12} className={classes.grid}>
-        <Typography variant="h5">History</Typography>
-      </Grid>
-      <History history={history} />
     </Grid>
   );
 };

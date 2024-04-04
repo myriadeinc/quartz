@@ -1,6 +1,10 @@
-import { TabContext, TabPanel } from "@mui/lab";
-import { Card, Grid, Tab, Tabs } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import TabContext from "@mui/lab/TabContext";
+import TabPanel from "@mui/lab/TabPanel";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import makeStyles from "@mui/styles/makeStyles";
 import { useState } from "react";
 import { IHistory } from "renderer/interfaces/pages/dashboard";
 import { EnhancedTable } from "./HistoryTable";

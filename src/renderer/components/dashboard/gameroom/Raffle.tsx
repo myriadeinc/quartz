@@ -1,5 +1,8 @@
-import { Card, Grid, Grow, Typography } from "@mui/material";
-import { makeStyles } from "@mui/styles";
+import Grow from "@mui/material/Grow";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import makeStyles from "@mui/styles/makeStyles";
 import { IRaffle } from "renderer/interfaces/pages/dashboard";
 
 const useStyles = makeStyles({

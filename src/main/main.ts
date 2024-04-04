@@ -1,12 +1,7 @@
 import { app, BrowserWindow, shell } from "electron";
-
 import { autoUpdater } from "electron-updater";
-import MenuBuilder from "./menu";
 import log from "electron-log";
 import { resolveHtmlPath } from "./util";
-
-
-
 
 export default class AppUpdater {
   constructor() {
@@ -48,17 +43,16 @@ const createWindow = async () => {
     await installExtensions();
   }
 
-  app.commandLine.appendSwitch('enable-features=OverlayScrollbar')
+  app.commandLine.appendSwitch("enable-features=OverlayScrollbar");
 
-
-  const path = require('path');
+  const path = require("path");
   function getPlatformIcon() {
-    if (process.platform === 'win32') {
-      return path.join(__dirname, 'icons', 'icon.ico'); // Windows
-    } else if (process.platform === 'darwin') {
-      return path.join(__dirname, 'icons', 'icon.icns'); // macOS
+    if (process.platform === "win32") {
+      return path.join(__dirname, "icons", "icon.ico"); // Windows
+    } else if (process.platform === "darwin") {
+      return path.join(__dirname, "icons", "icon.icns"); // macOS
     } else {
-      return path.join(__dirname, 'icons', 'icon-512x512.png'); // Linux and others
+      return path.join(__dirname, "icons", "icon-512x512.png"); // Linux and others
     }
   }
 
@@ -68,8 +62,12 @@ const createWindow = async () => {
     frame: true,
     autoHideMenuBar: true,
     resizable: false,
-    icon: getPlatformIcon()
-    });
+    icon: getPlatformIcon(),
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
+  });
 
   mainWindow.loadURL(resolveHtmlPath("index.html"));
 
