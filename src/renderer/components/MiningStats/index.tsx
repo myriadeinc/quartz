@@ -1,10 +1,9 @@
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-
 import { MINER_STATS_ARRAY } from "const";
-export const MiningStats = () => {
+
+export const MiningStats = ({ CurrentHashrateData }: any) => {
   return (
     <Stack
       sx={{
@@ -47,7 +46,7 @@ export const MiningStats = () => {
                 <Typography
                   fontFamily="Poppins, sans-serif"
                   style={{
-                    fontSize: "10px",
+                    fontSize: "16px",
                     color: "#EAEAEA",
                     fontWeight: 400,
                     textAlign: "left",
@@ -57,19 +56,22 @@ export const MiningStats = () => {
                   {stats.heading}
                 </Typography>
                 {stats.isDivider ? (
-                  <Divider
-                    sx={{
-                      bgcolor: "#EAEAEA",
-                      height: 0.01,
-                      marginTop: "10px",
-                      minWidth: "15px",
+                  <Typography
+                    fontFamily="Poppins, sans-serif"
+                    style={{
+                      fontSize: "14px",
+                      color: "#EAEAEA",
+                      fontWeight: 400,
+                      textAlign: "left",
                     }}
-                  />
+                  >
+                    {CurrentHashrateData?.hashrate}
+                  </Typography>
                 ) : (
                   <Typography
                     fontFamily="Poppins, sans-serif"
                     style={{
-                      fontSize: "10px",
+                      fontSize: "14px",
                       color: "#EAEAEA",
                       fontWeight: 400,
                       textAlign: "left",

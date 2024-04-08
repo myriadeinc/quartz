@@ -81,7 +81,7 @@ export const Analytics = () => {
                     </Card>
 
                     <img
-                      src="https://i.ibb.co/h8qPJZ5/DM.png"
+                      src="/assets/img/DM.webp"
                       alt="Your Image Alt Text"
                       style={{
                         width: "218px",
@@ -139,7 +139,7 @@ export const Analytics = () => {
                       </Typography>
                     </Card>
                     <img
-                      src="https://i.ibb.co/nkWHgp7/DM2.png"
+                      src="/assets/img/DM2.webp"
                       alt="Your Image Alt Text"
                       style={{
                         width: "340px",
@@ -199,7 +199,7 @@ export const Analytics = () => {
                       </Typography>
                     </Card>
                     <img
-                      src="https://i.ibb.co/TTbBTKc/DM3.png"
+                      src="/assets/img/DM3.webp"
                       alt="Your Image Alt Text"
                       style={{
                         width: "292px",

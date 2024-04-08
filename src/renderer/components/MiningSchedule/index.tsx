@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Card from "@mui/material/Card";
+
 export const MiningSchedule = () => {
   return (
     <Card

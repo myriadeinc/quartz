@@ -2,7 +2,6 @@ import { app, BrowserWindow, shell } from "electron";
 import { autoUpdater } from "electron-updater";
 import log from "electron-log";
 import { resolveHtmlPath } from "./util";
-
 export default class AppUpdater {
   constructor() {
     log.transports.file.level = "info";
@@ -39,13 +38,20 @@ const installExtensions = async () => {
 };
 
 const createWindow = async () => {
+  let start = Date.now() / 1000;
+  console.log(0);
   if (isDevelopment) {
     await installExtensions();
   }
 
   app.commandLine.appendSwitch("enable-features=OverlayScrollbar");
-
   const path = require("path");
+  console.log(Date.now() / 1000 - start, "path import");
+  start = Date.now() / 1000;
+  console.log(
+    'path.join(__dirname, "preload.ts")',
+    path.join(__dirname, "preload.ts")
+  );
   function getPlatformIcon() {
     if (process.platform === "win32") {
       return path.join(__dirname, "icons", "icon.ico"); // Windows
@@ -55,23 +61,26 @@ const createWindow = async () => {
       return path.join(__dirname, "icons", "icon-512x512.png"); // Linux and others
     }
   }
-
   mainWindow = new BrowserWindow({
     width: 1920,
     height: 1020,
     frame: true,
+    paintWhenInitiallyHidden: true,
+    backgroundColor: "#080a0f",
+    // show: false,
+    title: "Myriade",
     autoHideMenuBar: true,
     resizable: false,
     icon: getPlatformIcon(),
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
+      preload: path.join(__dirname, "preload.ts"),
     },
   });
 
   mainWindow.loadURL(resolveHtmlPath("index.html"));
-
-  mainWindow.on("ready-to-show", () => {
+  app.on("ready", () => {
     if (!mainWindow) {
       throw new Error('"mainWindow" is not defined');
     }
@@ -81,8 +90,11 @@ const createWindow = async () => {
       mainWindow.show();
     }
   });
+  process.on("uncaughtException", function (err) {
+    console.log(err, "uncaught exceptions");
+  });
 
-  mainWindow.on("closed", () => {
+  app.on("window-all-closed", () => {
     mainWindow = null;
   });
 
@@ -97,7 +109,7 @@ const createWindow = async () => {
 
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
-  new AppUpdater();
+  // new AppUpdater();
 };
 
 app.whenReady().then(() => {

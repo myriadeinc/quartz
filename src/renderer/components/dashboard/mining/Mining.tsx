@@ -6,12 +6,29 @@ import { MiningSchedule } from "renderer/components/MiningSchedule";
 import { MinerStarter } from "renderer/components/MinerStarter";
 import { MINER_ARRAY } from "const";
 import { HistoryChart } from "renderer/components/common/historyChart";
+import { IMiner } from "renderer/interfaces/pages/dashboard";
+import { useState, useEffect } from "react";
+import { fetchCurrentHashrate } from "services/api.service";
 export const Mining = () => {
+  const [hashrateData, setHashrateData] = useState(2);
+  useEffect(() => {
+    const CurrentHashrate = async () => {
+      try {
+        const data = await fetchCurrentHashrate();
+        if (data) {
+          setHashrateData(data);
+        }
+      } catch (error) {
+        console.error("Error fetching current hashrate:", error);
+      }
+    };
+    CurrentHashrate();
+  }, []);
   return (
     <Box
       style={{
-        width: "calc(100% - 406px)",
-        marginLeft: "406px",
+        width: "calc(100% - 430px)",
+        marginLeft: "400px",
       }}
     >
       <Grid container>
@@ -46,7 +63,7 @@ export const Mining = () => {
             border: "1px solid rgba(234, 234, 234, 0.2)",
           }}
         >
-          {MINER_ARRAY.map((miner) => {
+          {MINER_ARRAY.map((miner: IMiner) => {
             return (
               <Grid
                 item
@@ -127,7 +144,7 @@ export const Mining = () => {
             <HistoryChart isAnalytics={false} padding="0 0 1rem" />
           </Grid>
           <Grid item xs={4}>
-            <MiningStats />
+            <MiningStats CurrentHashrateData={hashrateData} />
           </Grid>
         </Grid>
       </Grid>

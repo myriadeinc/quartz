@@ -10,7 +10,11 @@ import {
 } from "renderer/interfaces/pages/dashboard";
 import { History } from "./History";
 import { Raffle } from "./Raffle";
-import { fetchActiveEvent, fetchAllEvents } from "services/api.service";
+import {
+  fetchActiveEvent,
+  fetchAllEvents,
+  fetchCurrentHashrate,
+} from "services/api.service";
 import { CircularProgressLoader } from "renderer/components/CircularLoader";
 
 const useStyles = makeStyles({
@@ -21,8 +25,8 @@ const useStyles = makeStyles({
 });
 
 export const GameRoom = () => {
-  const [raffles, setRaffles] = useState([] as IRaffle[]);
-  const [history, setHistory] = useState([] as IHistory[]);
+  const [raffles, setRaffles] = useState<IRaffle[]>([]);
+  const [history, setHistory] = useState<IHistory[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const classes = useStyles();
 

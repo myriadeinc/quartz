@@ -1,6 +1,6 @@
-import { IFriend } from "renderer/interfaces/pages/dashboard";
+import { IFriend, IMiner } from "renderer/interfaces/pages/dashboard";
 
-export const MINER_ARRAY = [
+const MINER_ARRAY: IMiner[] = [
   {
     src: "https://i.ibb.co/TmDbVbK/Referrals-Icon-Start-mining-Page.png",
     title:
@@ -23,7 +23,7 @@ export const MINER_ARRAY = [
     alt: "bonus image",
   },
 ];
-export const MINER_STATS_ARRAY = [
+const MINER_STATS_ARRAY = [
   { heading: "Current Hashrate", isDivider: true },
   {
     heading: "Total Mining Time",
@@ -43,7 +43,8 @@ export const MINER_STATS_ARRAY = [
   },
   { heading: "Accepted Share (XP)", time: "3,023,414,823" },
 ];
-export const dummyData = [
+
+const DUMMY_FRIENDS_DATA: readonly IFriend[] = [
   {
     name: "sfd",
     status: "mining",
@@ -69,10 +70,11 @@ export const dummyData = [
     status: "offline",
     avatar: "A",
   },
-  ,
   {
     name: "sfd",
     status: "offline",
     avatar: "A",
   },
-] as IFriend[];
+];
+
+export { DUMMY_FRIENDS_DATA, MINER_ARRAY, MINER_STATS_ARRAY };

@@ -49,7 +49,7 @@ export const HistoryChart = ({ isAnalytics, padding }: ChartProps) => {
           }}
         >
           <img
-            src="https://i.ibb.co/41kDKBX/Historical-Metrics-3-Month-Card.png"
+            src="/assets/img/Historical-Metrics-3-Month-Card.webp"
             alt="Your Image Alt Text"
             style={{
               maxWidth: "-webkit-fill-available",

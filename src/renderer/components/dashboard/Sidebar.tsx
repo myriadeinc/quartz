@@ -76,7 +76,7 @@ interface SidebarProps {
 }
 
 // Sidebar component
-export const Sidebar = (props: SidebarProps) => {
+const Sidebar = (props: SidebarProps) => {
   const classes = useStyles();
 
   return (
@@ -113,6 +113,7 @@ export const Sidebar = (props: SidebarProps) => {
                   <div className={classes.statusCircle}></div>
                   <Avatar
                     className={classes.avatar}
+                    alt="avatar name"
                     src="https://i.ibb.co/5LC9qKh/Profile-Image-2.png"
                     style={{
                       backgroundColor: "#0E1B38",
@@ -352,7 +353,7 @@ export const Sidebar = (props: SidebarProps) => {
                           }
                         >
                           <ListItemAvatar style={{ marginLeft: "-15px" }}>
-                            <Avatar src={route.icon} alt={route.name} />
+                            <Avatar src={route.icon} alt={route.alt} />
                           </ListItemAvatar>
                           <ListItemText primary={route.name} />
                         </ListItem>
@@ -368,3 +369,4 @@ export const Sidebar = (props: SidebarProps) => {
     </MinerConsumer>
   );
 };
+export default Sidebar;

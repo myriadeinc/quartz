@@ -1,30 +1,29 @@
+html {
+  background-color: #080a0f;
+}
 body {
   margin: 0px;
   overflow-x: hidden;
   background-color: #080a0f;
 }
 
-/* Global Scrollbar Styling */
 ::-webkit-scrollbar {
-  width: 9px; /* width of the entire scrollbar */
+  width: 9px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #080a0f; /* Makes the track invisible */
+  background: #080a0f;
 }
-
-/* Hide horizontal scrollbar */
 ::-webkit-scrollbar-horizontal {
   display: none;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #293040; /* color of the scroll thumb */
-  border-radius: 10px; /* roundness of the scroll thumb */
-  border: 3px solid transparent; /* adjusts border to be transparent */
+  background-color: #293040;
+  border-radius: 10px;
+  border: 3px solid transparent;
 }
 
-/* Change thumb color when hovered or clicked */
 ::-webkit-scrollbar-thumb:hover {
   background: #141a29;
 }

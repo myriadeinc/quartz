@@ -8,14 +8,15 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
 import { useState } from "react";
 import { MinerConsumer } from "renderer/pages/Dashboard";
+
 export const Withdraw = () => {
   const [withdrawing, setWithdrawing] = useState(false);
 
   return (
     <Stack
       style={{
-        width: "calc(100% - 406px)",
-        marginLeft: "406px",
+        width: "calc(100% - 430px)",
+        marginLeft: "400px",
         padding: "16px",
         gap: "20px",
       }}
@@ -337,7 +338,7 @@ export const Withdraw = () => {
                 </Stack>
                 <Box>
                   <img
-                    src="https://i.ibb.co/ynzQqZG/Withdraw-Illustration.png"
+                    src="/assets/img/Withdraw-Illustration.webp"
                     alt="Description"
                     style={{
                       maxWidth: "325px",

@@ -31,6 +31,16 @@ export const fetchCredit = async (miner: Miner) => {
   }
 };
 
+export const fetchCurrentHashrate = async () => {
+  try {
+    const response = await coreApi.get("/metrics/v1/public/poolinfo");
+    const data = response.data;
+    return data;
+  } catch (error) {
+    console.error("There was an error!", error);
+    throw error;
+  }
+};
 export const fetchHashrates = async (miner: Miner) => {
   try {
     const { data } = await coreApi.get("/metrics/v1/stats/hashrates");

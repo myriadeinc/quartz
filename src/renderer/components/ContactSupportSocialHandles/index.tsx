@@ -1,10 +1,10 @@
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
+
 export const SupportContactSocials = () => {
   return (
     <Grid item sm={12} style={{ marginLeft: "20px", marginTop: "240px" }}>
-      {/* Contact Support */}
       <Typography
         fontFamily="Poppins, sans-serif"
         style={{ fontSize: 18, color: "#8C8C8C" }}

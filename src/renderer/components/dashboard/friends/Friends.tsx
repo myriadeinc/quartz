@@ -8,10 +8,8 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
-
 import { IFriend } from "renderer/interfaces/pages/dashboard";
-import { dummyData as DUMMY_FRIENDS_DATA } from "const";
-
+import { DUMMY_FRIENDS_DATA } from "const";
 export const Friends = () => {
   return (
     <Grid container item style={{ width: "0", marginLeft: "360px" }}>
@@ -81,6 +79,7 @@ const FriendStats = () => {
 
 const Friend = (props: IFriend) => {
   const { name, status, avatar } = props;
+
   return (
     <ListItem>
       <ListItemAvatar>

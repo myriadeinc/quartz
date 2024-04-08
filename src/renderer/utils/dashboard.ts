@@ -11,6 +11,7 @@ import { DashboardRoute } from "renderer/interfaces/pages/dashboard";
 export const dashboardRoutes: DashboardRoute[] = [
   {
     name: "Dashboard",
+    alt: "Dashboard Room",
     ref: "",
     component: Analytics,
     visible: true,
@@ -18,6 +19,7 @@ export const dashboardRoutes: DashboardRoute[] = [
   },
   {
     name: "Start Mining",
+    alt: "Start Mining Room",
     ref: "/mining",
     component: Mining,
     visible: true,
@@ -25,13 +27,15 @@ export const dashboardRoutes: DashboardRoute[] = [
   },
   {
     name: "Gift Cards",
+    alt: "Gift Cards Room",
     ref: "/giftcards",
     component: GiftCards,
     visible: false,
     icon: "https://i.ibb.co/4PzR36K/Gift-Cards-Icon.png",
   },
   {
-    name: "Game Room",
+    name: "Game",
+    alt: "Game Rooms",
     ref: "/gameroom",
     component: GameRoom,
     visible: true,
@@ -39,6 +43,7 @@ export const dashboardRoutes: DashboardRoute[] = [
   },
   {
     name: "Friends",
+    alt: "Friends Room",
     ref: "/friends",
     component: Friends,
     visible: false,
@@ -53,6 +58,7 @@ export const dashboardRoutes: DashboardRoute[] = [
   },
   {
     name: "Withdraw",
+    alt: "Withdraw Amount",
     ref: "/withdraw",
     component: Withdraw,
     visible: true,

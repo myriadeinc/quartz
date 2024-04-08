@@ -6,6 +6,7 @@ export interface DashboardRoute {
   component: FC;
   visible: boolean;
   icon: string;
+  alt?: string;
 }
 
 export interface Miner {
@@ -54,9 +55,14 @@ export interface IHistory {
   purchased: number;
   winner: string;
 }
-
 export interface IFriend {
   name: string;
   status: string;
   avatar: string;
+}
+
+export interface IMiner {
+  src: string;
+  title: string;
+  alt: string;
 }

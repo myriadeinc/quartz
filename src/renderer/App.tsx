@@ -3,13 +3,15 @@ import { lazy, Suspense } from "react";
 import AuthLayer, { AuthConsumer, ProtectedRoute } from "./layers/AuthLayer";
 const LoginPage = lazy(() => import("./pages/Login"));
 const SignUpPage = lazy(() => import("./pages/SignUp"));
-const Dashboard = lazy(() => import("./pages/Dashboard"));
+// const Dashboard = lazy(() => import("./pages/Dashboard"));
+import Dashboard from "./pages/Dashboard";
 import * as ROUTES from "./utils/routes";
 import "./styles/app.css";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { CircularProgressLoader } from "./components/CircularLoader";
 
 const darkTheme = createTheme({ palette: { mode: "dark" } });
+console.log("inside app component");
 
 export default function App() {
   return (
