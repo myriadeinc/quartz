@@ -38,20 +38,12 @@ const installExtensions = async () => {
 };
 
 const createWindow = async () => {
-  let start = Date.now() / 1000;
-  console.log(0);
   if (isDevelopment) {
     await installExtensions();
   }
 
   app.commandLine.appendSwitch("enable-features=OverlayScrollbar");
   const path = require("path");
-  console.log(Date.now() / 1000 - start, "path import");
-  start = Date.now() / 1000;
-  console.log(
-    'path.join(__dirname, "preload.ts")',
-    path.join(__dirname, "preload.ts")
-  );
   function getPlatformIcon() {
     if (process.platform === "win32") {
       return path.join(__dirname, "icons", "icon.ico"); // Windows

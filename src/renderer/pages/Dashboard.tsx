@@ -1,5 +1,5 @@
 import Grid from "@mui/material/Grid";
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useEffect, useMemo, useRef, useState } from "react";
 import { Switch } from "react-router-dom";
 import { lazy, Suspense } from "react";
 const Sidebar = lazy(() => import("renderer/components/dashboard/Sidebar"));
@@ -27,7 +27,7 @@ const Dashboard = (props: any) => {
     avgHashrate: "0",
   } as Miner);
   const myRef = useRef(null);
-
+  const contextValue = useMemo(() => miner, [miner]);
   useEffect(() => {
     if (!vantaEffect) {
       // setVantaEffect(

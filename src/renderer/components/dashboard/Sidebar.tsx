@@ -239,16 +239,19 @@ const Sidebar = (props: SidebarProps) => {
                       marginBottom: "10px",
                       marginLeft: "10px",
                       flexDirection: "column",
+                      minWidth: "100px",
                     }}
                   >
                     <Typography
                       fontFamily="Poppins, sans-serif"
-                      style={{ textAlign: "left" }}
+                      variant="body1"
+                      style={{ textAlign: "left", marginBottom: "5px" }}
                     >
                       Mining Credits:
                     </Typography>
                     <Typography
                       fontFamily="Poppins, sans-serif"
+                      variant="body2"
                       style={{
                         textAlign: "left",
                         color: "#8C8C8C",
