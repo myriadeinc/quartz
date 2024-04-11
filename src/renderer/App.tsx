@@ -3,7 +3,6 @@ import { lazy, Suspense } from "react";
 import AuthLayer, { AuthConsumer, ProtectedRoute } from "./layers/AuthLayer";
 const LoginPage = lazy(() => import("./pages/Login"));
 const SignUpPage = lazy(() => import("./pages/SignUp"));
-// const Dashboard = lazy(() => import("./pages/Dashboard"));
 import Dashboard from "./pages/Dashboard";
 import * as ROUTES from "./utils/routes";
 import "./styles/app.css";

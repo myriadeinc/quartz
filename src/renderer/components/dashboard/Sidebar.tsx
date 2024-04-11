@@ -13,13 +13,8 @@ import { MinerConsumer } from "renderer/pages/Dashboard";
 import { dashboardRoutes } from "renderer/utils/dashboard";
 import { SupportContactSocials } from "../ContactSupportSocialHandles";
 
-// ... (import statements remain unchanged)
-
-// Initial miner level
-
 let minerLevel = "33";
 
-// Styles using MUI makeStyles
 const useStyles = makeStyles((theme) => ({
   grid: {
     marginTop: theme.spacing(2),
@@ -37,13 +32,13 @@ const useStyles = makeStyles((theme) => ({
   },
   statusCircle: {
     position: "absolute",
-    top: "0px", // Adjust positioning as needed
-    left: "0px", // Adjust positioning as needed
-    width: "88px", // Set the desired inner radius * 2
-    height: "88px", // Set the desired inner radius * 2
+    top: "0px",
+    left: "0px",
+    width: "88px",
+    height: "88px",
     borderRadius: "50%",
-    backgroundColor: "transparent", // Set the outer color
-    border: "4px solid #414E66", // Set the ring thickness and color
+    backgroundColor: "transparent",
+    border: "4px solid #414E66",
   },
   minerDetails: {
     marginTop: theme.spacing(3),
@@ -70,12 +65,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// Props interface for Sidebar component
 interface SidebarProps {
   path: string;
 }
 
-// Sidebar component
 const Sidebar = (props: SidebarProps) => {
   const classes = useStyles();
 
@@ -102,7 +95,7 @@ const Sidebar = (props: SidebarProps) => {
             alignItems="center"
             textAlign="left"
             spacing={2}
-            className={classes.grid} // Apply the styles using makeStyles
+            className={classes.grid}
           >
             <Grid container className={classes.grid}>
               <Grid item sm={2}>
@@ -136,7 +129,6 @@ const Sidebar = (props: SidebarProps) => {
                   marginRight: "70px",
                 }}
               >
-                {/* Miner Details */}
                 <Typography variant="h5" fontFamily="Poppins, sans-serif">
                   {`${miner.name} #${miner.shortId}`}
                 </Typography>
@@ -199,7 +191,6 @@ const Sidebar = (props: SidebarProps) => {
               style={{ marginBottom: "-5px" }}
               className={classes.grid}
             >
-              {/* Mining Card */}
               <Card
                 className={classes.miningCard}
                 style={{
@@ -263,7 +254,7 @@ const Sidebar = (props: SidebarProps) => {
                   </div>
 
                   <img
-                    src="/assets/svg/Refresh.png"
+                    src="/assets/img/Refresh.png"
                     alt="Refresh Icon"
                     style={{
                       width: "18px",
@@ -328,7 +319,6 @@ const Sidebar = (props: SidebarProps) => {
                 marginTop: "3px",
               }}
             >
-              {/* Sidebar Navigation Links */}
               <Typography
                 fontFamily="Poppins, sans-serif"
                 style={{
@@ -346,7 +336,7 @@ const Sidebar = (props: SidebarProps) => {
                       <Link
                         to={`${props.path}${route.ref}`}
                         style={{ textDecoration: "none", color: "#8C8C8C" }}
-                        key={route.name} // Add a unique key for each Link
+                        key={route.name}
                       >
                         <ListItem
                           button

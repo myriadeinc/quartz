@@ -188,7 +188,7 @@ export const Withdraw = () => {
             }}
           >
             <img
-              src="/public/assets/img/MoneroIcon.webp"
+              src="/assets/img/MoneroIcon.webp"
               alt="Your Description"
               style={{
                 maxWidth: "44px",
