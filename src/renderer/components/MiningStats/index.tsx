@@ -45,8 +45,8 @@ export const MiningStats = ({ CurrentHashrateData }: any) => {
               >
                 <Typography
                   fontFamily="Poppins, sans-serif"
-                  style={{
-                    fontSize: "16px",
+                  sx={{
+                    fontSize: { sm: "14px", md: "14px", lg: "16px" },
                     color: "#EAEAEA",
                     fontWeight: 400,
                     textAlign: "left",

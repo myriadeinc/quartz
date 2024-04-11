@@ -1,14 +1,7 @@
 import { render } from "react-dom";
-import { lazy, Suspense } from "react";
-const App = lazy(() => import("./App"));
-import { CircularProgressLoader } from "./components/CircularLoader";
+import App from "./App";
 
-render(
-  <Suspense fallback={<CircularProgressLoader />}>
-    <App />
-  </Suspense>,
-  document.getElementById("root")
-);
+render(<App />, document.getElementById("root"));
 
 window.ChatraSetup = {
   chatHeight: 550,

@@ -51,8 +51,8 @@ export const Withdraw = () => {
             padding: "10px",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center", // Center items horizontally
-            justifyContent: "center", // Center items vertically
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <MinerConsumer>
@@ -133,8 +133,8 @@ export const Withdraw = () => {
             padding: "10px",
             display: "flex",
             flexDirection: "column",
-            alignItems: "center", // Center items horizontally
-            justifyContent: "center", // Center items vertically
+            alignItems: "center",
+            justifyContent: "center",
           }}
         >
           <Typography
@@ -169,15 +169,15 @@ export const Withdraw = () => {
       <Grid item sm={12}>
         <Box
           sx={{
-            maxWidth: "200px", // width of the circle container
-            minHeight: "200px", // height of the circle container
-            backgroundColor: "#141A29", // circle container color
-            borderRadius: "50%", // makes the box a circle
-            display: "flex", // use flex to center the content inside the Box
-            flexDirection: "column", // stack children vertically
-            justifyContent: "center", // center vertically
-            alignItems: "center", // center horizontally
-            padding: "8px", // Add some padding around the content
+            maxWidth: "200px",
+            minHeight: "200px",
+            backgroundColor: "#141A29",
+            borderRadius: "50%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "8px",
           }}
         >
           <div
@@ -188,11 +188,11 @@ export const Withdraw = () => {
             }}
           >
             <img
-              src="https://i.ibb.co/nfBZy8x/Monero.png" // replace with your image URL
+              src="/public/assets/img/MoneroIcon.webp"
               alt="Your Description"
               style={{
                 maxWidth: "44px",
-                maxHeight: "44px", // height of the image
+                maxHeight: "44px",
                 marginTop: "5px",
               }}
             />
@@ -224,7 +224,6 @@ export const Withdraw = () => {
         <Card
           elevation={0}
           style={{
-            maxWidth: "1472px",
             minHeight: "320px",
             backgroundColor: "#0F141F",
             borderRadius: "7px",
@@ -290,6 +289,7 @@ export const Withdraw = () => {
                           <InputAdornment position="start">XMR</InputAdornment>
                         ),
                         type: "number",
+                        inputProps: { min: 0 },
                       }}
                     />
                   </Stack>
@@ -298,6 +298,7 @@ export const Withdraw = () => {
                       fontFamily="Poppins, sans-serif"
                       style={{
                         fontSize: "16px",
+                        marginRight: "5px",
                         color: "#EAEAEA",
                         whiteSpace: "nowrap",
                       }}

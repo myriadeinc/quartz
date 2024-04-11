@@ -45,25 +45,27 @@ export const FriendMenu = () => {
       <Box>
         <Typography
           variant="h4"
-          style={{ backgroundColor: "#080A0F", padding: "16px" }}
+          style={{ backgroundColor: "#080A0F", padding: "2rem 0" }}
         >
           Friends
         </Typography>
       </Box>
-      <Box>
-        {DUMMY_FRIENDS_DATA.length == 0 ? (
-          <div
-            style={{ width: "100%", textAlign: "center", paddingTop: "16px" }}
-          >
-            <Typography variant="body1">No active friends</Typography>
-          </div>
-        ) : (
-          <List>
-            {DUMMY_FRIENDS_DATA.map((friend, index) => (
-              <Friend {...friend} key={index} />
-            ))}
-          </List>
-        )}
+      <Box sx={{ backgroundColor: "#0F141F" }}>
+        <Box>
+          {DUMMY_FRIENDS_DATA.length == 0 ? (
+            <div
+              style={{ width: "100%", textAlign: "center", paddingTop: "16px" }}
+            >
+              <Typography variant="body1">No active friends</Typography>
+            </div>
+          ) : (
+            <List>
+              {DUMMY_FRIENDS_DATA.map((friend, index) => (
+                <Friend {...friend} key={index} />
+              ))}
+            </List>
+          )}
+        </Box>
       </Box>
     </Card>
   );

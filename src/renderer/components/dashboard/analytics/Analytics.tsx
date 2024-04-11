@@ -224,7 +224,7 @@ export const Analytics = () => {
             gridTemplateColumns={{ md: "1fr", lg: "2fr 1fr", xl: "2fr 1fr" }}
           >
             <HistoryChart isAnalytics={true} padding="1.5rem 0" />
-            <Box maxHeight={"600px"}>
+            <Box maxHeight={"600px"} overflow={"auto"}>
               <FriendMenu />
             </Box>
           </Box>

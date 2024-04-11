@@ -114,7 +114,7 @@ const Sidebar = (props: SidebarProps) => {
                   <Avatar
                     className={classes.avatar}
                     alt="avatar name"
-                    src="https://i.ibb.co/5LC9qKh/Profile-Image-2.png"
+                    src="/assets/img/Profile-Image-2.webp"
                     style={{
                       backgroundColor: "#0E1B38",
                       width: "80px",
@@ -154,7 +154,7 @@ const Sidebar = (props: SidebarProps) => {
                     }}
                   >
                     <img
-                      src="https://i.ibb.co/n0MGM36/Copper-Left.png"
+                      src="/assets/svg/Copper-Left.svg"
                       alt="Level Icon Left"
                       style={{
                         width: "32px",
@@ -172,7 +172,7 @@ const Sidebar = (props: SidebarProps) => {
                     }}
                   >
                     <img
-                      src="https://i.ibb.co/t3vcKVy/Copper-Right.png"
+                      src="/assets/svg/Copper-Right.svg"
                       alt="Level Icon Right"
                       style={{
                         width: "32px",
@@ -224,7 +224,7 @@ const Sidebar = (props: SidebarProps) => {
                   }}
                 >
                   <img
-                    src="https://i.ibb.co/RSRPJbn/MC-Icon.png"
+                    src="/assets/svg/MC-Icon.svg"
                     alt="Mining Credits Icon"
                     style={{
                       width: "44px",
@@ -263,7 +263,7 @@ const Sidebar = (props: SidebarProps) => {
                   </div>
 
                   <img
-                    src="https://i.ibb.co/JC43vyR/Refresh.png"
+                    src="/assets/svg/Refresh.png"
                     alt="Refresh Icon"
                     style={{
                       width: "18px",
@@ -282,7 +282,7 @@ const Sidebar = (props: SidebarProps) => {
                   }}
                 >
                   <img
-                    src="https://i.ibb.co/ypvqR1R/Monero-Icon.png"
+                    src="/assets/svg/Monero-Icon.svg"
                     alt="Monero Balance Icon"
                     style={{
                       width: "44px",
@@ -356,7 +356,11 @@ const Sidebar = (props: SidebarProps) => {
                           }
                         >
                           <ListItemAvatar style={{ marginLeft: "-15px" }}>
-                            <Avatar src={route.icon} alt={route.alt} />
+                            <Avatar
+                              src={route.icon}
+                              alt={route.alt}
+                              style={{ color: "red" }}
+                            />
                           </ListItemAvatar>
                           <ListItemText primary={route.name} />
                         </ListItem>

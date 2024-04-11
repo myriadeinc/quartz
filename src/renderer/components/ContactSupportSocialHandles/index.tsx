@@ -19,7 +19,7 @@ export const SupportContactSocials = () => {
           rel="noopener noreferrer"
         >
           <Avatar
-            src="https://i.ibb.co/FYZT2r1/Discord.png"
+            src="/assets/svg/Discord.svg"
             alt="Discord"
             sx={{ width: 44, height: 44 }}
           />
@@ -30,7 +30,7 @@ export const SupportContactSocials = () => {
           rel="noopener noreferrer"
         >
           <Avatar
-            src="https://i.ibb.co/85Mz133/Twitter.png"
+            src="/assets/svg/Twitter.svg"
             alt="Twitter"
             sx={{ width: 44, height: 44 }}
           />
@@ -41,7 +41,7 @@ export const SupportContactSocials = () => {
           rel="noopener noreferrer"
         >
           <Avatar
-            src="https://i.ibb.co/wKJsyYJ/Mail.png"
+            src="/assets/svg/Mail.svg"
             alt="Mail"
             sx={{ width: 44, height: 44 }}
           />

@@ -20,7 +20,9 @@ export default function App() {
         <AuthConsumer>
           {({ authenticated, login }) => (
             <ThemeProvider theme={darkTheme}>
-              <Suspense fallback={<CircularProgressLoader />}>
+              <Suspense
+                fallback={<CircularProgressLoader isLoaderInMainApp={true} />}
+              >
                 <Switch>
                   <Route
                     exact

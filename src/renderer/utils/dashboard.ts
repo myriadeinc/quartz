@@ -15,7 +15,7 @@ export const dashboardRoutes: DashboardRoute[] = [
     ref: "",
     component: Analytics,
     visible: true,
-    icon: "https://i.ibb.co/BnTszWP/Dashboard-Icon.png",
+    icon: "/assets/svg/Dashboard-Icon.svg",
   },
   {
     name: "Start Mining",
@@ -23,7 +23,7 @@ export const dashboardRoutes: DashboardRoute[] = [
     ref: "/mining",
     component: Mining,
     visible: true,
-    icon: "https://i.ibb.co/0tTkK3v/Start-Mining-Icon.png",
+    icon: "/assets/svg/Start-Mining-Icon.svg",
   },
   {
     name: "Gift Cards",
@@ -31,7 +31,7 @@ export const dashboardRoutes: DashboardRoute[] = [
     ref: "/giftcards",
     component: GiftCards,
     visible: false,
-    icon: "https://i.ibb.co/4PzR36K/Gift-Cards-Icon.png",
+    icon: "/assets/svg/Gift-Cards-Icon.svg",
   },
   {
     name: "Game",
@@ -39,7 +39,7 @@ export const dashboardRoutes: DashboardRoute[] = [
     ref: "/gameroom",
     component: GameRoom,
     visible: true,
-    icon: "https://i.ibb.co/4jhmL45/Game-Room-Icon.png",
+    icon: "/assets/svg/Game-Room-Icon.svg",
   },
   {
     name: "Friends",
@@ -47,14 +47,14 @@ export const dashboardRoutes: DashboardRoute[] = [
     ref: "/friends",
     component: Friends,
     visible: false,
-    icon: "https://i.ibb.co/fqKHb99/Friends-Icon.png",
+    icon: "/assets/svg/Friends-Icon.svg",
   },
   {
     name: "Workers",
     ref: "/workers",
     component: Workers,
     visible: false,
-    icon: "https://i.ibb.co/TcGwjm0/Workers-Icon.png",
+    icon: "/",
   },
   {
     name: "Withdraw",
@@ -62,13 +62,13 @@ export const dashboardRoutes: DashboardRoute[] = [
     ref: "/withdraw",
     component: Withdraw,
     visible: true,
-    icon: "https://i.ibb.co/vLj04dJ/Withdraw-Icon.png",
+    icon: "/assets/svg/Withdraw-Icon.svg",
   },
   {
     name: "Referrals",
     ref: "/referrals",
     component: Referrals,
     visible: false,
-    icon: "https://i.ibb.co/z2ztMYg/Referrals-Icon.png",
+    icon: "/assets/svg/Referrals-Icon.svg",
   },
 ];
