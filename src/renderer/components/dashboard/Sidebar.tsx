@@ -12,12 +12,14 @@ import { Link } from "react-router-dom";
 import { MinerConsumer } from "renderer/pages/Dashboard";
 import { dashboardRoutes } from "renderer/utils/dashboard";
 import { SupportContactSocials } from "../ContactSupportSocialHandles";
+import { Box } from "@mui/material";
 
 let minerLevel = "33";
 
 const useStyles = makeStyles((theme) => ({
   grid: {
     marginTop: theme.spacing(2),
+    paddingLeft: ".5rem",
   },
   avatarContainer: {
     position: "relative",
@@ -58,7 +60,6 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Poppins, sans-serif",
   },
   miningCard: {
-    width: "100%",
     height: theme.spacing(18),
     padding: theme.spacing(2),
     borderRadius: theme.spacing(1),
@@ -83,7 +84,6 @@ const Sidebar = (props: SidebarProps) => {
               width: "406px",
               boxSizing: "border-box",
               backgroundColor: "#080A0F",
-              paddingLeft: "20px",
             },
           }}
           variant="permanent"
@@ -96,6 +96,7 @@ const Sidebar = (props: SidebarProps) => {
             textAlign="left"
             spacing={2}
             className={classes.grid}
+            height={"100vh"}
           >
             <Grid container className={classes.grid}>
               <Grid item sm={2}>
@@ -188,88 +189,85 @@ const Sidebar = (props: SidebarProps) => {
             <Grid
               item
               sm={12}
-              style={{ marginBottom: "-5px" }}
+              style={{ marginBottom: "-5px", paddingRight: ".5rem" }}
               className={classes.grid}
             >
               <Card
                 className={classes.miningCard}
                 style={{
-                  width: "366px",
-                  height: "144px",
+                  maxWidth: "406px",
+                  maxHeight: "150px",
                   padding: "0px",
                   backgroundColor: "#0F141F",
                   display: "flex",
                   backgroundImage: "none",
                   flexDirection: "column",
-                  justifyContent: "flex-start",
+                  justifyContent: "space-around",
                   alignItems: "flex-start",
                 }}
               >
-                <div
-                  style={{
+                <Box
+                  sx={{
                     display: "flex",
-                    alignItems: "flex-start",
-                    marginBottom: "10px",
-                    marginLeft: "80px",
-                    marginTop: "18px",
+                    width: "100%",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
                   }}
                 >
-                  <img
-                    src="/assets/svg/MC-Icon.svg"
-                    alt="Mining Credits Icon"
-                    style={{
-                      width: "44px",
-                      height: "44px",
-                      marginBottom: "10px",
-                    }}
-                  />
-                  <div
-                    style={{
+                  <Box
+                    sx={{
                       display: "flex",
-                      alignItems: "flex-start",
-                      marginBottom: "10px",
-                      marginLeft: "10px",
-                      flexDirection: "column",
-                      minWidth: "100px",
+                      // width: "100%",
+                      flexDirection: "row",
                     }}
                   >
-                    <Typography
-                      fontFamily="Poppins, sans-serif"
-                      variant="body1"
-                      style={{ textAlign: "left", marginBottom: "5px" }}
-                    >
-                      Mining Credits:
-                    </Typography>
-                    <Typography
-                      fontFamily="Poppins, sans-serif"
-                      variant="body2"
+                    <img
+                      src="/assets/svg/MC-Icon.svg"
+                      alt="Mining Credits Icon"
                       style={{
-                        textAlign: "left",
-                        color: "#8C8C8C",
-                        fontSize: "13px",
+                        width: "44px",
+                        height: "44px",
+                        marginBottom: "10px",
+                        marginRight: "10px",
                       }}
-                    >
-                      {miner.mcBalance}
-                    </Typography>
-                  </div>
-
-                  <img
-                    src="/assets/img/Refresh.png"
-                    alt="Refresh Icon"
-                    style={{
-                      width: "18px",
-                      height: "18px",
-                      marginLeft: "90px",
-                      marginTop: "-6px",
-                    }}
-                  />
-                </div>
-
+                    />
+                    <Box>
+                      <Typography
+                        fontFamily="Poppins, sans-serif"
+                        variant="body1"
+                        style={{ textAlign: "left", marginBottom: "5px" }}
+                      >
+                        Mining Credits:
+                      </Typography>
+                      <Typography
+                        fontFamily="Poppins, sans-serif"
+                        variant="body2"
+                        style={{
+                          textAlign: "left",
+                          color: "#8C8C8C",
+                          fontSize: "13px",
+                        }}
+                      >
+                        {miner.mcBalance}
+                      </Typography>
+                    </Box>
+                  </Box>
+                  <Box sx={{ alignSelf: "center", marginRight: ".5rem" }}>
+                    <img
+                      src="/assets/img/Refresh.png"
+                      alt="Refresh Icon"
+                      style={{
+                        width: "18px",
+                        height: "18px",
+                        marginTop: "-6px",
+                      }}
+                    />
+                  </Box>
+                </Box>
                 <div
                   style={{
                     display: "flex",
                     alignItems: "flex-start",
-                    marginLeft: "80px",
                   }}
                 >
                   <img
@@ -314,7 +312,7 @@ const Sidebar = (props: SidebarProps) => {
               item
               sm={8}
               style={{
-                marginLeft: "20px",
+                marginLeft: "8px",
                 marginBottom: "50px",
                 marginTop: "3px",
               }}
