@@ -2,18 +2,43 @@ import Grow from "@mui/material/Grow";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
 import { Link } from "react-router-dom";
 import { MinerConsumer } from "renderer/pages/Dashboard";
 import { FriendMenu } from "../friends/Friends";
 import { HistoryChart } from "renderer/components/common/historyChart";
+import { useState, useEffect } from "react";
 
 export const Analytics = () => {
+  const [screenSize, setScreenSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  console.log("screenSizescreenSize", screenSize);
   return (
     <MinerConsumer>
       {(miner) => (
         <Box
-          style={{
-            width: "calc(100% - 406px)",
+          sx={{
+            width: {
+              xs: "100vw",
+              sm: "100vw",
+              md: "calc(100% - 406px)",
+              lg: "calc(100% - 406px)",
+            },
             marginLeft: "406px",
             padding: "1.5rem",
           }}
@@ -34,7 +59,7 @@ export const Analytics = () => {
             sx={{ display: "flex", flexWrap: "wrap", xl: "justifyContent" }}
             flexDirection={{ md: "row", lg: "row" }}
           >
-            <Box>
+            <Box sx={{ width: { xs: "100%", sm: "100%", md: "inherit" } }}>
               <Link
                 to={""}
                 style={{ textDecoration: "none", cursor: "pointer" }}
@@ -78,27 +103,98 @@ export const Analytics = () => {
                       >
                         {miner.avgHashrate} H/sec
                       </Typography>
-                    </Card>
+                      <CardMedia
+                        component="img"
+                        height="194"
+                        image="/assets/img/DM.webp"
+                        alt="Paella dish"
+                        sx={{ objectFit: "contain" }}
+                      />
 
-                    <img
-                      src="/assets/img/DM.webp"
-                      alt="Your Image Alt Text"
+                      {/* <Box
+                        sx={{
+                          maxWidth: "280px",
+                          height: "220px",
+                          objectFit: "cover",
+                          position: "absolute",
+                          top: "60px",
+                          right: "1rem",
+                        }}
+                      >
+                      </Box> */}
+                    </Card>
+                    {/* <Card
                       style={{
-                        width: "218px",
-                        height: "220px",
-                        objectFit: "cover",
-                        position: "absolute",
-                        top: "60px",
-                        right: "1rem",
-                        zIndex: 3, // Higher zIndex for the image to be above the second card
+                        backgroundColor: "#0F141F",
+                        backgroundImage: "none",
+                        backgroundSize: "cover",
+                        width: "100%", // Set card width to 100% to make it responsive
+                        height: "288px",
+                        padding: "0px",
+                        marginTop: "20px",
+                        marginRight: "10px",
+                        zIndex: 2,
+                        borderRadius: "7px",
+                        display: "flex",
+                        flexDirection: "column", // Ensure child elements stack vertically
+                        justifyContent: "space-between", // Distribute space evenly between child elements
+                        position: "relative",
                       }}
-                    />
+                    >
+                      <Typography
+                        variant="body1"
+                        style={{
+                          fontSize: "16px",
+                          color: "#8C8C8C",
+                          fontWeight: 400,
+                          marginTop: "20px",
+                          marginLeft: "20px",
+                        }}
+                      >
+                        Average Hashrate (1hr)
+                      </Typography>
+                      <Typography
+                        variant="h6"
+                        style={{
+                          fontSize: "20px",
+                          color: "#EAEAEA",
+                          fontWeight: 500,
+                          marginLeft: "20px",
+                        }}
+                      >
+                        {miner.avgHashrate} H/sec
+                      </Typography>
+                      <Box
+                        style={{
+                          maxWidth: "100%",
+                          height: "220px",
+                          objectFit: "cover",
+                          position: "absolute",
+                          top: "60px",
+                          right: "1rem",
+                        }}
+                      >
+                        <img
+                          src="/assets/img/DM.webp"
+                          alt="Your Image Alt Text"
+                          style={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                            zIndex: 3,
+                          }}
+                        />
+                      </Box>
+                    </Card> */}
                   </div>
                 </Grow>
               </Link>
             </Box>
-            <Box>
-              <Link to={} style={{ textDecoration: "none", cursor: "pointer" }}>
+            <Box sx={{ width: { xs: "100%", sm: "100%", md: "inherit" } }}>
+              <Link
+                to={""}
+                style={{ textDecoration: "none", cursor: "pointer" }}
+              >
                 <Grow in={true}>
                   <div style={{ position: "relative" }}>
                     <Card
@@ -110,7 +206,7 @@ export const Analytics = () => {
                         height: "288px",
                         padding: "0px",
                         marginTop: "20px",
-                        zIndex: 2, // Higher zIndex for the second card to be above the first card
+                        zIndex: 2,
                         borderRadius: "7px",
                       }}
                     >
@@ -137,26 +233,23 @@ export const Analytics = () => {
                       >
                         2039570 H/sec
                       </Typography>
+                      <CardMedia
+                        component="img"
+                        height="194"
+                        image="/assets/img/DM2.webp"
+                        alt="Paella dish"
+                        sx={{ objectFit: "contain" }}
+                      />
                     </Card>
-                    <img
-                      src="/assets/img/DM2.webp"
-                      alt="Your Image Alt Text"
-                      style={{
-                        width: "340px",
-                        height: "213px",
-                        objectFit: "cover",
-                        position: "absolute",
-                        top: "50px",
-                        right: "1rem",
-                        zIndex: 3,
-                      }}
-                    />
                   </div>
                 </Grow>
               </Link>
             </Box>
-            <Box>
-              <Link to={} style={{ textDecoration: "none", cursor: "pointer" }}>
+            <Box sx={{ width: { xs: "100%", sm: "100%", md: "inherit" } }}>
+              <Link
+                to={""}
+                style={{ textDecoration: "none", cursor: "pointer" }}
+              >
                 <Grow in={true}>
                   <div style={{ position: "relative" }}>
                     <Card
@@ -167,7 +260,7 @@ export const Analytics = () => {
                         minWidth: "475px",
                         height: "288px",
                         marginTop: "20px",
-                        zIndex: 2, // Higher zIndex for the second card to be above the first card
+                        zIndex: 2,
                         borderRadius: "7px",
                       }}
                       sx={{
@@ -197,20 +290,14 @@ export const Analytics = () => {
                       >
                         68531 MC
                       </Typography>
+                      <CardMedia
+                        component="img"
+                        height="194"
+                        image="/assets/img/DM3.webp"
+                        alt="Paella dish"
+                        sx={{ objectFit: "contain" }}
+                      />
                     </Card>
-                    <img
-                      src="/assets/img/DM3.webp"
-                      alt="Your Image Alt Text"
-                      style={{
-                        width: "292px",
-                        height: "227px",
-                        objectFit: "cover",
-                        position: "absolute",
-                        top: "30px",
-                        right: "1rem",
-                        zIndex: 3,
-                      }}
-                    />
                   </div>
                 </Grow>
               </Link>

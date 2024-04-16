@@ -124,9 +124,8 @@ const configuration: webpack.Configuration = {
     static: {
       publicPath: "/",
     },
-    historyApiFallback: {
-      verbose: true,
-    },
+    historyApiFallback: false,
+
     onBeforeSetupMiddleware() {
       console.log("Starting Main Process...");
       spawn("npm", ["run", "start:main"], {

@@ -27,3 +27,8 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #141a29;
 }
+img {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  object-fit: cover;
+}

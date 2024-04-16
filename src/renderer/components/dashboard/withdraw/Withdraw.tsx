@@ -8,6 +8,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
 import { useState } from "react";
 import { MinerConsumer } from "renderer/pages/Dashboard";
+import { margin } from "@mui/system";
 
 export const Withdraw = () => {
   const [withdrawing, setWithdrawing] = useState(false);
@@ -38,16 +39,19 @@ export const Withdraw = () => {
       <Box
         display={"grid"}
         gridTemplateColumns={"1fr 1fr 1fr"}
+        // gridTemplateColumns={sm : '1fr', md : '1fr 1fr' , lg : '1fr 1fr 1fr'}}
+
         sx={{
           backgroundColor: "#080A0F",
           borderRadius: "0 0 7px 7px",
-          border: "1px solid rgba(234, 234, 234, 0.2)",
+          // border: "1px solid rgba(234, 234, 234, 0.2)",
+          gridTemplateColumns: { sm: "1fr", md: "1fr 1fr", lg: "1fr 1fr 1fr" },
         }}
       >
         <div
           style={{
             flex: 1,
-            borderRight: "1px solid rgba(234, 234, 234, 0.2)",
+            border: "1px solid rgba(234, 234, 234, 0.2)",
             padding: "10px",
             display: "flex",
             flexDirection: "column",
@@ -90,7 +94,7 @@ export const Withdraw = () => {
         <div
           style={{
             flex: 1,
-            borderRight: "1px solid rgba(234, 234, 234, 0.2)",
+            border: "1px solid rgba(234, 234, 234, 0.2)",
             padding: "10px",
             display: "flex",
             flexDirection: "column",
@@ -129,7 +133,7 @@ export const Withdraw = () => {
         <div
           style={{
             flex: 1,
-            borderRight: "1px solid rgba(234, 234, 234, 0.2)",
+            border: "1px solid rgba(234, 234, 234, 0.2)",
             padding: "10px",
             display: "flex",
             flexDirection: "column",
@@ -169,15 +173,16 @@ export const Withdraw = () => {
       <Grid item sm={12}>
         <Box
           sx={{
-            maxWidth: "200px",
-            minHeight: "200px",
-            backgroundColor: "#141A29",
-            borderRadius: "50%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            padding: "8px",
+            maxWidth: "200px", // width of the circle container
+            minHeight: "200px", // height of the circle container
+            backgroundColor: "#141A29", // circle container color
+            borderRadius: "50%", // makes the box a circle
+            display: "flex", // use flex to center the content inside the Box
+            flexDirection: "column", // stack children vertically
+            justifyContent: "center", // center vertically
+            alignItems: "center", // center horizontally
+            padding: "8px", // Add some padding around the content
+            margin: { sm: "auto", md: 0, lg: 0 },
           }}
         >
           <div
@@ -190,11 +195,13 @@ export const Withdraw = () => {
             <img
               src="/assets/img/MoneroIcon.webp"
               alt="Your Description"
-              style={{
-                maxWidth: "44px",
-                maxHeight: "44px",
-                marginTop: "5px",
-              }}
+              style={
+                {
+                  // maxWidth: "44px",
+                  // maxHeight: "44px", // height of the image
+                  // marginTop: "5px",
+                }
+              }
             />
           </div>
           <div
@@ -220,11 +227,10 @@ export const Withdraw = () => {
         </Box>
       </Grid>
 
-      <Grid item sm={12}>
+      <Grid>
         <Card
           elevation={0}
           style={{
-            minHeight: "320px",
             backgroundColor: "#0F141F",
             borderRadius: "7px",
           }}
@@ -250,13 +256,19 @@ export const Withdraw = () => {
               <Box
                 display={"grid"}
                 gridTemplateColumns={{
+                  sm: "1fr",
                   md: "1fr",
                   lg: "3fr 1fr",
                   xl: "3fr 1fr",
                 }}
               >
                 <Stack gap={"1rem"}>
-                  <Stack direction={"row"} justifyContent={"space-between"}>
+                  <Stack
+                    direction={"row"}
+                    justifyContent={"space-between"}
+                    alignItems="center"
+                    gap="1rem"
+                  >
                     <Typography
                       fontFamily="Poppins, sans-serif"
                       style={{
@@ -270,18 +282,8 @@ export const Withdraw = () => {
                     </Typography>
                     <TextField
                       id="outlined-basic"
-                      style={{
-                        maxWidth: "874px",
-                        height: "32px",
-                      }}
-                      inputProps={{
-                        style: {
-                          height: "32px",
-                          padding: "0 14px",
-                        },
-                      }}
-                      size="small"
                       fullWidth
+                      size="small"
                       variant="outlined"
                       onChange={this.emailChange}
                       InputProps={{
@@ -293,7 +295,12 @@ export const Withdraw = () => {
                       }}
                     />
                   </Stack>
-                  <Stack direction={"row"} justifyContent={"space-between"}>
+                  <Stack
+                    direction={"row"}
+                    justifyContent={"space-between"}
+                    alignItems="center"
+                    gap="1rem"
+                  >
                     <Typography
                       fontFamily="Poppins, sans-serif"
                       style={{
@@ -307,17 +314,6 @@ export const Withdraw = () => {
                     </Typography>
                     <TextField
                       id="outlined-basic"
-                      style={{
-                        maxWidth: "874px",
-                        height: "32px",
-                      }}
-                      inputProps={{
-                        style: {
-                          height: "32px",
-                          maxWidth: "874px",
-                          padding: "0 14px", // Adjust padding as needed
-                        },
-                      }}
                       size="small"
                       fullWidth
                       label="e.g. 44AFFq5kSiGBoZ4NMDwYtN18obc8AemS33DBLWs3H7otXft3XjrpDtQGv7SqSsaBYBb98uNbr2VBBEt7f2wfn3RVGQBEP3A"
@@ -331,6 +327,7 @@ export const Withdraw = () => {
                       marginTop: "20px",
                       maxHeight: "40px",
                       maxWidth: "120px",
+                      marginBottom: "1rem",
                       backgroundColor: "#FA6F15",
                     }}
                   >

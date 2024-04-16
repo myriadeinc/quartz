@@ -22,9 +22,12 @@ export const Raffle = (props: RaffleProps) => {
   const classes = useStyles();
 
   return (
-    <Grid item sm={6} md={4}>
+    <Grid item xs={12} sm={8} md={6}>
       <Grow in={true} timeout={props.timeout}>
-        <Card className={classes.card}>
+        <Card
+          className={classes.card}
+          sx={{ width: { xs: "100%", sm: "100%", md: "inherit" } }}
+        >
           <Typography>{props.raffle.public.prizeAmount}</Typography>
           <Typography>{props.raffle.public.prizeAmount}</Typography>
           <Typography>{props.raffle.public.title}</Typography>

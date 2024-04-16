@@ -13,16 +13,19 @@ export const MinerStarter = () => {
         backgroundColor: "#0F141F",
         display: "flex",
         flexWrap: "wrap",
-        height: "100%",
-        width: "100%",
+        // height: "100%",
+        // width: "100%",
+        padding: "1rem",
       }}
       sx={{
         justifyContent: {
+          sm: "center",
           md: "space-around",
           lg: "space-around",
           xl: "space-between",
         },
         gap: {
+          sm: "6px",
           md: "12px",
           lg: "12px",
           xl: "0",
@@ -31,12 +34,14 @@ export const MinerStarter = () => {
     >
       <Stack
         alignSelf={"end"}
-        alignItems={"center"}
+        // alignItems={"center"}
+        // marginLeft='1rem'
         order={{ md: 1, lg: 1, xl: 0 }}
       >
         <Box
           sx={{
-            minWidth: "150px",
+            // minWidth: "150px",
+            width: "100%",
             maxHeight: "100%",
             backgroundColor: "transparent",
             border: "1px solid #293040",
@@ -53,7 +58,7 @@ export const MinerStarter = () => {
                 color: "#8C8C8C",
                 fontWeight: 400,
                 marginTop: "6px",
-                marginBottom: "0px",
+                // marginBottom: "0px",
                 textAlign: "left",
               }}
             >
@@ -112,11 +117,13 @@ export const MinerStarter = () => {
           </Stack>
         </Box>
       </Stack>
-      <Stack alignSelf={"center"} order={{ md: 2, lg: 2, xl: 0 }}>
+      <Stack alignSelf={"center"}>
         <Box
           sx={{
-            minWidth: "260px",
-            minHeight: "260px",
+            // minWidth: "260px",
+            // minHeight: "260px",
+            width: "260px",
+            height: "260px",
             border: "thick solid #414E66",
             transform: "rotate(-25deg)",
             borderRightColor: "#FA6F15",
@@ -132,10 +139,12 @@ export const MinerStarter = () => {
             direction={"column"}
           >
             <IconButton
-              sx={{
-                width: 100,
-                height: 100,
-              }}
+              sx={
+                {
+                  // width: 100,
+                  // height: 100,
+                }
+              }
             >
               <PlayArrowIcon
                 sx={{
@@ -204,7 +213,7 @@ export const MinerStarter = () => {
               >
                 <Divider
                   sx={{
-                    flexGrow: 0.4,
+                    // flexGrow: 0.4,
                     bgcolor: "#FA6F15",
                     height: 0.25,
                     minWidth: "20px",

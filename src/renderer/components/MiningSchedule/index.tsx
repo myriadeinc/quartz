@@ -301,6 +301,7 @@ export const MiningSchedule = () => {
             alt="Plan your Mining Image"
             style={{
               zIndex: 3,
+              backgroundPosition: "50% 50%",
             }}
           />
         </Box>

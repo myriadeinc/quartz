@@ -98,9 +98,14 @@ export const GameRoom = () => {
       {isLoading ? (
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            width: {
+              xs: "100vw",
+              sm: "100vw",
+              md: "calc(100% - 406px)",
+              lg: "calc(100% - 406px)",
+            },
+            marginLeft: "406px",
+            padding: "1.5rem",
           }}
         >
           <CircularProgressLoader isLoaderInMainApp={false} />

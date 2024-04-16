@@ -7,10 +7,10 @@ export const MiningStats = ({ CurrentHashrateData }: any) => {
   return (
     <Stack
       sx={{
-        flexBasis: "30%",
+        // flexBasis: "30%",
         borderRadius: "8px",
       }}
-      gap={"1rem"}
+      gap={"1.3rem"}
     >
       <Box>
         <Typography fontSize={"1rem"} fontWeight={"600"} color={"#FFF"}>
@@ -22,35 +22,36 @@ export const MiningStats = ({ CurrentHashrateData }: any) => {
         flexWrap={"wrap"}
         direction={"row"}
         padding={"1rem"}
-        gap={"12px"}
       >
-        {MINER_STATS_ARRAY.map((stats) => {
+        {MINER_STATS_ARRAY.map((stats, index) => {
           return (
             <Box
               sx={{
-                maxHeight: "100%",
+                // maxHeight: "100%",
+                width: "100%",
                 backgroundColor: "transparent",
                 border: "1px solid #293040",
                 borderRadius: "7px",
                 marginBottom: "20px",
                 padding: "1rem",
-                flex: "28%",
+                // flex: "28%",
               }}
+              key={index}
             >
               <Stack
-                direction="column"
-                justifyContent={"space-between"}
-                alignItems={"flex-start"}
-                width="100%"
+              // direction="column"
+              // justifyContent={"space-between"}
+              // alignItems={"flex-start"}
+              // width="100%"
               >
                 <Typography
                   fontFamily="Poppins, sans-serif"
-                  sx={{
-                    fontSize: { sm: "14px", md: "14px", lg: "16px" },
+                  style={{
+                    // fontSize: "16px",
                     color: "#EAEAEA",
                     fontWeight: 400,
-                    textAlign: "left",
-                    whiteSpace: "nowrap",
+                    // textAlign: "left",
+                    // whiteSpace: "nowrap",
                   }}
                 >
                   {stats.heading}

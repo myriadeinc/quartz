@@ -30,18 +30,8 @@ const Dashboard = (props: any) => {
   const contextValue = useMemo(() => miner, [miner]);
   useEffect(() => {
     if (!vantaEffect) {
-      // setVantaEffect(
-      //   WAVES({
-      //     el: myRef.current,
-      //     color: 0x202225,
-      //     waveSpeed: 0.3,
-      //     mouseControls: false,
-      //   })
-      // );
     }
-    return () => {
-      //if (vantaEffect) vantaEffect.destroy();
-    };
+    return () => {};
   }, [vantaEffect]);
 
   useEffect(() => {
@@ -110,13 +100,14 @@ const Dashboard = (props: any) => {
             </Suspense>
             <Switch>
               {dashboardRoutes.map(
-                (view) =>
+                (view, index) =>
                   view.visible && (
                     <ProtectedRoute
                       exact={view.name == "Dashboard"}
                       path={`${props.match.path}${view.ref}`}
                       component={view.component}
                       authenticated={authenticated}
+                      key={index}
                     />
                   )
               )}

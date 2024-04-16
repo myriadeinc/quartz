@@ -206,7 +206,7 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
               }}
             />
             {rows.length > 0 ? (
-              <TableBody>
+              <TableBody sx={{ scrollbarWidth: "4px" }}>
                 {rows
                   .slice()
                   .sort(getComparator(order, orderBy))

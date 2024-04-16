@@ -43,9 +43,16 @@ export const HistoryChart = ({ isAnalytics, padding }: ChartProps) => {
             zIndex: 2,
             borderRadius: "7px",
             position: "relative",
+            minWidth: "400px",
           }}
           sx={{
-            height: { md: "45vh", lg: "52 vh", xl: "48vh" },
+            height: {
+              xs: "45vh",
+              sm: "45vh",
+              md: "45vh",
+              lg: "52 vh",
+              xl: "48vh",
+            },
           }}
         >
           <img
