@@ -62,7 +62,7 @@ const createWindow = async () => {
     // show: false,
     title: "Myriade",
     autoHideMenuBar: true,
-    resizable: false,
+    resizable: true,
     icon: getPlatformIcon(),
     webPreferences: {
       nodeIntegration: true,
