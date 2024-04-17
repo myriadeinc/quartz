@@ -1,30 +1,36 @@
-import React from "react";
-import { Component } from "react";
+import React, { Component } from "react";
 import WAVES from "vanta/dist/vanta.waves.min";
 import { Redirect, Link } from "react-router-dom";
 import * as ROUTES from "../utils/routes";
-import TextField from "@mui/material/TextField";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import Grid from "@mui/material/Grid";
-
-class LoginPage extends Component<any, any> {
-  vantaRef: any;
-  vantaEffect: any;
-  constructor(props: any) {
+import {
+  Grid,
+  Paper,
+  TextField,
+  Button,
+  Box,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import Typography from "renderer/components/common/typography";
+import VisibilityOn from "assets/icons/VisibilityOn";
+import VisibilityOff from "assets/icons/VisibilityOff";
+class LoginPage extends Component {
+  constructor(props) {
     super(props);
     this.state = {
       email: "",
       password: "",
+      showPassword: false,
+      hover: false,
     };
     this.handleLogin = this.handleLogin.bind(this);
-    this.dismissError = this.dismissError.bind(this);
     this.emailChange = this.emailChange.bind(this);
     this.passwordChange = this.passwordChange.bind(this);
+    this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this);
+    this.hoverChange = this.hoverChangeHandle.bind(this);
     this.vantaRef = React.createRef();
+    // this.classes = useStyles();
   }
-
   componentDidMount() {
     this.vantaEffect = WAVES({
       el: this.vantaRef.current,
@@ -42,31 +48,34 @@ class LoginPage extends Component<any, any> {
     if (this.vantaEffect) this.vantaEffect.destroy();
   }
 
-  emailChange(e: any) {
+  emailChange(e) {
     this.setState({ email: e.target.value });
   }
 
-  passwordChange(e: any) {
+  passwordChange(e) {
     this.setState({ password: e.target.value });
   }
 
-  handleLogin(e: any) {
-    const email = this.state.email;
-    const password = this.state.password;
+  handleLogin(e) {
+    e.preventDefault();
+    const { email, password } = this.state;
     this.setState({ logging_in: true });
-    return this.props.login(email, password).catch((err: any) => {
-      this.setState({ loggin_in: false, error: true });
-    });
+    this.props
+      .login(email, password)
+      .then(() => this.setState({ logging_in: false }))
+      .catch(() => this.setState({ logging_in: false, error: true }));
   }
 
-  dismissError() {
-    this.setState({ error: false });
+  togglePasswordVisibility() {
+    this.setState((prevState) => ({
+      showPassword: !prevState.showPassword,
+    }));
   }
-
-  displayError() {
-    return <Alert>Login failed. Try again</Alert>;
+  hoverChangeHandle() {
+    this.setState((prevState) => ({
+      hover: !prevState.hover,
+    }));
   }
-
   render() {
     if (this.props.authenticated) {
       return (
@@ -92,49 +101,118 @@ class LoginPage extends Component<any, any> {
                 backgroundColor: "#0F141F",
               }}
             >
-              <Typography
-                fontFamily="Poppins, sans-serif"
-                style={{
-                  paddingTop: "25px",
-                  paddingLeft: "20px",
-                  color: "#EAEAEA",
-                  fontSize: "20px",
+              <Box
+                sx={{
+                  maxWidth: "360px",
+                  maxHeight: "28px",
+                  position: "relative",
+                  left: "20px",
+                  top: "20px",
                 }}
               >
-                Login
-              </Typography>
-              <div style={{ margin: "auto", textAlign: "center" }}>
+                <Typography variant="heading2" fontWeight="500px">
+                  Login
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  maxWidth: "360px",
+                  maxHeight: "32px",
+                  paddingTop: "20px",
+                  margin: "auto",
+                }}
+              >
                 <TextField
+                  variant="standard"
                   id="outlined-basic"
+                  InputProps={{
+                    disableUnderline: true,
+                  }}
                   style={{
-                    width: "360px",
-                    height: "32px",
-                    marginTop: "20px",
+                    maxWidth: "360px",
+                    maxHeight: "32px",
+                    paddingTop: "20px",
+                    fontSize: "14px",
                   }}
                   size="small"
                   fullWidth
-                  label="Email"
-                  variant="outlined"
+                  placeholder="Email"
+                  sx={{
+                    border: "1px solid #414E66",
+                    borderRadius: "3px",
+                    "& input:focus": {
+                      borderBottom: "2px solid #FA6F15",
+                      outline: "none",
+                      "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                          border: "none",
+                        },
+                        "&.Mui-focused fieldset": {
+                          border: "none",
+                        },
+                        "&:hover fieldset": {
+                          border: "none",
+                        },
+                      },
+                    },
+                    "&:focus": {
+                      outline: "none",
+                      border: "0",
+                    },
+                  }}
                   onChange={this.emailChange}
                 />
-              </div>
-              <div style={{ margin: "auto", textAlign: "center" }}>
+              </Box>
+              <Box
+                sx={{
+                  maxWidth: "360px",
+                  maxHeight: "32px",
+                  paddingTop: "20px",
+                  margin: "auto",
+                }}
+              >
                 <TextField
-                  id="outlined-basic"
+                  id="outlined-adornment-password"
                   style={{
-                    width: "360px",
-                    height: "32px",
-                    marginTop: "23px",
+                    maxWidth: "360px",
+                    maxHeight: "32px",
+                    paddingTop: "20px",
+                    fontSize: "14px",
                   }}
                   size="small"
                   fullWidth
-                  label="Password"
+                  placeholder="Password"
                   variant="outlined"
+                  type={this.state.showPassword ? "text" : "password"}
+                  value={this.state.password}
                   onChange={this.passwordChange}
-                  type="password"
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end" sx={{ ":hover": "none" }}>
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={this.togglePasswordVisibility}
+                          edge="end"
+                          style={{ hover: "none" }}
+                        >
+                          {this.state.showPassword ? (
+                            <VisibilityOn />
+                          ) : (
+                            <VisibilityOff />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
-              </div>
-              <div style={{ margin: "auto", textAlign: "center" }}>
+              </Box>
+              <div
+                style={{
+                  margin: "auto",
+                  textAlign: "center",
+                  paddingTop: "16px",
+                }}
+              >
                 <Button
                   fullWidth
                   style={{
