@@ -100,10 +100,9 @@ export const userLogin = async (email: string, password: string) => {
     });
     const { accessToken } = response.data;
     localStorage.setItem("access_token", accessToken);
-    return { authenticated: true };
+    return { ...response.data };
   } catch (error) {
-    {
-      authenticated: false;
-    }
+    const errorMessage = error?.response.data;
+    return { errorMessage };
   }
 };

@@ -106,7 +106,7 @@ export const Analytics = () => {
                       <CardMedia
                         component="img"
                         height="194"
-                        image="/assets/img/DM.webp"
+                        image="/assets/Illustrations/DM.webp"
                         alt="Paella dish"
                         sx={{ objectFit: "contain" }}
                       />
@@ -236,7 +236,7 @@ export const Analytics = () => {
                       <CardMedia
                         component="img"
                         height="194"
-                        image="/assets/img/DM2.webp"
+                        image="/assets/Illustrations/DM2.webp"
                         alt="Paella dish"
                         sx={{ objectFit: "contain" }}
                       />
@@ -293,7 +293,7 @@ export const Analytics = () => {
                       <CardMedia
                         component="img"
                         height="194"
-                        image="/assets/img/DM3.webp"
+                        image="/assets/Illustrations/DM3.webp"
                         alt="Paella dish"
                         sx={{ objectFit: "contain" }}
                       />

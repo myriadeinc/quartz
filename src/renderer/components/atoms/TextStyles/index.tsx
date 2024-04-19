@@ -71,8 +71,8 @@ function Typography({
       styleProps = {
         ...styleProps,
         variant: "h1",
-        fontSize: "48px",
-        fontWeight: "bold",
+        fontSize: "28px",
+        fontWeight: "regular",
       };
       break;
     case "heading2":
@@ -119,7 +119,7 @@ function Typography({
       styleProps = {
         ...styleProps,
         variant: "body1",
-        fontSize: "16px",
+        fontSize: "18px",
         fontWeight: FontWeight.Regular,
       };
       break;
@@ -127,7 +127,7 @@ function Typography({
       styleProps = {
         ...styleProps,
         variant: "body1",
-        fontSize: "14px",
+        fontSize: "16px",
         fontWeight: FontWeight.Regular,
       };
       break;
@@ -135,7 +135,7 @@ function Typography({
       styleProps = {
         ...styleProps,
         variant: "body2",
-        fontSize: "12px",
+        fontSize: "14px",
         fontWeight: FontWeight.Regular,
       };
       break;
@@ -143,7 +143,7 @@ function Typography({
       styleProps = {
         ...styleProps,
         variant: "button",
-        fontSize: "1rem",
+        fontSize: "14px",
       };
       break;
     case "buttonSmall":

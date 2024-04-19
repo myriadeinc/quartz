@@ -2,18 +2,10 @@ import React, { Component } from "react";
 import WAVES from "vanta/dist/vanta.waves.min";
 import { Redirect, Link } from "react-router-dom";
 import * as ROUTES from "../utils/routes";
-import {
-  Grid,
-  Paper,
-  TextField,
-  Button,
-  Box,
-  InputAdornment,
-  IconButton,
-} from "@mui/material";
-import Typography from "renderer/components/common/typography";
-import VisibilityOn from "assets/icons/VisibilityOn";
-import VisibilityOff from "assets/icons/VisibilityOff";
+import { Grid } from "@mui/material";
+import { userLogin } from "services/api.service";
+import LoginMolecule from "renderer/components/molecules/Login";
+
 class LoginPage extends Component {
   constructor(props) {
     super(props);
@@ -22,6 +14,7 @@ class LoginPage extends Component {
       password: "",
       showPassword: false,
       hover: false,
+      error: null,
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.emailChange = this.emailChange.bind(this);
@@ -29,8 +22,9 @@ class LoginPage extends Component {
     this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this);
     this.hoverChange = this.hoverChangeHandle.bind(this);
     this.vantaRef = React.createRef();
-    // this.classes = useStyles();
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
+
   componentDidMount() {
     this.vantaEffect = WAVES({
       el: this.vantaRef.current,
@@ -55,15 +49,29 @@ class LoginPage extends Component {
   passwordChange(e) {
     this.setState({ password: e.target.value });
   }
+  validateEmail(email: string) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
 
-  handleLogin(e) {
+  async handleLogin(e) {
     e.preventDefault();
     const { email, password } = this.state;
+    if (!this.validateEmail(email)) {
+      this.setState({ error: "Invalid email format" });
+      return;
+    }
     this.setState({ logging_in: true });
-    this.props
-      .login(email, password)
-      .then(() => this.setState({ logging_in: false }))
-      .catch(() => this.setState({ logging_in: false, error: true }));
+    const authenticated = await userLogin(email, password);
+    if (authenticated.accessToken) {
+      this.setState({
+        logging_in: true,
+      });
+    } else {
+      this.setState({
+        error: authenticated.errorMessage,
+      });
+    }
   }
 
   togglePasswordVisibility() {
@@ -71,11 +79,17 @@ class LoginPage extends Component {
       showPassword: !prevState.showPassword,
     }));
   }
+
   hoverChangeHandle() {
     this.setState((prevState) => ({
       hover: !prevState.hover,
     }));
   }
+
+  handleUpdate(error) {
+    this.setState({ error });
+  }
+
   render() {
     if (this.props.authenticated) {
       return (
@@ -93,165 +107,15 @@ class LoginPage extends Component {
           style={{ height: "100vh" }}
         >
           <Grid>
-            <Paper
-              elevation={3}
-              style={{
-                width: "400px",
-                height: "288px",
-                backgroundColor: "#0F141F",
-              }}
-            >
-              <Box
-                sx={{
-                  maxWidth: "360px",
-                  maxHeight: "28px",
-                  position: "relative",
-                  left: "20px",
-                  top: "20px",
-                }}
-              >
-                <Typography variant="heading2" fontWeight="500px">
-                  Login
-                </Typography>
-              </Box>
-              <Box
-                sx={{
-                  maxWidth: "360px",
-                  maxHeight: "32px",
-                  paddingTop: "20px",
-                  margin: "auto",
-                }}
-              >
-                <TextField
-                  variant="standard"
-                  id="outlined-basic"
-                  InputProps={{
-                    disableUnderline: true,
-                  }}
-                  style={{
-                    maxWidth: "360px",
-                    maxHeight: "32px",
-                    paddingTop: "20px",
-                    fontSize: "14px",
-                  }}
-                  size="small"
-                  fullWidth
-                  placeholder="Email"
-                  sx={{
-                    border: "1px solid #414E66",
-                    borderRadius: "3px",
-                    "& input:focus": {
-                      borderBottom: "2px solid #FA6F15",
-                      outline: "none",
-                      "& .MuiOutlinedInput-root": {
-                        "& fieldset": {
-                          border: "none",
-                        },
-                        "&.Mui-focused fieldset": {
-                          border: "none",
-                        },
-                        "&:hover fieldset": {
-                          border: "none",
-                        },
-                      },
-                    },
-                    "&:focus": {
-                      outline: "none",
-                      border: "0",
-                    },
-                  }}
-                  onChange={this.emailChange}
-                />
-              </Box>
-              <Box
-                sx={{
-                  maxWidth: "360px",
-                  maxHeight: "32px",
-                  paddingTop: "20px",
-                  margin: "auto",
-                }}
-              >
-                <TextField
-                  id="outlined-adornment-password"
-                  style={{
-                    maxWidth: "360px",
-                    maxHeight: "32px",
-                    paddingTop: "20px",
-                    fontSize: "14px",
-                  }}
-                  size="small"
-                  fullWidth
-                  placeholder="Password"
-                  variant="outlined"
-                  type={this.state.showPassword ? "text" : "password"}
-                  value={this.state.password}
-                  onChange={this.passwordChange}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end" sx={{ ":hover": "none" }}>
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={this.togglePasswordVisibility}
-                          edge="end"
-                          style={{ hover: "none" }}
-                        >
-                          {this.state.showPassword ? (
-                            <VisibilityOn />
-                          ) : (
-                            <VisibilityOff />
-                          )}
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </Box>
-              <div
-                style={{
-                  margin: "auto",
-                  textAlign: "center",
-                  paddingTop: "16px",
-                }}
-              >
-                <Button
-                  fullWidth
-                  style={{
-                    backgroundColor: "#FA6F15",
-                    marginTop: "20px",
-                    width: "120px",
-                    height: "32px",
-                    fontSize: "14px",
-                    fontWeight: "600",
-                    color: "#0F141F",
-                  }}
-                  variant="contained"
-                  onClick={this.handleLogin}
-                >
-                  Login
-                </Button>
-              </div>
-              <div style={{ margin: "auto", textAlign: "center" }}>
-                <Typography
-                  fontFamily="Poppins, sans-serif"
-                  style={{
-                    marginTop: "50px",
-                    fontSize: "12px",
-                    color: "#EAEAEA",
-                  }}
-                >
-                  Don't have an account? Sign up{" "}
-                  <Link
-                    style={{
-                      fontSize: "12px",
-                      color: "#6C81F5",
-                    }}
-                    to={ROUTES.SIGN_UP}
-                  >
-                    HERE
-                  </Link>
-                </Typography>{" "}
-              </div>
-            </Paper>
+            <LoginMolecule
+              onEmailChange={this.emailChange}
+              onPasswordChange={this.passwordChange}
+              onToggleVisible={this.togglePasswordVisibility}
+              state={this.state}
+              handleLogin={this.handleLogin}
+              handleUpdate={this.handleUpdate}
+              signupRoute={ROUTES.SIGN_UP}
+            />
           </Grid>
         </Grid>
       );
