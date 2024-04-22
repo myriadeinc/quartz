@@ -153,7 +153,7 @@ export const MinerStarter = () => {
                   color: "#FA6F15", // Icon color
                   backgroundColor: "transparent", // Button background color
                 }}
-              ></PlayArrowIcon>
+              />
             </IconButton>
             <Typography
               fontFamily="Poppins, sans-serif"

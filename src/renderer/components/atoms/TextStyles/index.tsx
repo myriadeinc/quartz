@@ -3,6 +3,7 @@ import { Typography as MuiTypography } from "@mui/material";
 
 const VARIANTS = {
   label: "label",
+  caption: "caption",
   body: "body",
   headingXXL: "headingXL",
   headingXL: "headingXL",
@@ -25,15 +26,24 @@ type Variant = keyof typeof VARIANTS;
 export enum FontWeight {
   Light = 300,
   Regular = 400,
+  Medium = 500,
   SemiBold = 600,
   Bold = 700,
   ExtraBold = 800,
 }
-
+export enum LineHeight {
+  H1 = "32px",
+  H2 = "28px",
+  Body1 = "24px",
+  Body2 = "24px",
+  Body3 = "20px",
+  Caption = "16px",
+}
 interface TypographyProps {
   variant?: Variant;
   uppercase?: boolean;
   primary?: boolean;
+  color?: string;
   centered?: boolean;
   weight?: FontWeight | "inherit";
   children?: React.ReactNode;
@@ -44,6 +54,7 @@ function Typography({
   uppercase = false,
   primary = false,
   weight,
+  color,
   children,
   centered,
   ...props
@@ -54,6 +65,7 @@ function Typography({
     case "headingXXL":
       styleProps = {
         ...styleProps,
+        color: color,
         variant: "h1",
         fontSize: "72px",
         fontWeight: "bold",
@@ -62,6 +74,7 @@ function Typography({
     case "headingXL":
       styleProps = {
         ...styleProps,
+        color: color,
         variant: "h1",
         fontSize: "60px",
         fontWeight: "bold",
@@ -70,22 +83,27 @@ function Typography({
     case "heading1":
       styleProps = {
         ...styleProps,
+        color: color,
         variant: "h1",
         fontSize: "28px",
-        fontWeight: "regular",
+        fontWeight: FontWeight.Regular,
+        lineHeight: LineHeight.H1,
       };
       break;
     case "heading2":
       styleProps = {
         ...styleProps,
+        color: color,
         variant: "h2",
         fontSize: "20px",
-        fontWeight: "500",
+        fontWeight: FontWeight.Medium,
+        lineHeight: LineHeight.H2,
       };
       break;
     case "heading3":
       styleProps = {
         ...styleProps,
+        color: color,
         variant: "h3",
         fontSize: "30px",
         fontWeight: "bold",
@@ -118,25 +136,41 @@ function Typography({
     case "bodyLarge":
       styleProps = {
         ...styleProps,
+        color: color,
         variant: "body1",
         fontSize: "18px",
         fontWeight: FontWeight.Regular,
+        lineHeight: LineHeight.Body1,
       };
       break;
     case "body":
       styleProps = {
         ...styleProps,
+        color: color,
         variant: "body1",
         fontSize: "16px",
         fontWeight: FontWeight.Regular,
+        lineHeight: LineHeight.Body2,
       };
       break;
     case "bodySmall":
       styleProps = {
         ...styleProps,
+        color: color,
         variant: "body2",
         fontSize: "14px",
         fontWeight: FontWeight.Regular,
+        lineHeight: LineHeight.Body3,
+      };
+      break;
+    case "caption":
+      styleProps = {
+        ...styleProps,
+        color: color,
+        variant: "caption",
+        fontSize: "12px",
+        fontWeight: FontWeight.Regular,
+        lineHeight: LineHeight.Caption,
       };
       break;
     case "button":
@@ -169,7 +203,7 @@ function Typography({
     styleProps = { ...styleProps, textAlign: "center" };
   }
   if (primary) {
-    styleProps = { ...styleProps, color: "primary.main" };
+    styleProps = { ...styleProps, color: "#EAEAEA" };
   }
   if (weight) {
     styleProps = { ...styleProps, fontWeight: weight };

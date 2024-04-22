@@ -2,6 +2,7 @@ interface colorProps {
   rectangleColor: string;
   pathColor: string;
 }
+
 const VisibilityOff = () => {
   return (
     <svg
