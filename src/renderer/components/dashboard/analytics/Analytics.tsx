@@ -8,7 +8,17 @@ import { MinerConsumer } from "renderer/pages/Dashboard";
 import { FriendMenu } from "../friends/Friends";
 import { HistoryChart } from "renderer/components/common/historyChart";
 import { useState, useEffect } from "react";
-
+import Chart from "./Chart";
+import { CurrentDrawings } from "renderer/components/components/Gameroom/components/CurrentDrawings";
+const dummyData = [
+  { time: 1619443200000, rate: 500 },
+  { time: 1619446800000, rate: 600 },
+  { time: 1619450400000, rate: 700 },
+  { time: 1619454000000, rate: 800 },
+  { time: 1619457600000, rate: 900 },
+  { time: 1619461200000, rate: 1000 },
+  // Add more data points as needed
+];
 export const Analytics = () => {
   const [screenSize, setScreenSize] = useState({
     width: window.innerWidth,

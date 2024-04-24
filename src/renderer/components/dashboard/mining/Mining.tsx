@@ -107,7 +107,7 @@ export const Mining = () => {
                       display: "flex",
                       justifyContent: "center",
                       flexDirection: "column",
-                      maxWidth: "200px",
+                      maxWidth: "270px",
                       alignItems: "center",
                     }}
                   >

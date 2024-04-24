@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -5,6 +6,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import VisibilityOn from "renderer/components/atoms/Login/EyeToggle/Dark/VisibilityOn";
+import VisibilityOff from "renderer/components/atoms/Login/EyeToggle/Dark/VisibilityOff";
+import IconButton from "@mui/material/IconButton";
 
 function createData(
   name: string,
@@ -23,6 +27,20 @@ const rows = [
 ];
 
 export default function GCHistory() {
+  const [showVisibleIcon, setShowVisibleIcon] = useState<number | null>(null);
+  const [isVisibleOn, setIsVisibleOff] = useState(false);
+
+  const handleMouseEnter = (index: number) => {
+    setShowVisibleIcon(index);
+  };
+
+  const handleMouseLeave = () => {
+    setShowVisibleIcon(null);
+  };
+
+  const handleVisibleIconOnOff = () => {
+    setIsVisibleOff(!isVisibleOn);
+  };
   return (
     <TableContainer
       component={Paper}
@@ -119,12 +137,38 @@ export default function GCHistory() {
               </TableCell>
               <TableCell
                 align="left"
+                onMouseEnter={() => handleMouseEnter(index)}
+                onMouseLeave={handleMouseLeave}
                 sx={{
                   color: "#EAEAEA",
                   width: "385px",
                   borderBottom: "1px solid #293040",
                 }}
               >
+                {showVisibleIcon === index && (
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={() => handleVisibleIconOnOff()}
+                  >
+                    {isVisibleOn ? (
+                      <VisibilityOn
+                        rectangleColor={"#414E66"}
+                        pathColor="#EAEAEA"
+                      />
+                    ) : (
+                      <VisibilityOff
+                        rectangleColor={"#414E66"}
+                        pathColor="#EAEAEA"
+                      />
+                    )}
+                  </IconButton>
+                )}
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={() => console.log("Clicked!")}
+                >
+                  <VisibilityOff color="#EAEAEA" />
+                </IconButton>
                 {row.protein}
               </TableCell>
             </TableRow>

@@ -1,12 +1,13 @@
 import { Box, IconButton } from "@mui/material";
-import { DashboardIcon } from "renderer/components/atoms/Settings/Settings-II/DashboardIcon";
+import React, { useState } from "react";
 import Typography from "renderer/components/atoms/TextStyles";
 
 type Props = {
   item: string;
+  MenuIcon: React.ElementType;
 };
 
-export const MainMenuItem = ({ item }: Props) => {
+export const MainMenuItem = ({ item, MenuIcon }: Props) => {
   const [iconState, setIconState] = useState({
     isHovered: false,
     isSelected: false,
@@ -39,7 +40,7 @@ export const MainMenuItem = ({ item }: Props) => {
           },
         }}
       >
-        <DashboardIcon
+        <MenuIcon
           rectangleColor={"transparent"}
           pathColor={
             iconState.isSelected
@@ -50,9 +51,8 @@ export const MainMenuItem = ({ item }: Props) => {
           }
         />
       </IconButton>
-      <Box sx={{ maxWidth: "266px", maxHeight: "24px" }}>
-        <Typography>{item}</Typography>
-      </Box>
+      <Typography>{item}</Typography>
+      {/* <Box sx={{ maxWidth: "266px", maxHeight: "24px" }}></Box> */}
     </Box>
   );
 };

@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { WorkersIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/WorkersIcon";
+import { WorkersIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/WorkersIcon";
 import Typography from "renderer/components/atoms/TextStyles";
 
 export const ActiveMiner = () => {

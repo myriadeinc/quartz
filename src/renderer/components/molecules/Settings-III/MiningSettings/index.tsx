@@ -1,9 +1,12 @@
 import { Box } from "@mui/material";
 import Typography from "renderer/components/atoms/TextStyles";
 
-type Props = {};
+type MiningSettingsProps = {
+  settings: string;
+  info: string;
+};
 
-export const MiningSettings = (props: Props) => {
+export const MiningSettingsBox = ({ settings, info }: MiningSettingsProps) => {
   return (
     <Box
       sx={{
@@ -13,9 +16,9 @@ export const MiningSettings = (props: Props) => {
       }}
     >
       <Typography variant="body" color="#EAEAEA">
-        Settings
+        {settings}
       </Typography>
-      <Typography color="#8C8C8C">Info</Typography>
+      {info && <Typography color="#8C8C8C">{info}</Typography>}
     </Box>
   );
 };

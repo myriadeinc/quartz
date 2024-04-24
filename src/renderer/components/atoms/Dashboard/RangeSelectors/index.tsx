@@ -1,15 +1,27 @@
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
-
-export function RangeSelectorButtonGroup() {
+interface buttonGroupName {
+  firstButtonTitle: string;
+  SecondButtonTitle: string;
+  ThirdButtonTitle: string;
+  FourthButtonTitle: string;
+  FifthButtonTitle: string;
+}
+export function RangeSelectorButtonGroup({
+  firstButtonTitle,
+  SecondButtonTitle,
+  ThirdButtonTitle,
+  FifthButtonTitle,
+  FourthButtonTitle,
+}: buttonGroupName) {
   return (
     <ButtonGroup
       variant="outlined"
       aria-label="Basic button group"
       sx={{
         backgroundColor: "#080A0F",
-        minWidth: "80px",
-        minHeight: "32px",
+        minWidth: "323px",
+        maxHeight: "32px",
         color: "#EAEAEA",
         fontSize: "14px",
         lineHeight: "20px",
@@ -28,7 +40,7 @@ export function RangeSelectorButtonGroup() {
           },
         }}
       >
-        One
+        {firstButtonTitle}
       </Button>
       <Button
         sx={{
@@ -41,7 +53,7 @@ export function RangeSelectorButtonGroup() {
           },
         }}
       >
-        Two
+        {SecondButtonTitle}
       </Button>
       <Button
         sx={{
@@ -54,7 +66,7 @@ export function RangeSelectorButtonGroup() {
           },
         }}
       >
-        Three
+        {ThirdButtonTitle}
       </Button>
       <Button
         sx={{
@@ -67,7 +79,7 @@ export function RangeSelectorButtonGroup() {
           },
         }}
       >
-        One
+        {FourthButtonTitle}
       </Button>
     </ButtonGroup>
   );

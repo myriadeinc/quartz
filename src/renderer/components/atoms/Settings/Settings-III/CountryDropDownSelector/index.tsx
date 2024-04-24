@@ -6,7 +6,7 @@ export const CountryDropDownSelector = () => {
   return (
     <Autocomplete
       id="country-select-demo"
-      sx={{ maxWidth: "228px", height: "32px" }}
+      sx={{ maxWidth: "230px", maxHeight: "289px", overflow: "auto" }}
       options={countries}
       autoHighlight
       popupIcon={<DropDownIcon />}

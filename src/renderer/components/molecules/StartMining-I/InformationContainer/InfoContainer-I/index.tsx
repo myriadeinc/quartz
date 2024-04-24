@@ -1,18 +1,26 @@
 import { Box } from "@mui/material";
-import React from "react";
 import Typography from "renderer/components/atoms/TextStyles";
 
 type InfoContainerIProps = {
   title: string;
-  info: string;
+  infoFirst: string;
+  infoSecond: string;
+  infoFirstUnit: string;
+  infoSecondUnit: string;
 };
 
-export const InforContainerI = ({ title, info }: InfoContainerIProps) => {
+export const InfoContainerI = ({
+  title,
+  infoFirst,
+  infoFirstUnit,
+  infoSecond,
+  infoSecondUnit,
+}: InfoContainerIProps) => {
   return (
     <Box
       sx={{
-        width: "225px",
-        height: "134px",
+        maxWidth: "208px",
+        maxHeight: "116px",
         padding: "19px 9px 23px 8px",
         gap: "8px",
       }}
@@ -20,9 +28,22 @@ export const InforContainerI = ({ title, info }: InfoContainerIProps) => {
       <Typography variant="bodySmall" color="#8C8C8C">
         {title}
       </Typography>
-      <Typography variant="body" color="#EAEAEA">
-        {info}
-      </Typography>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Typography variant="body" color="#EAEAEA">
+          {infoFirst}
+        </Typography>
+        <Typography variant="body" color="#EAEAEA">
+          {infoFirstUnit}
+        </Typography>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Typography variant="body" color="#EAEAEA">
+          {infoSecond}
+        </Typography>
+        <Typography variant="body" color="#EAEAEA">
+          {infoSecondUnit}
+        </Typography>
+      </Box>
     </Box>
   );
 };

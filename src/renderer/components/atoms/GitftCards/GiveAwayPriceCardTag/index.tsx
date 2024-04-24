@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import Typography from "../../TextStyles";
 type Props = {
   backgroundColor: string;
@@ -9,16 +10,17 @@ export const GiveAwayPriceCardTag = ({ backgroundColor, text }: Props) => {
     <Box
       sx={{
         backgroundColor: backgroundColor,
-        borderRadius: "50%",
-        minHeight: "48px",
-        maxWidth: "48px",
+        borderBottomLeftRadius: "7px",
+        padding: "8px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        position: "absolute",
+        right: 0,
       }}
     >
-      <Typography variant="h2" lineHeight="28px" weight="500">
-        {text}
+      <Typography variant="heading2" color="#0F141F">
+        $ {text}
       </Typography>
     </Box>
   );

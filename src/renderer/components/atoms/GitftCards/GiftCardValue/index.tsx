@@ -11,16 +11,16 @@ export const GiftCardValue = ({ backgroundColor, text }: Props) => {
     <Box
       sx={{
         backgroundColor: backgroundColor,
-        borderRadius: "0 7px 0 7px",
-        minHeight: "44px",
-        maxWidth: "60px",
+        borderRadius: "50%",
+        minHeight: "48px",
+        maxWidth: "48px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
-      <Typography variant="h2" lineHeight="28px" weight="500">
-        {text}
+      <Typography variant="heading2" color="#0F141F">
+        {text} $
       </Typography>
     </Box>
   );

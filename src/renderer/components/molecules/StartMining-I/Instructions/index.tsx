@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
-import React, { ReactNode } from "react";
+import React, { ReactElement } from "react";
 import Typography from "renderer/components/atoms/TextStyles";
 
 type InstructionProps = {
   instructions: string;
-  InstructionIcon: ReactNode;
+  InstructionIcon: ReactElement;
 };
 
 export const Instructions = ({
@@ -14,15 +14,40 @@ export const Instructions = ({
   return (
     <Box
       sx={{
-        width: "284px",
-        height: "104px",
-        padding: "7px 7px 11px 7px",
-        gap: "16px",
+        borderRight: {
+          xs: "1px solid rgba(234, 234, 234, 0.2)",
+          sm: "none",
+          md: "none",
+          lg: "1px solid rgba(234, 234, 234, 0.2)",
+          xl: "1px solid rgba(234, 234, 234, 0.2)",
+        },
+        borderBottom: {
+          sm: "1px solid rgba(234, 234, 234, 0.2)",
+          md: "1px solid rgba(234, 234, 234, 0.2)",
+          lg: "none",
+          xl: "none",
+        },
+        width: "90%",
+        padding: "10px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        margin: "auto",
+        placeContent: "center",
       }}
+      key={index}
     >
-      <InstructionIcon />
-      <Box>
-        <Typography variant="bodySmall" centered>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          maxWidth: "270px",
+          alignItems: "center",
+        }}
+      >
+        <InstructionIcon />
+        <Typography variant="body" color="#EAEAEA" centered>
           {instructions}
         </Typography>
       </Box>

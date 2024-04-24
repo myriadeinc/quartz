@@ -11,8 +11,8 @@ export const InformationBox = ({ title, info, unit }: InformationBoxProps) => {
   return (
     <Box
       sx={{
-        width: "208px",
-        height: "92px",
+        maxWidth: "208px",
+        maxHeight: "92px",
         padding: "20px",
         backgroundColor: "#0F141F",
         borderRadius: "7px",

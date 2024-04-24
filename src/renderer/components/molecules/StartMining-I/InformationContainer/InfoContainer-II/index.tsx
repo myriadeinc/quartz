@@ -4,32 +4,26 @@ import Typography from "renderer/components/atoms/TextStyles";
 
 type InfoContainerIIProps = {
   title: string;
-  label1: string;
-  label2: string;
+  label: string;
 };
 
-export const InforContainerII = ({
-  title,
-  label1,
-  label2,
-}: InfoContainerIIProps) => {
+export const InforContainerII = ({ title, label }: InfoContainerIIProps) => {
   return (
     <Box
       sx={{
-        width: "225px",
-        height: "134px",
-        padding: "9px 9px 1px 8px",
+        maxWidth: "225px",
+        maxHeight: "92px",
+        padding: "20px",
         gap: "8px",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <Typography variant="bodySmall" color="#8C8C8C">
         {title}
       </Typography>
       <Typography variant="body" color="#EAEAEA">
-        {label1}
-      </Typography>
-      <Typography variant="body" color="#EAEAEA">
-        {label2}
+        {label}
       </Typography>
     </Box>
   );

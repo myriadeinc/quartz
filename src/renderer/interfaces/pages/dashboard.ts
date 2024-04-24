@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, ReactElement } from "react";
 
 export interface DashboardRoute {
   name: string;
@@ -63,6 +63,11 @@ export interface IFriend {
 
 export interface IMiner {
   src: string;
+  title: string;
+  alt: string;
+}
+export interface IMiner2 {
+  InstructionIcon: ReactElement;
   title: string;
   alt: string;
 }
