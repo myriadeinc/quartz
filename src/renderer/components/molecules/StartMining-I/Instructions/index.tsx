@@ -1,19 +1,23 @@
 import { Box } from "@mui/material";
 import React, { ReactElement } from "react";
+import { MenuIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons";
 import Typography from "renderer/components/atoms/TextStyles";
 
 type InstructionProps = {
   instructions: string;
-  InstructionIcon: ReactElement;
+  InstructionIcon: any;
+  key: string;
 };
 
 export const Instructions = ({
   instructions,
   InstructionIcon,
+  key,
 }: InstructionProps) => {
   return (
     <Box
       sx={{
+        flexGrow: 1,
         borderRight: {
           xs: "1px solid rgba(234, 234, 234, 0.2)",
           sm: "none",
@@ -35,7 +39,7 @@ export const Instructions = ({
         margin: "auto",
         placeContent: "center",
       }}
-      key={index}
+      key={key}
     >
       <Box
         sx={{
@@ -46,7 +50,8 @@ export const Instructions = ({
           alignItems: "center",
         }}
       >
-        <InstructionIcon />
+        {InstructionIcon}
+        <MenuIcon name="StartMiningIcon" />
         <Typography variant="body" color="#EAEAEA" centered>
           {instructions}
         </Typography>

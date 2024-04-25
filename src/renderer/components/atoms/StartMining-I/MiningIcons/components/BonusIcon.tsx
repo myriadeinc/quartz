@@ -2,7 +2,7 @@ import React from "react";
 
 type Props = {};
 
-export const BonusIcon = (props: Props) => {
+export const BonusIcon = () => {
   return (
     <svg
       width="44"

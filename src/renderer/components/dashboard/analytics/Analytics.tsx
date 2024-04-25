@@ -8,22 +8,19 @@ import { MinerConsumer } from "renderer/pages/Dashboard";
 import { FriendMenu } from "../friends/Friends";
 import { HistoryChart } from "renderer/components/common/historyChart";
 import { useState, useEffect } from "react";
-import Chart from "./Chart";
-import { CurrentDrawings } from "renderer/components/components/Gameroom/components/CurrentDrawings";
-const dummyData = [
-  { time: 1619443200000, rate: 500 },
-  { time: 1619446800000, rate: 600 },
-  { time: 1619450400000, rate: 700 },
-  { time: 1619454000000, rate: 800 },
-  { time: 1619457600000, rate: 900 },
-  { time: 1619461200000, rate: 1000 },
-  // Add more data points as needed
-];
+import { FriendsActivity } from "renderer/components/components/Friends/FriendsActivity";
+import { BonusforFriends } from "renderer/components/components/Gameroom/components/BonusforFriends";
+import { WorkersLeft } from "renderer/components/components/Workers/WorkersLeft";
+import { AddWorkerModal } from "renderer/components/components/Workers/AddWorkerModal";
+import { EditWorkerModal } from "renderer/components/components/Workers/EditWorkersModal";
+import { WorkerSummary } from "renderer/components/components/Workers/WorkerSummary";
+import { WithdrawIconBox } from "../withdraw/WithdrawIconBox";
 export const Analytics = () => {
   const [screenSize, setScreenSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
   });
+  const [open, setOpen] = useState(true);
   useEffect(() => {
     const handleResize = () => {
       setScreenSize({
@@ -320,10 +317,19 @@ export const Analytics = () => {
             }}
             gridTemplateColumns={{ md: "1fr", lg: "2fr 1fr", xl: "2fr 1fr" }}
           >
-            <HistoryChart isAnalytics={true} padding="1.5rem 0" />
-            <Box maxHeight={"600px"} overflow={"auto"}>
+            {/* <HistoryChart isAnalytics={true} padding="1.5rem 0" /> */}
+            {/* <Box maxHeight={"600px"} overflow={"auto"}>
               <FriendMenu />
-            </Box>
+            </Box> */}
+          </Box>
+          <Box sx={{ display: "grid", gridTemplateColumns: "2fr 2fr" }}>
+            <FriendsActivity />
+            {/* <BonusforFriends /> */}
+            {/* <WorkersLeft /> */}
+            <EditWorkerModal open={open} setOpen={setOpen} />
+            <WorkerSummary />
+            <WithdrawIconBox />
+            {/* <AddWorkerModal open={open} setOpen={setOpen} /> */}
           </Box>
         </Box>
       )}

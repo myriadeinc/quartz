@@ -1,6 +1,13 @@
 import { MiningInstructionsIcon } from "renderer/components/atoms/StartMining-I/MiningIcons";
 import { IFriend, IMiner, IMiner2 } from "renderer/interfaces/pages/dashboard";
 import { MenuIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons";
+// import { GameroomInstructionsIcon } from "renderer/components/atoms/GameRoom-I/GameRoomIcons";
+import { StartMiningIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components";
+import {
+  MCSpendIcon,
+  ProgressIcon,
+  TrophyIcon,
+} from "renderer/components/atoms/GameRoom-I/GameRoomIcons/components";
 const MINER_ARRAY: IMiner[] = [
   {
     src: "https://i.ibb.co/TmDbVbK/Referrals-Icon-Start-mining-Page.png",
@@ -22,6 +29,28 @@ const MINER_ARRAY: IMiner[] = [
     src: "https://i.ibb.co/DfvgBCC/Bonus-Icon.png",
     title: "Earn a bonus at every level",
     alt: "bonus image",
+  },
+];
+const GAME_INSTRUCTIONS_DATA = [
+  {
+    InstructionIcon: <StartMiningIcon />,
+    title: "Earn MC from mining",
+    alt: "earn mc icon",
+  },
+  {
+    InstructionIcon: <MCSpendIcon />,
+    title: "Spend MC by buying tickets for drawings",
+    alt: "spend mc",
+  },
+  {
+    InstructionIcon: <ProgressIcon />,
+    title: "Wait for the drawing to fill up for the countdown to begin",
+    alt: "drawing icon",
+  },
+  {
+    InstructionIcon: <TrophyIcon />,
+    title: "A winner will be selected upon completion of the countdown",
+    alt: "winner icon",
   },
 ];
 const MINER_INSTRUCTIONS_ARRAY: IMiner2[] = [
@@ -124,4 +153,5 @@ export {
   MINER_STATS_ARRAY,
   MINER_INSTRUCTIONS_ARRAY,
   MINING_ALLOCATION_WIDGET_BOX,
+  GAME_INSTRUCTIONS_DATA,
 };

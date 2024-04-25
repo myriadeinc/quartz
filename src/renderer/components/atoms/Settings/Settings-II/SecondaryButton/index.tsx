@@ -4,9 +4,14 @@ type Variant = "large" | "medium";
 interface SecondaryButtonProps {
   variant: Variant;
   text: string;
+  onClick: VoidFunction;
 }
 
-export const SecondaryButton = ({ variant, text }: SecondaryButtonProps) => {
+export const SecondaryButton = ({
+  variant,
+  text,
+  onClick,
+}: SecondaryButtonProps) => {
   return (
     <>
       {variant === "large" ? (
@@ -22,6 +27,7 @@ export const SecondaryButton = ({ variant, text }: SecondaryButtonProps) => {
               border: "2px solid #FF8B40",
             },
           }}
+          onClick={onClick}
         >
           {text}
         </Button>
@@ -38,6 +44,7 @@ export const SecondaryButton = ({ variant, text }: SecondaryButtonProps) => {
               border: "2px solid #FF8B40",
             },
           }}
+          onClick={onClick}
         >
           {text}
         </Button>

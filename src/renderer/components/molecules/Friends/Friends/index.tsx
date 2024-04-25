@@ -20,15 +20,26 @@ export const Friends = ({ friendName, isMetrics, mining }: FriendsProps) => {
         height: "75px",
         display: "flex",
         gap: "12px",
+        alignItems: "center",
+        borderBottom: "1px solid #293040",
       }}
     >
-      <MinerStatusIcon src="" />
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Box sx={{ display: "flex", gap: "4px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: "12px",
+        }}
+      >
+        <MinerStatusIcon src="" />
+        <Box className="sdafasdfsadf" sx={{ display: "flex", gap: "4px" }}>
           <CopperLeftIcon />
-          <Typography>{friendName}</Typography>
+          <Typography color="#EAEAEA">{friendName}</Typography>
           <CopperRightIcon />
         </Box>
+      </Box>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
         {isMetrics ? (
           <SecondaryButton variant="medium" text="View Metrics" />
         ) : (

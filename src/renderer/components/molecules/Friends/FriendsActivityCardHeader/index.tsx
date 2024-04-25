@@ -10,7 +10,15 @@ export const FriendsActivityCardHeader = ({
   friends,
 }: FriendsActivityCardHeaderProps) => {
   return (
-    <Box sx={{ width: "438px", height: "63px" }}>
+    <Box
+      sx={{
+        width: "438px",
+        height: "63px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+      }}
+    >
       <Typography variant="body" color="#EAEAEA">
         #Friends:{friends}
       </Typography>

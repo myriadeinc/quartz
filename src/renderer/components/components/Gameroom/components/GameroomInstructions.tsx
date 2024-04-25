@@ -1,12 +1,13 @@
 import { Box } from "@mui/material";
-import { MINER_INSTRUCTIONS_ARRAY } from "const";
-import React from "react";
+import { GAME_INSTRUCTIONS_DATA } from "const";
 import { Instructions } from "renderer/components/molecules/StartMining-I/Instructions";
 type Props = {};
-
-export const MiningInstructionsBox = () => {
+console.log("GAME_INSTRUCTIONS_DATA", GAME_INSTRUCTIONS_DATA);
+export const GameInstructionsBox = () => {
+  console.log("insructions");
   return (
     <Box
+      className="23497023840238"
       sx={{
         display: "flex",
         flexDirection: {
@@ -15,7 +16,7 @@ export const MiningInstructionsBox = () => {
           lg: "row",
           xl: "row",
         },
-        width: { xs: "100%", sm: "100%", md: "inherit" },
+        width: { xs: "100%", sm: "100%", md: "95%" },
         alignItems: "center",
         backgroundColor: "#080A0F",
         marginTop: "20px",
@@ -25,7 +26,7 @@ export const MiningInstructionsBox = () => {
         border: "1px solid rgba(234, 234, 234, 0.2)",
       }}
     >
-      {MINER_INSTRUCTIONS_ARRAY.map((element, index) => {
+      {GAME_INSTRUCTIONS_DATA.map((element, index) => {
         return (
           <Instructions
             key={element.alt}

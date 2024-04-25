@@ -64,7 +64,7 @@ const LoginMolecule = ({
           paddingTop: "16px",
         }}
       >
-        <PrimaryButton onClick={handleLogin} />
+        <PrimaryButton onClick={handleLogin} text="Login" />
         {state.error && (
           <Snackbar
             anchorOrigin={{ vertical: "top", horizontal: "right" }}

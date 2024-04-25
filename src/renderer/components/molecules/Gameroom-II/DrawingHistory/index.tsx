@@ -15,56 +15,69 @@ function createData(
 ) {
   return { name, calories, fat, carbs, protein };
 }
-
+const TABLE_HEADER = [
+  "Drawing Titles",
+  "Number of Tickets",
+  "Prize Amount (XMR)",
+  "Last Purchased",
+  "Past Winner",
+];
+interface drawHistoryProps {
+  headerData: Array<string>;
+}
 const rows = [
   createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
   createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
   createData("Eclair", 262, 16.0, 24, 6.0),
+  createData("Caramel", 262, 16.0, 24, 6.0),
 ];
 
-export function DrawingHistory() {
+const dataForHistory = [
+  {
+    date: "June 16, 2021 3:59 PM",
+    type: "XMR",
+    amount: "0.002863292873",
+    status: "Pending",
+    address: "antoineshousha@gmail.com",
+  },
+  {
+    date: "July 5, 2021 9:22 AM",
+    type: "BTC",
+    amount: "0.00528947126",
+    status: "Contact Support",
+    address: "johndoe@example.com",
+  },
+  {
+    date: "August 10, 2021 12:15 PM",
+    type: "ETH",
+    amount: "1.203504871",
+    status: "Completed",
+    address: "janedoe@example.com",
+  },
+];
+export function DrawingHistory({ headerData }: drawHistoryProps) {
   return (
     <TableContainer
       component={Paper}
-      sx={{ backgroundColor: "#141A29", borderRadius: "7px" }}
+      sx={{ backgroundColor: "#141A29", borderRadius: "0 7px 7px" }}
     >
       <Table sx={{ minWidth: 650 }} aria-label="caption table">
-        <caption>A basic table example with a caption</caption>
         <TableHead sx={{ color: "", width: "52px" }}>
           <TableRow sx={{ width: "52px", borderBottom: "1px solid 141A29" }}>
-            <TableCell
-              sx={{
-                color: "#8C8C8C",
-                paddingLeft: "20px",
-                borderBottom: "1px solid #293040",
-              }}
-            >
-              Drawing Tittle
-            </TableCell>
-            <TableCell
-              sx={{ color: "#8C8C8C", borderBottom: "1px solid #293040" }}
-              align="left"
-            >
-              Number of Tickets
-            </TableCell>
-            <TableCell
-              sx={{ color: "#8C8C8C", borderBottom: "1px solid #293040" }}
-              align="left"
-            >
-              Prize Amount (XMR)
-            </TableCell>
-            <TableCell
-              sx={{ color: "#8C8C8C", borderBottom: "1px solid #293040" }}
-              align="left"
-            >
-              Last Purchased
-            </TableCell>
-            <TableCell
-              sx={{ color: "#8C8C8C", borderBottom: "1px solid #293040" }}
-              align="left"
-            >
-              Past Winner
-            </TableCell>
+            {headerData.map((element, index) => {
+              return (
+                <TableCell
+                  sx={{
+                    color: "#8C8C8C",
+                    paddingLeft: "20px",
+                    borderBottom: "1px solid #293040",
+                    fontSize: "16px",
+                  }}
+                >
+                  {element}
+                </TableCell>
+              );
+            })}
           </TableRow>
         </TableHead>
         <TableBody>
@@ -72,8 +85,9 @@ export function DrawingHistory() {
             <TableRow
               key={row.name}
               sx={{
-                backgroundColor: index % 2 === 0 ? "#293040" : "#141A29",
+                backgroundColor: index % 2 === 0 ? "#0f141f" : "#141a29",
                 borderBottom: "1px solid #293040",
+                fontSize: "14px",
               }}
             >
               <TableCell
@@ -82,6 +96,7 @@ export function DrawingHistory() {
                 sx={{
                   color: "#EAEAEA",
                   width: "320px",
+                  paddingLeft: "20px",
                   borderBottom: "1px solid #293040",
                 }}
               >
@@ -92,6 +107,7 @@ export function DrawingHistory() {
                 sx={{
                   color: "#EAEAEA",
                   width: "256px",
+                  paddingLeft: "20px",
                   borderBottom: "1px solid #293040",
                 }}
               >
@@ -102,6 +118,7 @@ export function DrawingHistory() {
                 sx={{
                   color: "#EAEAEA",
                   width: "256px",
+                  paddingLeft: "20px",
                   borderBottom: "1px solid #293040",
                 }}
               >
@@ -112,6 +129,7 @@ export function DrawingHistory() {
                 sx={{
                   color: "#EAEAEA",
                   width: "256px",
+                  paddingLeft: "20px",
                   borderBottom: "1px solid #293040",
                 }}
               >
@@ -122,6 +140,7 @@ export function DrawingHistory() {
                 sx={{
                   color: "#EAEAEA",
                   width: "385px",
+                  paddingLeft: "20px",
                   borderBottom: "1px solid #293040",
                 }}
               >

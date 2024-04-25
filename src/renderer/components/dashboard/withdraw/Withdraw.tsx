@@ -1,14 +1,10 @@
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
-import InputAdornment from "@mui/material/InputAdornment";
 import Box from "@mui/material/Box";
 import { useState } from "react";
-import { MinerConsumer } from "renderer/pages/Dashboard";
-import { margin } from "@mui/system";
+import { WithdrawMoneroBox } from "./WithdrawMoneroBox";
+import { WithdrawHistory } from "./WithdrawHistory";
 
 export const Withdraw = () => {
   const [withdrawing, setWithdrawing] = useState(false);
@@ -36,140 +32,7 @@ export const Withdraw = () => {
           </Typography>
         </Box>
       </Grid>
-      <Box
-        display={"grid"}
-        gridTemplateColumns={"1fr 1fr 1fr"}
-        // gridTemplateColumns={sm : '1fr', md : '1fr 1fr' , lg : '1fr 1fr 1fr'}}
-
-        sx={{
-          backgroundColor: "#080A0F",
-          borderRadius: "0 0 7px 7px",
-          // border: "1px solid rgba(234, 234, 234, 0.2)",
-          gridTemplateColumns: { sm: "1fr", md: "1fr 1fr", lg: "1fr 1fr 1fr" },
-        }}
-      >
-        <div
-          style={{
-            flex: 1,
-            border: "1px solid rgba(234, 234, 234, 0.2)",
-            padding: "10px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <MinerConsumer>
-            {(miner) => (
-              <Typography
-                fontFamily="Poppins, sans-serif"
-                style={{
-                  fontSize: "18px",
-                  color: "#EAEAEA",
-                  fontWeight: 400,
-                  marginTop: "10px",
-                  marginLeft: "20px",
-                  textAlign: "center",
-                }}
-              >
-                {miner.xmrBalance} XMR
-              </Typography>
-            )}
-          </MinerConsumer>
-          <Typography
-            fontFamily="Poppins, sans-serif"
-            style={{
-              fontSize: "14px",
-              color: "#EAEAEA",
-              fontWeight: 400,
-              marginTop: "10px",
-              marginLeft: "20px",
-              textAlign: "center",
-            }}
-          >
-            Your Monero Balance
-          </Typography>
-        </div>
-
-        <div
-          style={{
-            flex: 1,
-            border: "1px solid rgba(234, 234, 234, 0.2)",
-            padding: "10px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Typography
-            fontFamily="Poppins, sans-serif"
-            style={{
-              fontSize: "18px",
-              color: "#EAEAEA",
-              fontWeight: 400,
-              marginTop: "10px",
-              marginLeft: "20px",
-              textAlign: "center",
-            }}
-          >
-            0.001 XMR
-          </Typography>
-          <Typography
-            fontFamily="Poppins, sans-serif"
-            style={{
-              fontSize: "14px",
-              color: "#EAEAEA",
-              fontWeight: 400,
-              marginTop: "10px",
-              marginLeft: "20px",
-              textAlign: "center",
-            }}
-          >
-            Minimum Withdrawal Amount
-          </Typography>
-        </div>
-
-        <div
-          style={{
-            flex: 1,
-            border: "1px solid rgba(234, 234, 234, 0.2)",
-            padding: "10px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
-          <Typography
-            fontFamily="Poppins, sans-serif"
-            style={{
-              fontSize: "18px",
-              color: "#EAEAEA",
-              fontWeight: 400,
-              marginTop: "10px",
-              marginLeft: "20px",
-              textAlign: "center",
-            }}
-          >
-            0 XMR
-          </Typography>
-          <Typography
-            fontFamily="Poppins, sans-serif"
-            style={{
-              fontSize: "14px",
-              color: "#EAEAEA",
-              fontWeight: 400,
-              marginTop: "10px",
-              marginLeft: "20px",
-              marginBottom: "15px",
-              textAlign: "center",
-            }}
-          >
-            Withdrawal Fee
-          </Typography>
-        </div>
-      </Box>
+      <WithdrawHistory />
       <Grid item sm={12}>
         <Box
           sx={{
@@ -227,7 +90,7 @@ export const Withdraw = () => {
         </Box>
       </Grid>
 
-      <Grid>
+      {/* <Grid>
         <Card
           elevation={0}
           style={{
@@ -348,7 +211,8 @@ export const Withdraw = () => {
             </Stack>
           )}
         </Card>
-      </Grid>
+      </Grid> */}
+      <WithdrawMoneroBox withdrawing={false} />
     </Stack>
   );
 };

@@ -112,6 +112,7 @@ function Typography({
     case "heading4":
       styleProps = {
         ...styleProps,
+        color: color,
         variant: "h4",
         fontSize: "20px",
         fontWeight: "bold",

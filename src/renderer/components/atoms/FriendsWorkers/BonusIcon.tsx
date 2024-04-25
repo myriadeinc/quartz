@@ -2,7 +2,7 @@ import React from "react";
 
 type Props = {};
 
-const BonusIcon = (props: Props) => {
+const BonusIcon = () => {
   return (
     <svg
       width="44"

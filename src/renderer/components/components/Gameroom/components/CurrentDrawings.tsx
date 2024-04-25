@@ -1,10 +1,6 @@
-import { Box, Button, CardContent, CardMedia } from "@mui/material";
+import { Box, CardContent, CardMedia } from "@mui/material";
 import Typography from "renderer/components/atoms/TextStyles";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import { GiveAwayPriceCardTag } from "renderer/components/atoms/GitftCards/GiveAwayPriceCardTag";
 import { PurchasedProgressBar } from "renderer/components/molecules/Gameroom-I/PurchasedProgressBar";
 type Props = {};
