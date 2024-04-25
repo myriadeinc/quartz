@@ -8,13 +8,6 @@ import { MinerConsumer } from "renderer/pages/Dashboard";
 import { FriendMenu } from "../friends/Friends";
 import { HistoryChart } from "renderer/components/common/historyChart";
 import { useState, useEffect } from "react";
-import { FriendsActivity } from "renderer/components/components/Friends/FriendsActivity";
-import { BonusforFriends } from "renderer/components/components/Gameroom/components/BonusforFriends";
-import { WorkersLeft } from "renderer/components/components/Workers/WorkersLeft";
-import { AddWorkerModal } from "renderer/components/components/Workers/AddWorkerModal";
-import { EditWorkerModal } from "renderer/components/components/Workers/EditWorkersModal";
-import { WorkerSummary } from "renderer/components/components/Workers/WorkerSummary";
-import { WithdrawIconBox } from "../withdraw/WithdrawIconBox";
 export const Analytics = () => {
   const [screenSize, setScreenSize] = useState({
     width: window.innerWidth,
@@ -317,19 +310,10 @@ export const Analytics = () => {
             }}
             gridTemplateColumns={{ md: "1fr", lg: "2fr 1fr", xl: "2fr 1fr" }}
           >
-            {/* <HistoryChart isAnalytics={true} padding="1.5rem 0" /> */}
-            {/* <Box maxHeight={"600px"} overflow={"auto"}>
+            <HistoryChart isAnalytics={true} padding="1.5rem 0" />
+            <Box maxHeight={"600px"} overflow={"auto"}>
               <FriendMenu />
-            </Box> */}
-          </Box>
-          <Box sx={{ display: "grid", gridTemplateColumns: "2fr 2fr" }}>
-            <FriendsActivity />
-            {/* <BonusforFriends /> */}
-            {/* <WorkersLeft /> */}
-            <EditWorkerModal open={open} setOpen={setOpen} />
-            <WorkerSummary />
-            <WithdrawIconBox />
-            {/* <AddWorkerModal open={open} setOpen={setOpen} /> */}
+            </Box>
           </Box>
         </Box>
       )}

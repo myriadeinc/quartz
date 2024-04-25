@@ -62,6 +62,7 @@ const LoginMolecule = ({
           margin: "auto",
           textAlign: "center",
           paddingTop: "16px",
+          marginTop: "16px",
         }}
       >
         <PrimaryButton onClick={handleLogin} text="Login" />

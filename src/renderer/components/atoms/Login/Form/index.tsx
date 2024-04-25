@@ -15,7 +15,7 @@ const Form = ({
   onPasswordChange,
   onToggleVisible,
 }: formProps) => {
-  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <>
       <Box
@@ -83,79 +83,90 @@ const Form = ({
           },
         }}
       >
-        <TextField
-          variant="standard"
-          id="outlined-basic"
+        <div
+          className="ASdfasfsf"
           style={{
-            maxWidth: "360px",
-            maxHeight: "32px",
-            fontSize: "14px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "end",
           }}
-          inputProps={{
-            style: {
-              padding: 5,
-            },
-          }}
-          size="small"
-          fullWidth
-          placeholder="Password"
-          sx={{
-            mt: "20px",
-            border: "1px solid #414E66",
-            borderRadius: "3px",
-            "& input:focus": {
-              borderBottom: "2px solid #FA6F15",
-              outline: "none",
-              "& .MuiOutlinedInput-root": {
-                "& fieldset": {
-                  border: "none",
-                },
-                "&.Mui-focused fieldset": {
-                  border: "none",
-                },
-                "&:hover fieldset": {
-                  border: "none",
+        >
+          <TextField
+            variant="standard"
+            id="outlined-basic"
+            style={{
+              maxWidth: "360px",
+              maxHeight: "32px",
+              fontSize: "14px",
+            }}
+            inputProps={{
+              style: {
+                padding: 5,
+              },
+            }}
+            size="small"
+            fullWidth
+            placeholder="Password"
+            sx={{
+              mt: "20px",
+              border: "1px solid #414E66",
+              borderRadius: "3px",
+              "& input:focus": {
+                borderBottom: "2px solid #FA6F15",
+                outline: "none",
+                "& .MuiOutlinedInput-root": {
+                  "& fieldset": {
+                    border: "none",
+                  },
+                  "&.Mui-focused fieldset": {
+                    border: "none",
+                  },
+                  "&:hover fieldset": {
+                    border: "none",
+                  },
                 },
               },
-            },
-            "&:focus": {
-              outline: "none",
-              border: "0",
-            },
-          }}
-          type={state.showPassword ? "text" : "password"}
-          value={state.password}
-          onChange={onPasswordChange}
-          InputProps={{
-            disableUnderline: true,
-            fullWidth: true,
-            endAdornment: (
-              <InputAdornment position="end" sx={{ ":hover": "none" }}>
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={onToggleVisible}
-                  edge="end"
-                  sx={{
-                    "&:hover": {
-                      "& .MuiIconButton-label > svg": {
-                        color: "red",
-                      },
-                    },
-                  }}
-                >
-                  {state.showPassword ? (
-                    <VisibilityOn
-                      rectangleColor={"#414E66"}
-                      pathColor="#EAEAEA"
-                    />
-                  ) : (
-                    <VisibilityOff color="#EAEAEA" />
-                  )}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
+              "&:focus": {
+                outline: "none",
+                border: "0",
+              },
+            }}
+            type={state.showPassword ? "text" : "password"}
+            value={state.password}
+            onChange={onPasswordChange}
+            InputProps={{
+              disableUnderline: true,
+              fullWidth: true,
+            }}
+          />
+          <Box sx={{ position: "relative", bottom: "31px", right: "14px" }}>
+            <IconButton
+              aria-label="toggle password visibility"
+              onClick={onToggleVisible}
+              edge="end"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              sx={{
+                padding: "0",
+                "&:hover": {
+                  color: "",
+                },
+              }}
+            >
+              {state.showPassword ? (
+                <VisibilityOn
+                  rectangleColor={isHovered ? "#FA6F15" : "#414E66"}
+                  pathColor={isHovered ? "#0F141F" : "#EAEAEA"}
+                />
+              ) : (
+                <VisibilityOff
+                  rectangleColor={isHovered ? "#FA6F15" : "#414E66"}
+                  pathColor={isHovered ? "#0F141F" : "#EAEAEA"}
+                />
+              )}
+            </IconButton>
+          </Box>
+        </div>
       </Box>
     </>
   );

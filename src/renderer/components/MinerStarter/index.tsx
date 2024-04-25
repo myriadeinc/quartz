@@ -117,7 +117,26 @@ export const MinerStarter = () => {
           </Stack>
         </Box>
       </Stack>
-      <Stack alignSelf={"center"}>
+      <Stack
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+        alignSelf={"center"}
+      >
+        <Box
+          className="lsajflsjdfsjldfj"
+          sx={{
+            height: "16px",
+            width: "16px",
+            zIndex: 1,
+            top: 12,
+            left: 12,
+            backgroundColor: "#EC5506",
+            borderRadius: "50%",
+          }}
+        ></Box>
         <Box
           sx={{
             // minWidth: "260px",
@@ -126,7 +145,6 @@ export const MinerStarter = () => {
             height: "260px",
             border: "thick solid #414E66",
             transform: "rotate(-25deg)",
-            borderRightColor: "#FA6F15",
             borderRadius: "50%",
             position: "relative",
           }}
@@ -138,14 +156,7 @@ export const MinerStarter = () => {
             }}
             direction={"column"}
           >
-            <IconButton
-              sx={
-                {
-                  // width: 100,
-                  // height: 100,
-                }
-              }
-            >
+            <IconButton>
               <PlayArrowIcon
                 sx={{
                   minWidth: 100,

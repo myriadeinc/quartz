@@ -1,52 +1,43 @@
-import { TextField } from "@mui/material";
+import { Box, IconButton, InputAdornment } from "@mui/material";
+import { CopyIcon } from "../CopyIcon";
+import Typography from "../../TextStyles";
 
 export const UrlContainer = () => {
   return (
-    <TextField
+    <Box
       variant="standard"
       id="outlined-basic"
-      style={{
+      sx={{
         maxWidth: "336px",
         maxHeight: "32px",
         fontSize: "14px",
-      }}
-      inputProps={{
-        style: {
-          padding: "0 31px 0 8px",
-          color: "#6C81F5",
-        },
-      }}
-      size="small"
-      fullWidth
-      placeholder="Password"
-      sx={{
-        mt: "20px",
-        border: "1px solid #414E66",
+        paddingLeft: "20px",
+        border: "1px solid #EAEAEA",
         borderRadius: "3px",
-        backgroundColor: "#141A29",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
       }}
-      type="text"
-      // onChange={onPasswordChange}
-      InputProps={{
-        disableUnderline: true,
-        fullWidth: true,
-        endAdornment: (
-          <InputAdornment position="end" sx={{ ":hover": "none" }}>
-            <IconButton
-              aria-label="toggle password visibility"
-              // onClick={onToggleVisible}
-              edge="end"
-              sx={{
-                "&:hover": {
-                  backgroundColor: "transparent",
-                },
-              }}
-            >
-              <UrlIcon />
-            </IconButton>
-          </InputAdornment>
-        ),
-      }}
-    />
+    >
+      <Box sx={{ maxHeight: "32px", paddingLeft: "8px" }}>
+        <Box>
+          <Typography variant="body" color="#6C81F5">
+            myriade.ico/myreferralcode
+          </Typography>
+        </Box>
+      </Box>
+      <IconButton
+        aria-label="toggle password visibility"
+        // onClick={onToggleVisible}
+        edge="end"
+        sx={{
+          "&:hover": {
+            backgroundColor: "transparent",
+          },
+        }}
+      >
+        <CopyIcon />
+      </IconButton>
+    </Box>
   );
 };

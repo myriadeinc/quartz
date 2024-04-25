@@ -24,9 +24,14 @@ export const ReferelsInstructions = () => {
           alignItems: "center",
           justifyContent: "center",
           gap: "4px",
+          maxHeight: "172px",
         }}
       >
-        <img src="/assets/svg/Referrals-Icon.svg" alt="referels icons" />
+        <img
+          src="/assets/svg/Referrals-Icon.svg"
+          alt="referels icons"
+          style={{ objectFit: "contain", maxHeight: "44px" }}
+        />
         <Typography variant="bodyLarge" color="#EAEAEA" centered>
           1. Send your Referral Code
         </Typography>
@@ -45,9 +50,14 @@ export const ReferelsInstructions = () => {
           alignItems: "center",
           justifyContent: "center",
           gap: "4px",
+          maxHeight: "172px",
         }}
       >
-        <img src="/assets/svg/Workers-Icon.svg" alt="workers icons" />
+        <img
+          src="/assets/svg/Workers-Icon.svg"
+          alt="workers icons"
+          style={{ objectFit: "contain", maxHeight: "44px" }}
+        />
         <Typography variant="bodyLarge" color="#EAEAEA" centered>
           1. 2. Mine With your Friends
         </Typography>
@@ -66,9 +76,14 @@ export const ReferelsInstructions = () => {
           alignItems: "center",
           justifyContent: "center",
           gap: "4px",
+          maxHeight: "172px",
         }}
       >
-        <img src="/public/assets/svg/Withdraw-Icon.svg" alt="withdraw icons" />
+        <img
+          src="/assets/svg/Withdraw-Icon.svg"
+          alt="withdraw icons"
+          style={{ objectFit: "contain", maxHeight: "44px" }}
+        />
         <Typography variant="bodyLarge" color="#EAEAEA" centered>
           3. Collect your Comission
         </Typography>
