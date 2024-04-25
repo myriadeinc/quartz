@@ -8,6 +8,8 @@ import { MinerConsumer } from "renderer/pages/Dashboard";
 import { FriendMenu } from "../friends/Friends";
 import { HistoryChart } from "renderer/components/common/historyChart";
 import { useState, useEffect } from "react";
+import { WorkerSummary } from "renderer/components/components/Workers/WorkerSummary";
+import { AverageHashrateCard } from "renderer/components/components/Dashboard/AverageHashrateCard";
 export const Analytics = () => {
   const [screenSize, setScreenSize] = useState({
     width: window.innerWidth,
@@ -66,63 +68,7 @@ export const Analytics = () => {
               >
                 <Grow in={true}>
                   <div style={{ position: "relative" }}>
-                    <Card
-                      style={{
-                        backgroundColor: "#0F141F",
-                        backgroundImage: "none",
-                        backgroundSize: "cover",
-                        minWidth: "475px",
-                        height: "288px",
-                        padding: "0px",
-                        marginTop: "20px",
-                        marginRight: "10px",
-                        zIndex: 2,
-                        borderRadius: "7px",
-                      }}
-                    >
-                      <Typography
-                        fontFamily="Poppins, sans-serif"
-                        style={{
-                          fontSize: "16px",
-                          color: "#8C8C8C",
-                          fontWeight: 400,
-                          marginTop: "20px",
-                          marginLeft: "20px",
-                        }}
-                      >
-                        Average Hashrate (1hr)
-                      </Typography>
-                      <Typography
-                        fontFamily="Poppins, sans-serif"
-                        style={{
-                          fontSize: "20px",
-                          color: "#EAEAEA",
-                          fontWeight: 500,
-                          marginLeft: "20px",
-                        }}
-                      >
-                        {miner.avgHashrate} H/sec
-                      </Typography>
-                      <CardMedia
-                        component="img"
-                        height="194"
-                        image="/assets/Illustrations/DM.webp"
-                        alt="Paella dish"
-                        sx={{ objectFit: "contain" }}
-                      />
-
-                      {/* <Box
-                        sx={{
-                          maxWidth: "280px",
-                          height: "220px",
-                          objectFit: "cover",
-                          position: "absolute",
-                          top: "60px",
-                          right: "1rem",
-                        }}
-                      >
-                      </Box> */}
-                    </Card>
+                    <AverageHashrateCard cardPoints={miner.avgHashrate} />
                     {/* <Card
                       style={{
                         backgroundColor: "#0F141F",
@@ -314,6 +260,9 @@ export const Analytics = () => {
             <Box maxHeight={"600px"} overflow={"auto"}>
               <FriendMenu />
             </Box>
+          </Box>
+          <Box>
+            <WorkerSummary />
           </Box>
         </Box>
       )}

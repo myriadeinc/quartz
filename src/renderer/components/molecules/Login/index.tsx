@@ -47,7 +47,7 @@ const LoginMolecule = ({
           top: "20px",
         }}
       >
-        <Typography variant="heading2" fontWeight="500px">
+        <Typography variant="heading2" color="#EAEAEA">
           Login
         </Typography>
       </Box>

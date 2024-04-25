@@ -44,67 +44,32 @@ WithdrawMoneroBoxProps) => {
                 xl: "3fr 1fr",
               }}
             >
-              <Stack gap={"1rem"}>
-                <Stack direction={"row"} alignItems="baseline" gap="1rem">
+              <Stack gap={"1rem"} direction={"row"}>
+                <Stack
+                  direction={"column"}
+                  alignItems="flex-end"
+                  gap="1rem"
+                  sx={{ whiteSpace: "nowrap" }}
+                >
                   <Typography variant="body" color="#EAEAEA">
                     XMR Amount:{" "}
                   </Typography>
-                  <TextField
-                    variant="standard"
-                    id="outlined-basic"
-                    InputProps={{
-                      disableUnderline: true,
-                    }}
-                    style={{
-                      maxWidth: "360px",
-                      minHeight: "32px",
-                      fontSize: "14px",
-                    }}
-                    inputProps={{
-                      style: {
-                        padding: 5,
-                      },
-                    }}
-                    size="small"
-                    fullWidth
-                    placeholder="XMR"
-                    sx={{
-                      mt: "20px",
-                      border: "1px solid #414E66",
-                      borderRadius: "3px",
-                      "& input:focus": {
-                        borderBottom: "2px solid #FA6F15",
-                        outline: "none",
-                        "& .MuiOutlinedInput-root": {
-                          "& fieldset": {
-                            border: "none",
-                          },
-                          "&.Mui-focused fieldset": {
-                            border: "none",
-                          },
-                          "&:hover fieldset": {
-                            border: "none",
-                          },
-                        },
-                      },
-                      "&:focus": {
-                        outline: "none",
-                        border: "0",
-                      },
-                    }}
-                    // onChange={onEmailChange}
-                  />
-                </Stack>
-                <Stack direction={"row"} alignItems="baseline" gap="1rem">
-                  <Stack direction={"column"}></Stack>
                   <Typography variant="body" color="#EAEAEA">
                     Monero Wallet Address:{" "}
                   </Typography>
+                </Stack>
+                <Stack
+                  direction={"column"}
+                  alignItems="baseline"
+                  gap="1rem"
+                  sx={{ width: "80%" }}
+                >
                   <Box
                     sx={{
                       display: "flex",
                       flexDirection: "column",
                       gap: "8px",
+                      width: "100%",
                     }}
                   >
                     <TextField
@@ -114,7 +79,51 @@ WithdrawMoneroBoxProps) => {
                         disableUnderline: true,
                       }}
                       style={{
-                        minWidth: "660px",
+                        maxWidth: "360px",
+                        minHeight: "32px",
+                        fontSize: "14px",
+                      }}
+                      inputProps={{
+                        style: {
+                          padding: 5,
+                        },
+                      }}
+                      size="small"
+                      fullWidth
+                      placeholder="XMR"
+                      sx={{
+                        border: "1px solid #414E66",
+                        borderRadius: "3px",
+                        "& input:focus": {
+                          borderBottom: "2px solid #FA6F15",
+                          outline: "none",
+                          "& .MuiOutlinedInput-root": {
+                            "& fieldset": {
+                              border: "none",
+                            },
+                            "&.Mui-focused fieldset": {
+                              border: "none",
+                            },
+                            "&:hover fieldset": {
+                              border: "none",
+                            },
+                          },
+                        },
+                        "&:focus": {
+                          outline: "none",
+                          border: "0",
+                        },
+                      }}
+                      // onChange={onEmailChange}
+                    />
+                    <TextField
+                      variant="standard"
+                      id="outlined-basic"
+                      InputProps={{
+                        disableUnderline: true,
+                      }}
+                      style={{
+                        width: "100%",
                         maxHeight: "32px",
                         fontSize: "14px",
                       }}
@@ -151,7 +160,6 @@ WithdrawMoneroBoxProps) => {
                       }}
                       //   onChange={onEmailChange}
                     />
-
                     <Box
                       sx={{ display: "flex", gap: "9px", alignItems: "center" }}
                     >
@@ -171,7 +179,9 @@ WithdrawMoneroBoxProps) => {
                   </Box>
                 </Stack>
               </Stack>
-              <Box sx={{ maxWidth: "340px", height: "auto" }}>
+              <Box
+                sx={{ maxWidth: "340px", height: "auto", marginTop: "20px" }}
+              >
                 <img
                   src="/assets/Illustrations/Withdraw-Illustration.webp"
                   alt="Description"

@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import Typography from "renderer/components/atoms/TextStyles";
 
 type Props = {
-  info: string;
+  info: number;
   label: string;
 };
 
@@ -15,15 +15,15 @@ export const TextElement = ({ info, label }: Props) => {
         gap: "4px",
         textAlign: "left",
         display: "flex",
+        flexDirection: "column",
       }}
     >
-      <Typography variant="body2" color="#EAEAEA">
+      <Typography variant="body" color="#EAEAEA">
         {label}
       </Typography>
-      <Typography variant="body3" color="#8C8C8C">
+      <Typography variant="bodySmall" color="#8C8C8C">
         {info}
       </Typography>
-      ;
     </Box>
   );
 };

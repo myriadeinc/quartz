@@ -15,15 +15,19 @@ export const LinkHoverCardItem = ({
   linkPath,
   isHovered,
 }: LinkHoverCardItemProps) => {
+  console.log("isHovered inside linkover", isHovered);
   return (
     <Link to={linkPath}>
       <Box
         sx={{
           display: "flex",
           position: "absolute",
+          className: "absolute",
+          alignItems: "center",
           left: 20,
           bottom: 18,
-          opacity: isHovered ? 1 : 0,
+          opacity: isHovered ? 1 : 1,
+          transition: "opacity 0.3s ease-in-out", // Add transition for smooth opacity change
         }}
       >
         <Typography color="#101F45" variant="bodyLarge">

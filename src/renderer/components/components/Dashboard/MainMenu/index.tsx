@@ -1,41 +1,50 @@
 import { Box } from "@mui/material";
 import React from "react";
-import { DashboardIcon } from "renderer/components/atoms/Settings/Settings-II/DashboardIcon";
 import Typography from "renderer/components/atoms/TextStyles";
-import { MenuIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons";
+import { DashboardIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/DashboardIcon";
+import { StartMiningIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/StartMiningIcon";
+import { GiftcardIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/GiftcardIcon";
+import { GameroomIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/GameroomIcon";
+// import { FriendsActivityCardHeader } from "renderer/components/molecules/Friends/FriendsActivityCardHeader";
+import { WorkersIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/WorkersIcon";
+import { WithdrawIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/WithdrawIcon";
+import { ReferelIcon } from "renderer/components/atoms/Dashboard/DashboardCardIcons/ReferelIcon";
+import { MainMenuItem } from "renderer/components/molecules/Settings-I/MainMenuItem";
+import { FriendsIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/FriendsIcon";
+import { ReferelsIcon } from "renderer/components/atoms/StartMining-I/MiningIcons/components/ReferelsIcon";
 
 const MAIN_MENU = [
   {
     menuName: "Dashboard",
-    MenuIcon: DashboardIcon,
+    MenuIcon: <DashboardIcon />,
   },
   {
     menuName: "Start Mining",
-    MenuIcon: <MenuIcon name="StartMiningIcon" />,
+    MenuIcon: <StartMiningIcon pathColor="#EAEAEA" rectangleColor="#FA6F15" />,
   },
   {
     menuName: "Gift Cards",
-    MenuIcon: <MenuIcon name="GiftcardIcon" />,
+    MenuIcon: <GiftcardIcon pathColor="#EAEAEA" rectangleColor="#FA6F15" />,
   },
   {
-    menuName: "Dashboard",
-    MenuIcon: <MenuIcon name="GameroomIcon" />,
+    menuName: "Game Room",
+    MenuIcon: <GameroomIcon pathColor="#EAEAEA" rectangleColor="#FA6F15" />,
   },
   {
-    menuName: "Dashboard",
-    MenuIcon: DashboardIcon,
+    menuName: "Friends",
+    MenuIcon: <FriendsIcon pathColor="#EAEAEA" rectangleColor="#FA6F15" />,
   },
   {
-    menuName: "Dashboard",
-    MenuIcon: DashboardIcon,
+    menuName: "Workers",
+    MenuIcon: <WorkersIcon pathColor="#EAEAEA" rectangleColor="#FA6F15" />,
   },
   {
-    menuName: "Dashboard",
-    MenuIcon: DashboardIcon,
+    menuName: "Withdraw",
+    MenuIcon: <WithdrawIcon pathColor="#EAEAEA" rectangleColor="#FA6F15" />,
   },
   {
-    menuName: "Dashboard",
-    MenuIcon: DashboardIcon,
+    menuName: "Referels",
+    MenuIcon: <ReferelsIcon />,
   },
 ];
 export const SidebarMainMenu = () => {
@@ -52,7 +61,15 @@ export const SidebarMainMenu = () => {
       <Typography variant="bodyLarge" color="#696969">
         Main Menu
       </Typography>
-      <MainMenuItem />
+      {MAIN_MENU.map((element) => {
+        return (
+          <MainMenuItem
+            item={element.menuName}
+            MenuIcon={element.MenuIcon}
+            key={element.menuName}
+          />
+        );
+      })}
     </Box>
   );
 };

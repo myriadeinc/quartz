@@ -106,8 +106,9 @@ export const WorkerSummary = () => {
       </Box>
       <Box
         sx={{
-          display: "flex",
+          display: "grid",
           padding: "20px",
+          gridTemplateColumns: "1fr 1fr 1fr 2fr",
           justifyContent: "space-evenly",
           borderBottom: "1px solid #414E66",
         }}

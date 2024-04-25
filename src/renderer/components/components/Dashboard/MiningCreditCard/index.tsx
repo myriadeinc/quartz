@@ -6,20 +6,36 @@ import { CreditCardI } from "renderer/components/molecules/Settings-I/MIningCred
 import { CreditCardII } from "renderer/components/molecules/Settings-I/MIningCreditsCard/CreditCardII";
 import { MiningRefreshButton } from "renderer/components/molecules/Settings-I/MIningCreditsCard/MiningRefreshButton";
 
-type Props = {};
+type MiningCreditCardProps = {
+  minerBalance: number;
+  moneroBalance: number;
+};
 
-export const MiningCreditCard = (props: Props) => {
+export const MiningCreditCard = ({
+  minerBalance,
+  moneroBalance,
+}: MiningCreditCardProps) => {
   return (
-    <Box sx={{ display: "flex", padding: "8px 8px 12px 8px" }}>
-      <Box sx={{ display: "flex" }}>
-        <CreditCardI />
+    <Box
+      sx={{
+        display: "flex",
+        padding: "8px 8px 12px 8px",
+        flexDirection: "column",
+        backgroundColor: "#0F141F",
+        borderRadius: "7px",
+      }}
+    >
+      <Box
+        sx={{ display: "flex", justifyContent: "space-evenly", margin: "8px" }}
+      >
+        <CreditCardI info={minerBalance} />
         <Box sx={{ alignSelf: "flex-end" }}>
           <MiningRefreshButton />
         </Box>
       </Box>
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex", margin: "8px" }}>
         <DecreaseIcon />
-        <CreditCardII />
+        <CreditCardII info={moneroBalance} />
         <IncreaseArrowIcon />
       </Box>
     </Box>

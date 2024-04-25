@@ -1,20 +1,22 @@
 import { Box } from "@mui/material";
 import { TextElement } from "renderer/components/atoms/Settings/Settings-I/MiningCreditsCard/TextElement";
 import MoneroIcon from "renderer/components/atoms/Settings/Settings-I/MiningCreditsCard/MoneroIcon";
-type Props = {};
+type CreditCardIIProps = {
+  info: number;
+};
 
-export const CreditCardII = (props: Props) => {
+export const CreditCardII = ({ info }: CreditCardIIProps) => {
   return (
     <Box
       sx={{
         backgroundColor: "#0F141F",
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
         gap: "16px",
       }}
     >
       <MoneroIcon rectangleColor="0F141F" pathColor="#EAEAEA" />
-      <TextElement />
+      <TextElement info={info} label="Monero Balance" />
     </Box>
   );
 };

@@ -1,10 +1,10 @@
 import { Box, IconButton } from "@mui/material";
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import Typography from "renderer/components/atoms/TextStyles";
 
 type Props = {
   item: string;
-  MenuIcon: React.ElementType;
+  MenuIcon: ReactElement;
 };
 
 export const MainMenuItem = ({ item, MenuIcon }: Props) => {

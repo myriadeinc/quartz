@@ -19,59 +19,75 @@ export const UserProfileInfo = ({
     isHovered: false,
     isSelected: false,
   });
-
-  const handleIconInteraction = (action: "hover" | "click", value: boolean) => {
-    if (action === "hover") {
-      setIconState({ ...iconState, isHovered: value });
-    } else if (action === "click") {
-      setIconState({ ...iconState, isSelected: !iconState.isSelected });
-    }
+  const toggleHandler = () => {
+    setIconState({ ...iconState, isSelected: !iconState.isSelected });
   };
   return (
     <Box
+      className="aslfjslfjdsl"
       sx={{
-        width: "256px",
+        // maxwidth: "256px",
         height: "104px",
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
         padding: "4px 7px",
         gap: "8px",
       }}
     >
-      <Box sx={{ display: "flex" }}>
+      <Box
+        className="helllo"
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
         <Typography variant="heading2" color="#EAEAEA">
           {userName}
         </Typography>
+        <Box
+          className="helllo"
+          sx={{
+            width: "145px",
+            maxHeight: "40px",
+            display: "flex",
+            gap: "8px",
+          }}
+        >
+          <CopperLeftIcon />
+          <Typography weight="500" variant="bodySmall" color="#EAEAEA">
+            Level {level}
+          </Typography>
+          <CopperRightIcon />
+        </Box>
+        <Typography variant="body" color="#8C8C8C">
+          {userEmail}
+        </Typography>
+      </Box>
+      <Box>
         <IconButton
           aria-label="toggle password visibility"
-          // onClick={onToggleVisible}
+          onClick={toggleHandler}
           edge="end"
         >
           {iconState.isSelected ? (
-            <DropdownIcon
+            <DropupIcon
               rectangleColor="transparent"
               pathColor={iconState.isHovered ? "#FA6F15" : "#EAEAEA"}
             />
           ) : (
-            <DropupIcon
+            // <DropdownIcon
+            //   rectangleColor="transparent"
+            //   pathColor={iconState.isHovered ? "#FA6F15" : "#EAEAEA"}
+            // />
+            <DropdownIcon
               rectangleColor="transparent"
               pathColor={iconState.isHovered ? "#FA6F15" : "#EAEAEA"}
             />
           )}
         </IconButton>
       </Box>
-      <Box
-        sx={{ width: "145px", maxHeight: "40px", display: "flex", gap: "8px" }}
-      >
-        <CopperLeftIcon />
-        <Typography weight="500" variant="bodySmall" color="#EAEAEA">
-          Level {level}
-        </Typography>
-        <CopperRightIcon />
-      </Box>
-      <Typography variant="body" color="#8C8C8C">
-        {userEmail}
-      </Typography>
     </Box>
   );
 };

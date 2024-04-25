@@ -11,8 +11,13 @@ import makeStyles from "@mui/styles/makeStyles";
 import { Link } from "react-router-dom";
 import { MinerConsumer } from "renderer/pages/Dashboard";
 import { dashboardRoutes } from "renderer/utils/dashboard";
-import { SupportContactSocials } from "../ContactSupportSocialHandles";
+// import { SupportContactSocials } from "../ContactSupportSocialHandles";
 import { Box } from "@mui/material";
+import { UserProfile } from "../organisms/UserProfile";
+import { MiningCreditCard } from "../components/Dashboard/MiningCreditCard";
+import { min } from "lodash";
+// import { SidebarMainMenu } from "../components/Dashboard/MainMenu";
+import { SupportSocialHandles } from "../organisms/SupportSocialHandles";
 
 let minerLevel = "33";
 
@@ -78,6 +83,7 @@ const Sidebar = (props: SidebarProps) => {
       {(miner) => (
         <>
           <Drawer
+            className="asdfsadfasdfsadf"
             sx={{
               width: "406px",
               flexShrink: 0,
@@ -96,11 +102,24 @@ const Sidebar = (props: SidebarProps) => {
               alignItems="center"
               textAlign="left"
               spacing={2}
+              sx={{
+                margin: "0",
+                width: "96%",
+              }}
               className={classes.grid}
               height={"100%"}
             >
-              <Box alignSelf={"flex-start"}>
-                <Grid container className={classes.grid}>
+              <Box
+                alignSelf={"flex-start"}
+                className="asdfsadfasdfsadf"
+                sx={{ width: "90%", paddingLeft: "20px" }}
+              >
+                <UserProfile
+                  minerName={`${miner.name} #${miner.shortId}`}
+                  minerLevel={minerLevel}
+                  minerEmail={miner.email}
+                />
+                {/* <Grid container className={classes.grid}>
                   <Grid item sm={2}>
                     <div
                       className={classes.avatarContainer}
@@ -186,18 +205,25 @@ const Sidebar = (props: SidebarProps) => {
                       {miner.email}
                     </Typography>
                   </Grid>
-                </Grid>
+                </Grid> */}
+                <Box sx={{ paddingTop: "32px" }}>
+                  <MiningCreditCard
+                    moneroBalance={miner.xmrBalance}
+                    minerBalance={miner.mcBalance}
+                  />
+                </Box>
+                <Box>{/* <SidebarMainMenu /> */}</Box>
                 <Box
                   sx={{ display: "flex", flexDirection: "column" }}
                   className={classes.grid}
                 >
-                  <Grid
+                  {/* <Grid
                     item
                     sm={12}
                     style={{ marginBottom: "-5px", paddingRight: ".5rem" }}
                     className={classes.grid}
                   >
-                    <Card
+                    {/* <Card
                       className={classes.miningCard}
                       style={{
                         minWidth: "383px",
@@ -311,7 +337,7 @@ const Sidebar = (props: SidebarProps) => {
                         </div>
                       </div>
                     </Card>
-                  </Grid>
+                  </Grid> */}
 
                   <Grid
                     item
@@ -367,7 +393,8 @@ const Sidebar = (props: SidebarProps) => {
                   </Grid>
                 </Box>
               </Box>
-              <SupportContactSocials />
+              {/* <SupportContactSocials /> */}
+              <SupportSocialHandles />
             </Grid>
           </Drawer>
         </>

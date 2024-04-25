@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, TextField, InputAdornment, IconButton } from "@mui/material";
+import { Box, TextField, IconButton } from "@mui/material";
 import VisibilityOn from "renderer/components/atoms/Login/EyeToggle/Dark/VisibilityOn";
 import VisibilityOff from "renderer/components/atoms/Login/EyeToggle/Dark/VisibilityOff";
 type formProps = {

@@ -33,7 +33,9 @@ const MINER_ARRAY: IMiner[] = [
 ];
 const GAME_INSTRUCTIONS_DATA = [
   {
-    InstructionIcon: <StartMiningIcon />,
+    InstructionIcon: (
+      <StartMiningIcon rectangleColor="transparent" pathColor="#EAEAEA" />
+    ),
     title: "Earn MC from mining",
     alt: "earn mc icon",
   },
@@ -66,7 +68,7 @@ const MINER_INSTRUCTIONS_ARRAY: IMiner2[] = [
     alt: "custom mining",
   },
   {
-    InstructionIcon: <MenuIcon name="StartMiningIcon" />,
+    InstructionIcon: <StartMiningIcon />,
     title: " Press play to start mining",
     alt: "start mining",
   },

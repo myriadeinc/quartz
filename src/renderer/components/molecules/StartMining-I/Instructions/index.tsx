@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import React, { ReactElement } from "react";
-import { MenuIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons";
+import { StartMiningIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/StartMiningIcon";
 import Typography from "renderer/components/atoms/TextStyles";
 
 type InstructionProps = {
@@ -51,7 +51,7 @@ export const Instructions = ({
         }}
       >
         {InstructionIcon}
-        <MenuIcon name="StartMiningIcon" />
+        <StartMiningIcon pathColor="#EAEAEA" rectangleColor="transparent" />
         <Typography variant="body" color="#EAEAEA" centered>
           {instructions}
         </Typography>
