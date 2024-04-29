@@ -13,6 +13,7 @@ export const CreditCardII = ({ info }: CreditCardIIProps) => {
         display: "flex",
         flexDirection: "row",
         gap: "16px",
+        width: "72%",
       }}
     >
       <MoneroIcon rectangleColor="0F141F" pathColor="#EAEAEA" />

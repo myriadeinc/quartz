@@ -11,17 +11,21 @@ type FriendsProps = {
   mining: string;
 };
 
-export const Friends = ({ friendName, isMetrics, mining }: FriendsProps) => {
+export const FriendsMolecule = ({
+  friendName,
+  isMetrics,
+  mining,
+}: FriendsProps) => {
   return (
     <Box
       sx={{
-        padding: "13px 30px 14px 12px",
-        width: "438px",
-        height: "75px",
+        padding: "20px",
+        width: { md: "100%", xl: "80%" },
+        height: "48px",
         display: "flex",
         gap: "12px",
         alignItems: "center",
-        borderBottom: "1px solid #293040",
+        whiteSpace: "nowrap",
       }}
     >
       <Box
@@ -43,7 +47,7 @@ export const Friends = ({ friendName, isMetrics, mining }: FriendsProps) => {
         {isMetrics ? (
           <SecondaryButton variant="medium" text="View Metrics" />
         ) : (
-          <Typography color="#8C8C8C">Mining for:{mining}</Typography>
+          <Typography color="#8C8C8C">Mining for {mining}</Typography>
         )}
       </Box>
     </Box>

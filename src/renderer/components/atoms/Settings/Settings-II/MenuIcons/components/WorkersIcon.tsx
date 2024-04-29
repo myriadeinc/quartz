@@ -1,8 +1,6 @@
-import React from "react";
-
 type Props = {
-  rectangleColor: string;
-  pathColor: string;
+  rectangleColor?: string;
+  pathColor?: string;
 };
 
 export const WorkersIcon = ({ rectangleColor, pathColor }: Props) => {

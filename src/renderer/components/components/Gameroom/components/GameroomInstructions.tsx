@@ -9,27 +9,31 @@ export const GameInstructionsBox = () => {
     <Box
       className="23497023840238"
       sx={{
-        display: "flex",
+        display: "grid",
+        gridTemplateColumns: {
+          sm: "1fr",
+          md: "1fr",
+          lg: "1fr 1fr 1fr 1fr",
+        },
         flexDirection: {
           sm: "column",
           md: "column",
           lg: "row",
           xl: "row",
         },
-        width: { xs: "100%", sm: "100%", md: "95%" },
+        width: { xs: "100%", sm: "100%", md: "100%" },
         alignItems: "center",
         backgroundColor: "#080A0F",
         marginTop: "20px",
         marginRight: "10px",
         zIndex: 2,
         borderRadius: "0 0 7px 7px",
-        border: "1px solid rgba(234, 234, 234, 0.2)",
+        border: "1px solid #293040",
       }}
     >
       {GAME_INSTRUCTIONS_DATA.map((element, index) => {
         return (
           <Instructions
-            key={element.alt}
             instructions={element.title}
             InstructionIcon={element.InstructionIcon}
           />

@@ -12,9 +12,13 @@ export const DarkLightModeSelector = () => {
         backgroundColor: "#0F141F",
       }}
     >
-      <Typography variant="bodySmall">Light</Typography>
+      <Typography variant="bodySmall" color="#EAEAEA">
+        Light
+      </Typography>
       <ToggleSwitchButton />
-      <Typography variant="bodySmall">Dark</Typography>
+      <Typography variant="bodySmall" color="#EAEAEA">
+        Dark
+      </Typography>
     </Box>
   );
 };

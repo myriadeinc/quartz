@@ -19,6 +19,7 @@ export const MiningStatsContainer = ({ CurrentHashrateData }: any) => {
       </Box>
       <Stack
         sx={{ backgroundColor: "#0F141F", borderRadius: "7px", width: "100%" }}
+        display={"flex"}
         flexWrap={"wrap"}
         // direction={"row"}
         padding={"1rem"}
@@ -48,7 +49,7 @@ export const MiningStatsContainer = ({ CurrentHashrateData }: any) => {
             </Box>
           );
         })}
-        <Box sx={{ alignSelf: "end" }}>
+        <Box sx={{ alignSelf: "end", paddingTop: "20px" }}>
           <SecondaryButton variant="large" text="Pool Stats" />
         </Box>
       </Stack>

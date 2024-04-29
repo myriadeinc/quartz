@@ -16,6 +16,8 @@ export const MinerStarter = () => {
         // height: "100%",
         // width: "100%",
         padding: "1rem",
+        paddingBottom: "0px",
+        height: "100%",
       }}
       sx={{
         justifyContent: {
@@ -24,6 +26,7 @@ export const MinerStarter = () => {
           lg: "space-around",
           xl: "space-between",
         },
+        paddingTop: "0px !important",
         gap: {
           sm: "6px",
           md: "12px",
@@ -51,10 +54,11 @@ export const MinerStarter = () => {
           }}
         >
           <Box>
+            <Typography></Typography>
             <Typography
               fontFamily="Poppins, sans-serif"
               style={{
-                fontSize: "12px",
+                fontSize: "14px",
                 color: "#8C8C8C",
                 fontWeight: 400,
                 marginTop: "6px",
@@ -69,7 +73,7 @@ export const MinerStarter = () => {
             <Typography
               fontFamily="Poppins, sans-serif"
               style={{
-                fontSize: "14px",
+                fontSize: "16px",
                 color: "#EAEAEA",
                 fontWeight: 400,
                 textAlign: "left",
@@ -80,7 +84,7 @@ export const MinerStarter = () => {
             <Typography
               fontFamily="Poppins, sans-serif"
               style={{
-                fontSize: "14px",
+                fontSize: "16px",
                 color: "#EAEAEA",
                 fontWeight: 400,
                 textAlign: "left",
@@ -93,7 +97,7 @@ export const MinerStarter = () => {
             <Typography
               fontFamily="Poppins, sans-serif"
               style={{
-                fontSize: "14px",
+                fontSize: "16px",
                 color: "#EAEAEA",
                 fontWeight: 400,
                 marginBottom: "0px",
@@ -105,7 +109,7 @@ export const MinerStarter = () => {
             <Typography
               fontFamily="Poppins, sans-serif"
               style={{
-                fontSize: "14px",
+                fontSize: "16px",
                 color: "#EAEAEA",
                 fontWeight: 400,
                 marginBottom: "0px",
@@ -126,13 +130,12 @@ export const MinerStarter = () => {
         alignSelf={"center"}
       >
         <Box
-          className="lsajflsjdfsjldfj"
           sx={{
             height: "16px",
             width: "16px",
             zIndex: 1,
             top: 12,
-            left: 12,
+            position: "relative",
             backgroundColor: "#EC5506",
             borderRadius: "50%",
           }}
@@ -141,17 +144,19 @@ export const MinerStarter = () => {
           sx={{
             // minWidth: "260px",
             // minHeight: "260px",
-            width: "260px",
-            height: "260px",
+            minWidth: "418px",
+            minHeight: "415px",
             border: "thick solid #414E66",
-            transform: "rotate(-25deg)",
+            // transform: "rotate(-25deg)",
             borderRadius: "50%",
             position: "relative",
           }}
         >
           <Stack
             sx={{
-              transform: "rotate(25deg)",
+              // transform: "rotate(25deg)",
+              position: "relative",
+              top: "72px",
               alignItems: "center",
             }}
             direction={"column"}
@@ -159,8 +164,8 @@ export const MinerStarter = () => {
             <IconButton>
               <PlayArrowIcon
                 sx={{
-                  minWidth: 100,
-                  minHeight: 100,
+                  minWidth: 88,
+                  minHeight: 88,
                   color: "#FA6F15", // Icon color
                   backgroundColor: "transparent", // Button background color
                 }}
@@ -169,7 +174,7 @@ export const MinerStarter = () => {
             <Typography
               fontFamily="Poppins, sans-serif"
               style={{
-                fontSize: "16px",
+                fontSize: "20px",
                 color: "#EAEAEA",
                 fontWeight: 400,
                 marginBottom: "0px",
@@ -183,6 +188,7 @@ export const MinerStarter = () => {
               sx={{
                 marginTop: "8px",
                 height: 0.25,
+                width: "288px",
                 bgcolor: "#293040",
               }}
             />
@@ -190,7 +196,7 @@ export const MinerStarter = () => {
             <Typography
               fontFamily="Poppins, sans-serif"
               style={{
-                fontSize: "14px",
+                fontSize: "20px",
                 color: "#EAEAEA",
                 fontWeight: 400,
                 marginTop: "6px",
@@ -204,10 +210,10 @@ export const MinerStarter = () => {
             <Typography
               fontFamily="Poppins, sans-serif"
               style={{
-                fontSize: "10px",
+                fontSize: "16px",
                 color: "#EAEAEA",
                 fontWeight: 400,
-                marginTop: "3px",
+                marginTop: "4px",
                 marginBottom: "0px",
                 textAlign: "center",
               }}
@@ -224,17 +230,17 @@ export const MinerStarter = () => {
               >
                 <Divider
                   sx={{
-                    // flexGrow: 0.4,
+                    flexGrow: 0.4,
                     bgcolor: "#FA6F15",
                     height: 0.25,
-                    minWidth: "20px",
+                    width: "3rem",
                     marginRight: "20px",
                   }}
                 />
                 <Typography
                   sx={{
                     fontFamily: "Poppins, sans-serif",
-                    fontSize: "12px",
+                    fontSize: "14px",
                     color: "#8C8C8C",
                     fontWeight: 400,
                     textAlign: "center",
@@ -250,6 +256,7 @@ export const MinerStarter = () => {
                   minWidth: "20px",
                   flexGrow: 0,
                   bgcolor: "#293040",
+                  width: "224px",
                 }}
               />
 
@@ -265,14 +272,14 @@ export const MinerStarter = () => {
                     flexGrow: 0.4,
                     bgcolor: "#FA6F15",
                     height: 0.25,
-                    minWidth: "20px",
+                    width: "3rem",
                     marginRight: "20px",
                   }}
                 />
                 <Typography
                   sx={{
                     fontFamily: "Poppins, sans-serif",
-                    fontSize: "12px",
+                    fontSize: "14px",
                     color: "#8C8C8C",
                     fontWeight: 400,
                     textAlign: "center",
@@ -308,7 +315,7 @@ export const MinerStarter = () => {
                 fontFamily="Poppins, sans-serif"
                 style={{
                   fontSize: "14px",
-                  color: "#EAEAEA",
+                  color: "#8C8C8C",
                   fontWeight: 400,
                   textAlign: "left",
                 }}
@@ -341,7 +348,7 @@ export const MinerStarter = () => {
                 fontFamily="Poppins, sans-serif"
                 style={{
                   fontSize: "14px",
-                  color: "#EAEAEA",
+                  color: "#8C8C8C",
                   fontWeight: 400,
                   textAlign: "left",
                 }}

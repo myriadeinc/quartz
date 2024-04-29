@@ -69,12 +69,11 @@ export const ReferelsSharing = () => {
           flexDirection: "column",
         }}
       >
+        <ReferelsInfoContainerI title="Friends Refered" points={23} />
         <ReferelsInfoContainerII
           title="Total Referral MC Earned"
           points="56412"
         />
-
-        <ReferelsInfoContainerI title="Friends Refered" points={23} />
       </Box>
     </Box>
   );

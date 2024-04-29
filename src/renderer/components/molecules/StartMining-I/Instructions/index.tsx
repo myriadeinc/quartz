@@ -1,19 +1,24 @@
 import { Box } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import React, { ReactElement } from "react";
-import { StartMiningIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/StartMiningIcon";
 import Typography from "renderer/components/atoms/TextStyles";
 
 type InstructionProps = {
   instructions: string;
-  InstructionIcon: any;
-  key: string;
+  InstructionIcon: ReactElement;
 };
-
+const useStyles = makeStyles({
+  itemsBorderBottom: {
+    "&:nth-last-child(1)": {
+      borderRight: "none",
+    },
+  },
+});
 export const Instructions = ({
   instructions,
   InstructionIcon,
-  key,
 }: InstructionProps) => {
+  const classes = useStyles();
   return (
     <Box
       sx={{
@@ -22,8 +27,8 @@ export const Instructions = ({
           xs: "1px solid rgba(234, 234, 234, 0.2)",
           sm: "none",
           md: "none",
-          lg: "1px solid rgba(234, 234, 234, 0.2)",
-          xl: "1px solid rgba(234, 234, 234, 0.2)",
+          lg: "1px solid #293040",
+          xl: "1px solid #293040",
         },
         borderBottom: {
           sm: "1px solid rgba(234, 234, 234, 0.2)",
@@ -39,7 +44,9 @@ export const Instructions = ({
         margin: "auto",
         placeContent: "center",
       }}
-      key={key}
+      className={classes.itemsBorderBottom}
+      maxWidth="270px"
+      margin="26px 49px"
     >
       <Box
         sx={{
@@ -50,9 +57,8 @@ export const Instructions = ({
           alignItems: "center",
         }}
       >
-        {InstructionIcon}
-        <StartMiningIcon pathColor="#EAEAEA" rectangleColor="transparent" />
-        <Typography variant="body" color="#EAEAEA" centered>
+        <InstructionIcon />
+        <Typography variant="bodySmall" color="#EAEAEA" centered>
           {instructions}
         </Typography>
       </Box>

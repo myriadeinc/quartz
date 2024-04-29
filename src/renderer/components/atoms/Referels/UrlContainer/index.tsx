@@ -11,7 +11,6 @@ export const UrlContainer = () => {
         maxWidth: "336px",
         maxHeight: "32px",
         fontSize: "14px",
-        paddingLeft: "20px",
         border: "1px solid #EAEAEA",
         borderRadius: "3px",
         display: "flex",
@@ -34,6 +33,8 @@ export const UrlContainer = () => {
           "&:hover": {
             backgroundColor: "transparent",
           },
+          position: "relative",
+          right: "11px",
         }}
       >
         <CopyIcon />

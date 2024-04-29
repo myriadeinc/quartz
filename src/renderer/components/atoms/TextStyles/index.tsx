@@ -85,6 +85,7 @@ function Typography({
         ...styleProps,
         color: color,
         variant: "h1",
+        fontFamily: "Poppins",
         fontSize: "28px",
         fontWeight: FontWeight.Regular,
         lineHeight: LineHeight.H1,
@@ -96,6 +97,7 @@ function Typography({
         color: color,
         variant: "h2",
         fontSize: "20px",
+        fontFamily: "Poppins",
         fontWeight: FontWeight.Medium,
         lineHeight: LineHeight.H2,
       };
@@ -106,6 +108,7 @@ function Typography({
         color: color,
         variant: "h3",
         fontSize: "30px",
+        fontFamily: "Poppins",
         fontWeight: "bold",
       };
       break;
@@ -115,6 +118,7 @@ function Typography({
         color: color,
         variant: "h4",
         fontSize: "20px",
+        fontFamily: "Poppins",
         fontWeight: "bold",
       };
       break;
@@ -123,6 +127,7 @@ function Typography({
         ...styleProps,
         variant: "h5",
         fontSize: "16px",
+        fontFamily: "Poppins",
         fontWeight: "bold",
       };
       break;
@@ -140,6 +145,7 @@ function Typography({
         color: color,
         variant: "body1",
         fontSize: "18px",
+        fontFamily: "Poppins",
         fontWeight: FontWeight.Regular,
         lineHeight: LineHeight.Body1,
       };
@@ -152,6 +158,7 @@ function Typography({
         fontSize: "16px",
         fontWeight: FontWeight.Regular,
         lineHeight: LineHeight.Body2,
+        fontFamily: "Poppins",
       };
       break;
     case "bodySmall":
@@ -160,6 +167,7 @@ function Typography({
         color: color,
         variant: "body2",
         fontSize: "14px",
+        fontFamily: "Poppins",
         fontWeight: FontWeight.Regular,
         lineHeight: LineHeight.Body3,
       };
@@ -170,6 +178,7 @@ function Typography({
         color: color,
         variant: "caption",
         fontSize: "12px",
+        fontFamily: "Poppins",
         fontWeight: FontWeight.Regular,
         lineHeight: LineHeight.Caption,
       };
@@ -193,21 +202,26 @@ function Typography({
         ...styleProps,
         variant: "body1",
         fontSize: "14px",
+        fontFamily: "Poppins",
         fontWeight: FontWeight.Regular,
       };
   }
 
   if (uppercase) {
-    styleProps = { ...styleProps, textTransform: "uppercase" };
+    styleProps = {
+      ...styleProps,
+      textTransform: "uppercase",
+      fontFamily: "Poppins",
+    };
   }
   if (centered) {
-    styleProps = { ...styleProps, textAlign: "center" };
+    styleProps = { ...styleProps, textAlign: "center", fontFamily: "Poppins" };
   }
   if (primary) {
-    styleProps = { ...styleProps, color: "#EAEAEA" };
+    styleProps = { ...styleProps, color: "#EAEAEA", fontFamily: "Poppins" };
   }
   if (weight) {
-    styleProps = { ...styleProps, fontWeight: weight };
+    styleProps = { ...styleProps, fontWeight: weight, fontFamily: "Poppins" };
   }
 
   return (

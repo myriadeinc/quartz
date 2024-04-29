@@ -10,7 +10,14 @@ type SettingsProps = {
 
 export const SettingsBox = ({ settingName, settingsInfo }: SettingsProps) => {
   return (
-    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "space-between",
+        paddingTop: "40px",
+        maxWidth: "460px",
+      }}
+    >
       <MiningSettingsBox settings={settingName} info={settingsInfo} />
       <ToggleSwitchButton />
     </Box>

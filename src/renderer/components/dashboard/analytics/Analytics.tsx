@@ -1,15 +1,13 @@
 import Grow from "@mui/material/Grow";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
 import { Link } from "react-router-dom";
 import { MinerConsumer } from "renderer/pages/Dashboard";
-import { FriendMenu } from "../friends/Friends";
-import { HistoryChart } from "renderer/components/common/historyChart";
 import { useState, useEffect } from "react";
-import { WorkerSummary } from "renderer/components/components/Workers/WorkerSummary";
 import { AverageHashrateCard } from "renderer/components/components/Dashboard/AverageHashrateCard";
+import { FriendsActivityCard } from "renderer/components/components/Friends/FriendsActivity";
+import { Grid } from "@mui/material";
+import Typography from "renderer/components/atoms/TextStyles";
+import { RangeSelectorButtonGroup } from "renderer/components/atoms/Dashboard/RangeSelectors";
 export const Analytics = () => {
   const [screenSize, setScreenSize] = useState({
     width: window.innerWidth,
@@ -33,7 +31,9 @@ export const Analytics = () => {
   return (
     <MinerConsumer>
       {(miner) => (
-        <Box
+        <Grid
+          container
+          spacing={2}
           sx={{
             width: {
               xs: "100vw",
@@ -42,229 +42,192 @@ export const Analytics = () => {
               lg: "calc(100% - 406px)",
             },
             marginLeft: "406px",
-            padding: "1.5rem",
+            padding: "21px",
           }}
         >
-          <Box>
-            <Typography
-              fontFamily="Poppins, sans-serif"
-              style={{
-                fontSize: "28px",
-                color: "#EAEAEA",
-                fontWeight: 400,
+          <Grid item lg={12} sx={{ paddingLeft: "0px !important" }}>
+            <Box>
+              <Typography
+                fontFamily="Poppins, sans-serif"
+                style={{
+                  fontSize: "28px",
+                  color: "#EAEAEA",
+                  fontWeight: 400,
+                }}
+              >
+                Dashboard
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid
+            item
+            container
+            lg={12}
+            spacing={2}
+            sx={{ paddingLeft: "0px !important" }}
+          >
+            <Grid item md={12} lg={6} xl={4}>
+              <Link
+                to={""}
+                style={{ textDecoration: "none", cursor: "pointer" }}
+              >
+                <Grow in={true}>
+                  <div style={{ position: "relative" }}>
+                    <AverageHashrateCard
+                      cardPointUnit="H/sec"
+                      cardTitle="Average Hashrate(24h)"
+                      cardPoints={miner.avgHashrate}
+                      imgSrc="/assets/Illustrations/DM.webp"
+                    />
+                  </div>
+                </Grow>
+              </Link>
+            </Grid>
+            <Grid item md={12} lg={6} xl={4}>
+              <Link
+                to={""}
+                style={{ textDecoration: "none", cursor: "pointer" }}
+              >
+                <Grow in={true}>
+                  <div style={{ position: "relative" }}>
+                    <AverageHashrateCard
+                      cardTitle="Pool Hashrate"
+                      cardPoints={"2039570"}
+                      cardPointUnit="H/sec"
+                      imgSrc="/assets/Illustrations/DM2.webp"
+                    />
+                  </div>
+                </Grow>
+              </Link>
+            </Grid>
+            <Grid item md={12} lg={6} xl={4}>
+              <Link
+                to={""}
+                style={{ textDecoration: "none", cursor: "pointer" }}
+              >
+                <Grow in={true}>
+                  <div style={{ position: "relative" }}>
+                    <AverageHashrateCard
+                      cardPointUnit="MC"
+                      cardTitle="Refferer Bonus"
+                      cardPoints={"68531"}
+                      imgSrc="/assets/Illustrations/DM3.webp"
+                    />
+                  </div>
+                </Grow>
+              </Link>
+            </Grid>
+          </Grid>
+          <Grid
+            item
+            container
+            lg={12}
+            spacing={2}
+            marginTop="20px"
+            sx={{
+              paddingTop: "0px !important",
+              gap: { md: "20px", lg: "20px", xl: 0 },
+            }}
+          >
+            <Grid
+              item
+              md={12}
+              lg={8}
+              sx={{
+                background: "#0F141F",
+                position: "relative",
+                borderRadius: "7px",
+                boxSizing: "border-box",
               }}
             >
-              Dashboard
-            </Typography>
-          </Box>
-          <Box
-            sx={{ display: "flex", flexWrap: "wrap", xl: "justifyContent" }}
-            flexDirection={{ md: "row", lg: "row" }}
-          >
-            <Box sx={{ width: { xs: "100%", sm: "100%", md: "inherit" } }}>
-              <Link
-                to={""}
-                style={{ textDecoration: "none", cursor: "pointer" }}
+              <Box
+                sx={{ display: "flex", flexDirection: "column", gap: "8px" }}
               >
-                <Grow in={true}>
-                  <div style={{ position: "relative" }}>
-                    <AverageHashrateCard cardPoints={miner.avgHashrate} />
-                    {/* <Card
-                      style={{
-                        backgroundColor: "#0F141F",
-                        backgroundImage: "none",
-                        backgroundSize: "cover",
-                        width: "100%", // Set card width to 100% to make it responsive
-                        height: "288px",
-                        padding: "0px",
-                        marginTop: "20px",
-                        marginRight: "10px",
-                        zIndex: 2,
-                        borderRadius: "7px",
-                        display: "flex",
-                        flexDirection: "column", // Ensure child elements stack vertically
-                        justifyContent: "space-between", // Distribute space evenly between child elements
-                        position: "relative",
-                      }}
-                    >
-                      <Typography
-                        variant="body1"
-                        style={{
-                          fontSize: "16px",
-                          color: "#8C8C8C",
-                          fontWeight: 400,
-                          marginTop: "20px",
-                          marginLeft: "20px",
-                        }}
-                      >
-                        Average Hashrate (1hr)
-                      </Typography>
-                      <Typography
-                        variant="h6"
-                        style={{
-                          fontSize: "20px",
-                          color: "#EAEAEA",
-                          fontWeight: 500,
-                          marginLeft: "20px",
-                        }}
-                      >
-                        {miner.avgHashrate} H/sec
-                      </Typography>
-                      <Box
-                        style={{
-                          maxWidth: "100%",
-                          height: "220px",
-                          objectFit: "cover",
-                          position: "absolute",
-                          top: "60px",
-                          right: "1rem",
-                        }}
-                      >
-                        <img
-                          src="/assets/img/DM.webp"
-                          alt="Your Image Alt Text"
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                            zIndex: 3,
-                          }}
-                        />
-                      </Box>
-                    </Card> */}
-                  </div>
-                </Grow>
-              </Link>
-            </Box>
-            <Box sx={{ width: { xs: "100%", sm: "100%", md: "inherit" } }}>
-              <Link
-                to={""}
-                style={{ textDecoration: "none", cursor: "pointer" }}
+                <Typography variant="heading2" color="#EAEAEA">
+                  Historical Metrics
+                </Typography>
+                <Typography color="#8C8C8C">
+                  See how your hashrate changes over time.
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "end",
+                  marginRight: "20px",
+                }}
               >
-                <Grow in={true}>
-                  <div style={{ position: "relative" }}>
-                    <Card
-                      style={{
-                        backgroundColor: "#0F141F",
-                        backgroundImage: "none",
-                        backgroundSize: "cover",
-                        minWidth: "475px",
-                        height: "288px",
-                        padding: "0px",
-                        marginTop: "20px",
-                        zIndex: 2,
-                        borderRadius: "7px",
-                      }}
-                    >
-                      <Typography
-                        fontFamily="Poppins, sans-serif"
-                        style={{
-                          fontSize: "16px",
-                          color: "#8C8C8C",
-                          fontWeight: 400,
-                          marginTop: "20px",
-                          marginLeft: "20px",
-                        }}
-                      >
-                        Pool Hashrate
-                      </Typography>
-                      <Typography
-                        fontFamily="Poppins, sans-serif"
-                        style={{
-                          fontSize: "20px",
-                          color: "#EAEAEA",
-                          fontWeight: 500,
-                          marginLeft: "20px",
-                        }}
-                      >
-                        2039570 H/sec
-                      </Typography>
-                      <CardMedia
-                        component="img"
-                        height="194"
-                        image="/assets/Illustrations/DM2.webp"
-                        alt="Paella dish"
-                        sx={{ objectFit: "contain" }}
-                      />
-                    </Card>
-                  </div>
-                </Grow>
-              </Link>
-            </Box>
-            <Box sx={{ width: { xs: "100%", sm: "100%", md: "inherit" } }}>
-              <Link
-                to={""}
-                style={{ textDecoration: "none", cursor: "pointer" }}
+                <RangeSelectorButtonGroup
+                  firstButtonTitle="Hour"
+                  SecondButtonTitle="Day"
+                  ThirdButtonTitle="Week"
+                  FourthButtonTitle="3 Month"
+                  FifthButtonTitle="Year"
+                />
+              </Box>
+              <Box sx={{ height: "85%" }}>
+                <Box
+                  style={{
+                    backgroundColor: "#0F141F",
+                    backgroundImage: "none",
+                    backgroundSize: "cover",
+                    marginRight: "10px",
+                    zIndex: 2,
+                    borderRadius: "7px",
+                    position: "relative",
+                    minWidth: "400px",
+                  }}
+                  sx={{
+                    height: {
+                      xs: "45vh",
+                      sm: "45vh",
+                      md: "45vh",
+                      lg: "52 vh",
+                      xl: "100%",
+                    },
+                  }}
+                >
+                  <img
+                    src="/assets/Illustrations/Historical-Metrics-3-Month-Card.webp"
+                    alt="Your Image Alt Text"
+                    style={{
+                      maxWidth: "-webkit-fill-available",
+                      height: "100%",
+                      objectFit: "fill",
+                      position: "absolute",
+                      zIndex: 3,
+                    }}
+                  />
+                </Box>
+              </Box>
+            </Grid>
+            <Grid
+              item
+              md={12}
+              lg={8}
+              xl={4}
+              sx={{
+                paddingTop: "0px !important",
+                paddingLeft: {
+                  md: "0px !important",
+                  lg: "0px !important",
+                  xl: "20px !important",
+                },
+              }}
+            >
+              <Box
+                sx={{
+                  maxHeight: "650px",
+                  overflow: "auto",
+                  background: "#0F141F",
+                  borderRadius: "7px",
+                }}
               >
-                <Grow in={true}>
-                  <div style={{ position: "relative" }}>
-                    <Card
-                      style={{
-                        backgroundColor: "#0F141F",
-                        backgroundImage: "none",
-                        backgroundSize: "cover",
-                        minWidth: "475px",
-                        height: "288px",
-                        marginTop: "20px",
-                        zIndex: 2,
-                        borderRadius: "7px",
-                      }}
-                      sx={{
-                        marginLeft: { md: "0", lg: ".5rem", xl: ".5rem" },
-                      }}
-                    >
-                      <Typography
-                        fontFamily="Poppins, sans-serif"
-                        style={{
-                          fontSize: "16px",
-                          color: "#8C8C8C",
-                          fontWeight: 400,
-                          marginTop: "20px",
-                          marginLeft: "20px",
-                        }}
-                      >
-                        Referrer Bonus
-                      </Typography>
-                      <Typography
-                        fontFamily="Poppins, sans-serif"
-                        style={{
-                          fontSize: "20px",
-                          color: "#EAEAEA",
-                          fontWeight: 500,
-                          marginLeft: "20px",
-                        }}
-                      >
-                        68531 MC
-                      </Typography>
-                      <CardMedia
-                        component="img"
-                        height="194"
-                        image="/assets/Illustrations/DM3.webp"
-                        alt="Paella dish"
-                        sx={{ objectFit: "contain" }}
-                      />
-                    </Card>
-                  </div>
-                </Grow>
-              </Link>
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              display: "grid",
-              flexWrap: "wrap",
-            }}
-            gridTemplateColumns={{ md: "1fr", lg: "2fr 1fr", xl: "2fr 1fr" }}
-          >
-            <HistoryChart isAnalytics={true} padding="1.5rem 0" />
-            <Box maxHeight={"600px"} overflow={"auto"}>
-              <FriendMenu />
-            </Box>
-          </Box>
-          <Box>
-            <WorkerSummary />
-          </Box>
-        </Box>
+                <FriendsActivityCard padding="1.5rem 1rem" isDashboard={true} />
+              </Box>
+            </Grid>
+          </Grid>
+        </Grid>
       )}
     </MinerConsumer>
   );

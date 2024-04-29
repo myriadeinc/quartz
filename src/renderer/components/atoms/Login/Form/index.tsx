@@ -20,10 +20,7 @@ const Form = ({
     <>
       <Box
         sx={{
-          maxWidth: "360px",
-          maxHeight: "32px",
-          paddingTop: "20px",
-          margin: "auto",
+          marginBottom: "20px",
         }}
       >
         <TextField
@@ -33,8 +30,6 @@ const Form = ({
             disableUnderline: true,
           }}
           style={{
-            maxWidth: "360px",
-            maxHeight: "32px",
             fontSize: "14px",
           }}
           inputProps={{
@@ -74,29 +69,23 @@ const Form = ({
       </Box>
       <Box
         sx={{
-          maxWidth: "360px",
-          maxHeight: "32px",
-          paddingTop: "20px",
-          margin: "auto",
           "&:focus": {
             borderBottom: "2px solid #FA6F15",
           },
         }}
       >
         <div
-          className="ASdfasfsf"
           style={{
             display: "flex",
             flexDirection: "column",
             alignItems: "end",
+            height: "35px",
           }}
         >
           <TextField
             variant="standard"
             id="outlined-basic"
             style={{
-              maxWidth: "360px",
-              maxHeight: "32px",
               fontSize: "14px",
             }}
             inputProps={{
@@ -108,7 +97,6 @@ const Form = ({
             fullWidth
             placeholder="Password"
             sx={{
-              mt: "20px",
               border: "1px solid #414E66",
               borderRadius: "3px",
               "& input:focus": {
@@ -139,7 +127,14 @@ const Form = ({
               fullWidth: true,
             }}
           />
-          <Box sx={{ position: "relative", bottom: "31px", right: "14px" }}>
+          <Box
+            sx={{
+              position: "relative",
+              bottom: "33px",
+              right: "12px",
+              alignSelf: "end",
+            }}
+          >
             <IconButton
               aria-label="toggle password visibility"
               onClick={onToggleVisible}
@@ -154,12 +149,12 @@ const Form = ({
               }}
             >
               {state.showPassword ? (
-                <VisibilityOn
+                <VisibilityOff
                   rectangleColor={isHovered ? "#FA6F15" : "#414E66"}
                   pathColor={isHovered ? "#0F141F" : "#EAEAEA"}
                 />
               ) : (
-                <VisibilityOff
+                <VisibilityOn
                   rectangleColor={isHovered ? "#FA6F15" : "#414E66"}
                   pathColor={isHovered ? "#0F141F" : "#EAEAEA"}
                 />

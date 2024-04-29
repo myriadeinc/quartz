@@ -5,7 +5,7 @@ export interface DashboardRoute {
   ref: string;
   component: FC;
   visible: boolean;
-  icon: string;
+  Icon: ReactElement;
   alt?: string;
 }
 

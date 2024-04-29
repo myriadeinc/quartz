@@ -3,14 +3,22 @@ import { PlayIcon } from "renderer/components/atoms/Dashboard/DashboardCardIcons
 
 type Props = {
   cardPoints: string;
+  imgSrc: string;
+  cardTitle: string;
+  cardPointUnit: string;
 };
 
-export const AverageHashrateCard = ({ cardPoints }: Props) => {
+export const AverageHashrateCard = ({
+  cardPoints,
+  imgSrc,
+  cardTitle,
+  cardPointUnit,
+}: Props) => {
   return (
     <DashboardCard
-      cardTitle="Average Hashrate(24h)"
-      cardInfo={`${cardPoints} H/sec`}
-      cardImgSrc="/assets/Illustrations/DM.webp"
+      cardTitle={cardTitle}
+      cardInfo={`${cardPoints} ${cardPointUnit}`}
+      cardImgSrc={imgSrc}
       LinkHoverTitle="Start Mining"
       LinkIcon={PlayIcon}
       LinkPath=""

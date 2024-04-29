@@ -21,7 +21,7 @@ export const BonusforFriends = () => {
     >
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <BonusIcon />
+          <BonusIcon pathColor="#FA6F15" />
           <Typography variant="bodyLarge" color="#EAEAEA">
             Give your friends a bonus by mining at the same time as them
           </Typography>

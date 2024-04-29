@@ -56,7 +56,7 @@ export const UserProfileInfo = ({
           }}
         >
           <CopperLeftIcon />
-          <Typography weight="500" variant="bodySmall" color="#EAEAEA">
+          <Typography variant="bodySmall" color="#EAEAEA">
             Level {level}
           </Typography>
           <CopperRightIcon />
@@ -65,7 +65,7 @@ export const UserProfileInfo = ({
           {userEmail}
         </Typography>
       </Box>
-      <Box>
+      <Box sx={{ position: "relative", bottom: "20px" }}>
         <IconButton
           aria-label="toggle password visibility"
           onClick={toggleHandler}

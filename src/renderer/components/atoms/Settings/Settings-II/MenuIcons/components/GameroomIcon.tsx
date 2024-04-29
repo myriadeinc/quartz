@@ -1,6 +1,6 @@
 type Props = {
-  rectangleColor: string;
-  pathColor: string;
+  rectangleColor?: string;
+  pathColor?: string;
 };
 
 export const GameroomIcon = ({ rectangleColor, pathColor }: Props) => {
@@ -32,15 +32,15 @@ export const GameroomIcon = ({ rectangleColor, pathColor }: Props) => {
       />
       <path
         d="M33.5386 18.179L24.4293 8.53026C24.3369 8.43168 24.1795 8.53026 24.222 8.66256L27.6523 19.3632C27.6723 19.4242 27.7323 19.4618 27.7922 19.4501L33.4724 18.3982C33.5711 18.3801 33.6099 18.2543 33.5399 18.1803L33.5386 18.179Z"
-        fill="#EAEAEA"
+        fill={pathColor}
       />
       <path
         d="M17.4161 20.8792C17.4036 20.8312 17.3649 20.7936 17.3174 20.7858L11.7921 19.7637C11.6834 19.7443 11.6047 19.8688 11.6659 19.9635L20.5154 33.7382C20.5941 33.8601 20.7765 33.7745 20.7403 33.6318L17.4161 20.8792Z"
-        fill="#EAEAEA"
+        fill={pathColor}
       />
       <path
         d="M17.3662 19.4513C17.4274 19.463 17.4874 19.4254 17.5061 19.3644L20.9302 8.65982C20.9715 8.52882 20.8153 8.43024 20.7229 8.52752L11.6098 18.1802C11.5399 18.2541 11.5786 18.3799 11.6773 18.3981L17.3662 19.45V19.4513Z"
-        fill="#EAEAEA"
+        fill={pathColor}
       />
     </svg>
   );

@@ -31,14 +31,25 @@ const MINING_SETTINGS: MININGSETTING[] = [
 ];
 export const MiningSettings = () => {
   return (
-    <Box sx={{ display: "flex" }}>
-      <Typography variant="heading2">Mining Settings</Typography>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        padding: "20px 0 10px 20px",
+        // background: "#0F141F",
+      }}
+    >
+      <Typography variant="heading2" color="#EAEAEA">
+        Mining Settings
+      </Typography>
       {MINING_SETTINGS.map((settingItems: MININGSETTING) => {
-        <SettingsBox
-          settingName={settingItems.settingName}
-          settingsInfo={settingItems.settingInfo}
-          key={settingItems.settingName}
-        />;
+        return (
+          <SettingsBox
+            settingName={settingItems.settingName}
+            settingsInfo={settingItems.settingInfo}
+            key={settingItems.settingName}
+          />
+        );
       })}
     </Box>
   );

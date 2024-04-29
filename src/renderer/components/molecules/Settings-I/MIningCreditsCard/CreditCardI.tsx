@@ -13,9 +13,8 @@ export const CreditCardI = ({ info }: CreditCardIProps) => {
         display: "flex",
         flexDirection: "row",
         gap: "16px",
-        justifyContent: "space-evenly",
         position: "relative",
-        left: 8,
+        width: "80%",
       }}
     >
       <MCIcon rectangleColor="0F141F" pathColor="#EAEAEA" />

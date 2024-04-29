@@ -6,6 +6,8 @@ interface buttonGroupName {
   ThirdButtonTitle: string;
   FourthButtonTitle: string;
   FifthButtonTitle: string;
+  length?: number;
+  width?: string;
 }
 export function RangeSelectorButtonGroup({
   firstButtonTitle,
@@ -13,6 +15,8 @@ export function RangeSelectorButtonGroup({
   ThirdButtonTitle,
   FifthButtonTitle,
   FourthButtonTitle,
+  length,
+  width,
 }: buttonGroupName) {
   return (
     <ButtonGroup
@@ -20,13 +24,14 @@ export function RangeSelectorButtonGroup({
       aria-label="Basic button group"
       sx={{
         backgroundColor: "#080A0F",
-        minWidth: "323px",
+        maxWidth: width,
         maxHeight: "32px",
         color: "#EAEAEA",
         fontSize: "14px",
         lineHeight: "20px",
         textAlign: "center",
-        border: "1px solid green",
+        border: "1px solid #3a475d",
+        textTransform: "capitalize",
       }}
     >
       <Button
@@ -34,8 +39,9 @@ export function RangeSelectorButtonGroup({
           color: "#8C8C8C",
           borderRadius: "4px 0",
           border: "none",
+          textTransform: "capitalize",
           "&:hover": {
-            border: "1px solid #EAEAEA",
+            border: "1px solid #8C8C8C",
             color: "#EAEAEA",
           },
         }}
@@ -47,8 +53,10 @@ export function RangeSelectorButtonGroup({
           color: "#8C8C8C",
           border: "none",
           borderRadius: "0",
+          textTransform: "capitalize",
+          borderLeft: "1px solid #3a475d",
           "&:hover": {
-            border: "1px solid #EAEAEA",
+            border: "1px solid #8C8C8C",
             color: "#EAEAEA",
           },
         }}
@@ -59,9 +67,11 @@ export function RangeSelectorButtonGroup({
         sx={{
           color: "#8C8C8C",
           border: "none",
+          textTransform: "capitalize",
           borderRadius: "0 4px 4px 0",
+          borderLeft: "1px solid #3a475d",
           "&:hover": {
-            border: "1px solid #EAEAEA",
+            border: "1px solid #8C8C8C",
             color: "#EAEAEA",
           },
         }}
@@ -72,14 +82,31 @@ export function RangeSelectorButtonGroup({
         sx={{
           color: "#8C8C8C",
           borderRadius: "4px 0",
+          textTransform: "capitalize",
           border: "none",
+          borderLeft: "1px solid #3a475d",
           "&:hover": {
-            border: "1px solid #EAEAEA",
+            border: "1px solid #8C8C8C",
             color: "#EAEAEA",
           },
         }}
       >
         {FourthButtonTitle}
+      </Button>
+      <Button
+        sx={{
+          color: "#8C8C8C",
+          borderRadius: "4px 0",
+          border: "none",
+          borderLeft: "1px solid #3a475d",
+          textTransform: "capitalize",
+          "&:hover": {
+            border: "1px solid #8C8C8C",
+            color: "#EAEAEA",
+          },
+        }}
+      >
+        {FifthButtonTitle}
       </Button>
     </ButtonGroup>
   );

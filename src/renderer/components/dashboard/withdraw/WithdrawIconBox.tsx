@@ -22,7 +22,7 @@ const WITHDRAW_ICONS = [
 
 export const WithdrawIconBox = () => {
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
       {WITHDRAW_ICONS.map((element) => {
         return (
           <Box

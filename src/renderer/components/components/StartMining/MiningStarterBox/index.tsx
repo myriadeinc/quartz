@@ -66,8 +66,8 @@ export const MinerStarter = () => {
           sx={{
             // minWidth: "260px",
             // minHeight: "260px",
-            width: "260px",
-            height: "260px",
+            width: "415px",
+            height: "418px",
             border: "thick solid #414E66",
             transform: "rotate(-25deg)",
             borderRightColor: "#FA6F15",

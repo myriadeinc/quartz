@@ -30,10 +30,11 @@ export const ReferelsInfoContainerI = ({
       <Typography variant="body" color="#EAEAEA">
         {points}
       </Typography>
-      <Box sx={{ alignSelf: "end" }}>
+      <Box sx={{ alignSelf: "end", whiteSpace: "nowrap" }}>
         <SecondaryButton
           text="Referred Friends"
           variant="medium"
+          textTransform="capitalize"
           //   onClick={handleConfirmDeleteWorker}
         />
       </Box>

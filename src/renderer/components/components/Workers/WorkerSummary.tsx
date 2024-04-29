@@ -40,6 +40,7 @@ export const WorkerSummary = () => {
         backgroundColor: "#0F141F",
         display: "flex",
         flexDirection: "column",
+        whiteSpace: "nowrap",
       }}
     >
       <Box

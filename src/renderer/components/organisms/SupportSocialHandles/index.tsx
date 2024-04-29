@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { Link } from "@mui/material";
 import { DiscordIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/SupportIcons/components/DiscordIcon";
 import { MailIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/SupportIcons/components/MailIcon";
 import { TwitterIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/SupportIcons/components/TwitterIcon";
@@ -11,7 +12,8 @@ export const SupportSocialHandles = () => {
         display: "flex",
         gap: "8px",
         flexDirection: "column",
-        paddigLeft: "40px",
+        paddingLeft: "40px",
+        paddingBottom: "24px",
         alignSelf: "end",
       }}
     >
@@ -19,9 +21,15 @@ export const SupportSocialHandles = () => {
         CONTACT SUPPORT
       </Typography>
       <Box sx={{ display: "flex", gap: "16px" }}>
-        <DiscordIcon />
-        <TwitterIcon />
-        <MailIcon />
+        <Link href="https://discord.gg/J9Pn7Dk" target="_blank">
+          <DiscordIcon />
+        </Link>
+        <Link href="https://twitter.com/MyriadeInc" target="_blank">
+          <TwitterIcon />
+        </Link>
+        <Link href="mailto:support@myriade.io" target="_blank">
+          <MailIcon />
+        </Link>
       </Box>
     </Box>
   );

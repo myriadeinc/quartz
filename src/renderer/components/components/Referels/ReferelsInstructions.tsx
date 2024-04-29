@@ -27,17 +27,19 @@ export const ReferelsInstructions = () => {
           maxHeight: "172px",
         }}
       >
-        <img
-          src="/assets/svg/Referrals-Icon.svg"
-          alt="referels icons"
-          style={{ objectFit: "contain", maxHeight: "44px" }}
-        />
-        <Typography variant="bodyLarge" color="#EAEAEA" centered>
-          1. Send your Referral Code
-        </Typography>
-        <Typography variant="bodySmall" color="#EAEAEA" centered>
-          Copy your Referral Code Below and send it to your friends
-        </Typography>
+        <Box sx={{ maxWidth: "300px" }}>
+          <img
+            src="/assets/svg/Referrals-Icon.svg"
+            alt="referels icons"
+            style={{ objectFit: "contain", maxHeight: "44px" }}
+          />
+          <Typography variant="bodyLarge" color="#EAEAEA" centered>
+            1. Send your Referral Code
+          </Typography>
+          <Typography variant="bodySmall" color="#EAEAEA" centered>
+            Copy your Referral Code Below and send it to your friends
+          </Typography>
+        </Box>
       </Box>
 
       <div
@@ -53,17 +55,19 @@ export const ReferelsInstructions = () => {
           maxHeight: "172px",
         }}
       >
-        <img
-          src="/assets/svg/Workers-Icon.svg"
-          alt="workers icons"
-          style={{ objectFit: "contain", maxHeight: "44px" }}
-        />
-        <Typography variant="bodyLarge" color="#EAEAEA" centered>
-          1. 2. Mine With your Friends
-        </Typography>
-        <Typography variant="bodySmall" color="#EAEAEA" centered>
-          Teach your friends to set up their Myriade accounts and start mining
-        </Typography>
+        <Box sx={{ maxWidth: "300px" }}>
+          <img
+            src="/assets/svg/Workers-Icon.svg"
+            alt="workers icons"
+            style={{ objectFit: "contain", maxHeight: "44px" }}
+          />
+          <Typography variant="bodyLarge" color="#EAEAEA" centered>
+            2. Mine With your Friends
+          </Typography>
+          <Typography variant="bodySmall" color="#EAEAEA" centered>
+            Teach your friends to set up their Myriade accounts and start mining
+          </Typography>
+        </Box>
       </div>
 
       <div
@@ -79,18 +83,20 @@ export const ReferelsInstructions = () => {
           maxHeight: "172px",
         }}
       >
-        <img
-          src="/assets/svg/Withdraw-Icon.svg"
-          alt="withdraw icons"
-          style={{ objectFit: "contain", maxHeight: "44px" }}
-        />
-        <Typography variant="bodyLarge" color="#EAEAEA" centered>
-          3. Collect your Comission
-        </Typography>
-        <Typography variant="bodySmall" color="#EAEAEA" centered>
-          The higher your friends’ level, the more comission you earn off their
-          MC Mining
-        </Typography>
+        <Box sx={{ maxWidth: "300px" }}>
+          <img
+            src="/assets/svg/Withdraw-Icon.svg"
+            alt="withdraw icons"
+            style={{ objectFit: "contain", maxHeight: "44px" }}
+          />
+          <Typography variant="bodyLarge" color="#EAEAEA" centered>
+            3. Collect your Comission
+          </Typography>
+          <Typography variant="bodySmall" color="#EAEAEA" centered>
+            The higher your friends’ level, the more comission you earn off
+            their MC Mining
+          </Typography>
+        </Box>
       </div>
     </Box>
   );

@@ -55,12 +55,13 @@ export const ReferelTiers = (props: Props) => {
           Referels Tiers
         </Typography>
       </Box>
-      <Box>
+      <Box sx={{ background: "#0F141F" }}>
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <ReferelsTiersTable />
           <Box
             sx={{
               padding: "35px",
+              paddingLeft: "10px",
               display: "flex",
               flexWrap: "wrap",
               justifyContent: "center",

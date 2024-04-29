@@ -53,11 +53,17 @@ export const CurrentDrawings = (props: Props) => {
       <Box
         sx={{ display: "flex", padding: "40px", backgroundColor: "#0F141F" }}
       >
-        <Box sx={{ backgroundColor: "#080A0F", borderRadius: "7px" }}>
+        <Box
+          sx={{
+            backgroundColor: "#080A0F",
+            borderRadius: "7px",
+            display: "flex",
+          }}
+        >
           {CURRENT__DRAWING.map((element) => {
             return (
               <Card sx={{ width: 384, borderRadius: "7px" }}>
-                <CardMedia sx={{ backgroundColor: "red" }} title="green iguana">
+                <CardMedia title="green iguana">
                   <Box
                     sx={{ backgroundColor: "#141A29", position: "relative" }}
                   >

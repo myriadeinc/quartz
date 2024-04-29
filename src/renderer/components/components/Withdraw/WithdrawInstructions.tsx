@@ -17,7 +17,7 @@ export const WithdrawInstructions = () => {
       <Box
         style={{
           flex: 1,
-          border: "1px solid rgba(234, 234, 234, 0.2)",
+          border: "1px solid #293040",
           padding: "26px",
           display: "flex",
           flexDirection: "column",

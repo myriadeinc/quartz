@@ -7,6 +7,14 @@ import { Workers } from "renderer/components/dashboard/workers/Workers";
 import { Withdraw } from "renderer/components/dashboard/withdraw/Withdraw";
 import { Referrals } from "renderer/components/dashboard/referrals/Referrals";
 import { DashboardRoute } from "renderer/interfaces/pages/dashboard";
+import { DashboardIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/DashboardIcon";
+import { StartMiningIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/StartMiningIcon";
+import { GiftcardIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/GiftcardIcon";
+import { GameroomIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/GameroomIcon";
+import { FriendsIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/FriendsIcon";
+import { WorkersIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/WorkersIcon";
+import { WithdrawIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/WithdrawIcon";
+import { ReferelIcon } from "renderer/components/atoms/Dashboard/DashboardCardIcons/ReferelIcon";
 
 export const dashboardRoutes: DashboardRoute[] = [
   {
@@ -15,7 +23,7 @@ export const dashboardRoutes: DashboardRoute[] = [
     ref: "",
     component: Analytics,
     visible: true,
-    icon: "/assets/svg/Dashboard-Icon.svg",
+    Icon: DashboardIcon,
   },
   {
     name: "Start Mining",
@@ -23,38 +31,38 @@ export const dashboardRoutes: DashboardRoute[] = [
     ref: "/mining",
     component: Mining,
     visible: true,
-    icon: "/assets/svg/Start-Mining-Icon.svg",
+    Icon: StartMiningIcon,
   },
   {
     name: "Gift Cards",
     alt: "Gift Cards Room",
     ref: "/giftcards",
     component: GiftCards,
-    visible: false,
-    icon: "/assets/svg/Gift-Cards-Icon.svg",
+    visible: true,
+    Icon: GiftcardIcon,
   },
   {
-    name: "Game",
+    name: "Game Room",
     alt: "Game Rooms",
     ref: "/gameroom",
     component: GameRoom,
     visible: true,
-    icon: "/assets/svg/Game-Room-Icon.svg",
+    Icon: GameroomIcon,
   },
   {
     name: "Friends",
     alt: "Friends Room",
     ref: "/friends",
     component: Friends,
-    visible: false,
-    icon: "/assets/svg/Friends-Icon.svg",
+    visible: true,
+    Icon: FriendsIcon,
   },
   {
     name: "Workers",
     ref: "/workers",
     component: Workers,
-    visible: false,
-    icon: "/",
+    visible: true,
+    Icon: WorkersIcon,
   },
   {
     name: "Withdraw",
@@ -62,13 +70,13 @@ export const dashboardRoutes: DashboardRoute[] = [
     ref: "/withdraw",
     component: Withdraw,
     visible: true,
-    icon: "/assets/svg/Withdraw-Icon.svg",
+    Icon: WithdrawIcon,
   },
   {
     name: "Referrals",
     ref: "/referrals",
     component: Referrals,
-    visible: false,
-    icon: "/assets/svg/Referrals-Icon.svg",
+    visible: true,
+    Icon: ReferelIcon,
   },
 ];

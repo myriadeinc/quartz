@@ -1,6 +1,6 @@
 type Props = {
-  rectangleColor: string;
-  pathColor: string;
+  rectangleColor?: string;
+  pathColor?: string;
 };
 
 export const GiftcardIcon = ({ rectangleColor, pathColor }: Props) => {

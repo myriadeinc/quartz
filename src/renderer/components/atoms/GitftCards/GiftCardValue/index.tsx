@@ -13,7 +13,7 @@ export const GiftCardValue = ({ backgroundColor, text }: Props) => {
         backgroundColor: backgroundColor,
         borderRadius: "50%",
         minHeight: "48px",
-        maxWidth: "48px",
+        width: "48px",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",

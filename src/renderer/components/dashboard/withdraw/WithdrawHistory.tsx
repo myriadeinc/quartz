@@ -13,7 +13,7 @@ export const WithdrawHistory = () => {
           History
         </Typography>
       </Box>
-      <DrawingHistory headerData={WITHDRAW_HEADERS} />
+      <DrawingHistory />
     </Box>
   );
 };

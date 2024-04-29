@@ -16,13 +16,17 @@ export const ActiveMiner = ({ miningPoints }: ActiveMinerProps) => {
         gap: "4px",
         padding: "8px 20px",
         backgroundColor: "#0F141F",
+        borderRadius: "50%",
+        alignItems: "center",
       }}
     >
-      <WorkersIcon />
+      <WorkersIcon rectangleColor="transparent" pathColor="#FA6F15" />
       <Typography variant="caption" color="#8C8C8C">
         Active Miner
       </Typography>
-      <Typography variant="heading2">{miningPoints}</Typography>
+      <Typography variant="heading2" color="#EAEAEA">
+        {miningPoints}
+      </Typography>
     </Box>
   );
 };

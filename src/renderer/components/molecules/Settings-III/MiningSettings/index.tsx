@@ -18,7 +18,11 @@ export const MiningSettingsBox = ({ settings, info }: MiningSettingsProps) => {
       <Typography variant="body" color="#EAEAEA">
         {settings}
       </Typography>
-      {info && <Typography color="#8C8C8C">{info}</Typography>}
+      {info && (
+        <Typography color="#8C8C8C" variant="bodySmall">
+          {info}
+        </Typography>
+      )}
     </Box>
   );
 };

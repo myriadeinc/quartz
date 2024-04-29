@@ -1,7 +1,7 @@
-export const DecreaseIcon = (props: Props) => {
+export const DecreaseIcon = () => {
   return (
     <svg
-      width="44"
+      width="40"
       height="44"
       viewBox="0 0 44 44"
       fill="none"

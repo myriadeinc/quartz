@@ -11,22 +11,54 @@ import VisibilityOff from "renderer/components/atoms/Login/EyeToggle/Dark/Visibi
 import IconButton from "@mui/material/IconButton";
 
 function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number
+  date: string,
+  type: string,
+  amount: string,
+  delivery: string,
+  code: string
 ) {
-  return { name, calories, fat, carbs, protein };
+  return { date, type, amount, delivery, code };
 }
 
 const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
+  createData(
+    "April 27, 2021 9:43 PM",
+    "Steam",
+    "$5",
+    "Email",
+    "•••••••••••••••"
+  ),
+  createData(
+    "April 28, 2021 10:15 AM",
+    "Amazon",
+    "$10",
+    "SMS",
+    "•••••••••••••••"
+  ),
+  createData(
+    "April 29, 2021 1:30 PM",
+    "Google Play",
+    "$20",
+    "Email",
+    "•••••••••••••••"
+  ),
+  createData(
+    "April 30, 2021 3:20 PM",
+    "iTunes",
+    "$15",
+    "SMS",
+    "•••••••••••••••"
+  ),
+  createData(
+    "May 1, 2021 5:55 PM",
+    "PlayStation",
+    "$25",
+    "Email",
+    "•••••••••••••••"
+  ),
 ];
 
-export default function GCHistory() {
+export function GCHistory() {
   const [showVisibleIcon, setShowVisibleIcon] = useState<number | null>(null);
   const [isVisibleOn, setIsVisibleOff] = useState(false);
 
@@ -47,7 +79,6 @@ export default function GCHistory() {
       sx={{ backgroundColor: "#141A29", borderRadius: "7px" }}
     >
       <Table sx={{ minWidth: 650 }} aria-label="caption table">
-        <caption>A basic table example with a caption</caption>
         <TableHead sx={{ color: "", width: "52px" }}>
           <TableRow sx={{ width: "52px", borderBottom: "1px solid 141A29" }}>
             <TableCell
@@ -88,10 +119,11 @@ export default function GCHistory() {
         <TableBody>
           {rows.map((row, index) => (
             <TableRow
-              key={row.name}
+              key={row.date}
               sx={{
-                backgroundColor: index % 2 === 0 ? "#293040" : "#141A29",
-                borderBottom: "1px solid #293040",
+                backgroundColor: index % 2 === 0 ? "#0f141f" : "#141a29",
+                borderBottom: "1px solid transparent",
+                borderLeft: "1px solid transparent",
               }}
             >
               <TableCell
@@ -100,40 +132,44 @@ export default function GCHistory() {
                 sx={{
                   color: "#EAEAEA",
                   width: "320px",
-                  borderBottom: "1px solid #293040",
+                  borderBottom: "1px solid transparent",
+                  borderLeft: "1px solid transparent",
                 }}
               >
-                {row.name}
+                {row.date}
               </TableCell>
               <TableCell
                 align="left"
                 sx={{
                   color: "#EAEAEA",
                   width: "256px",
-                  borderBottom: "1px solid #293040",
+                  borderBottom: "1px solid transparent",
+                  borderLeft: "1px solid transparent",
                 }}
               >
-                {row.calories}
+                {row.type}
               </TableCell>
               <TableCell
                 align="left"
                 sx={{
                   color: "#EAEAEA",
                   width: "256px",
-                  borderBottom: "1px solid #293040",
+                  borderBottom: "1px solid transparent",
+                  borderLeft: "1px solid transparent",
                 }}
               >
-                {row.fat}
+                {row.amount}
               </TableCell>
               <TableCell
                 align="left"
                 sx={{
                   color: "#EAEAEA",
                   width: "256px",
-                  borderBottom: "1px solid #293040",
+                  borderBottom: "1px solid transparent",
+                  borderLeft: "1px solid transparent",
                 }}
               >
-                {row.carbs}
+                {row.delivery}
               </TableCell>
               <TableCell
                 align="left"
@@ -142,9 +178,11 @@ export default function GCHistory() {
                 sx={{
                   color: "#EAEAEA",
                   width: "385px",
-                  borderBottom: "1px solid #293040",
+                  borderBottom: "1px solid transparent",
+                  borderLeft: "1px solid transparent",
                 }}
               >
+                {row.code}
                 {showVisibleIcon === index && (
                   <IconButton
                     aria-label="toggle password visibility"
@@ -163,13 +201,6 @@ export default function GCHistory() {
                     )}
                   </IconButton>
                 )}
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={() => console.log("Clicked!")}
-                >
-                  <VisibilityOff color="#EAEAEA" />
-                </IconButton>
-                {row.protein}
               </TableCell>
             </TableRow>
           ))}

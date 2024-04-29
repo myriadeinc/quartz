@@ -15,13 +15,6 @@ function createData(
 ) {
   return { name, calories, fat, carbs, protein };
 }
-const TABLE_HEADER = [
-  "Drawing Titles",
-  "Number of Tickets",
-  "Prize Amount (XMR)",
-  "Last Purchased",
-  "Past Winner",
-];
 interface drawHistoryProps {
   headerData: Array<string>;
 }
@@ -32,7 +25,7 @@ const rows = [
   createData("Caramel", 262, 16.0, 24, 6.0),
 ];
 
-const dataForHistory = [
+const HISTORY_DATA = [
   {
     date: "June 16, 2021 3:59 PM",
     type: "XMR",
@@ -55,7 +48,8 @@ const dataForHistory = [
     address: "janedoe@example.com",
   },
 ];
-export function DrawingHistory({ headerData }: drawHistoryProps) {
+const WITHDRAW_HEADERS = ["Date", "Type", "Amount", "Status", "Address"];
+export function DrawingHistory() {
   return (
     <TableContainer
       component={Paper}
@@ -64,13 +58,13 @@ export function DrawingHistory({ headerData }: drawHistoryProps) {
       <Table sx={{ minWidth: 650 }} aria-label="caption table">
         <TableHead sx={{ color: "", width: "52px" }}>
           <TableRow sx={{ width: "52px", borderBottom: "1px solid 141A29" }}>
-            {headerData.map((element, index) => {
+            {WITHDRAW_HEADERS.map((element, index) => {
               return (
                 <TableCell
                   sx={{
                     color: "#8C8C8C",
                     paddingLeft: "20px",
-                    borderBottom: "1px solid #293040",
+                    borderBottom: "1px solid transparent",
                     fontSize: "16px",
                   }}
                 >
@@ -81,12 +75,13 @@ export function DrawingHistory({ headerData }: drawHistoryProps) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, index) => (
+          {HISTORY_DATA.map((row, index) => (
             <TableRow
-              key={row.name}
+              key={row.type}
               sx={{
                 backgroundColor: index % 2 === 0 ? "#0f141f" : "#141a29",
-                borderBottom: "1px solid #293040",
+                borderBottom: "1px solid transparent",
+                borderLeft: "1px solid transparent",
                 fontSize: "14px",
               }}
             >
@@ -97,10 +92,11 @@ export function DrawingHistory({ headerData }: drawHistoryProps) {
                   color: "#EAEAEA",
                   width: "320px",
                   paddingLeft: "20px",
-                  borderBottom: "1px solid #293040",
+                  borderBottom: "1px solid transparent",
+                  borderLeft: "1px solid transparent",
                 }}
               >
-                {row.name}
+                {row.date}
               </TableCell>
               <TableCell
                 align="left"
@@ -108,10 +104,11 @@ export function DrawingHistory({ headerData }: drawHistoryProps) {
                   color: "#EAEAEA",
                   width: "256px",
                   paddingLeft: "20px",
-                  borderBottom: "1px solid #293040",
+                  borderBottom: "1px solid transparent",
+                  borderLeft: "1px solid transparent",
                 }}
               >
-                {row.calories}
+                {row.type}
               </TableCell>
               <TableCell
                 align="left"
@@ -119,10 +116,11 @@ export function DrawingHistory({ headerData }: drawHistoryProps) {
                   color: "#EAEAEA",
                   width: "256px",
                   paddingLeft: "20px",
-                  borderBottom: "1px solid #293040",
+                  borderBottom: "1px solid transparent",
+                  borderLeft: "1px solid transparent",
                 }}
               >
-                {row.fat}
+                {row.amount}
               </TableCell>
               <TableCell
                 align="left"
@@ -130,10 +128,11 @@ export function DrawingHistory({ headerData }: drawHistoryProps) {
                   color: "#EAEAEA",
                   width: "256px",
                   paddingLeft: "20px",
-                  borderBottom: "1px solid #293040",
+                  borderBottom: "1px solid transparent",
+                  borderLeft: "1px solid transparent",
                 }}
               >
-                {row.carbs}
+                {row.status}
               </TableCell>
               <TableCell
                 align="left"
@@ -141,10 +140,11 @@ export function DrawingHistory({ headerData }: drawHistoryProps) {
                   color: "#EAEAEA",
                   width: "385px",
                   paddingLeft: "20px",
-                  borderBottom: "1px solid #293040",
+                  borderBottom: "1px solid transparent",
+                  borderLeft: "1px solid transparent",
                 }}
               >
-                {row.protein}
+                {row.address}
               </TableCell>
             </TableRow>
           ))}

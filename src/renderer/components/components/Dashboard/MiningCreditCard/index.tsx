@@ -26,14 +26,26 @@ export const MiningCreditCard = ({
       }}
     >
       <Box
-        sx={{ display: "flex", justifyContent: "space-evenly", margin: "8px" }}
+        sx={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          margin: "8px",
+          position: "relative",
+        }}
       >
         <CreditCardI info={minerBalance} />
-        <Box sx={{ alignSelf: "flex-end" }}>
+        <Box
+          sx={{
+            alignSelf: "flex-end",
+            position: "absolute",
+            right: 0,
+            bottom: 5,
+          }}
+        >
           <MiningRefreshButton />
         </Box>
       </Box>
-      <Box sx={{ display: "flex", margin: "8px" }}>
+      <Box sx={{ display: "flex", margin: "8px 0" }}>
         <DecreaseIcon />
         <CreditCardII info={moneroBalance} />
         <IncreaseArrowIcon />

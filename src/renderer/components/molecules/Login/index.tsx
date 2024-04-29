@@ -35,16 +35,16 @@ const LoginMolecule = ({
       style={{
         width: "400px",
         height: "288px",
+        borderRadius: "7px",
         backgroundColor: "#0F141F",
+        padding: "20px",
       }}
     >
       <Box
         sx={{
           maxWidth: "360px",
           maxHeight: "28px",
-          position: "relative",
-          left: "20px",
-          top: "20px",
+          paddingBottom: "20px",
         }}
       >
         <Typography variant="heading2" color="#EAEAEA">
@@ -61,8 +61,8 @@ const LoginMolecule = ({
         style={{
           margin: "auto",
           textAlign: "center",
-          paddingTop: "16px",
           marginTop: "16px",
+          width: "122px",
         }}
       >
         <PrimaryButton onClick={handleLogin} text="Login" />
@@ -77,15 +77,8 @@ const LoginMolecule = ({
           />
         )}
       </div>
-      <div style={{ margin: "auto", textAlign: "center" }}>
-        <MuiTypography
-          fontFamily="Poppins, sans-serif"
-          style={{
-            marginTop: "50px",
-            fontSize: "12px",
-            color: "#EAEAEA",
-          }}
-        >
+      <div style={{ margin: "56px 0 0 0", textAlign: "center" }}>
+        <Typography variant="body" color="#EAEAEA">
           Don't have an account? Sign up{" "}
           <Link
             style={{
@@ -96,7 +89,7 @@ const LoginMolecule = ({
           >
             HERE
           </Link>
-        </MuiTypography>{" "}
+        </Typography>
       </div>
     </Paper>
   );

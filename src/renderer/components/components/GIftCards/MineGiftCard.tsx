@@ -4,40 +4,54 @@ import Typography from "renderer/components/atoms/TextStyles";
 import { GiftCardI } from "renderer/components/molecules/GiftCards-I/StartMiningGiftCards/GiftCardI";
 
 type Props = {};
+
 const GIFT_MINE_CARD = [
   {
-    giftCardSrc:
-      "/src/renderer/components/atoms/GitftCards/GiftCardICons/Steam.webp",
+    giftCardSrc: "/assets/Illustrations/Steam.webp",
     giftCardValueBG: "#90C2F4",
     giftCardValueText: "5",
     giftCardBottomText: "Steam",
   },
   {
-    giftCardSrc:
-      "/src/renderer/components/atoms/GitftCards/GiftCardICons/Amazon-Gift-Card.webp",
+    giftCardSrc: "/assets/Illustrations/Amazon-Gift-Card.webp",
     giftCardValueBG: "#A49AFC",
     giftCardValueText: "10",
     giftCardBottomText: "Amazon",
   },
 ];
+
 export const MineGiftCard = (props: Props) => {
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", padding: "20px" }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        padding: "20px",
+        borderRadius: "7px",
+        backgroundColor: "#0F141F",
+      }}
+    >
       <Typography variant="heading2" color="#EAEAEA">
         What would you like to mine for?
       </Typography>
-      <Box sx={{ display: "flex", alignSelf: "center" }}>
-        {GIFT_MINE_CARD.map((element) => {
-          return (
-            <GiftCardI
-              giftCardSrc={element.giftCardSrc}
-              giftCardBottomText={element.giftCardBottomText}
-              giftCardValueBG={element.giftCardValueBG}
-              giftCardValueText={element.giftCardValueText}
-              key={element.giftCardValueBG}
-            />
-          );
-        })}
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: "20px",
+          padding: "40px 0",
+        }}
+      >
+        {GIFT_MINE_CARD.map((element, index) => (
+          <GiftCardI
+            giftCardSrc={element.giftCardSrc}
+            giftCardBottomText={element.giftCardBottomText}
+            giftCardValueBG={element.giftCardValueBG}
+            giftCardValueText={element.giftCardValueText}
+            key={index}
+          />
+        ))}
       </Box>
       <Box sx={{ maxWidth: "498px" }}>
         <Typography variant="caption" color="#8C8C8C">

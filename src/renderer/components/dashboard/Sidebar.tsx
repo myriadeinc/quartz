@@ -1,12 +1,8 @@
-import Avatar from "@mui/material/Avatar";
 import Drawer from "@mui/material/Drawer";
 import Grid from "@mui/material/Grid";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
-import Card from "@mui/material/Card";
 import makeStyles from "@mui/styles/makeStyles";
 import { Link } from "react-router-dom";
 import { MinerConsumer } from "renderer/pages/Dashboard";
@@ -16,7 +12,10 @@ import { Box } from "@mui/material";
 import { UserProfile } from "../organisms/UserProfile";
 import { MiningCreditCard } from "../components/Dashboard/MiningCreditCard";
 import { min } from "lodash";
-// import { SidebarMainMenu } from "../components/Dashboard/MainMenu";
+import { SidebarMainMenu } from "../components/Dashboard/MainMenu";
+import { SupportContactSocials } from "../ContactSupportSocialHandles";
+import { MainMenuItem } from "../molecules/Settings-I/MainMenuItem";
+import { useState } from "react";
 import { SupportSocialHandles } from "../organisms/SupportSocialHandles";
 
 let minerLevel = "33";
@@ -74,9 +73,29 @@ const useStyles = makeStyles((theme) => ({
 interface SidebarProps {
   path: string;
 }
-
+let currentIndex;
 const Sidebar = (props: SidebarProps) => {
   const classes = useStyles();
+  const [iconState, setIconState] = useState({
+    isHovered: false,
+    isSelected: false,
+  });
+
+  const handleIconInteraction = (
+    action: "hover" | "click",
+    value: boolean,
+    index: number
+  ) => {
+    if (action === "hover") {
+      setIconState({ ...iconState, isHovered: value });
+    } else if (action === "click") {
+      console.log("currentIndex", index, currentIndex);
+      index === currentIndex
+        ? setIconState({ ...iconState, isSelected: true })
+        : setIconState({ ...iconState, isSelected: false });
+      console.log("iconState", iconState);
+    }
+  };
 
   return (
     <MinerConsumer>
@@ -119,229 +138,20 @@ const Sidebar = (props: SidebarProps) => {
                   minerLevel={minerLevel}
                   minerEmail={miner.email}
                 />
-                {/* <Grid container className={classes.grid}>
-                  <Grid item sm={2}>
-                    <div
-                      className={classes.avatarContainer}
-                      style={{ display: "flex", marginLeft: "20px" }}
-                    >
-                      <div className={classes.statusCircle}></div>
-                      <Avatar
-                        className={classes.avatar}
-                        alt="avatar name"
-                        src="/assets/img/Profile-Image-2.webp"
-                        style={{
-                          backgroundColor: "#0E1B38",
-                          width: "80px",
-                          height: "80px",
-                          marginLeft: "8.25px",
-                          marginTop: "8px",
-                        }}
-                      />
-                    </div>
-                  </Grid>
-
-                  <Grid
-                    item
-                    sm={5}
-                    className={classes.minerDetails}
-                    style={{
-                      marginLeft: "70px",
-                      marginTop: "5px",
-                      marginRight: "70px",
-                    }}
-                  >
-                    <Typography variant="h5" fontFamily="Poppins, sans-serif">
-                      {`${miner.name} #${miner.shortId}`}
-                    </Typography>
-
-                    <Typography
-                      className={classes.level}
-                      fontFamily="Poppins, sans-serif"
-                      style={{ marginLeft: "8px", marginTop: "5px" }}
-                    >
-                      <span
-                        style={{
-                          verticalAlign: "bottom",
-                          display: "inline-block",
-                          marginBottom: "-5px",
-                        }}
-                      >
-                        <img
-                          src="/assets/svg/Copper-Left.svg"
-                          alt="Level Icon Left"
-                          style={{
-                            width: "32px",
-                            height: "32px",
-                            marginRight: "8px",
-                          }}
-                        />
-                      </span>
-                      {`Level ${minerLevel}`}
-                      <span
-                        style={{
-                          verticalAlign: "bottom",
-                          display: "inline-block",
-                          marginBottom: "-5px",
-                        }}
-                      >
-                        <img
-                          src="/assets/svg/Copper-Right.svg"
-                          alt="Level Icon Right"
-                          style={{
-                            width: "32px",
-                            height: "32px",
-                            marginLeft: "8px",
-                          }}
-                        />
-                      </span>
-                    </Typography>
-
-                    <Typography
-                      className={classes.email}
-                      fontFamily="Poppins, sans-serif"
-                      style={{ margin: "5px 0px" }}
-                    >
-                      {miner.email}
-                    </Typography>
-                  </Grid>
-                </Grid> */}
                 <Box sx={{ paddingTop: "32px" }}>
                   <MiningCreditCard
                     moneroBalance={miner.xmrBalance}
                     minerBalance={miner.mcBalance}
                   />
                 </Box>
-                <Box>{/* <SidebarMainMenu /> */}</Box>
+                <Box>{/* <SidebarMainMenu propsValue={props} /> */}</Box>
                 <Box
                   sx={{ display: "flex", flexDirection: "column" }}
                   className={classes.grid}
                 >
-                  {/* <Grid
-                    item
-                    sm={12}
-                    style={{ marginBottom: "-5px", paddingRight: ".5rem" }}
-                    className={classes.grid}
-                  >
-                    {/* <Card
-                      className={classes.miningCard}
-                      style={{
-                        minWidth: "383px",
-                        maxHeight: "150px",
-                        padding: "0px",
-                        backgroundColor: "#0F141F",
-                        display: "flex",
-                        backgroundImage: "none",
-                        flexDirection: "column",
-                        justifyContent: "space-around",
-                        alignItems: "flex-start",
-                      }}
-                    >
-                      <Box
-                        sx={{
-                          display: "flex",
-                          width: "100%",
-                          flexDirection: "row",
-                          justifyContent: "space-between",
-                        }}
-                      >
-                        <Box
-                          sx={{
-                            display: "flex",
-                            // width: "100%",
-                            flexDirection: "row",
-                          }}
-                        >
-                          <img
-                            src="/assets/svg/MC-Icon.svg"
-                            alt="Mining Credits Icon"
-                            style={{
-                              width: "44px",
-                              height: "44px",
-                              marginBottom: "10px",
-                              marginRight: "10px",
-                            }}
-                          />
-                          <Box>
-                            <Typography
-                              fontFamily="Poppins, sans-serif"
-                              variant="body1"
-                              style={{ textAlign: "left", marginBottom: "5px" }}
-                            >
-                              Mining Credits:
-                            </Typography>
-                            <Typography
-                              fontFamily="Poppins, sans-serif"
-                              variant="body2"
-                              style={{
-                                textAlign: "left",
-                                color: "#8C8C8C",
-                                fontSize: "13px",
-                              }}
-                            >
-                              {miner.mcBalance}
-                            </Typography>
-                          </Box>
-                        </Box>
-                        <Box sx={{ alignSelf: "center", marginRight: ".5rem" }}>
-                          <img
-                            src="/assets/img/Refresh.png"
-                            alt="Refresh Icon"
-                            style={{
-                              width: "18px",
-                              height: "18px",
-                              marginTop: "-6px",
-                            }}
-                          />
-                        </Box>
-                      </Box>
-                      <div
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                        }}
-                      >
-                        <img
-                          src="/assets/svg/Monero-Icon.svg"
-                          alt="Monero Balance Icon"
-                          style={{
-                            width: "44px",
-                            height: "44px",
-                            marginRight: "10px",
-                          }}
-                        />
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "flex-start",
-                            marginBottom: "10px",
-                            flexDirection: "column",
-                          }}
-                        >
-                          <Typography
-                            fontFamily="Poppins, sans-serif"
-                            style={{ textAlign: "left" }}
-                          >
-                            Monero Balance:
-                          </Typography>
-                          <Typography
-                            fontFamily="Poppins, sans-serif"
-                            style={{
-                              textAlign: "left",
-                              color: "#8C8C8C",
-                              fontSize: "13px",
-                            }}
-                          >
-                            {miner.xmrBalance}
-                          </Typography>
-                        </div>
-                      </div>
-                    </Card>
-                  </Grid> */}
-
                   <Grid
                     item
-                    sm={8}
+                    sm={12}
                     style={{
                       marginLeft: "8px",
                       marginBottom: "50px",
@@ -353,14 +163,21 @@ const Sidebar = (props: SidebarProps) => {
                       style={{
                         fontSize: 18,
                         color: "#8C8C8C",
-                        marginBottom: "-17px",
+                        marginBottom: "8px",
                       }}
                     >
                       MAIN MENU
                     </Typography>
-                    <List style={{ marginTop: "10px" }}>
+                    <List
+                      style={{
+                        gap: "8px",
+                        display: "flex",
+                        flexDirection: "column",
+                        padding: "0",
+                      }}
+                    >
                       {dashboardRoutes.map(
-                        (route) =>
+                        (route, i) =>
                           route.visible && (
                             <Link
                               to={`${props.path}${route.ref}`}
@@ -372,19 +189,37 @@ const Sidebar = (props: SidebarProps) => {
                             >
                               <ListItem
                                 button
+                                onMouseEnter={() => {
+                                  handleIconInteraction("hover", true);
+                                  currentIndex = i;
+                                }}
+                                onMouseLeave={() => {
+                                  handleIconInteraction("hover", false);
+                                  currentIndex = null;
+                                }}
+                                onClick={() => {
+                                  handleIconInteraction("click", true, i);
+                                  currentIndex = i;
+                                }}
                                 selected={
                                   window.location.pathname ===
                                   `${props.path}${route.ref}`
                                 }
+                                sx={{
+                                  maxHeight: "44px",
+                                  padding: "0px !important",
+                                  "&:hover": {
+                                    color: "#red",
+                                  },
+                                }}
                               >
-                                <ListItemAvatar style={{ marginLeft: "-15px" }}>
-                                  <Avatar
-                                    src={route.icon}
-                                    alt={route.alt}
-                                    style={{ color: "red" }}
-                                  />
-                                </ListItemAvatar>
-                                <ListItemText primary={route.name} />
+                                <MainMenuItem
+                                  item={route.name}
+                                  MenuIcon={route.Icon}
+                                  state={iconState}
+                                  currentIndex={currentIndex}
+                                  index={i}
+                                />
                               </ListItem>
                             </Link>
                           )
@@ -393,8 +228,8 @@ const Sidebar = (props: SidebarProps) => {
                   </Grid>
                 </Box>
               </Box>
-              {/* <SupportContactSocials /> */}
               <SupportSocialHandles />
+              {/* <SupportContactSocials /> */}
             </Grid>
           </Drawer>
         </>

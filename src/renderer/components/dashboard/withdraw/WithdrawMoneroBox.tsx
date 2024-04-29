@@ -54,9 +54,11 @@ WithdrawMoneroBoxProps) => {
                   <Typography variant="body" color="#EAEAEA">
                     XMR Amount:{" "}
                   </Typography>
-                  <Typography variant="body" color="#EAEAEA">
-                    Monero Wallet Address:{" "}
-                  </Typography>
+                  <Box sx={{ marginTop: "16px" }}>
+                    <Typography variant="body" color="#EAEAEA">
+                      Monero Wallet Address:{" "}
+                    </Typography>
+                  </Box>
                 </Stack>
                 <Stack
                   direction={"column"}
@@ -82,6 +84,7 @@ WithdrawMoneroBoxProps) => {
                         maxWidth: "360px",
                         minHeight: "32px",
                         fontSize: "14px",
+                        marginBottom: "16px",
                       }}
                       inputProps={{
                         style: {
@@ -161,11 +164,19 @@ WithdrawMoneroBoxProps) => {
                       //   onChange={onEmailChange}
                     />
                     <Box
-                      sx={{ display: "flex", gap: "9px", alignItems: "center" }}
+                      sx={{
+                        display: "flex",
+                        gap: "2px",
+                        alignItems: "center",
+                        position: "relative",
+                        left: "-6px",
+                      }}
                     >
                       <Checkbox
                         style={{
                           color: "#FA6F15",
+                          width: "32px",
+                          height: "32px",
                         }}
                         value="cryon"
                       />

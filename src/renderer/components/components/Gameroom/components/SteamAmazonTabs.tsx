@@ -50,7 +50,7 @@ export const SteamAmazonTabs = () => {
   };
 
   return (
-    <Box sx={{ width: "100%", typography: "body1" }}>
+    <Box sx={{ maxWidth: "1473px", typography: "body1" }}>
       <TabContext value={value}>
         <Box>
           <TabList
@@ -58,6 +58,7 @@ export const SteamAmazonTabs = () => {
             aria-label="lab API tabs example"
             sx={{
               display: "flex",
+              width: "100%",
               paddingRight: "20px",
               borderBottom: "none",
               "& .MuiTabs-indicator": {

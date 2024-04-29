@@ -4,7 +4,7 @@ import Typography from "renderer/components/atoms/TextStyles";
 type InformationBoxProps = {
   title: string;
   info: string;
-  unit: string;
+  unit?: string;
 };
 
 export const InformationBox = ({ title, info, unit }: InformationBoxProps) => {
@@ -22,7 +22,13 @@ export const InformationBox = ({ title, info, unit }: InformationBoxProps) => {
       <Typography variant="bodySmall" color="#656565">
         {title}
       </Typography>
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          paddingTop: "8px",
+        }}
+      >
         <Typography variant="body" color="#EAEAEA">
           {info}
         </Typography>

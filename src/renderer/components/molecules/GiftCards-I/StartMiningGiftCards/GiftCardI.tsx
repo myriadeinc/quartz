@@ -1,5 +1,6 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { GiftCardValue } from "renderer/components/atoms/GitftCards/GiftCardValue";
+import Typography from "renderer/components/atoms/TextStyles";
 
 type GiftCardIProps = {
   giftCardSrc: string;
@@ -17,30 +18,49 @@ export const GiftCardI = ({
   return (
     <Box
       sx={{
-        width: "400px",
-        height: "288px",
+        width: "40%",
+        minHeight: "288px",
         borderRadius: "7px",
         position: "relative",
+        border: "1px solid #293040",
+        display: "flex",
+        flexDirection: "column",
+        boxSizing: "border-box",
       }}
     >
-      <Box sx={{ position: "absolute", top: 20, left: 20 }}>
+      <Box
+        sx={{
+          padding: "20px",
+        }}
+      >
         <GiftCardValue
           backgroundColor={giftCardValueBG}
           text={giftCardValueText}
         />
       </Box>
-      <Box sx={{ position: "absolute", right: 100, top: 53 }}>
-        <img src={giftCardSrc} alt="giftCard" />
+      <Box sx={{ alignSelf: "center", maxWidth: "200px" }}>
+        <img
+          src={giftCardSrc}
+          alt="giftCard"
+          style={{ objectFit: "contain" }}
+        />
       </Box>
       <Box
         sx={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          width: "100%",
           maxHeight: "56px",
+          paddingTop: "14px",
           paddingBottom: "14px",
           background: "#EAEAEA",
-          width: "100%",
+          alignItems: "center",
+          display: "flex",
+          justifyContent: "center",
         }}
       >
-        <Typography variant="heading2" color="#EAEAEA">
+        <Typography variant="heading2" color="#0F141F" centered>
           {giftCardBottomText}
         </Typography>
       </Box>

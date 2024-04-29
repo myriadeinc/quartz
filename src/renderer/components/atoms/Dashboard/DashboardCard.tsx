@@ -59,10 +59,12 @@ export function DashboardCard({
         backgroundImage: "none",
         backgroundSize: "cover",
         width: "100%", // Set card width to 100% to make it responsive
+        // minWidth: "475px",
         height: "288px",
-        padding: "0px",
+        padding: "20px 0px 0px 20px",
+        boxSizing: "border-box",
         marginTop: "20px",
-        marginRight: "10px",
+        // marginRight: "10px",
         zIndex: 2,
         borderRadius: "7px",
         display: "flex",
@@ -71,10 +73,7 @@ export function DashboardCard({
         position: "relative",
       }}
     >
-      <Typography variant="body">Average Hashrate (1hr)</Typography>
-      <Typography variant="heading6" color="#EAEAEA">
-        {cardInfo} H/sec
-      </Typography>
+      <CardTitle cardInfo={cardInfo} cardTitle={cardTitle} />
       <Box
         style={{
           maxWidth: "100%",
@@ -82,16 +81,16 @@ export function DashboardCard({
           objectFit: "cover",
           position: "absolute",
           top: "60px",
-          right: "1rem",
+          right: "-1rem",
         }}
       >
         <img
-          src="/assets/img/DM.webp"
+          src={cardImgSrc}
           alt="Your Image Alt Text"
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "cover",
+            objectFit: "contain",
             zIndex: 3,
           }}
         />
