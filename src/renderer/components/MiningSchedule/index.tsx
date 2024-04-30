@@ -16,12 +16,12 @@ export const MiningSchedulerBox = () => {
         background: "transparent",
         display: "flex",
         flexDirection: "column",
-        gap: "1rem",
+        gap: "20px",
       }}
     >
       <MiningAllocationWidget />
       <Stack
-        padding={"12px"}
+        padding={"20px 20px 24px 19px"}
         direction={"column"}
         gap={"1rem"}
         sx={{
@@ -34,7 +34,7 @@ export const MiningSchedulerBox = () => {
             Plan Your Mining
           </Typography>
         </Box>
-        <Box alignSelf={{ md: "auto", lg: "center" }}>
+        <Box alignSelf={{ md: "auto", lg: "auto", xl: "auto" }}>
           <img
             src="/assets/Illustrations/Illustration.webp"
             alt="Plan your Mining Image"

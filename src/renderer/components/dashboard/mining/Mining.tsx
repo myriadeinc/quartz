@@ -63,7 +63,8 @@ export const Mining = () => {
         <Grid
           container
           spacing={2}
-          padding="1rem"
+          // padding="1rem"
+          marginTop={"32px"}
           paddingLeft="0px"
           columns={{ xs: 2, sm: 4, md: 8, lg: 12 }}
         >
@@ -72,25 +73,63 @@ export const Mining = () => {
             xs={12}
             md={12}
             lg={8}
-            sx={{ maxWidth: "976px", minHeight: "496px" }}
+            sx={{
+              maxWidth: "976px",
+              minHeight: "496px",
+              paddingTop: "0px !important",
+            }}
           >
             <MinerStarter />
           </Grid>
-          <Grid item xs={12} md={12} lg={4} sx={{ maxWidth: "478px" }}>
+          <Grid
+            item
+            xs={12}
+            md={12}
+            lg={4}
+            sx={{
+              maxWidth: "478px",
+              paddingTop: "0px !important",
+              marginTop: {
+                md: "20px",
+                lg: "0",
+                xl: "0",
+              },
+            }}
+          >
             <MiningSchedulerBox />
           </Grid>
         </Grid>
         <Grid
           container
           spacing={2}
-          padding={"1rem"}
+          marginTop={"32px"}
+          // padding={"1rem"}
           paddingLeft="0px"
           columns={{ xs: 2, sm: 4, md: 8, lg: 12 }}
         >
-          <Grid item xs={12} md={12} lg={8}>
+          <Grid
+            item
+            xs={12}
+            md={12}
+            lg={8}
+            sx={{ paddingTop: "0px !important" }}
+          >
             <HistoryChart isAnalytics={false} padding="0 0 1rem" />
           </Grid>
-          <Grid item xs={12} md={12} lg={4}>
+          <Grid
+            item
+            xs={12}
+            md={12}
+            lg={4}
+            sx={{
+              paddingTop: "0px !important",
+              marginTop: {
+                md: "20px",
+                lg: "0",
+                xl: "0",
+              },
+            }}
+          >
             <MiningStats CurrentHashrateData={hashrateData} />
           </Grid>
         </Grid>

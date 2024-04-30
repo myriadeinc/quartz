@@ -20,13 +20,13 @@ export const WorkersLeft = () => {
             display: "flex",
             alignItems: "center",
             flexDirection: "column",
-            paddingLeft: "32px",
+            // paddingLeft: "32px",
           }}
         >
-          <Typography variant="bodyLarge" color="#EAEAEA">
+          <Typography variant="body" color="#EAEAEA">
             You can monitor all your machines that mine on myriade
           </Typography>
-          <Typography variant="bodyLarge" color="#EAEAEA">
+          <Typography variant="body" color="#EAEAEA">
             on this page. Have fun personalizing and naming them.
           </Typography>
         </Box>

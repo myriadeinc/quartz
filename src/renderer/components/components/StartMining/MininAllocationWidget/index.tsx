@@ -6,8 +6,8 @@ import { MiningAllocationWidgetBox } from "renderer/components/molecules/StartMi
 export const MiningAllocationWidget = () => {
   return (
     <Stack
-      padding={"12px"}
-      gap={"1rem"}
+      padding={"20px 20px 24px 20px"}
+      gap={"20px"}
       sx={{
         // flexBasis: "40%",
         backgroundColor: "#0F141F",

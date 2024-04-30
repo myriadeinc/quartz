@@ -102,7 +102,8 @@ function EnhancedTableHead(props: EnhancedTableHeadProps) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "right" : "left"}
+            align="left"
+            // align={headCell.numeric ? "right" : "left"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
             sx={{
@@ -252,6 +253,7 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                           id={labelId}
                           scope="row"
                           padding="none"
+                          align="left"
                           sx={{
                             color: "#EAEAEA",
                             width: "320px",
@@ -262,7 +264,7 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                           {row.title}
                         </TableCell>
                         <TableCell
-                          align="right"
+                          align="left"
                           sx={{
                             color: "#EAEAEA",
                             width: "320px",
@@ -273,7 +275,7 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                           {row.tickets}
                         </TableCell>
                         <TableCell
-                          align="right"
+                          align="left"
                           sx={{
                             color: "#EAEAEA",
                             width: "320px",
@@ -284,7 +286,7 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                           {row.amount}
                         </TableCell>
                         <TableCell
-                          align="right"
+                          align="left"
                           sx={{
                             color: "#EAEAEA",
                             width: "320px",

@@ -112,11 +112,11 @@ export const Friends = () => {
             </Grid>
           </Box>
         </Grid>
-        <Grid md={8} lg={6} xl={4}>
+        <Grid md={8} lg={8} xl={4}>
           <Box
             maxHeight={"988px"}
             overflow={"auto"}
-            maxWidth={"478px"}
+            // maxWidth={"478px"}
             sx={{
               background: "transparent",
               borderRadius: "7px",

@@ -11,6 +11,7 @@ const useStyles = makeStyles({
   itemsBorderBottom: {
     "&:nth-last-child(1)": {
       borderRight: "none",
+      borderBottom: "none",
     },
   },
 });
@@ -45,7 +46,7 @@ export const Instructions = ({
         placeContent: "center",
       }}
       className={classes.itemsBorderBottom}
-      maxWidth="270px"
+      // maxWidth="270px"
       margin="26px 49px"
     >
       <Box

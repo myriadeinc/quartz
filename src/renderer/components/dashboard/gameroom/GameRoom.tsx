@@ -130,71 +130,50 @@ export const GameRoom = () => {
                 Game Room
               </Typography>
             </Box>
-            <GameInstructionsBox />
-            <Grid itme container lg={12}>
-              <Grid lg={4}>
-                <GameRoomGiveAwayCard
-                  giveAwayTitle="Monero Giveaways"
-                  imgSrc={"/assets/svg/MoneroBalanceIcon.svg"}
-                  width="68px"
-                  height="68px"
-                  isGiveAwayCardClicked={isGiveAwayClicked.isMoneroClicked}
-                  onClick={handleMoneroCardCliked}
-                />
+
+            <Grid container spacing={2} sx={{ width: "100%" }}>
+              <Grid item xs={12}>
+                <GameInstructionsBox />
               </Grid>
-              <Grid lg={4}>
-                <GameRoomGiveAwayCard
-                  giveAwayTitle="Gift Card Giveaways"
-                  imgSrc={"/assets/svg/GC.svg"}
-                  width="120px"
-                  height="68px"
-                  isGiveAwayCardClicked={
-                    isGiveAwayClicked.isGiveAwayGiftCardClicked
-                  }
-                  onClick={handleGiveAwayGiftCardCliked}
-                />
+
+              <Grid item xs={8} md={12} lg={8}>
+                <Grid
+                  container
+                  spacing={2}
+                  sx={{ display: "flex", alignItems: "center" }}
+                >
+                  <Grid item xs={6} md={6}>
+                    <GameRoomGiveAwayCard
+                      giveAwayTitle="Monero Giveaways"
+                      imgSrc={"/assets/svg/MoneroBalanceIcon.svg"}
+                      width="68px"
+                      height="68px"
+                      isGiveAwayCardClicked={isGiveAwayClicked.isMoneroClicked}
+                      onClick={handleMoneroCardCliked}
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <GameRoomGiveAwayCard
+                      giveAwayTitle="Gift Card Giveaways"
+                      imgSrc={"/assets/svg/GC.svg"}
+                      width="120px"
+                      height="68px"
+                      isGiveAwayCardClicked={
+                        isGiveAwayClicked.isGiveAwayGiftCardClicked
+                      }
+                      onClick={handleGiveAwayGiftCardCliked}
+                    />
+                  </Grid>
+                </Grid>
               </Grid>
-              <Grid lg={4}>
+
+              <Grid item xs={4} md={6} lg={4}>
                 <MiningAllocationWidget />
               </Grid>
             </Grid>
-            {/* <Box
-              sx={{
-                display: "flex",
-                paddingTop: "32px",
-                paddingBottom: "32px",
-                flexWrap: "wrap",
-                width: "100%",
-                gap: "20px",
-                // gridTemplateColumns: "2fr 1.5fr",
-              }}
-            >
-              <Box sx={{ display: "flex", gap: "20px" }}>
-                <GameRoomGiveAwayCard
-                  giveAwayTitle="Monero Giveaways"
-                  imgSrc={"/assets/svg/MoneroBalanceIcon.svg"}
-                  width="68px"
-                  height="68px"
-                  isGiveAwayCardClicked={isGiveAwayClicked.isMoneroClicked}
-                  onClick={handleMoneroCardCliked}
-                />
-                <GameRoomGiveAwayCard
-                  giveAwayTitle="Gift Card Giveaways"
-                  imgSrc={"/assets/svg/GC.svg"}
-                  width="120px"
-                  height="68px"
-                  isGiveAwayCardClicked={
-                    isGiveAwayClicked.isGiveAwayGiftCardClicked
-                  }
-                  onClick={handleGiveAwayGiftCardCliked}
-                />
-              </Box>
-              <Box>
-                <MiningAllocationWidget />
-              </Box>
-            </Box> */}
+            <Box></Box>
             <CurrentDrawings />
-            <Box sx={{ paddingTop: "32px", maxWidth: "1473px" }}>
+            <Box sx={{ paddingTop: "32px", width: "98%" }}>
               <History history={history} />
             </Box>
           </Stack>

@@ -34,7 +34,18 @@ export const GiftCards = () => {
       <Grid item md={12} lg={8} sx={{ paddingLeft: "0px !important" }}>
         <MineGiftCard />
       </Grid>
-      <Grid item md={12} lg={4}>
+      <Grid
+        item
+        md={12}
+        lg={4}
+        sx={{
+          paddingLeft: {
+            md: "0px !important",
+            lg: "20px !important",
+            xl: "20px !important",
+          },
+        }}
+      >
         <MiningSchedulerBox />
       </Grid>
       <Grid item xs={12} sx={{ paddingLeft: "0px !important" }}>

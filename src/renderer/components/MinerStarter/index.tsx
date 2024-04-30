@@ -15,7 +15,7 @@ export const MinerStarter = () => {
         flexWrap: "wrap",
         // height: "100%",
         // width: "100%",
-        padding: "1rem",
+        padding: "20px 20px 20px",
         paddingBottom: "0px",
         height: "100%",
       }}

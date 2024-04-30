@@ -22,7 +22,7 @@ export const GameRoomGiveAwayCard = ({
     <Box
       sx={{
         display: "flex",
-        minWidth: "478px",
+        // minWidth: "478px",
         padding: "12px 20px 20px",
         border: "1px solid #293040",
         borderRadius: "7px",

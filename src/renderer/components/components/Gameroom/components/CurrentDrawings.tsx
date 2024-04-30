@@ -1,4 +1,4 @@
-import { Box, CardContent, CardMedia } from "@mui/material";
+import { Box, CardContent, CardMedia, Grid } from "@mui/material";
 import Typography from "renderer/components/atoms/TextStyles";
 import Card from "@mui/material/Card";
 import { GiveAwayPriceCardTag } from "renderer/components/atoms/GitftCards/GiveAwayPriceCardTag";
@@ -38,7 +38,7 @@ const CURRENT__DRAWING = [
 ];
 export const CurrentDrawings = (props: Props) => {
   return (
-    <Box>
+    <Box marginTop={{ md: "20px", lg: "0px", xl: "0px", width: "99%" }}>
       <Box
         sx={{
           padding: "16px 0 14px 20px",
@@ -51,96 +51,130 @@ export const CurrentDrawings = (props: Props) => {
         <Typography color="#EAEAEA">Current Drawings</Typography>
       </Box>
       <Box
-        sx={{ display: "flex", padding: "40px", backgroundColor: "#0F141F" }}
+        sx={{
+          display: "flex",
+          padding: "40px",
+          backgroundColor: "#0F141F",
+        }}
       >
-        <Box
+        <Grid
+          container
+          xs={12}
           sx={{
-            backgroundColor: "#080A0F",
-            borderRadius: "7px",
             display: "flex",
+            flex: "wrap",
+            // gap: "10px",
+            background: "#080A0F",
+            border: "1px solid #293040",
+            borderRadius: "7px",
+            padding: "20px",
           }}
         >
+          {/* <Grid item xs={4}>
+            {/* <Item>xs=8</Item> 
+          </Grid>
+          <Grid item xs={4}>
+            {/* <Item>xs=4</Item> 
+          </Grid>
+          <Grid item xs={4}>
+            {/* <Item>xs=4</Item> 
+          </Grid> */}
+
           {CURRENT__DRAWING.map((element) => {
             return (
-              <Card sx={{ width: 384, borderRadius: "7px" }}>
-                <CardMedia title="green iguana">
-                  <Box
-                    sx={{ backgroundColor: "#141A29", position: "relative" }}
-                  >
-                    <GiveAwayPriceCardTag
-                      text={element.price}
-                      backgroundColor={element.priceTagColor}
-                    />
-                    <Box>
-                      <Box
-                        sx={{
-                          paddingTop: "30px",
-                          display: "flex",
-                          justifyContent: "center",
-                        }}
-                      >
+              <Grid
+                item
+                xs={4}
+                md={6}
+                lg={6}
+                xl={4}
+                sx={{
+                  marginBottom: {
+                    md: "20px",
+                    lg: "20px",
+                  },
+                }}
+              >
+                <Card sx={{ marginRight: "20px", borderRadius: "7px" }}>
+                  <CardMedia title="green iguana">
+                    <Box
+                      sx={{ backgroundColor: "#141A29", position: "relative" }}
+                    >
+                      <GiveAwayPriceCardTag
+                        text={element.price}
+                        backgroundColor={element.priceTagColor}
+                      />
+                      <Box>
                         <Box
                           sx={{
-                            padding: "15px",
-                            width: "103px",
-                            height: "103px",
-                            borderRadius: "50%",
-                            backgroundColor: "#EAEAEA",
-                          }}
-                        >
-                          <img
-                            style={{
-                              height: "100%",
-                              width: "100%",
-                            }}
-                            src={element.imgSrc}
-                          />
-                        </Box>
-                      </Box>
-                      <Box
-                        sx={{
-                          paddingTop: "10px",
-                          textAlign: "center",
-                          justifyContent: "center",
-                          paddingBottom: "30px",
-                        }}
-                      >
-                        <Typography>{element.cardMileStoneName}</Typography>
-                        <Box
-                          sx={{
+                            paddingTop: "30px",
                             display: "flex",
-                            gap: "8px",
-                            alignItems: "center",
                             justifyContent: "center",
                           }}
                         >
-                          <img
-                            src="/assets/svg/MoneroBalanceIcon.svg"
-                            style={{ width: "16px", height: "16px" }}
-                          />
-                          <Typography variant="bodySmall" color="#EAEAEA">
-                            {element.moneroPoints}
-                          </Typography>
+                          <Box
+                            sx={{
+                              padding: "15px",
+                              width: "103px",
+                              height: "103px",
+                              borderRadius: "50%",
+                              backgroundColor: "#EAEAEA",
+                            }}
+                          >
+                            <img
+                              style={{
+                                height: "100%",
+                                width: "100%",
+                              }}
+                              src={element.imgSrc}
+                            />
+                          </Box>
+                        </Box>
+                        <Box
+                          sx={{
+                            paddingTop: "10px",
+                            textAlign: "center",
+                            justifyContent: "center",
+                            paddingBottom: "30px",
+                          }}
+                        >
+                          <Typography>{element.cardMileStoneName}</Typography>
+                          <Box
+                            sx={{
+                              display: "flex",
+                              gap: "8px",
+                              alignItems: "center",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <img
+                              src="/assets/svg/MoneroBalanceIcon.svg"
+                              style={{ width: "16px", height: "16px" }}
+                            />
+                            <Typography variant="bodySmall" color="#EAEAEA">
+                              {element.moneroPoints}
+                            </Typography>
+                          </Box>
                         </Box>
                       </Box>
                     </Box>
-                  </Box>
-                </CardMedia>
-                <CardContent>
-                  <Box>
-                    <Box sx={{ display: "flex", flexDirection: "column" }}>
-                      <Typography>{element.cardBodyTitle}</Typography>
-                      <Typography>
-                        Ticket price:{element.ticketPrice}
-                      </Typography>
+                  </CardMedia>
+                  <CardContent sx={{ backgroundColor: "#0F141F" }}>
+                    <Box>
+                      <Box sx={{ display: "flex", flexDirection: "column" }}>
+                        <Typography>{element.cardBodyTitle}</Typography>
+                        <Typography>
+                          Ticket price:{element.ticketPrice}
+                        </Typography>
+                      </Box>
+                      <PurchasedProgressBar caption="1000 out of 1000" />
                     </Box>
-                    <PurchasedProgressBar caption="1000 out of 1000" />
-                  </Box>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </Grid>
             );
           })}
-        </Box>
+        </Grid>
       </Box>
     </Box>
   );

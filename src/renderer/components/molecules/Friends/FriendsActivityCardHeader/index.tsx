@@ -12,7 +12,7 @@ export const FriendsActivityCardHeader = ({
   return (
     <Box
       sx={{
-        width: { md: "90%", xl: "90%" },
+        width: { md: "90%", lg: "90%", xl: "90%" },
         margin: "0px 15px 0 15px",
         height: "63px",
         display: "flex",

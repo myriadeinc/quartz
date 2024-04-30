@@ -15,7 +15,7 @@ export const Workers = () => {
           lg: "calc(100% - 406px)",
         },
         marginLeft: "406px",
-        padding: "1.5rem",
+        padding: "21px",
       }}
       // alignItems={"center"}
       // justifyContent={"center"}
@@ -25,22 +25,42 @@ export const Workers = () => {
           Workers
         </Typography>
       </Box>
-      <Box
+      <Grid
+        container
+        xs={12}
         sx={{
-          display: "grid",
-          paddingTop: "32px",
-          gap: "20px",
-          gridTemplateColumns: {
-            sm: "1fr",
-            md: "1fr",
-            lg: "2fr 1fr",
-            xl: "2.5fr 1.5fr",
-          },
+          marginTop: "32px",
         }}
       >
-        <WorkerSummary />
-        <WorkersLeft />
-      </Box>
+        <Grid
+          item
+          md={12}
+          xl={8}
+          sx={{ marginBottom: { md: "20px", lg: "20px" } }}
+        >
+          <WorkerSummary />
+        </Grid>
+        <Grid item md={8} xl={4} sx={{ margingLeft: "20px" }}>
+          <WorkersLeft />
+        </Grid>
+      </Grid>
+
+      {/* // <Box */}
+      {/* //   sx={{ */}
+      {/* //     display: "grid", */}
+      {/* //     paddingTop: "32px", */}
+      {/* //     gap: "20px",
+      //     gridTemplateColumns: {
+      //       sm: "1fr",
+      //       md: "1fr",
+      //       lg: "2fr 1fr",
+      //       xl: "2.5fr 1.5fr", */}
+      {/* //     },
+      //   }}
+      // >
+      //   <WorkerSummary />
+      //   <WorkersLeft />
+      // </Box> */}
     </Box>
   );
 };

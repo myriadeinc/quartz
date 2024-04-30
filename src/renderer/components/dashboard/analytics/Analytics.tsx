@@ -211,7 +211,7 @@ export const Analytics = () => {
                 paddingLeft: {
                   md: "0px !important",
                   lg: "0px !important",
-                  xl: "20px !important",
+                  xl: "16px !important",
                 },
               }}
             >

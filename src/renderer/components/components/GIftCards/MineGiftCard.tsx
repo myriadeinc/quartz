@@ -26,7 +26,7 @@ export const MineGiftCard = (props: Props) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        padding: "20px",
+        padding: "20px 20px 32px 20px",
         borderRadius: "7px",
         backgroundColor: "#0F141F",
       }}
