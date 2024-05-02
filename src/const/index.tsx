@@ -1,8 +1,4 @@
-import { MiningInstructionsIcon } from "renderer/components/atoms/StartMining-I/MiningIcons";
 import { IFriend, IMiner, IMiner2 } from "renderer/interfaces/pages/dashboard";
-// import { MenuIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons";
-// import { GameroomInstructionsIcon } from "renderer/components/atoms/GameRoom-I/GameRoomIcons";
-// import { StartMiningIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components";
 import {
   MCSpendIcon,
   ProgressIcon,

@@ -7,7 +7,6 @@ export const GameInstructionsBox = () => {
   console.log("insructions");
   return (
     <Box
-      className="23497023840238"
       sx={{
         display: "grid",
         gridTemplateColumns: {

@@ -13,8 +13,6 @@ export const MinerStarter = () => {
         backgroundColor: "#0F141F",
         display: "flex",
         flexWrap: "wrap",
-        // height: "100%",
-        // width: "100%",
         padding: "20px 20px 20px",
         paddingBottom: "0px",
         height: "100%",
@@ -35,15 +33,9 @@ export const MinerStarter = () => {
         },
       }}
     >
-      <Stack
-        alignSelf={"end"}
-        // alignItems={"center"}
-        // marginLeft='1rem'
-        order={{ md: 1, lg: 1, xl: 0 }}
-      >
+      <Stack alignSelf={"end"} order={{ md: 1, lg: 1, xl: 0 }}>
         <Box
           sx={{
-            // minWidth: "150px",
             width: "100%",
             maxHeight: "100%",
             backgroundColor: "transparent",
@@ -62,7 +54,6 @@ export const MinerStarter = () => {
                 color: "#8C8C8C",
                 fontWeight: 400,
                 marginTop: "6px",
-                // marginBottom: "0px",
                 textAlign: "left",
               }}
             >
@@ -142,19 +133,15 @@ export const MinerStarter = () => {
         ></Box>
         <Box
           sx={{
-            // minWidth: "260px",
-            // minHeight: "260px",
             minWidth: "418px",
             minHeight: "415px",
             border: "thick solid #414E66",
-            // transform: "rotate(-25deg)",
             borderRadius: "50%",
             position: "relative",
           }}
         >
           <Stack
             sx={{
-              // transform: "rotate(25deg)",
               position: "relative",
               top: "72px",
               alignItems: "center",
@@ -166,8 +153,8 @@ export const MinerStarter = () => {
                 sx={{
                   minWidth: 88,
                   minHeight: 88,
-                  color: "#FA6F15", // Icon color
-                  backgroundColor: "transparent", // Button background color
+                  color: "#FA6F15",
+                  backgroundColor: "transparent",
                 }}
               />
             </IconButton>

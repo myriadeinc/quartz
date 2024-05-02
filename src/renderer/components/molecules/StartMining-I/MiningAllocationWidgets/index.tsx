@@ -31,10 +31,7 @@ export const MiningAllocationWidgetBox = ({
         {isIconshows && (
           <IconButton
             sx={{
-              // width: 30,
-              // height: 30,
               zIndex: 4,
-              // position: "absolute",
               transform: "rotate(270deg)",
               left: 0,
               padding: "0px",
@@ -49,10 +46,7 @@ export const MiningAllocationWidgetBox = ({
         {isIconshows && (
           <IconButton
             sx={{
-              // width: 30,
-              // height: 30,
               zIndex: 4,
-              // position: "absolute",
               transform: "rotate(270deg)",
               left: 0,
               padding: "0px",

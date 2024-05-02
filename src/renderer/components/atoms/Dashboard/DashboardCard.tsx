@@ -1,9 +1,7 @@
 import Card from "@mui/material/Card";
-import CardMedia from "@mui/material/CardMedia";
 import { useState } from "react";
 import { LinkHoverCardItem } from "renderer/components/components/Dashboard/CardHoverLinkItem";
 import { CardTitle } from "renderer/components/molecules/Dashboard-I/CardTitle";
-import Typography from "../TextStyles";
 import { Box } from "@mui/material";
 interface dashboardCardProps {
   cardTitle: string;
@@ -24,52 +22,21 @@ export function DashboardCard({
   const [isHovered, setIsHovered] = useState(false);
   console.log("isHovered", isHovered);
   return (
-    // <Card
-    //   sx={{
-    //     maxWidth: 478,
-    //     maxHeight: 288,
-    //     backgroundColor: "#0F141F",
-    //     position: "relative",
-    //     borderRadius: "7px",
-    //     overflow: "hidden",
-    //     opacity: isHovered ? 0 : 1,
-    //   }}
-    //   onMouseEnter={() => setIsHovered(true)}
-    //   onMouseLeave={() => setIsHovered(false)}
-    // >
-    //   <CardTitle cardInfo={cardInfo} cardTitle={cardTitle} />
-    //   <CardMedia
-    //     sx={{ height: 220, width: "100%", alignSelf: "end" }}
-    //     alt
-    //     title="green iguana"
-    //     image={cardImgSrc}
-    //   />
-    //   {true && (
-    //     <LinkHoverCardItem
-    //       LinkIcon={LinkIcon}
-    //       linkItemName={LinkHoverTitle}
-    //       linkPath={LinkPath}
-    //       isHovered={isHovered}
-    //     />
-    //   )}
-    // </Card>
     <Card
       style={{
         backgroundColor: "#0F141F",
         backgroundImage: "none",
         backgroundSize: "cover",
-        width: "100%", // Set card width to 100% to make it responsive
-        // minWidth: "475px",
+        width: "100%",
         height: "288px",
         padding: "20px 0px 0px 20px",
         boxSizing: "border-box",
         marginTop: "20px",
-        // marginRight: "10px",
         zIndex: 2,
         borderRadius: "7px",
         display: "flex",
-        flexDirection: "column", // Ensure child elements stack vertically
-        justifyContent: "space-between", // Distribute space evenly between child elements
+        flexDirection: "column",
+        justifyContent: "space-between",
         position: "relative",
       }}
     >

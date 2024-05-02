@@ -141,7 +141,7 @@ export const GameRoom = () => {
                   spacing={2}
                   sx={{ display: "flex", alignItems: "center" }}
                 >
-                  <Grid item xs={6} md={6}>
+                  <Grid item xs={6} sm={12} md={6}>
                     <GameRoomGiveAwayCard
                       giveAwayTitle="Monero Giveaways"
                       imgSrc={"/assets/svg/MoneroBalanceIcon.svg"}
@@ -151,7 +151,7 @@ export const GameRoom = () => {
                       onClick={handleMoneroCardCliked}
                     />
                   </Grid>
-                  <Grid item xs={6}>
+                  <Grid item xs={6} sm={12} md={6}>
                     <GameRoomGiveAwayCard
                       giveAwayTitle="Gift Card Giveaways"
                       imgSrc={"/assets/svg/GC.svg"}
@@ -166,7 +166,7 @@ export const GameRoom = () => {
                 </Grid>
               </Grid>
 
-              <Grid item xs={12} sm={8} md={6} lg={4}>
+              <Grid item xs={12} sm={12} md={12} lg={4}>
                 <MiningAllocationWidget />
               </Grid>
             </Grid>

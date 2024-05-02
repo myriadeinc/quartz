@@ -27,7 +27,6 @@ export const UrlContainer = () => {
       </Box>
       <IconButton
         aria-label="toggle password visibility"
-        // onClick={onToggleVisible}
         edge="end"
         sx={{
           "&:hover": {

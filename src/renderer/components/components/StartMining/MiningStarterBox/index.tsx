@@ -15,8 +15,6 @@ export const MinerStarter = () => {
         backgroundColor: "#0F141F",
         display: "flex",
         flexWrap: "wrap",
-        // height: "100%",
-        // width: "100%",
         padding: "1rem",
       }}
       sx={{
@@ -34,15 +32,9 @@ export const MinerStarter = () => {
         },
       }}
     >
-      <Stack
-        alignSelf={"end"}
-        // alignItems={"center"}
-        // marginLeft='1rem'
-        order={{ md: 1, lg: 1, xl: 0 }}
-      >
+      <Stack alignSelf={"end"} order={{ md: 1, lg: 1, xl: 0 }}>
         <Box
           sx={{
-            // minWidth: "150px",
             width: "100%",
             maxHeight: "100%",
             backgroundColor: "transparent",
@@ -64,8 +56,6 @@ export const MinerStarter = () => {
       <Stack alignSelf={"center"}>
         <Box
           sx={{
-            // minWidth: "260px",
-            // minHeight: "260px",
             width: "415px",
             height: "418px",
             border: "thick solid #414E66",
@@ -82,20 +72,13 @@ export const MinerStarter = () => {
             }}
             direction={"column"}
           >
-            <IconButton
-              sx={
-                {
-                  // width: 100,
-                  // height: 100,
-                }
-              }
-            >
+            <IconButton sx={{}}>
               <PlayArrowIcon
                 sx={{
                   minWidth: 100,
                   minHeight: 100,
-                  color: "#FA6F15", // Icon color
-                  backgroundColor: "transparent", // Button background color
+                  color: "#FA6F15",
+                  backgroundColor: "transparent",
                 }}
               />
             </IconButton>
@@ -157,7 +140,6 @@ export const MinerStarter = () => {
               >
                 <Divider
                   sx={{
-                    // flexGrow: 0.4,
                     bgcolor: "#FA6F15",
                     height: 0.25,
                     minWidth: "20px",

@@ -17,19 +17,12 @@ export function FriendsActivityCard({ isDashboard }: Props) {
   return (
     <Card
       sx={{
-        // maxWidth: 345,
         background: "transparent",
         height: "100%",
         display: "flex",
         flexDirection: "column",
       }}
     >
-      {/* <CardHeader
-        title="Friends Activity"
-        sx={{
-          padding: "20px 28px 20px 20px",
-        }}
-      /> */}
       <Box sx={{ padding: "20px 28px 20px 20px" }}>
         <Typography variant="heading2" color="#EAEAEA">
           Friends Activity

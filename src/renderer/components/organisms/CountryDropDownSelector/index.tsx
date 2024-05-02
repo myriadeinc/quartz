@@ -32,7 +32,6 @@ export default function FreeSoloCreateOptionDialog({options}:countryOptions) {
       popupIcon={<DropDownIcon/>}
         onChange={(event, newValue) => {
           if (typeof newValue === 'string') {
-            // timeout to avoid instant validation of the dialog's form.
             setTimeout(() => {
               toggleOpen(true);
             });
@@ -42,12 +41,6 @@ export default function FreeSoloCreateOptionDialog({options}:countryOptions) {
             setValue(newValue);
           }
         }}
-        // filterOptions={(options, params) => {
-
-        //   if (params.inputValue !== '') {
-        //   }
-
-        // }}
         id="free-solo-dialog-demo"
         options={options}
         getOptionLabel={(option) => {
@@ -63,7 +56,6 @@ export default function FreeSoloCreateOptionDialog({options}:countryOptions) {
         clearOnBlur
         handleHomeEndKeys
         renderOption={(props, option) => <li {...props} style={{background:'#141A29',color:'#EAEAEA'}}>{option.title}</li>}
-        // sx={{ width: 300 }}
         freeSolo
         renderInput={(params) => <TextField {...params}  sx={{"& input:focus": {
           border: "1px solid transparent",

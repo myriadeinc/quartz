@@ -7,13 +7,9 @@ import makeStyles from "@mui/styles/makeStyles";
 import { Link } from "react-router-dom";
 import { MinerConsumer } from "renderer/pages/Dashboard";
 import { dashboardRoutes } from "renderer/utils/dashboard";
-// import { SupportContactSocials } from "../ContactSupportSocialHandles";
 import { Box } from "@mui/material";
 import { UserProfile } from "../organisms/UserProfile";
 import { MiningCreditCard } from "../components/Dashboard/MiningCreditCard";
-import { min } from "lodash";
-import { SidebarMainMenu } from "../components/Dashboard/MainMenu";
-import { SupportContactSocials } from "../ContactSupportSocialHandles";
 import { MainMenuItem } from "../molecules/Settings-I/MainMenuItem";
 import { useState } from "react";
 import { SupportSocialHandles } from "../organisms/SupportSocialHandles";
@@ -102,7 +98,6 @@ const Sidebar = (props: SidebarProps) => {
       {(miner) => (
         <>
           <Drawer
-            className="asdfsadfasdfsadf"
             sx={{
               width: "406px",
               flexShrink: 0,
@@ -144,7 +139,6 @@ const Sidebar = (props: SidebarProps) => {
                     minerBalance={miner.mcBalance}
                   />
                 </Box>
-                <Box>{/* <SidebarMainMenu propsValue={props} /> */}</Box>
                 <Box
                   sx={{ display: "flex", flexDirection: "column" }}
                   className={classes.grid}
@@ -229,7 +223,6 @@ const Sidebar = (props: SidebarProps) => {
                 </Box>
               </Box>
               <SupportSocialHandles />
-              {/* <SupportContactSocials /> */}
             </Grid>
           </Drawer>
         </>

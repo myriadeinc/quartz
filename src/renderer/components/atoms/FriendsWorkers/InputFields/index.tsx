@@ -52,7 +52,6 @@ export const FriendsInputField = (props: Props) => {
           border: "0",
         },
       }}
-      // onChange={onEmailChange}
     />
   );
 };

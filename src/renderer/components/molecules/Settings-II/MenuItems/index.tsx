@@ -2,7 +2,6 @@ import Paper from "@mui/material/Paper";
 import MenuList from "@mui/material/MenuList";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import { StreamerModeOnIcon } from "renderer/components/atoms/Settings/Settings-I/StreamerMode/StreamerModeOnIcon";
 import { StartIcon } from "renderer/components/atoms/Settings/Settings-I/StreamerMode/StartIcon";
 import * as React from "react";
 import IconButton from "@mui/material/IconButton";
@@ -11,6 +10,7 @@ import MenuItem from "@mui/material/MenuItem";
 import DropupIcon from "renderer/components/atoms/Settings/Settings-III/DropupIcon";
 import DropdownIcon from "renderer/components/atoms/Settings/Settings-III/DropdownIcon";
 import { Redirect } from "react-router-dom";
+import { StrteamerModeOffIcon } from "renderer/components/atoms/Settings/Settings-I/StreamerMode/StrteamerModeOffIcon";
 const ITEM_HEIGHT = 48;
 
 export function IconLabelMenu() {
@@ -42,7 +42,8 @@ export function IconLabelMenu() {
   };
   const handlerLogout = () => {
     localStorage.clear();
-    <Redirect to={"/"} />;
+    window.open("/", "_self");
+    // <Redirect to={"/"} />;
   };
   return (
     <div>
@@ -131,7 +132,7 @@ export function IconLabelMenu() {
                 >
                   Streamer Mode
                 </ListItemText>
-                <StreamerModeOnIcon />
+                <StrteamerModeOffIcon />
               </MenuItem>
               <MenuItem
                 onClick={handleClose}
@@ -180,14 +181,12 @@ export function IconLabelMenu() {
               </MenuItem>
               <MenuItem
                 onClick={handlerLogout}
-                className="MenuITem"
                 sx={{
                   minHeight: "58px !important",
                 }}
               >
                 <ListItemIcon></ListItemIcon>
                 <ListItemText
-                  className="MenuITemText"
                   sx={{
                     color: "#8C8C8C",
                     fontSize: "14px",

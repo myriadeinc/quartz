@@ -12,7 +12,6 @@ const PrimaryButton = ({ onClick, text, height, type }: buttonProps) => {
       type={type}
       style={{
         backgroundColor: "#FA6F15",
-        // marginTop: "20px",
         width: "100%",
         height: height || "32px",
         fontSize: "14px",

@@ -6,7 +6,6 @@ import Typography from "renderer/components/atoms/TextStyles";
 import PrimaryButton from "renderer/components/atoms/Login/PrimaryButtons";
 import { RangeSelectorButtonGroup } from "renderer/components/atoms/Dashboard/RangeSelectors";
 import { InformationBox } from "renderer/components/molecules/StartMining-I/InformationBox";
-// import { FriendsActivityCard } from "renderer/components/components/Friends/FriendsActivity";
 import { FriendsActivityCardHeader } from "renderer/components/molecules/Friends/FriendsActivityCardHeader";
 import { CardActions, CardContent, Divider } from "@mui/material";
 import { FriendsMolecule } from "renderer/components/molecules/Friends/Friends";
@@ -47,9 +46,6 @@ export const Friends = () => {
                   flexWrap: "wrap",
                 }}
               >
-                {/* <Box sx={{ whiteSpace: "nowrap" }}>
-                    <PrimaryButton text="Show Planned Mining" />
-                  </Box> */}
                 <Box>
                   <RangeSelectorButtonGroup
                     firstButtonTitle="Hour"
@@ -129,7 +125,6 @@ export const Friends = () => {
           <Box
             maxHeight={"988px"}
             overflow={"auto"}
-            // maxWidth={"478px"}
             sx={{
               background: "transparent",
               borderRadius: "7px",

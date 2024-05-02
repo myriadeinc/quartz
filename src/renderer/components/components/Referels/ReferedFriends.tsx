@@ -40,21 +40,6 @@ export const ReferedFriends = ({ onClick }: ReferelFriendsProps) => {
             <CancelButtonIcon />
           </IconButton>
         </Box>
-        {/* <Box>
-          <IconButton
-            aria-label="toggle password visibility"
-            // onClick={handleClose}
-            edge="end"
-            sx={{
-              "&:hover": {
-                backgroundColor: "transparent",
-              },
-              right: 0,
-            }}
-          >
-            <CancelButtonIcon />
-          </IconButton>
-        </Box> */}
       </Box>
       {Array(13)
         .fill(0)

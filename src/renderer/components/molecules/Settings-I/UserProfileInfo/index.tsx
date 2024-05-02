@@ -27,9 +27,7 @@ export const UserProfileInfo = ({
   };
   return (
     <Box
-      className="aslfjslfjdsl"
       sx={{
-        // maxwidth: "256px",
         height: "104px",
         display: "flex",
         flexDirection: "row",
@@ -37,7 +35,6 @@ export const UserProfileInfo = ({
       }}
     >
       <Box
-        className="helllo"
         sx={{
           display: "flex",
           justifyContent: "space-between",
@@ -49,7 +46,6 @@ export const UserProfileInfo = ({
           {userName}
         </Typography>
         <Box
-          className="helllo"
           sx={{
             width: "145px",
             maxHeight: "40px",

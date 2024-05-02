@@ -46,7 +46,6 @@ export const Instructions = ({
         placeContent: "center",
       }}
       className={classes.itemsBorderBottom}
-      // maxWidth="270px"
       margin="26px 49px"
     >
       <Box

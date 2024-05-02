@@ -41,7 +41,6 @@ const theme = createTheme({
         root: {
           color: "#4252FF",
           "&:active": {
-            // color: "#E8EAFF",
             backgroundColor: "#E8EAFF",
           },
         },
@@ -76,7 +75,6 @@ export const darkTheme = createTheme({
       hover: "#FF8B40",
     },
     divider: "#D9D9D9",
-    // highlight: "#FFC107",
   },
   components: {
     MuiAvatar: {
@@ -101,7 +99,7 @@ export const darkTheme = createTheme({
         root: {
           "&.MuiTypography-colorWarning": {
             "::selection": {
-              backgroundColor: "#FFCC00", // Highlight color for text selection of warning
+              backgroundColor: "#FFCC00",
             },
           },
         },

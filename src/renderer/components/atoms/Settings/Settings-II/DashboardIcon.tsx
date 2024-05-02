@@ -18,7 +18,6 @@ export const DashboardIcon = ({ rectangleColor, pathColor }: DashboardIcon) => {
         width="44"
         height="44"
         transform="translate(0.574219)"
-        // fill="#080A0F"
         fill={rectangleColor}
       />
       <path
@@ -39,7 +38,6 @@ export const DashboardIcon = ({ rectangleColor, pathColor }: DashboardIcon) => {
       />
       <path
         d="M35.5968 11H32.9252C32.3862 11 31.9492 11.4334 31.9492 11.9681V31.2733C31.9492 31.8079 32.3862 32.2414 32.9252 32.2414H35.5968C36.1358 32.2414 36.5728 31.8079 36.5728 31.2733V11.9681C36.5728 11.4334 36.1358 11 35.5968 11Z"
-        // fill="#EAEAEA"
         fill={pathColor}
       />
     </svg>

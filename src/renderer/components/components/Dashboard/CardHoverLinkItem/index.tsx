@@ -15,7 +15,6 @@ export const LinkHoverCardItem = ({
   linkPath,
   isHovered,
 }: LinkHoverCardItemProps) => {
-  console.log("isHovered inside linkover", isHovered);
   return (
     <Link to={linkPath}>
       <Box

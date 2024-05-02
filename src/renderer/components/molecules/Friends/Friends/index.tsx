@@ -38,7 +38,7 @@ export const FriendsMolecule = ({
         }}
       >
         <MinerStatusIcon src="" />
-        <Box className="sdafasdfsadf" sx={{ display: "flex", gap: "4px" }}>
+        <Box sx={{ display: "flex", gap: "4px" }}>
           <CopperLeftIcon />
           <Typography color="#EAEAEA">{friendName}</Typography>
           <CopperRightIcon />
