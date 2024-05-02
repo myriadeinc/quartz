@@ -19,7 +19,6 @@ import { GameInstructionsBox } from "renderer/components/components/Gameroom/com
 import { Stack } from "@mui/material";
 import { GameRoomGiveAwayCard } from "renderer/components/components/Gameroom/GameRoomGiveawayCard";
 import { MiningAllocationWidget } from "renderer/components/components/StartMining/MininAllocationWidget";
-import { SteamAmazonTabs } from "renderer/components/components/Gameroom/components/SteamAmazonTabs";
 import { CurrentDrawings } from "renderer/components/components/Gameroom/components/CurrentDrawings";
 
 export const GameRoom = () => {
@@ -167,7 +166,7 @@ export const GameRoom = () => {
                 </Grid>
               </Grid>
 
-              <Grid item xs={4} md={6} lg={4}>
+              <Grid item xs={12} sm={8} md={6} lg={4}>
                 <MiningAllocationWidget />
               </Grid>
             </Grid>

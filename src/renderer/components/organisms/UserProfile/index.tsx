@@ -10,7 +10,7 @@ type Props = {
 
 export const UserProfile = ({ minerName, minerEmail, minerLevel }: Props) => {
   return (
-    <Box sx={{ display: "flex", gap: "20px" }}>
+    <Box sx={{ display: "flex" }}>
       <CustomAvatar />
       <UserProfileInfo
         userName={minerName}

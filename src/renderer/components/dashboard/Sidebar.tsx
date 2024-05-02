@@ -123,7 +123,7 @@ const Sidebar = (props: SidebarProps) => {
               spacing={2}
               sx={{
                 margin: "0",
-                width: "96%",
+                width: "100%",
               }}
               className={classes.grid}
               height={"100%"}

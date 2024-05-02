@@ -1,8 +1,8 @@
 import React from "react";
 
 type DropdownIconProps = {
-  pathColor: string;
-  rectangleColor: string;
+  pathColor?: string;
+  rectangleColor?: string;
 };
 
 const DropdownIcon = ({ pathColor, rectangleColor }: DropdownIconProps) => {

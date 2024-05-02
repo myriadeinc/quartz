@@ -1,10 +1,10 @@
-import { Box, IconButton } from "@mui/material";
+import { Box } from "@mui/material";
 import { useState } from "react";
+import * as React from "react";
 import CopperLeftIcon from "renderer/components/atoms/Settings/Settings-I/LevelIcons/CopperLeftIcon";
 import { CopperRightIcon } from "renderer/components/atoms/Settings/Settings-I/LevelIcons/CopperRightIcon";
-import DropdownIcon from "renderer/components/atoms/Settings/Settings-III/DropdownIcon";
-import DropupIcon from "renderer/components/atoms/Settings/Settings-III/DropupIcon";
 import Typography from "renderer/components/atoms/TextStyles";
+import { IconLabelMenu } from "../../Settings-II/MenuItems";
 interface userProfileInfo {
   userName: string;
   level: string;
@@ -19,6 +19,9 @@ export const UserProfileInfo = ({
     isHovered: false,
     isSelected: false,
   });
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+
   const toggleHandler = () => {
     setIconState({ ...iconState, isSelected: !iconState.isSelected });
   };
@@ -31,7 +34,6 @@ export const UserProfileInfo = ({
         display: "flex",
         flexDirection: "row",
         padding: "4px 7px",
-        gap: "8px",
       }}
     >
       <Box
@@ -65,29 +67,8 @@ export const UserProfileInfo = ({
           {userEmail}
         </Typography>
       </Box>
-      <Box sx={{ position: "relative", bottom: "20px" }}>
-        <IconButton
-          aria-label="toggle password visibility"
-          onClick={toggleHandler}
-          edge="end"
-        >
-          {iconState.isSelected ? (
-            <DropupIcon
-              rectangleColor="transparent"
-              pathColor={iconState.isHovered ? "#FA6F15" : "#EAEAEA"}
-            />
-          ) : (
-            // <DropdownIcon
-            //   rectangleColor="transparent"
-            //   pathColor={iconState.isHovered ? "#FA6F15" : "#EAEAEA"}
-            // />
-            <DropdownIcon
-              rectangleColor="transparent"
-              pathColor={iconState.isHovered ? "#FA6F15" : "#EAEAEA"}
-            />
-          )}
-        </IconButton>
-      </Box>
+      <Box sx={{ position: "relative", bottom: "20px" }}></Box>
+      <IconLabelMenu />
     </Box>
   );
 };

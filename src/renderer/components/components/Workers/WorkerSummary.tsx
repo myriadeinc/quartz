@@ -47,7 +47,7 @@ export const WorkerSummary = () => {
         sx={{
           display: "flex",
           padding: "20px",
-          justifyContent: "space-evenly",
+          justifyContent: "space-between",
           borderBottom: "1px solid #414E66",
         }}
       >
@@ -63,17 +63,43 @@ export const WorkerSummary = () => {
           <Typography variant="bodySmall" color="#8C8C8C">
             Hashrate
           </Typography>
-          <Typography variant="heading4" color="#EAEAEA">
-            1,251.52 h/s
-          </Typography>
+          <Box sx={{ display: "flex" }}>
+            <Typography variant="heading4" color="#EAEAEA">
+              1,251.52
+            </Typography>
+            &nbsp;
+            <span
+              style={{
+                fontSize: "14px",
+                color: "#EAEAEA",
+                lineHeight: "20px",
+                alignSelf: "end",
+              }}
+            >
+              h/s
+            </span>
+          </Box>
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "4px" }}>
           <Typography variant="bodySmall" color="#8C8C8C">
             Hashrate 24hr
           </Typography>
-          <Typography variant="heading4" color="#EAEAEA">
-            1,251.52 h/s
-          </Typography>
+          <Box sx={{ display: "flex" }}>
+            <Typography variant="heading4" color="#EAEAEA">
+              1,251.52
+            </Typography>
+            &nbsp;
+            <span
+              style={{
+                fontSize: "14px",
+                color: "#EAEAEA",
+                lineHeight: "20px",
+                alignSelf: "end",
+              }}
+            >
+              h/s
+            </span>
+          </Box>
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "4px" }}>
           <Typography variant="bodySmall" color="#8C8C8C">
@@ -127,17 +153,43 @@ export const WorkerSummary = () => {
           <Typography variant="bodySmall" color="#8C8C8C">
             Hashrate
           </Typography>
-          <Typography variant="heading4" color="#EAEAEA">
-            1,251.52 h/s
-          </Typography>
+          <Box sx={{ display: "flex" }}>
+            <Typography variant="heading4" color="#EAEAEA">
+              1,251.52
+            </Typography>
+            &nbsp;
+            <span
+              style={{
+                fontSize: "14px",
+                color: "#EAEAEA",
+                lineHeight: "20px",
+                alignSelf: "end",
+              }}
+            >
+              h/s
+            </span>
+          </Box>
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "4px" }}>
           <Typography variant="bodySmall" color="#8C8C8C">
             Hashrate 24hr
           </Typography>
-          <Typography variant="heading4" color="#EAEAEA">
-            1,251.52 h/s
-          </Typography>
+          <Box sx={{ display: "flex" }}>
+            <Typography variant="heading4" color="#EAEAEA">
+              1,251.52
+            </Typography>
+            &nbsp;
+            <span
+              style={{
+                fontSize: "14px",
+                color: "#EAEAEA",
+                lineHeight: "20px",
+                alignSelf: "end",
+              }}
+            >
+              h/s
+            </span>
+          </Box>
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "4px" }}>
           <Typography variant="bodySmall" color="#8C8C8C">

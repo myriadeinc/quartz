@@ -20,12 +20,13 @@ export const FriendsMolecule = ({
     <Box
       sx={{
         padding: "20px",
-        width: { md: "100%", xl: "80%" },
+        width: { md: "94%", lg: "95%", xl: "80%" },
         height: "48px",
         display: "flex",
         gap: "12px",
         alignItems: "center",
         whiteSpace: "nowrap",
+        borderBottom: "1px solid #293040",
       }}
     >
       <Box

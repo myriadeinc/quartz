@@ -17,8 +17,6 @@ export const Workers = () => {
         marginLeft: "406px",
         padding: "21px",
       }}
-      // alignItems={"center"}
-      // justifyContent={"center"}
     >
       <Box>
         <Typography color="#EAEAEA" variant="heading2">
@@ -28,6 +26,7 @@ export const Workers = () => {
       <Grid
         container
         xs={12}
+        spacing={"20px"}
         sx={{
           marginTop: "32px",
         }}
@@ -40,27 +39,10 @@ export const Workers = () => {
         >
           <WorkerSummary />
         </Grid>
-        <Grid item md={8} xl={4} sx={{ margingLeft: "20px" }}>
+        <Grid item md={12} lg={12} xl={4} sx={{}}>
           <WorkersLeft />
         </Grid>
       </Grid>
-
-      {/* // <Box */}
-      {/* //   sx={{ */}
-      {/* //     display: "grid", */}
-      {/* //     paddingTop: "32px", */}
-      {/* //     gap: "20px",
-      //     gridTemplateColumns: {
-      //       sm: "1fr",
-      //       md: "1fr",
-      //       lg: "2fr 1fr",
-      //       xl: "2.5fr 1.5fr", */}
-      {/* //     },
-      //   }}
-      // >
-      //   <WorkerSummary />
-      //   <WorkersLeft />
-      // </Box> */}
     </Box>
   );
 };

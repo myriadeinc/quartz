@@ -2,12 +2,14 @@ type buttonProps = {
   onClick: VoidFunction;
   text: string;
   height: string;
+  type: string;
 };
 import { Button } from "@mui/material";
-const PrimaryButton = ({ onClick, text, height }: buttonProps) => {
+const PrimaryButton = ({ onClick, text, height, type }: buttonProps) => {
   return (
     <Button
       fullWidth
+      type={type}
       style={{
         backgroundColor: "#FA6F15",
         // marginTop: "20px",

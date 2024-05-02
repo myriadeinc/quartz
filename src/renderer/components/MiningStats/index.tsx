@@ -8,7 +8,6 @@ export const MiningStats = ({ CurrentHashrateData }: any) => {
   return (
     <Stack
       sx={{
-        // flexBasis: "30%",
         borderRadius: "8px",
       }}
       gap={"1.3rem"}
@@ -21,15 +20,13 @@ export const MiningStats = ({ CurrentHashrateData }: any) => {
       <Box
         sx={{
           backgroundColor: "#0F141F",
-          maxWidth: { md: "95%", lg: "478px", xl: "478px" },
+          maxWidth: { md: "95%", lg: "100%", xl: "100%" },
           padding: "21px 20px 24px 21px",
           borderRadius: "8px",
         }}
       >
         <Stack
           sx={{
-            // backgroundColor: "#0F141F",
-            // borderRadius: "8px",
             width: "100%",
             gridTemplateColumns: {
               md: "1fr",
@@ -45,7 +42,7 @@ export const MiningStats = ({ CurrentHashrateData }: any) => {
             return (
               <Box
                 sx={{
-                  width: { md: "100%", lg: "45%", xl: "40%" },
+                  width: { md: "100%", lg: "100%", xl: "40%" },
                   whiteSpace: "nowrap",
                   backgroundColor: "transparent",
                   border: "1px solid #293040",

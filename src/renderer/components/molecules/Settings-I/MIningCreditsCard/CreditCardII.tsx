@@ -4,7 +4,7 @@ import MoneroIcon from "renderer/components/atoms/Settings/Settings-I/MiningCred
 type CreditCardIIProps = {
   info: number;
 };
-
+const DEFAULT_USD = 0.0;
 export const CreditCardII = ({ info }: CreditCardIIProps) => {
   return (
     <Box
@@ -13,11 +13,14 @@ export const CreditCardII = ({ info }: CreditCardIIProps) => {
         display: "flex",
         flexDirection: "row",
         gap: "16px",
-        width: "72%",
+        width: "100%",
       }}
     >
       <MoneroIcon rectangleColor="0F141F" pathColor="#EAEAEA" />
-      <TextElement info={info} label="Monero Balance" />
+      <TextElement
+        info={`${info} ($${(DEFAULT_USD * info).toFixed(2)} USD)`}
+        label="Monero Balance"
+      />
     </Box>
   );
 };

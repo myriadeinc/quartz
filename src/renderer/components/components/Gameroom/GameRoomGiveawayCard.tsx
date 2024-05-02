@@ -26,6 +26,7 @@ export const GameRoomGiveAwayCard = ({
         padding: "12px 20px 20px",
         border: "1px solid #293040",
         borderRadius: "7px",
+        whiteSpace: "nowrap",
         justifyContent: "space-between",
         background: isGiveAwayCardClicked ? "#0F141F" : "transparent",
       }}

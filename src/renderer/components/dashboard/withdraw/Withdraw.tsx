@@ -16,11 +16,11 @@ export const Withdraw = () => {
       style={{
         width: "calc(100% - 430px)",
         marginLeft: "400px",
-        padding: "16px",
+        padding: "20px 21px 24px 20px",
         gap: "20px",
       }}
     >
-      <Grid container>
+      <Grid container sx={{ paddingLeft: "21px" }}>
         <Box>
           <Typography
             fontFamily="Poppins, sans-serif"

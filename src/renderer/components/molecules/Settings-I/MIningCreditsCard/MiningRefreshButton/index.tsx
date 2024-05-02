@@ -13,6 +13,7 @@ export const MiningRefreshButton = (props: Props) => {
         "&:hover": {
           backgroundColor: "transparent",
         },
+        paddingRight: "0px",
       }}
     >
       <RefreshIcon />

@@ -9,7 +9,6 @@ interface PurchaseProgressBar {
 }
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   minHeight: 16,
-  maxWidth: 344,
   value: 0,
   borderRadius: 8,
   [`&.${linearProgressClasses.colorPrimary}`]: {
@@ -32,7 +31,7 @@ export const PurchasedProgressBar = ({ caption }: PurchaseProgressBar) => {
         paddingTop: "20px",
       }}
     >
-      <BorderLinearProgress value={0} />
+      <BorderLinearProgress value={0} variant="determinate" />
       <Typography centered variant="caption">
         {caption}
       </Typography>

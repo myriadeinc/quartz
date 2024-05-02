@@ -132,7 +132,8 @@ export const Analytics = () => {
             <Grid
               item
               md={12}
-              lg={8}
+              lg={12}
+              xl={8}
               sx={{
                 background: "#0F141F",
                 position: "relative",
@@ -185,6 +186,9 @@ export const Analytics = () => {
                       lg: "52 vh",
                       xl: "100%",
                     },
+                    width: {
+                      sm: "100%",
+                    },
                   }}
                 >
                   <img
@@ -204,10 +208,10 @@ export const Analytics = () => {
             <Grid
               item
               md={12}
-              lg={8}
+              lg={12}
               xl={4}
               sx={{
-                paddingTop: "0px !important",
+                paddingTop: { md: "20px", lg: "20px", xl: "0px !important" },
                 paddingLeft: {
                   md: "0px !important",
                   lg: "0px !important",

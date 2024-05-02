@@ -19,7 +19,7 @@ export const MiningCreditCard = ({
     <Box
       sx={{
         display: "flex",
-        padding: "8px 8px 12px 8px",
+        padding: "16px 8px",
         flexDirection: "column",
         backgroundColor: "#0F141F",
         borderRadius: "7px",

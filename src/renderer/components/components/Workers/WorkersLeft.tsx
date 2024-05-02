@@ -10,8 +10,9 @@ export const WorkersLeft = () => {
         padding: "20px",
         backgroundColor: "#0F141F",
         borderRadius: "7px",
-        maxHeight: "450px",
-        maxWidth: "500px",
+        maxHeight: "496px",
+        width: "100%",
+        justifyContent: "center",
       }}
     >
       <Box sx={{ display: "flex", flexDirection: "column" }}>

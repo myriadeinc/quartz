@@ -18,7 +18,7 @@ export const Friends = () => {
       style={{
         width: "calc(100% - 406px)",
         marginLeft: "406px",
-        padding: "24px 20px 0 21px",
+        padding: "24px 0px 0 21px",
       }}
     >
       <Grid lg={12} item>
@@ -29,7 +29,7 @@ export const Friends = () => {
         </Box>
       </Grid>
       <Grid item container lg={12} marginTop={"32px"}>
-        <Grid md={12} lg={8} xl={7.8}>
+        <Grid md={12} lg={12} xl={7.8}>
           <BonusforFriends />
           <Box>
             <Grid sx={{ paddingTop: "32px" }}>
@@ -112,7 +112,20 @@ export const Friends = () => {
             </Grid>
           </Box>
         </Grid>
-        <Grid md={8} lg={8} xl={4}>
+        <Grid
+          md={12}
+          lg={12}
+          xl={4}
+          sx={{
+            marginLeft: { sm: "0", md: "0", lg: "0", xl: "20px" },
+            marginTop: {
+              sm: "20px",
+              md: "20px",
+              lg: "20px",
+              xl: "0px",
+            },
+          }}
+        >
           <Box
             maxHeight={"988px"}
             overflow={"auto"}
@@ -154,7 +167,6 @@ export const Friends = () => {
                           friendName="Salt.Mine#69"
                           mining="53:22"
                         />
-                        <Divider />
                       </>
                     ))}
                 </Box>

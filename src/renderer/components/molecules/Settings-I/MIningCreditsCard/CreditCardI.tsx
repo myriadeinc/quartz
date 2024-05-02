@@ -12,13 +12,13 @@ export const CreditCardI = ({ info }: CreditCardIProps) => {
         backgroundColor: "#0F141F",
         display: "flex",
         flexDirection: "row",
-        gap: "16px",
+        gap: "14px",
         position: "relative",
-        width: "80%",
+        width: "84%",
       }}
     >
       <MCIcon rectangleColor="0F141F" pathColor="#EAEAEA" />
-      <TextElement label="Mining Credits" info={info} />
+      <TextElement label="Mining Credits" info={String(info)} />
     </Box>
   );
 };
