@@ -1,4 +1,10 @@
-import { Box, CardContent, CardMedia, Grid } from "@mui/material";
+import {
+  Box,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography as MuiTypoGraphy,
+} from "@mui/material";
 import Typography from "renderer/components/atoms/TextStyles";
 import Card from "@mui/material/Card";
 import { GiveAwayPriceCardTag } from "renderer/components/atoms/GitftCards/GiveAwayPriceCardTag";
@@ -46,9 +52,12 @@ export const CurrentDrawings = (props: Props) => {
           borderTopRightRadius: "4px",
           backgroundColor: "#0F141F",
           maxWidth: "226px",
+          boxSizing: "border-box",
         }}
       >
-        <Typography color="#EAEAEA">Current Drawings</Typography>
+        <Typography color="#EAEAEA" variant="heading2">
+          Current Drawings
+        </Typography>
       </Box>
       <Box
         sx={{
@@ -60,14 +69,16 @@ export const CurrentDrawings = (props: Props) => {
         <Grid
           container
           xs={12}
+          // spacing={2}
           sx={{
             display: "flex",
             flex: "wrap",
             // gap: "10px",
+            justifyContent: "space-between",
             background: "#080A0F",
             border: "1px solid #293040",
             borderRadius: "7px",
-            padding: "20px",
+            padding: "40px",
           }}
         >
           {CURRENT__DRAWING.map((element) => {
@@ -75,17 +86,21 @@ export const CurrentDrawings = (props: Props) => {
               <Grid
                 item
                 xs={4}
-                md={6}
-                lg={6}
-                xl={4}
+                md={5}
+                lg={5}
+                xl={3.5}
                 sx={{
+                  display: "flex",
                   marginBottom: {
                     md: "20px",
                     lg: "20px",
+                    xl: "0px",
                   },
+                  paddingLeft: "0px !important",
+                  paddingTop: "0px !important",
                 }}
               >
-                <Card sx={{ marginRight: "20px", borderRadius: "7px" }}>
+                <Card sx={{ width: "100%", borderRadius: "7px" }}>
                   <CardMedia title="green iguana">
                     <Box
                       sx={{ backgroundColor: "#141A29", position: "relative" }}
@@ -104,9 +119,9 @@ export const CurrentDrawings = (props: Props) => {
                         >
                           <Box
                             sx={{
-                              padding: "15px",
-                              width: "103px",
-                              height: "103px",
+                              padding: "16px 16px 15px 15px",
+                              width: "72px",
+                              height: "72px",
                               borderRadius: "50%",
                               backgroundColor: "#EAEAEA",
                             }}
@@ -122,13 +137,15 @@ export const CurrentDrawings = (props: Props) => {
                         </Box>
                         <Box
                           sx={{
-                            paddingTop: "10px",
+                            paddingTop: "16px",
                             textAlign: "center",
                             justifyContent: "center",
-                            paddingBottom: "30px",
+                            paddingBottom: "36px",
                           }}
                         >
-                          <Typography>{element.cardMileStoneName}</Typography>
+                          <Typography variant="heading4">
+                            {element.cardMileStoneName}
+                          </Typography>
                           <Box
                             sx={{
                               display: "flex",
@@ -149,12 +166,29 @@ export const CurrentDrawings = (props: Props) => {
                       </Box>
                     </Box>
                   </CardMedia>
-                  <CardContent sx={{ backgroundColor: "#0F141F" }}>
+                  <CardContent
+                    sx={{
+                      backgroundColor: "#0F141F",
+                      padding: "20px 20px 21px 20px",
+                    }}
+                  >
                     <Box>
-                      <Box sx={{ display: "flex", flexDirection: "column" }}>
-                        <Typography>{element.cardBodyTitle}</Typography>
-                        <Typography>
-                          Ticket price:{element.ticketPrice}
+                      <Box
+                        sx={{
+                          display: "flex",
+                          flexDirection: "column",
+                          gap: "4px",
+                        }}
+                      >
+                        <MuiTypoGraphy
+                          fontWeight="600"
+                          fontSize={"14px"}
+                          fontFamily={"Poppins"}
+                        >
+                          {element.cardBodyTitle}
+                        </MuiTypoGraphy>
+                        <Typography color="#8C8C8C" variant="bodySmall">
+                          Ticket price: {element.ticketPrice}
                         </Typography>
                       </Box>
                       <PurchasedProgressBar caption="1000 out of 1000" />

@@ -107,7 +107,7 @@ function EnhancedTableHead(props: EnhancedTableHeadProps) {
             sortDirection={orderBy === headCell.id ? order : false}
             sx={{
               color: "#8C8C8C",
-              paddingLeft: "20px",
+              padding: "12px 20px",
               borderBottom: "1px solid #293040",
               fontSize: "16px",
             }}
@@ -242,8 +242,9 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                         sx={{
                           backgroundColor:
                             index % 2 === 0 ? "#0f141f" : "#141a29",
-                          borderBottom: "1px solid #293040",
+                          borderBottom: "1px solid transparent",
                           fontSize: "14px",
+                          padding: "12px 20px",
                         }}
                       >
                         <TableCell
@@ -254,8 +255,8 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                           sx={{
                             color: "#EAEAEA",
                             width: "320px",
-                            paddingLeft: "20px",
-                            borderBottom: "1px solid #293040",
+                            padding: "12px 20px",
+                            borderBottom: "1px solid transparent !important",
                           }}
                         >
                           {row.title}
@@ -265,8 +266,8 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                           sx={{
                             color: "#EAEAEA",
                             width: "320px",
-                            paddingLeft: "20px",
-                            borderBottom: "1px solid #293040",
+                            padding: "12px 20px",
+                            borderBottom: "1px solid transparent !important",
                           }}
                         >
                           {row.tickets}
@@ -276,8 +277,8 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                           sx={{
                             color: "#EAEAEA",
                             width: "320px",
-                            paddingLeft: "20px",
-                            borderBottom: "1px solid #293040",
+                            padding: "12px 20px",
+                            borderBottom: "1px solid transparent !important",
                           }}
                         >
                           {row.amount}
@@ -287,8 +288,8 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                           sx={{
                             color: "#EAEAEA",
                             width: "320px",
-                            paddingLeft: "20px",
-                            borderBottom: "1px solid #293040",
+                            padding: "12px 20px",
+                            borderBottom: "1px solid transparent !important",
                           }}
                         >
                           {row.purchased}
@@ -298,8 +299,8 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                           sx={{
                             color: "#EAEAEA",
                             width: "320px",
-                            paddingLeft: "20px",
-                            borderBottom: "1px solid #293040",
+                            padding: "12px 20px",
+                            borderBottom: "1px solid transparent !important",
                           }}
                         >
                           {row.winner}
@@ -322,7 +323,7 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                 <TableRow
                   sx={{
                     backgroundColor: "#0f141f",
-                    borderBottom: "1px solid #293040",
+                    borderBottom: "1px solid transparent",
                     fontSize: "14px",
                   }}
                 >

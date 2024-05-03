@@ -23,7 +23,7 @@ export const GameRoomGiveAwayCard = ({
       sx={{
         display: "flex",
         // minWidth: "478px",
-        padding: "12px 20px 20px",
+        // padding: "12px 20px 20px",
         border: "1px solid #293040",
         borderRadius: "7px",
         whiteSpace: "nowrap",
@@ -32,10 +32,19 @@ export const GameRoomGiveAwayCard = ({
       }}
       onClick={onClick}
     >
-      <Typography variant="heading2" color="#EAEAEA">
-        {giveAwayTitle}
-      </Typography>
-      <Box sx={{ alignSelf: "center", width: width, height: height }}>
+      <Box sx={{ padding: "12px 18px 0 20px" }}>
+        <Typography variant="heading2" color="#EAEAEA">
+          {giveAwayTitle}
+        </Typography>
+      </Box>
+      <Box
+        sx={{
+          alignSelf: "center",
+          width: width,
+          height: height,
+          padding: "20px 40px 20px 0",
+        }}
+      >
         <img
           src={imgSrc}
           alt={giveAwayTitle}

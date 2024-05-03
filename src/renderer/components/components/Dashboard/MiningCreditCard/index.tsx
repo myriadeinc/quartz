@@ -30,6 +30,7 @@ export const MiningCreditCard = ({
           display: "flex",
           justifyContent: "space-evenly",
           margin: "8px",
+          marginLeft: "25px",
           position: "relative",
         }}
       >
@@ -45,7 +46,7 @@ export const MiningCreditCard = ({
           <MiningRefreshButton />
         </Box>
       </Box>
-      <Box sx={{ display: "flex", margin: "8px 0" }}>
+      <Box sx={{ display: "flex", margin: "8px 0", marginLeft: "15px" }}>
         <DecreaseIcon />
         <CreditCardII info={moneroBalance} />
         <IncreaseArrowIcon />

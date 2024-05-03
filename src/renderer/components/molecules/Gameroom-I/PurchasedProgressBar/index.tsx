@@ -32,7 +32,7 @@ export const PurchasedProgressBar = ({ caption }: PurchaseProgressBar) => {
       }}
     >
       <BorderLinearProgress value={0} variant="determinate" />
-      <Typography centered variant="caption">
+      <Typography centered variant="caption" color="#8C8C8C">
         {caption}
       </Typography>
     </Box>

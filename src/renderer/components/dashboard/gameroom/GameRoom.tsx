@@ -20,6 +20,7 @@ import { Stack } from "@mui/material";
 import { GameRoomGiveAwayCard } from "renderer/components/components/Gameroom/GameRoomGiveawayCard";
 import { MiningAllocationWidget } from "renderer/components/components/StartMining/MininAllocationWidget";
 import { CurrentDrawings } from "renderer/components/components/Gameroom/components/CurrentDrawings";
+import { SteamAmazonTabs } from "renderer/components/components/Gameroom/components/SteamAmazonTabs";
 
 export const GameRoom = () => {
   const [raffles, setRaffles] = useState<IRaffle[]>([]);
@@ -130,18 +131,39 @@ export const GameRoom = () => {
               </Typography>
             </Box>
 
-            <Grid container spacing={2} sx={{ width: "100%" }}>
-              <Grid item xs={12}>
+            <Grid
+              container
+              spacing={2}
+              sx={{ width: "100%" }}
+              marginTop={"32px"}
+            >
+              <Grid item xs={12} sx={{ paddingTop: "0px !important" }}>
                 <GameInstructionsBox />
               </Grid>
 
-              <Grid item xs={8} md={12} lg={8}>
+              <Grid
+                item
+                xs={8}
+                md={12}
+                lg={8}
+                sx={{ marginTop: "32px !important" }}
+              >
                 <Grid
                   container
                   spacing={2}
-                  sx={{ display: "flex", alignItems: "center" }}
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    // paddingTop: "32px",
+                  }}
                 >
-                  <Grid item xs={6} sm={12} md={6}>
+                  <Grid
+                    item
+                    xs={6}
+                    sm={12}
+                    md={6}
+                    sx={{ paddingTop: "0px !important" }}
+                  >
                     <GameRoomGiveAwayCard
                       giveAwayTitle="Monero Giveaways"
                       imgSrc={"/assets/svg/MoneroBalanceIcon.svg"}
@@ -151,11 +173,17 @@ export const GameRoom = () => {
                       onClick={handleMoneroCardCliked}
                     />
                   </Grid>
-                  <Grid item xs={6} sm={12} md={6}>
+                  <Grid
+                    item
+                    xs={6}
+                    sm={12}
+                    md={6}
+                    sx={{ paddingTop: "0px !important" }}
+                  >
                     <GameRoomGiveAwayCard
                       giveAwayTitle="Gift Card Giveaways"
                       imgSrc={"/assets/svg/GC.svg"}
-                      width="120px"
+                      width="102px"
                       height="68px"
                       isGiveAwayCardClicked={
                         isGiveAwayClicked.isGiveAwayGiftCardClicked
@@ -166,13 +194,22 @@ export const GameRoom = () => {
                 </Grid>
               </Grid>
 
-              <Grid item xs={12} sm={12} md={12} lg={4}>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                lg={4}
+                sx={{
+                  paddingTop: "0px !important",
+                  marginTop: "32px",
+                }}
+              >
                 <MiningAllocationWidget />
               </Grid>
             </Grid>
-            <Box></Box>
             <CurrentDrawings />
-            <Box sx={{ paddingTop: "32px", width: "98%" }}>
+            <Box sx={{ marginTop: "32px", width: "99%" }}>
               <History history={history} />
             </Box>
           </Stack>

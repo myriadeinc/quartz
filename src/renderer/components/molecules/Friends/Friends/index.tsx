@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import makeStyles from "@mui/styles/makeStyles";
 import { MinerStatusIcon } from "renderer/components/atoms/FriendsWorkers/MinersStatus";
 import CopperLeftIcon from "renderer/components/atoms/Settings/Settings-I/LevelIcons/CopperLeftIcon";
 import { CopperRightIcon } from "renderer/components/atoms/Settings/Settings-I/LevelIcons/CopperRightIcon";
@@ -11,16 +12,25 @@ type FriendsProps = {
   mining: string;
 };
 
+const useStyles = makeStyles({
+  itemsBorderBottom: {
+    "&:nth-last-child(1)": {
+      borderRight: "none",
+      borderBottom: "none",
+    },
+  },
+});
 export const FriendsMolecule = ({
   friendName,
   isMetrics,
   mining,
 }: FriendsProps) => {
+  const classes = useStyles();
   return (
     <Box
       sx={{
         padding: "20px",
-        width: { md: "94%", lg: "95%", xl: "80%" },
+        width: { md: "94%", lg: "95%", xl: "90%" },
         height: "48px",
         display: "flex",
         gap: "12px",
@@ -28,6 +38,7 @@ export const FriendsMolecule = ({
         whiteSpace: "nowrap",
         borderBottom: "1px solid #293040",
       }}
+      className={classes.itemsBorderBottom}
     >
       <Box
         sx={{

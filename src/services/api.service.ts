@@ -1,5 +1,6 @@
 import { Miner } from "renderer/interfaces/pages/dashboard";
 import { coreApi } from "./apiInstance";
+import axios from "axios";
 
 export const selfAccount = async (miner: Miner) => {
   try {
@@ -69,7 +70,17 @@ export const fetchHashrates = async (miner: Miner) => {
     throw error;
   }
 };
-
+export const FetchCurrentMoneroUSDRate = async () => {
+  try {
+    const response = await axios.get(
+      "https://min-api.cryptocompare.com/data/price?fsym=XMR&tsyms=USD"
+    );
+    const data = response.data;
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
 export const fetchActiveEvent = async () => {
   try {
     const response = await coreApi.get("/metrics/v1/eventContent/active");

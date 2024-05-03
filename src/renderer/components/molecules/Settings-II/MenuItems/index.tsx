@@ -9,7 +9,6 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import DropupIcon from "renderer/components/atoms/Settings/Settings-III/DropupIcon";
 import DropdownIcon from "renderer/components/atoms/Settings/Settings-III/DropdownIcon";
-import { Redirect } from "react-router-dom";
 import { StrteamerModeOffIcon } from "renderer/components/atoms/Settings/Settings-I/StreamerMode/StrteamerModeOffIcon";
 const ITEM_HEIGHT = 48;
 
@@ -54,6 +53,12 @@ export function IconLabelMenu() {
         aria-expanded={open ? "true" : undefined}
         aria-haspopup="true"
         onClick={handleClick}
+        sx={{
+          paddingTop: "0px !important",
+          width: "44px",
+          height: "44px",
+          paddingBottom: "0px !important",
+        }}
         onMouseEnter={() => {
           setIconState((prevState) => ({
             ...prevState,

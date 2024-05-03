@@ -23,7 +23,6 @@ export const GameInstructionsBox = () => {
         width: { xs: "100%", sm: "100%", md: "100%" },
         alignItems: "center",
         backgroundColor: "#080A0F",
-        marginTop: "20px",
         marginRight: "10px",
         zIndex: 2,
         borderRadius: "0 0 7px 7px",

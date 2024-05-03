@@ -28,43 +28,59 @@ export const UserProfileInfo = ({
   return (
     <Box
       sx={{
-        height: "104px",
+        width: "100%",
+        maxHeight: "96px",
         display: "flex",
         flexDirection: "row",
-        padding: "4px 7px",
       }}
     >
       <Box
         sx={{
+          width: "100%",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           flexDirection: "column",
         }}
       >
-        <Typography variant="heading2" color="#EAEAEA">
-          {userName}
-        </Typography>
         <Box
           sx={{
-            width: "145px",
-            maxHeight: "40px",
+            width: "100%",
             display: "flex",
-            gap: "8px",
+            alignItems: "center",
+            justifyContent: "space-between",
           }}
         >
-          <CopperLeftIcon />
-          <Typography variant="bodySmall" color="#EAEAEA">
-            Level {level}
+          <Typography variant="heading2" color="#EAEAEA">
+            {userName}
           </Typography>
-          <CopperRightIcon />
+          <IconLabelMenu />
         </Box>
-        <Typography variant="body" color="#8C8C8C">
-          {userEmail}
-        </Typography>
+        <Box
+          sx={{
+            width: "100%",
+            maxHeight: "40px",
+            display: "flex",
+          }}
+        >
+          <Box sx={{ padding: "3px 4px" }}>
+            <CopperLeftIcon />
+          </Box>
+          <Box sx={{ padding: "4px 8px" }}>
+            <Typography variant="body" color="#EAEAEA">
+              Level {level}
+            </Typography>
+          </Box>
+          <Box sx={{ padding: "3px 4px" }}>
+            <CopperRightIcon />
+          </Box>
+        </Box>
+        <Box sx={{ width: "100%" }}>
+          <Typography variant="bodySmall" color="#8C8C8C">
+            {userEmail}
+          </Typography>
+        </Box>
       </Box>
-      <Box sx={{ position: "relative", bottom: "20px" }}></Box>
-      <IconLabelMenu />
     </Box>
   );
 };

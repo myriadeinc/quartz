@@ -47,7 +47,6 @@ export function FriendsActivityCard({ isDashboard }: Props) {
                   friendName="Salt.Mine#69"
                   mining="53:22"
                 />
-                {index !== 12 && <Divider />}
               </>
             ))}
         </Box>

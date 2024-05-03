@@ -107,8 +107,8 @@ function EnhancedTableHead(props: EnhancedTableHeadProps) {
             sortDirection={orderBy === headCell.id ? order : false}
             sx={{
               color: "#8C8C8C",
-              paddingLeft: "20px",
-              borderBottom: "1px solid #293040",
+              padding: "12px 0 20px 12px ",
+              borderBottom: "1px solid transparent",
               fontSize: "16px",
             }}
           >
@@ -243,7 +243,7 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                         sx={{
                           backgroundColor:
                             index % 2 === 0 ? "#0f141f" : "#141a29",
-                          borderBottom: "1px solid #293040",
+                          borderBottom: "1px solid transparent",
                           fontSize: "14px",
                         }}
                       >
@@ -256,8 +256,8 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                           sx={{
                             color: "#EAEAEA",
                             width: "320px",
-                            paddingLeft: "20px",
-                            borderBottom: "1px solid #293040",
+                            padding: "12px 0 20px 12px ",
+                            borderBottom: "1px solid transparent",
                           }}
                         >
                           {row.title}
@@ -267,8 +267,8 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                           sx={{
                             color: "#EAEAEA",
                             width: "320px",
-                            paddingLeft: "20px",
-                            borderBottom: "1px solid #293040",
+                            padding: "12px 0 20px 12px ",
+                            borderBottom: "1px solid transparent",
                           }}
                         >
                           {row.tickets}
@@ -278,8 +278,8 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                           sx={{
                             color: "#EAEAEA",
                             width: "320px",
-                            paddingLeft: "20px",
-                            borderBottom: "1px solid #293040",
+                            padding: "12px 0 20px 12px ",
+                            borderBottom: "1px solid transparent",
                           }}
                         >
                           {row.amount}
@@ -289,8 +289,8 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                           sx={{
                             color: "#EAEAEA",
                             width: "320px",
-                            paddingLeft: "20px",
-                            borderBottom: "1px solid #293040",
+                            padding: "12px 0 20px 12px ",
+                            borderBottom: "1px solid transparent",
                           }}
                         >
                           {row.purchased}
@@ -300,8 +300,8 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                           sx={{
                             color: "#EAEAEA",
                             width: "320px",
-                            paddingLeft: "20px",
-                            borderBottom: "1px solid #293040",
+                            padding: "12px 0 20px 12px ",
+                            borderBottom: "1px solid transparent",
                           }}
                         >
                           {row.winner}
@@ -320,15 +320,19 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                 )}
               </TableBody>
             ) : (
-              <TableBody>
+              <TableBody sx={{ border: "1px solid transparent" }}>
                 <TableRow
                   sx={{
                     backgroundColor: "#0f141f",
-                    borderBottom: "1px solid #293040",
+                    borderBottom: "1px solid transparent",
                     fontSize: "14px",
                   }}
                 >
-                  <TableCell colSpan={headCells.length} align="center">
+                  <TableCell
+                    colSpan={headCells.length}
+                    align="center"
+                    sx={{ border: "1px soid transparent" }}
+                  >
                     <Typography variant="h3" color="textSecondary">
                       No data found
                     </Typography>

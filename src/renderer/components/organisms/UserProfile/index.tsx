@@ -10,13 +10,15 @@ type Props = {
 
 export const UserProfile = ({ minerName, minerEmail, minerLevel }: Props) => {
   return (
-    <Box sx={{ display: "flex" }}>
-      <CustomAvatar />
-      <UserProfileInfo
-        userName={minerName}
-        userEmail={minerEmail}
-        level={minerLevel}
-      />
+    <Box sx={{ display: "flex", padding: "24px 0 0 0", width: "100%" }}>
+      <Box sx={{ display: "flex", width: "100%", gap: "20px" }}>
+        <CustomAvatar />
+        <UserProfileInfo
+          userName={minerName}
+          userEmail={minerEmail}
+          level={minerLevel}
+        />
+      </Box>
     </Box>
   );
 };

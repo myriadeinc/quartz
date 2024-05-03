@@ -6,17 +6,18 @@ import { MiningAllocationWidgetBox } from "renderer/components/molecules/StartMi
 export const MiningAllocationWidget = () => {
   return (
     <Stack
-      padding={"20px 20px 24px 20px"}
-      gap={"20px"}
       sx={{
-        // flexBasis: "40%",
         backgroundColor: "#0F141F",
         borderRadius: "8px",
         whiteSpace: "nowrap",
       }}
     >
-      <Box>
-        <Typography variant="bodyLarge" color={"#FFF"}>
+      <Box
+        sx={{
+          padding: "20px 20px 0",
+        }}
+      >
+        <Typography variant="heading2" color={"#FFF"}>
           Mining Allocation
         </Typography>
       </Box>
@@ -24,6 +25,7 @@ export const MiningAllocationWidget = () => {
         direction={"row"}
         justifyContent={"space-between"}
         flexWrap={"wrap"}
+        padding={"20px 20px 24px"}
         gap={"18px"}
       >
         {MINING_ALLOCATION_WIDGET_BOX.map((element) => {

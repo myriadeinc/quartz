@@ -36,12 +36,22 @@ export const History = (props: HistoryProps) => {
             onChange={(e, newTab) => {
               setTab(newTab);
             }}
-            sx={{
+            className="ankush"
+            style={{
+              gap: "20px",
               display: "flex",
-              paddingRight: "20px",
+            }}
+            sx={{
+              // display: "flex",
+              gap: "20px",
+              // paddingRight: "20px",
               borderBottom: "none",
+              fontSize: "16px",
               "& .MuiTabs-indicator": {
                 display: "none",
+              },
+              "& .MuiTabs-flexContainer": {
+                gap: "20px",
               },
             }}
           >
@@ -53,27 +63,38 @@ export const History = (props: HistoryProps) => {
                   tab === "0" ? "1px solid transparent" : " 1px solid #0F141F",
                 borderTopLeftRadius: "7px",
                 borderTopRightRadius: "7px",
-                marginRight: "1vw",
+                fontSize: "16px",
+                fontFamily: "Poppins",
                 "&.Mui-selected": {
                   color: "#EAEAEA",
                   backgroundColor: "#0F141F",
                 },
+                textTransform: "capitalize",
+                width: "180px",
+                alignItems: "flex-start",
+                padding: "14px 0 14px 20px",
                 backgroundColor: "transparent",
               }}
             />
             <Tab
               label="Expired"
+              textTransform={"capitalize"}
               value={"1"}
               sx={{
                 border:
                   tab === "1" ? "1px solid transparent" : " 1px solid #0F141F",
                 borderTopLeftRadius: "7px",
                 borderTopRightRadius: "7px",
-                marginRight: "1vw",
+                fontFamily: "Poppins",
+                fontSize: "16px",
                 "&.Mui-selected": {
                   color: "#EAEAEA",
                   backgroundColor: "#0F141F",
                 },
+                textTransform: "capitalize",
+                alignItems: "flex-start",
+                width: "180px",
+                padding: "14px 0 14px 20px",
                 backgroundColor: "transparent",
               }}
             />

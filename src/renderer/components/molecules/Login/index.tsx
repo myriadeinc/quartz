@@ -78,12 +78,13 @@ const LoginMolecule = ({
         )}
       </div>
       <div style={{ margin: "56px 0 0 0", textAlign: "center" }}>
-        <Typography variant="body" color="#EAEAEA">
+        <Typography variant="caption" color="#EAEAEA">
           Don't have an account? Sign up{" "}
           <Link
             style={{
               fontSize: "12px",
               color: "#6C81F5",
+              lineHeight: "16px",
             }}
             to={signupRoute}
           >

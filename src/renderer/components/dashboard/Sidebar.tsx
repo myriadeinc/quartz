@@ -18,8 +18,9 @@ let minerLevel = "33";
 
 const useStyles = makeStyles((theme) => ({
   grid: {
-    marginTop: theme.spacing(2),
-    paddingLeft: ".5rem",
+    // marginTop: theme.spacing(3),
+    // paddingLeft: ".5rem",
+    marginRight: "0px !important",
   },
   avatarContainer: {
     position: "relative",
@@ -115,10 +116,12 @@ const Sidebar = (props: SidebarProps) => {
               justifyContent="left"
               alignItems="center"
               textAlign="left"
-              spacing={2}
+              // spacing={2}
+              xs={12}
               sx={{
                 margin: "0",
                 width: "100%",
+                marginRight: "0px !important",
               }}
               className={classes.grid}
               height={"100%"}
@@ -126,22 +129,27 @@ const Sidebar = (props: SidebarProps) => {
               <Box
                 alignSelf={"flex-start"}
                 className="asdfsadfasdfsadf"
-                sx={{ width: "90%", paddingLeft: "20px" }}
+                sx={{ width: "95%" }}
               >
-                <UserProfile
-                  minerName={`${miner.name} #${miner.shortId}`}
-                  minerLevel={minerLevel}
-                  minerEmail={miner.email}
-                />
-                <Box sx={{ paddingTop: "32px" }}>
+                <Box sx={{ paddingLeft: "20px" }}>
+                  <UserProfile
+                    minerName={`${miner.name} #${miner.shortId}`}
+                    minerLevel={minerLevel}
+                    minerEmail={miner.email}
+                  />
+                </Box>
+                <Box sx={{ paddingTop: "24px", paddingLeft: "20px" }}>
                   <MiningCreditCard
                     moneroBalance={miner.xmrBalance}
                     minerBalance={miner.mcBalance}
                   />
                 </Box>
                 <Box
-                  sx={{ display: "flex", flexDirection: "column" }}
-                  className={classes.grid}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    padding: "32px 40px 0px",
+                  }}
                 >
                   <Grid
                     item

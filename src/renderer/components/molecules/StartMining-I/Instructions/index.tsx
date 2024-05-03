@@ -31,29 +31,29 @@ export const Instructions = ({
           lg: "1px solid #293040",
           xl: "1px solid #293040",
         },
+        padding: "26px 49px",
         borderBottom: {
           sm: "1px solid rgba(234, 234, 234, 0.2)",
           md: "1px solid rgba(234, 234, 234, 0.2)",
           lg: "none",
           xl: "none",
         },
-        width: "90%",
-        padding: "10px",
+        // width: "90%",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        margin: "auto",
+        // margin: "auto",
         placeContent: "center",
       }}
       className={classes.itemsBorderBottom}
-      margin="26px 49px"
     >
       <Box
         sx={{
           display: "flex",
           justifyContent: "center",
           flexDirection: "column",
-          maxWidth: "270px",
+          gap: "16px",
+          // maxWidth: "270px",
           alignItems: "center",
         }}
       >

@@ -1,4 +1,10 @@
-import { Box, CardContent, CardMedia } from "@mui/material";
+import {
+  Box,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography as MuiTypography,
+} from "@mui/material";
 import Typography from "renderer/components/atoms/TextStyles";
 import Card from "@mui/material/Card";
 import { GiveAwayPriceCardTag } from "renderer/components/atoms/GitftCards/GiveAwayPriceCardTag";
@@ -103,29 +109,49 @@ export const SteamAmazonTabs = () => {
               }}
             />
           </TabList>
-          <Box
-            sx={{ borderRadius: "0 7px 7px 7px", border: "1px solid #0F141F" }}
-          >
-            <TabPanel value="1">
-              <Box
+          <Box marginTop={{ md: "20px", lg: "0px", xl: "0px", width: "99%" }}>
+            <Box
+              sx={{
+                display: "flex",
+                padding: "40px",
+                backgroundColor: "#0F141F",
+              }}
+            >
+              <Grid
+                container
+                xs={12}
+                // spacing={2}
                 sx={{
                   display: "flex",
-                  backgroundColor: "#0F141F",
+                  flex: "wrap",
+                  // gap: "10px",
+                  justifyContent: "space-between",
+                  background: "#080A0F",
+                  border: "1px solid #293040",
+                  borderRadius: "7px",
+                  padding: "40px",
                 }}
               >
-                <Box
-                  sx={{
-                    backgroundColor: "#080A0F",
-                    borderRadius: "7px",
-                    display: "flex",
-                    padding: "20px",
-                    gap: "2rem",
-                    flexWrap: "wrap",
-                  }}
-                >
-                  {CURRENT__DRAWING.map((element) => {
-                    return (
-                      <Card sx={{ width: 384, borderRadius: "7px" }}>
+                {CURRENT__DRAWING.map((element) => {
+                  return (
+                    <Grid
+                      item
+                      xs={4}
+                      md={5}
+                      lg={5}
+                      xl={3.5}
+                      sx={{
+                        display: "flex",
+                        marginBottom: {
+                          md: "20px",
+                          lg: "20px",
+                          xl: "0px",
+                        },
+                        paddingLeft: "0px !important",
+                        paddingTop: "0px !important",
+                      }}
+                    >
+                      <Card sx={{ width: "100%", borderRadius: "7px" }}>
                         <CardMedia title="green iguana">
                           <Box
                             sx={{
@@ -147,9 +173,9 @@ export const SteamAmazonTabs = () => {
                               >
                                 <Box
                                   sx={{
-                                    padding: "15px",
-                                    width: "103px",
-                                    height: "103px",
+                                    padding: "16px 16px 15px 15px",
+                                    width: "72px",
+                                    height: "72px",
                                     borderRadius: "50%",
                                     backgroundColor: "#EAEAEA",
                                   }}
@@ -165,13 +191,13 @@ export const SteamAmazonTabs = () => {
                               </Box>
                               <Box
                                 sx={{
-                                  paddingTop: "10px",
+                                  paddingTop: "16px",
                                   textAlign: "center",
                                   justifyContent: "center",
-                                  paddingBottom: "30px",
+                                  paddingBottom: "36px",
                                 }}
                               >
-                                <Typography>
+                                <Typography variant="heading4">
                                   {element.cardMileStoneName}
                                 </Typography>
                                 <Box
@@ -197,142 +223,40 @@ export const SteamAmazonTabs = () => {
                             </Box>
                           </Box>
                         </CardMedia>
-                        <CardContent sx={{ backgroundColor: "#293040" }}>
+                        <CardContent
+                          sx={{
+                            backgroundColor: "#0F141F",
+                            padding: "20px 20px 21px 20px",
+                          }}
+                        >
                           <Box>
                             <Box
                               sx={{
                                 display: "flex",
                                 flexDirection: "column",
+                                gap: "4px",
                               }}
                             >
-                              <Typography>{element.cardBodyTitle}</Typography>
-                              <Typography>
-                                Ticket price:{element.ticketPrice}
+                              <MuiTypography
+                                fontWeight="600"
+                                fontSize={"14px"}
+                                fontFamily={"Poppins"}
+                              >
+                                {element.cardBodyTitle}
+                              </MuiTypography>
+                              <Typography color="#8C8C8C" variant="bodySmall">
+                                Ticket price: {element.ticketPrice}
                               </Typography>
                             </Box>
                             <PurchasedProgressBar caption="1000 out of 1000" />
                           </Box>
                         </CardContent>
                       </Card>
-                    );
-                  })}
-                </Box>
-              </Box>
-            </TabPanel>
-            <TabPanel value="2">
-              <Box
-                sx={{
-                  display: "flex",
-                  //   padding: "40px",
-                  backgroundColor: "#0F141F",
-                }}
-              >
-                <Box
-                  sx={{
-                    backgroundColor: "#080A0F",
-                    borderRadius: "7px",
-                    display: "flex",
-                    padding: "20px",
-                    flexWrap: "wrap",
-                    gap: "2rem",
-                  }}
-                >
-                  {CURRENT__DRAWING.map((element) => {
-                    return (
-                      <Card sx={{ width: 384, borderRadius: "7px" }}>
-                        <CardMedia title="green iguana">
-                          <Box
-                            sx={{
-                              backgroundColor: "#141A29",
-                              position: "relative",
-                            }}
-                          >
-                            <GiveAwayPriceCardTag
-                              text={element.price}
-                              backgroundColor={element.priceTagColor}
-                            />
-                            <Box>
-                              <Box
-                                sx={{
-                                  paddingTop: "30px",
-                                  display: "flex",
-                                  justifyContent: "center",
-                                }}
-                              >
-                                <Box
-                                  sx={{
-                                    padding: "15px",
-                                    width: "103px",
-                                    height: "103px",
-                                    borderRadius: "50%",
-                                    backgroundColor: "#EAEAEA",
-                                  }}
-                                >
-                                  <img
-                                    style={{
-                                      height: "100%",
-                                      width: "100%",
-                                    }}
-                                    src={element.imgSrc}
-                                  />
-                                </Box>
-                              </Box>
-                              <Box
-                                sx={{
-                                  paddingTop: "10px",
-                                  textAlign: "center",
-                                  justifyContent: "center",
-                                  paddingBottom: "30px",
-                                }}
-                              >
-                                <Typography>
-                                  {element.cardMileStoneName}
-                                </Typography>
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    gap: "8px",
-                                    alignItems: "center",
-                                    justifyContent: "center",
-                                  }}
-                                >
-                                  <img
-                                    src="/assets/svg/MoneroBalanceIcon.svg"
-                                    style={{ width: "16px", height: "16px" }}
-                                  />
-                                  <Typography
-                                    variant="bodySmall"
-                                    color="#EAEAEA"
-                                  >
-                                    {element.moneroPoints}
-                                  </Typography>
-                                </Box>
-                              </Box>
-                            </Box>
-                          </Box>
-                        </CardMedia>
-                        <CardContent sx={{ backgroundColor: "#293040" }}>
-                          <Box>
-                            <Box
-                              sx={{
-                                display: "flex",
-                                flexDirection: "column",
-                              }}
-                            >
-                              <Typography>{element.cardBodyTitle}</Typography>
-                              <Typography>
-                                Ticket price:{element.ticketPrice}
-                              </Typography>
-                            </Box>
-                            <PurchasedProgressBar caption="1000 out of 1000" />
-                          </Box>
-                        </CardContent>
-                      </Card>
-                    );
-                  })}
-                </Box>
-              </Box>
-            </TabPanel>
+                    </Grid>
+                  );
+                })}
+              </Grid>
+            </Box>
           </Box>
         </Box>
       </TabContext>

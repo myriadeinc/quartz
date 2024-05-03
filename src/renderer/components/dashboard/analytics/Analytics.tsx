@@ -42,7 +42,8 @@ export const Analytics = () => {
               lg: "calc(100% - 406px)",
             },
             marginLeft: "406px",
-            padding: "21px",
+            padding: "0 21px",
+            marginTop: "24px",
           }}
         >
           <Grid item lg={12} sx={{ paddingLeft: "0px !important" }}>

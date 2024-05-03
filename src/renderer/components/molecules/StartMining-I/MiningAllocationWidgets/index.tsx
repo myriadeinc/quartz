@@ -56,7 +56,11 @@ export const MiningAllocationWidgetBox = ({
           </IconButton>
         )}
       </Box>
-      <Typography variant="bodySmall" centered color="#8C8C8C">
+      <Typography
+        variant="bodySmall"
+        centered
+        color={label === "MC" ? "#EAEAEA" : "#8C8C8C"}
+      >
         {label}
       </Typography>
     </Box>

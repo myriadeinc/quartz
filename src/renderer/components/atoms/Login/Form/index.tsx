@@ -20,7 +20,7 @@ const Form = ({
     <>
       <Box
         sx={{
-          marginBottom: "20px",
+          marginBottom: "16px",
         }}
       >
         <TextField

@@ -9,15 +9,16 @@ export const CustomAvatar = ({ src, isSelectingAvatar }: AvatarProps) => {
   return (
     <Box
       sx={{
-        // maxWidth: "96px",
-        // maxHeight: "96px",
+        boxSizing: "border-box",
+        minWidth: "96px",
+        height: "96px",
         border: isSelectingAvatar ? "" : "4px solid yellow",
         borderRadius: "50%",
-        padding: "5px",
+        padding: "8px",
       }}
     >
       <Avatar
-        sx={{ objectFit: "contain", width: "96px", height: "96px" }}
+        sx={{ objectFit: "contain", width: "100%", height: "100%" }}
         src={src}
         alt="hello"
       />

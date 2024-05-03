@@ -1,11 +1,26 @@
 import { Box } from "@mui/material";
 import { TextElement } from "renderer/components/atoms/Settings/Settings-I/MiningCreditsCard/TextElement";
 import MoneroIcon from "renderer/components/atoms/Settings/Settings-I/MiningCreditsCard/MoneroIcon";
+import { useEffect, useState } from "react";
+import { FetchCurrentMoneroUSDRate } from "services/api.service";
 type CreditCardIIProps = {
   info: number;
 };
-const DEFAULT_USD = 0.0;
 export const CreditCardII = ({ info }: CreditCardIIProps) => {
+  const [currenUSDRateForMonero, setCurrentUSDRateForMonero] = useState(0.0);
+  useEffect(() => {
+    const fetchCurrentMoneroUSDRate = async () => {
+      try {
+        const currentMoneroUSDRate = await FetchCurrentMoneroUSDRate();
+        if (currentMoneroUSDRate) {
+          setCurrentUSDRateForMonero(currentMoneroUSDRate.USD);
+        }
+      } catch (error) {
+        console.error("Error fetching active events data:", error);
+      }
+    };
+    fetchCurrentMoneroUSDRate();
+  }, []);
   return (
     <Box
       sx={{
@@ -18,7 +33,7 @@ export const CreditCardII = ({ info }: CreditCardIIProps) => {
     >
       <MoneroIcon rectangleColor="0F141F" pathColor="#EAEAEA" />
       <TextElement
-        info={`${info} ($${(DEFAULT_USD * info).toFixed(2)} USD)`}
+        info={`${info} ($${(currenUSDRateForMonero * info).toFixed(2)} USD)`}
         label="Monero Balance"
       />
     </Box>
