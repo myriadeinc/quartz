@@ -1,54 +1,83 @@
-import { Card, Grid, Grow, Box, Typography, Button } from "@mui/material";
-import Divider from '@mui/material/Divider';
-import Stack from '@mui/material/Stack';
-import CircularProgress from '@mui/material/CircularProgress';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow'
-import IconButton from '@mui/material/IconButton';
-import { styled } from '@mui/system';
-import * as React from 'react';
-import { Link } from "react-router-dom";
-import { Card as BCard } from "react-bootstrap";
-import { MinerConsumer } from "renderer/pages/Dashboard";
-import { FriendMenu } from "../friends/Friends";
-import Chart from "./Chart";
+// import Typography from "@mui/material/Typography";
+import Typography from "renderer/components/atoms/TextStyles";
+import Grid from "@mui/material/Grid";
+import { Box } from "@mui/material";
+import { MineGiftCard } from "renderer/components/components/GIftCards/MineGiftCard";
+import { MiningSchedulerBox } from "renderer/components/MiningSchedule";
+import { GCHistory } from "renderer/components/molecules/GiftCards-III";
+import { RangeSelectorButtonGroup } from "renderer/components/atoms/Dashboard/RangeSelectors";
+import { MiningRangeSelectorButtonGroup } from "renderer/components/components/StartMining/PlanMining/MiningRangeSelector";
 
-export const GiftCards= () => {
+export const GiftCards = () => {
   return (
     <Grid
       container
-      item
-      style={{ width: "1473px", marginLeft: "406px" }}
-      alignItems={"flex-start"}
-      justifyContent={"flex-start"}
+      spacing={2}
+      sx={{
+        width: {
+          xs: "100vw",
+          sm: "100vw",
+          md: "calc(100% - 406px)",
+          lg: "calc(100% - 406px)",
+        },
+        marginLeft: "406px",
+        padding: "21px",
+      }}
     >
-
-
-            <Grid item sm={4}>
-            <div style={{ position: 'relative' }}>
-            <Grid>  
-          <Typography  fontFamily="Poppins, sans-serif" style={{ 
-            fontSize: '28px',
-            color: '#EAEAEA',
-            marginTop: "25px",
-            marginLeft: "20px",
-            fontWeight: 400, 
-            }}>
-                Gift Cards
-              </Typography>
-          </Grid>
-          </div>
-          </Grid>
-
-            
-
-
-
-
-
-
-
-
-
-          </Grid>
+      <Grid item xs={12} sx={{ paddingLeft: "0px !important" }}>
+        <Box sx={{ marginBottom: "25px" }}>
+          <Typography variant="heading1" color="#EAEAEA">
+            Gift Cards
+          </Typography>
+        </Box>
+      </Grid>
+      <Grid item md={12} lg={8} sx={{ paddingLeft: "0px !important" }}>
+        <MineGiftCard />
+      </Grid>
+      <Grid
+        item
+        md={12}
+        lg={4}
+        sx={{
+          paddingLeft: {
+            md: "0px !important",
+            lg: "20px !important",
+            xl: "20px !important",
+          },
+        }}
+      >
+        <MiningSchedulerBox />
+      </Grid>
+      <Grid item xs={12} sx={{ paddingLeft: "0px !important" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "24px",
+            paddingTop: "32px",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography color="#EAEAEA" variant="heading2">
+              History
+            </Typography>
+            <MiningRangeSelectorButtonGroup
+              firstButtonTitle="5 Days"
+              SecondButtonTitle="10 Days"
+              ThirdButtonTitle="50 Days"
+              FourthButtonTitle="All"
+              isFourtButtonTextCapital={true}
+            />
+          </Box>
+          <GCHistory />
+        </Box>
+      </Grid>
+    </Grid>
   );
 };

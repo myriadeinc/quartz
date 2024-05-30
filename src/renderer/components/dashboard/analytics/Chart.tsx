@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import _ from "lodash";
 import moment from "moment";
-import { Card } from "@mui/material";
+import Card from "@mui/material/Card";
 
 class Chart extends Component<any, any> {
   constructor(props: any) {
@@ -53,10 +53,15 @@ class Chart extends Component<any, any> {
     return (
       <Card
         elevation={0}
-        style={{ height: "440px", width: "975px", backgroundColor: "#0F141F", backgroundImage: 'none', borderRadius: "7px" }}
+        style={{
+          height: "440px",
+          maxWidth: "975px",
+          backgroundColor: "#0F141F",
+          backgroundImage: "none",
+          borderRadius: "7px",
+        }}
       >
         <ResponsiveContainer>
-          
           <AreaChart data={this.getMovingAverage([], 120)}>
             <XAxis
               dataKey="time"
@@ -71,7 +76,7 @@ class Chart extends Component<any, any> {
               type="number"
               scale="time"
             />
-            
+
             <YAxis
               dataKey="rate"
               axisLine={false}

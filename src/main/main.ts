@@ -1,13 +1,7 @@
 import { app, BrowserWindow, shell } from "electron";
-
 import { autoUpdater } from "electron-updater";
-import MenuBuilder from "./menu";
 import log from "electron-log";
 import { resolveHtmlPath } from "./util";
-
-
-
-
 export default class AppUpdater {
   constructor() {
     log.transports.file.level = "info";
@@ -48,32 +42,36 @@ const createWindow = async () => {
     await installExtensions();
   }
 
-  app.commandLine.appendSwitch('enable-features=OverlayScrollbar')
-
-
-  const path = require('path');
+  app.commandLine.appendSwitch("enable-features=OverlayScrollbar");
+  const path = require("path");
   function getPlatformIcon() {
-    if (process.platform === 'win32') {
-      return path.join(__dirname, 'icons', 'icon.ico'); // Windows
-    } else if (process.platform === 'darwin') {
-      return path.join(__dirname, 'icons', 'icon.icns'); // macOS
+    if (process.platform === "win32") {
+      return path.join(__dirname, "icons", "icon.ico"); // Windows
+    } else if (process.platform === "darwin") {
+      return path.join(__dirname, "icons", "icon.icns"); // macOS
     } else {
-      return path.join(__dirname, 'icons', 'icon-512x512.png'); // Linux and others
+      return path.join(__dirname, "icons", "icon-512x512.png"); // Linux and others
     }
   }
-
   mainWindow = new BrowserWindow({
     width: 1920,
     height: 1020,
     frame: true,
+    paintWhenInitiallyHidden: true,
+    backgroundColor: "#080a0f",
+    // show: false,
+    title: "Myriade",
     autoHideMenuBar: true,
-    resizable: false,
-    icon: getPlatformIcon()
-    });
+    resizable: true,
+    icon: getPlatformIcon(),
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
+  });
 
   mainWindow.loadURL(resolveHtmlPath("index.html"));
-
-  mainWindow.on("ready-to-show", () => {
+  app.on("ready", () => {
     if (!mainWindow) {
       throw new Error('"mainWindow" is not defined');
     }
@@ -83,8 +81,11 @@ const createWindow = async () => {
       mainWindow.show();
     }
   });
+  process.on("uncaughtException", function (err) {
+    console.log(err, "uncaught exceptions");
+  });
 
-  mainWindow.on("closed", () => {
+  app.on("window-all-closed", () => {
     mainWindow = null;
   });
 
@@ -99,7 +100,7 @@ const createWindow = async () => {
 
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
-  new AppUpdater();
+  // new AppUpdater();
 };
 
 app.whenReady().then(() => {

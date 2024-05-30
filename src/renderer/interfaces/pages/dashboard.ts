@@ -1,11 +1,12 @@
-import { FC } from "react";
+import { FC, ReactElement } from "react";
 
 export interface DashboardRoute {
   name: string;
   ref: string;
   component: FC;
   visible: boolean;
-  icon: string;
+  Icon: ReactElement;
+  alt?: string;
 }
 
 export interface Miner {
@@ -54,9 +55,19 @@ export interface IHistory {
   purchased: number;
   winner: string;
 }
-
 export interface IFriend {
   name: string;
   status: string;
   avatar: string;
+}
+
+export interface IMiner {
+  src: string;
+  title: string;
+  alt: string;
+}
+export interface IMiner2 {
+  InstructionIcon: ReactElement;
+  title: string;
+  alt: string;
 }

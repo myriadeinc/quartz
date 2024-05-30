@@ -9,7 +9,8 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import Paper from "@mui/material/Paper";
-import { visuallyHidden } from "@mui/utils";
+import visuallyHidden from "@mui/utils/visuallyHidden";
+import Typography from "@mui/material/Typography";
 import { IHistory } from "renderer/interfaces/pages/dashboard";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -48,19 +49,19 @@ const headCells: readonly HeadCell[] = [
     id: "title",
     numeric: false,
     disablePadding: true,
-    label: "Title",
+    label: "Drawing Title",
   },
   {
     id: "tickets",
     numeric: true,
     disablePadding: false,
-    label: "Tickets",
+    label: "Number of Tickets",
   },
   {
     id: "amount",
     numeric: true,
     disablePadding: false,
-    label: "Prize (XMR)",
+    label: "Prize Amount (XMR)",
   },
   {
     id: "purchased",
@@ -72,7 +73,7 @@ const headCells: readonly HeadCell[] = [
     id: "winner",
     numeric: false,
     disablePadding: false,
-    label: "Winner",
+    label: "Past Winner",
   },
 ];
 
@@ -101,9 +102,15 @@ function EnhancedTableHead(props: EnhancedTableHeadProps) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "right" : "left"}
+            align="left"
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
+            sx={{
+              color: "#8C8C8C",
+              padding: "12px 0 20px 12px ",
+              borderBottom: "1px solid transparent",
+              fontSize: "16px",
+            }}
           >
             <TableSortLabel
               active={orderBy === headCell.id}
@@ -112,7 +119,13 @@ function EnhancedTableHead(props: EnhancedTableHeadProps) {
             >
               {headCell.label}
               {orderBy === headCell.id ? (
-                <Box component="span" sx={visuallyHidden}>
+                <Box
+                  component="span"
+                  sx={{
+                    ...(visuallyHidden || {}),
+                    color: "#8C8C8C",
+                  }}
+                >
                   {order === "desc" ? "sorted descending" : "sorted ascending"}
                 </Box>
               ) : null}
@@ -136,7 +149,6 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const rows = props.data;
-
   const handleRequestSort = (
     event: React.MouseEvent<unknown>,
     property: keyof IHistory
@@ -185,8 +197,11 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Paper sx={{ width: "100%", mb: 2 }}>
-        <TableContainer>
+      <Paper sx={{ width: "100%", mb: 2, backgroundColor: "#141A29" }}>
+        <TableContainer
+          component={Paper}
+          sx={{ backgroundColor: "#141A29", borderRadius: "0 7px 7px" }}
+        >
           <Table
             sx={{ minWidth: 750 }}
             aria-labelledby="tableTitle"
@@ -204,52 +219,127 @@ export const EnhancedTable = (props: EnhancedTableProps) => {
                 throw new Error("Function not implemented.");
               }}
             />
-            <TableBody>
-              {rows
-                .slice()
-                .sort(getComparator(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  const isItemSelected = isSelected(row.title as string);
-                  const labelId = `enhanced-table-checkbox-${index}`;
+            {rows.length > 0 ? (
+              <TableBody sx={{ scrollbarWidth: "4px" }}>
+                {rows
+                  .slice()
+                  .sort(getComparator(order, orderBy))
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row, index) => {
+                    const isItemSelected = isSelected(row.title as string);
+                    const labelId = `enhanced-table-checkbox-${index}`;
 
-                  return (
-                    <TableRow
-                      hover
-                      onClick={(event) =>
-                        handleClick(event, row.title as string)
-                      }
-                      role="checkbox"
-                      aria-checked={isItemSelected}
-                      tabIndex={-1}
-                      key={row.title}
-                      selected={isItemSelected}
-                    >
-                      <TableCell
-                        component="th"
-                        id={labelId}
-                        scope="row"
-                        padding="none"
+                    return (
+                      <TableRow
+                        hover
+                        onClick={(event) =>
+                          handleClick(event, row.title as string)
+                        }
+                        role="checkbox"
+                        aria-checked={isItemSelected}
+                        tabIndex={-1}
+                        key={row.title}
+                        selected={isItemSelected}
+                        sx={{
+                          backgroundColor:
+                            index % 2 === 0 ? "#0f141f" : "#141a29",
+                          borderBottom: "1px solid transparent",
+                          fontSize: "14px",
+                        }}
                       >
-                        {row.title}
-                      </TableCell>
-                      <TableCell align="right">{row.tickets}</TableCell>
-                      <TableCell align="right">{row.amount}</TableCell>
-                      <TableCell align="right">{row.purchased}</TableCell>
-                      <TableCell align="right">{row.winner}</TableCell>
-                    </TableRow>
-                  );
-                })}
-              {emptyRows > 0 && (
+                        <TableCell
+                          component="th"
+                          id={labelId}
+                          scope="row"
+                          padding="none"
+                          align="left"
+                          sx={{
+                            color: "#EAEAEA",
+                            width: "320px",
+                            padding: "12px 0 20px 12px ",
+                            borderBottom: "1px solid transparent",
+                          }}
+                        >
+                          {row.title}
+                        </TableCell>
+                        <TableCell
+                          align="left"
+                          sx={{
+                            color: "#EAEAEA",
+                            width: "320px",
+                            padding: "12px 0 20px 12px ",
+                            borderBottom: "1px solid transparent",
+                          }}
+                        >
+                          {row.tickets}
+                        </TableCell>
+                        <TableCell
+                          align="left"
+                          sx={{
+                            color: "#EAEAEA",
+                            width: "320px",
+                            padding: "12px 0 20px 12px ",
+                            borderBottom: "1px solid transparent",
+                          }}
+                        >
+                          {row.amount}
+                        </TableCell>
+                        <TableCell
+                          align="left"
+                          sx={{
+                            color: "#EAEAEA",
+                            width: "320px",
+                            padding: "12px 0 20px 12px ",
+                            borderBottom: "1px solid transparent",
+                          }}
+                        >
+                          {row.purchased}
+                        </TableCell>
+                        <TableCell
+                          align="left"
+                          sx={{
+                            color: "#EAEAEA",
+                            width: "320px",
+                            padding: "12px 0 20px 12px ",
+                            borderBottom: "1px solid transparent",
+                          }}
+                        >
+                          {row.winner}
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                {emptyRows > 0 && (
+                  <TableRow
+                    style={{
+                      height: 33 * emptyRows,
+                    }}
+                  >
+                    <TableCell colSpan={6} />
+                  </TableRow>
+                )}
+              </TableBody>
+            ) : (
+              <TableBody sx={{ border: "1px solid transparent" }}>
                 <TableRow
-                  style={{
-                    height: 33 * emptyRows,
+                  sx={{
+                    backgroundColor: "#0f141f",
+                    borderBottom: "1px solid transparent",
+                    fontSize: "14px",
                   }}
                 >
-                  <TableCell colSpan={6} />
+                  <TableCell
+                    colSpan={headCells.length}
+                    align="center"
+                    sx={{ border: "1px soid transparent" }}
+                  >
+                    <Typography variant="h3" color="textSecondary">
+                      No data found
+                    </Typography>
+                  </TableCell>
                 </TableRow>
-              )}
-            </TableBody>
+              </TableBody>
+            )}
           </Table>
         </TableContainer>
         <TablePagination

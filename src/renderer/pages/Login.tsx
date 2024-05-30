@@ -1,33 +1,37 @@
-import React from "react";
-import { Component } from "react";
+import React, { Component } from "react";
 import WAVES from "vanta/dist/vanta.waves.min";
 import { Redirect, Link } from "react-router-dom";
 import * as ROUTES from "../utils/routes";
-import { Grid, Paper, TextField, Typography, Button } from "@mui/material";
+import { Grid } from "@mui/material";
+import { userLogin } from "services/api.service";
+import LoginMolecule from "renderer/components/molecules/Login";
 
-class LoginPage extends Component<any, any> {
-  vantaRef: any;
-  vantaEffect: any;
-  constructor(props: any) {
+class LoginPage extends Component {
+  constructor(props) {
     super(props);
     this.state = {
       email: "",
       password: "",
+      showPassword: false,
+      hover: false,
+      error: null,
     };
     this.handleLogin = this.handleLogin.bind(this);
-    this.dismissError = this.dismissError.bind(this);
     this.emailChange = this.emailChange.bind(this);
     this.passwordChange = this.passwordChange.bind(this);
+    this.togglePasswordVisibility = this.togglePasswordVisibility.bind(this);
+    this.hoverChange = this.hoverChangeHandle.bind(this);
     this.vantaRef = React.createRef();
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   componentDidMount() {
     this.vantaEffect = WAVES({
       el: this.vantaRef.current,
       color: 0x50f,
-      waveHeight: 16.00,
+      waveHeight: 16.0,
       waveSpeed: 0.45,
-      shininess: 25.00,
+      shininess: 25.0,
       mouseControls: false,
       touchControls: false,
       gyroControls: false,
@@ -38,36 +42,55 @@ class LoginPage extends Component<any, any> {
     if (this.vantaEffect) this.vantaEffect.destroy();
   }
 
-  emailChange(e: any) {
+  emailChange(e) {
     this.setState({ email: e.target.value });
   }
 
-  passwordChange(e: any) {
+  passwordChange(e) {
     this.setState({ password: e.target.value });
   }
+  validateEmail(email: string) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
 
-  handleLogin(e: any) {
-    const email = this.state.email;
-    const password = this.state.password;
+  async handleLogin(e) {
+    e.preventDefault();
+    const { email, password } = this.state;
+    if (!this.validateEmail(email)) {
+      this.setState({ error: "Invalid email format" });
+      return;
+    }
     this.setState({ logging_in: true });
-    return this.props.login(email, password).catch((err: any) => {
-      this.setState({ loggin_in: false, error: true });
-    });
+    const authenticated = await userLogin(email, password);
+    if (authenticated.accessToken) {
+      this.setState({
+        logging_in: true,
+      });
+    } else {
+      this.setState({
+        error: authenticated.errorMessage,
+      });
+    }
   }
 
-  dismissError() {
-    this.setState({ error: false });
+  togglePasswordVisibility() {
+    this.setState((prevState) => ({
+      showPassword: !prevState.showPassword,
+    }));
   }
 
-  displayError() {
-    return <Alert>Login failed. Try again</Alert>;
+  hoverChangeHandle() {
+    this.setState((prevState) => ({
+      hover: !prevState.hover,
+    }));
+  }
+
+  handleUpdate(error) {
+    this.setState({ error });
   }
 
   render() {
-    let tfStyle = {
-      marginBottom: "16px",
-    };
-
     if (this.props.authenticated) {
       return (
         <div ref={this.vantaRef}>
@@ -81,77 +104,18 @@ class LoginPage extends Component<any, any> {
           justifyContent="center"
           alignItems="center"
           ref={this.vantaRef}
-          style={{height: "100vh",}}
+          style={{ height: "100vh" }}
         >
           <Grid>
-            <Paper elevation={3} style={{ 
-              width: '400px',
-              height: '288px',
-              backgroundColor: '#0F141F', }}>
-              <Typography fontFamily="Poppins, sans-serif" style={{paddingTop: '25px', paddingLeft: '20px', color: '#EAEAEA', fontSize: '20px'}}>
-                Login
-              </Typography>
-              <div style={{ margin: 'auto', textAlign: 'center' }}>
-              <TextField id="outlined-basic"
-                style={{
-                  width: '360px',
-                  height: '32px',
-                  marginTop: '20px',
-                }}
-                size="small"
-                fullWidth
-                label="Email"
-                variant="outlined"
-                onChange={this.emailChange}
-              />
-              </div>
-              <div style={{ margin: 'auto', textAlign: 'center' }}>
-              <TextField id="outlined-basic"
-                style={{
-                  width: '360px',
-                  height: '32px',
-                  marginTop: '23px',
-                }}
-                size="small"
-                fullWidth
-                label="Password"
-                variant="outlined"
-                onChange={this.passwordChange}
-                type="password"
-              />
-              </div>
-              <div style={{ margin: 'auto', textAlign: 'center' }}>
-              <Button
-                fullWidth
-                style={{ 
-                  backgroundColor: "#FA6F15",
-                  marginTop: "20px",
-                  width: '120px',
-                  height: '32px',
-                  fontSize: '14px',
-                  fontWeight: '600',
-                  color: '#0F141F',
-                 }}
-                variant="contained"
-                onClick={this.handleLogin}
-              >
-                Login
-              </Button>
-              </div>
-              <div style={{ margin: 'auto', textAlign: 'center' }}>
-              <Typography fontFamily="Poppins, sans-serif" style={{
-                marginTop: '50px',
-                fontSize: '12px',
-                color: '#EAEAEA'
-              }}>
-                Don't have an account? Sign up{" "}
-                <Link style={{
-                  fontSize: '12px',
-                  color: '#6C81F5'
-                }} to={ROUTES.SIGN_UP}>HERE</Link>
-              </Typography>{" "}
-              </div>
-            </Paper>
+            <LoginMolecule
+              onEmailChange={this.emailChange}
+              onPasswordChange={this.passwordChange}
+              onToggleVisible={this.togglePasswordVisibility}
+              state={this.state}
+              handleLogin={this.handleLogin}
+              handleUpdate={this.handleUpdate}
+              signupRoute={ROUTES.SIGN_UP}
+            />
           </Grid>
         </Grid>
       );

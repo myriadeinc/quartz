@@ -1,12 +1,13 @@
 import React from "react";
 import { Component } from "react";
 import WAVES from "vanta/dist/vanta.waves.min";
-
 import { Redirect, Link } from "react-router-dom";
-
 import * as ROUTES from "../utils/routes";
-import { Grid, Paper, TextField, Typography, Button } from "@mui/material";
-
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 class SignUpPage extends Component<any, any> {
   vantaRef: any;
   vantaEffect: any;
@@ -43,10 +44,6 @@ class SignUpPage extends Component<any, any> {
   }
 
   render() {
-    let tfStyle = {
-      marginBottom: "16px",
-    };
-
     if (this.props.authenticated) {
       return <Redirect to={ROUTES.DASHBOARD} />;
     } else {
@@ -59,58 +56,76 @@ class SignUpPage extends Component<any, any> {
           style={{ height: "100vh" }}
         >
           <Grid item sm={2}>
-            <Paper elevation={3} style={{
-              width: '400px',
-              height: '250px',
-              backgroundColor: '#0F141F', 
-              }}>
-              <Typography fontFamily="Poppins, sans-serif" style={{paddingTop: '25px', paddingLeft: '20px', color: '#EAEAEA', fontSize: '20px'}}>
-                Sign Up
-              </Typography>
-              <div style={{ margin: 'auto', textAlign: 'center' }}>
-              <TextField
+            <Paper
+              elevation={3}
+              style={{
+                width: "400px",
+                height: "250px",
+                backgroundColor: "#0F141F",
+              }}
+            >
+              <Typography
+                fontFamily="Poppins, sans-serif"
                 style={{
-                  width: '360px',
-                  height: '32px',
-                  marginTop: '20px',
+                  paddingTop: "25px",
+                  paddingLeft: "20px",
+                  color: "#EAEAEA",
+                  fontSize: "20px",
                 }}
-                size="small"
-                fullWidth
-                label="Email"
-                variant="outlined"
-              />
-              </div>
-              <div style={{ margin: 'auto', textAlign: 'center' }}>
-              <Button
-                fullWidth
-                style={{ 
-                  backgroundColor: "#FA6F15",
-                  marginTop: "25px",
-                  width: '120px',
-                  height: '32px',
-                  fontSize: '14px',
-                  fontWeight: '600',
-                  color: '#0F141F',
-                 }}
-                variant="contained"
-                onClick={this.handleLogin}
               >
                 Sign Up
-              </Button>
-              </div>
-              <div style={{ margin: 'auto', textAlign: 'center' }}>
-              <Typography fontFamily="Poppins, sans-serif" style={{
-                marginTop: '50px',
-                fontSize: '12px',
-                color: '#EAEAEA'
-                }}>
-                Already have an account? Log in{" "}
-                <Link style={{
-                  fontSize: '12px',
-                  color: '#6C81F5'
+              </Typography>
+              <div style={{ margin: "auto", textAlign: "center" }}>
+                <TextField
+                  style={{
+                    width: "360px",
+                    height: "32px",
+                    marginTop: "20px",
                   }}
-                   to={ROUTES.LOGIN}>HERE</Link>
-              </Typography>{" "}
+                  size="small"
+                  fullWidth
+                  label="Email"
+                  variant="outlined"
+                />
+              </div>
+              <div style={{ margin: "auto", textAlign: "center" }}>
+                <Button
+                  fullWidth
+                  style={{
+                    backgroundColor: "#FA6F15",
+                    marginTop: "25px",
+                    width: "120px",
+                    height: "32px",
+                    fontSize: "14px",
+                    fontWeight: "600",
+                    color: "#0F141F",
+                  }}
+                  variant="contained"
+                  onClick={this.handleLogin}
+                >
+                  Sign Up
+                </Button>
+              </div>
+              <div style={{ margin: "auto", textAlign: "center" }}>
+                <Typography
+                  fontFamily="Poppins, sans-serif"
+                  style={{
+                    marginTop: "50px",
+                    fontSize: "12px",
+                    color: "#EAEAEA",
+                  }}
+                >
+                  Already have an account? Log in{" "}
+                  <Link
+                    style={{
+                      fontSize: "12px",
+                      color: "#6C81F5",
+                    }}
+                    to={ROUTES.LOGIN}
+                  >
+                    HERE
+                  </Link>
+                </Typography>{" "}
               </div>
             </Paper>
           </Grid>

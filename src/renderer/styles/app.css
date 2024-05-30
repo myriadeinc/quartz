@@ -1,31 +1,41 @@
-
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.gstatic.com");
+html {
+  background-color: #080a0f;
+  font-family: "Poppins", sans-serif;
+}
+.p {
+  font-family: "Poppins", sans-serif;
+}
 body {
   margin: 0px;
   overflow-x: hidden;
+  background-color: #080a0f;
+  font-family: "Poppins, sans-serif";
 }
 
-/* Global Scrollbar Styling */
 ::-webkit-scrollbar {
-  width: 9px;  /* width of the entire scrollbar */
+  width: 9px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #080A0F;  /* Makes the track invisible */
+  background: #080a0f;
 }
-
-/* Hide horizontal scrollbar */
 ::-webkit-scrollbar-horizontal {
   display: none;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #293040;  /* color of the scroll thumb */
-  border-radius: 10px;  /* roundness of the scroll thumb */
-  border: 3px solid transparent;  /* adjusts border to be transparent */
+  background-color: #293040;
+  border-radius: 10px;
+  border: 3px solid transparent;
 }
 
-/* Change thumb color when hovered or clicked */
 ::-webkit-scrollbar-thumb:hover {
-  background: #141A29;
+  background: #141a29;
 }
-
+img {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  object-fit: cover;
+}

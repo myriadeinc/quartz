@@ -1,5 +1,5 @@
 import { Analytics } from "renderer/components/dashboard/analytics/Analytics";
-import { GameRoom } from "renderer/components/dashboard/gameroom/Gameroom";
+import { GameRoom } from "renderer/components/dashboard/gameroom/GameRoom";
 import { GiftCards } from "renderer/components/dashboard/giftcards/GiftCards";
 import { Mining } from "renderer/components/dashboard/mining/Mining";
 import { Friends } from "renderer/components/dashboard/friends/Friends";
@@ -7,14 +7,76 @@ import { Workers } from "renderer/components/dashboard/workers/Workers";
 import { Withdraw } from "renderer/components/dashboard/withdraw/Withdraw";
 import { Referrals } from "renderer/components/dashboard/referrals/Referrals";
 import { DashboardRoute } from "renderer/interfaces/pages/dashboard";
+import { DashboardIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/DashboardIcon";
+import { StartMiningIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/StartMiningIcon";
+import { GiftcardIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/GiftcardIcon";
+import { GameroomIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/GameroomIcon";
+import { FriendsIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/FriendsIcon";
+import { WorkersIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/WorkersIcon";
+import { WithdrawIcon } from "renderer/components/atoms/Settings/Settings-II/MenuIcons/components/WithdrawIcon";
+import { ReferelIcon } from "renderer/components/atoms/Dashboard/DashboardCardIcons/ReferelIcon";
 
 export const dashboardRoutes: DashboardRoute[] = [
-  { name: "Dashboard", ref: "", component: Analytics, visible: true, icon: "https://i.ibb.co/BnTszWP/Dashboard-Icon.png" },
-  { name: "Start Mining", ref: "/mining", component: Mining, visible: true, icon: "https://i.ibb.co/0tTkK3v/Start-Mining-Icon.png" },
-  {name: "Gift Cards", ref: "/giftcards", component: GiftCards, visible: false, icon: "https://i.ibb.co/4PzR36K/Gift-Cards-Icon.png"},
-  { name: "Game Room", ref: "/gameroom", component: GameRoom, visible: true, icon: "https://i.ibb.co/4jhmL45/Game-Room-Icon.png" },
-  { name: "Friends", ref: "/friends", component: Friends, visible: false, icon: "https://i.ibb.co/fqKHb99/Friends-Icon.png" },
-  { name: "Workers", ref: "/workers", component: Workers, visible: false, icon: "https://i.ibb.co/TcGwjm0/Workers-Icon.png" },
-  { name: "Withdraw", ref: "/withdraw", component: Withdraw, visible: true, icon: "https://i.ibb.co/vLj04dJ/Withdraw-Icon.png" },
-  {name: "Referrals", ref: "/referrals", component: Referrals, visible: false, icon: "https://i.ibb.co/z2ztMYg/Referrals-Icon.png"},
+  {
+    name: "Dashboard",
+    alt: "Dashboard Room",
+    ref: "",
+    component: Analytics,
+    visible: true,
+    Icon: DashboardIcon,
+  },
+  {
+    name: "Start Mining",
+    alt: "Start Mining Room",
+    ref: "/mining",
+    component: Mining,
+    visible: true,
+    Icon: StartMiningIcon,
+  },
+  {
+    name: "Gift Cards",
+    alt: "Gift Cards Room",
+    ref: "/giftcards",
+    component: GiftCards,
+    visible: true,
+    Icon: GiftcardIcon,
+  },
+  {
+    name: "Game Room",
+    alt: "Game Rooms",
+    ref: "/gameroom",
+    component: GameRoom,
+    visible: true,
+    Icon: GameroomIcon,
+  },
+  {
+    name: "Friends",
+    alt: "Friends Room",
+    ref: "/friends",
+    component: Friends,
+    visible: true,
+    Icon: FriendsIcon,
+  },
+  {
+    name: "Workers",
+    ref: "/workers",
+    component: Workers,
+    visible: true,
+    Icon: WorkersIcon,
+  },
+  {
+    name: "Withdraw",
+    alt: "Withdraw Amount",
+    ref: "/withdraw",
+    component: Withdraw,
+    visible: true,
+    Icon: WithdrawIcon,
+  },
+  {
+    name: "Referrals",
+    ref: "/referrals",
+    component: Referrals,
+    visible: true,
+    Icon: ReferelIcon,
+  },
 ];
