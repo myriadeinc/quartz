@@ -46,7 +46,7 @@ export const Withdraw = () => {
               setWithdrawModalOpen={setWithdrawModalOpen}
               miner={miner}
             />
-            <WithdrawHistory />
+         
             {isWithdrawModalopen && (
               <WithdrawModal
                 setWithdrawModalOpen={setWithdrawModalOpen}

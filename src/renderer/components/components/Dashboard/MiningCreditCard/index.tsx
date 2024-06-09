@@ -47,9 +47,9 @@ export const MiningCreditCard = ({
         </Box>
       </Box>
       <Box sx={{ display: "flex", margin: "8px 0", marginLeft: "15px" }}>
-        <DecreaseIcon />
+        {/*<DecreaseIcon />*/}
         <CreditCardII info={moneroBalance} />
-        <IncreaseArrowIcon />
+        {/*<IncreaseArrowIcon />*/}
       </Box>
     </Box>
   );

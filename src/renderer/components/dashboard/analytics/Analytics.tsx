@@ -109,9 +109,9 @@ export const Analytics = () => {
                 <Grow in={true}>
                   <div style={{ position: "relative" }}>
                     <AverageHashrateCard
-                      cardPointUnit="MC"
-                      cardTitle="Refferer Bonus"
-                      cardPoints={"68531"}
+                      cardPointUnit=""
+                      cardTitle="Total Mining Time"
+                      cardPoints={"11:22:51:00"}
                       imgSrc="/assets/Illustrations/DM3.webp"
                     />
                   </div>
@@ -134,7 +134,7 @@ export const Analytics = () => {
               item
               md={12}
               lg={12}
-              xl={8}
+              xl={80}
               sx={{
                 background: "#0F141F",
                 position: "relative",
@@ -167,7 +167,7 @@ export const Analytics = () => {
                   FifthButtonTitle="Year"
                 />
               </Box>
-              <Box sx={{ height: "85%" }}>
+              <Box sx={{ height: "100%" }}>
                 <Box
                   style={{
                     backgroundColor: "#0F141F",
@@ -185,7 +185,7 @@ export const Analytics = () => {
                       sm: "45vh",
                       md: "45vh",
                       lg: "52 vh",
-                      xl: "100%",
+                      xl: "65 vh",
                     },
                     width: {
                       sm: "100%",
@@ -220,16 +220,9 @@ export const Analytics = () => {
                 },
               }}
             >
-              <Box
-                sx={{
-                  maxHeight: "650px",
-                  overflow: "auto",
-                  background: "#0F141F",
-                  borderRadius: "7px",
-                }}
-              >
-                <FriendsActivityCard padding="1.5rem 1rem" isDashboard={true} />
-              </Box>
+
+              
+              
             </Grid>
           </Grid>
         </Grid>

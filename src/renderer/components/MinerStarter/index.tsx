@@ -112,6 +112,7 @@ export const MinerStarter = () => {
           </Stack>
         </Box>
       </Stack>
+      
       <Stack
         sx={{
           display: "flex",
@@ -120,7 +121,8 @@ export const MinerStarter = () => {
         }}
         alignSelf={"center"}
       >
-        <Box
+        
+        {/*<Box
           sx={{
             height: "16px",
             width: "16px",
@@ -129,8 +131,8 @@ export const MinerStarter = () => {
             position: "relative",
             backgroundColor: "#EC5506",
             borderRadius: "50%",
-          }}
-        ></Box>
+          }} 
+        ></Box> */} 
         <Box
           sx={{
             minWidth: "418px",
@@ -147,12 +149,12 @@ export const MinerStarter = () => {
               alignItems: "center",
             }}
             direction={"column"}
-          >
+          > 
             <IconButton>
               <PlayArrowIcon
                 sx={{
-                  minWidth: 88,
-                  minHeight: 88,
+                  minWidth: 188,
+                  minHeight: 188,
                   color: "#FA6F15",
                   backgroundColor: "transparent",
                 }}
@@ -171,7 +173,7 @@ export const MinerStarter = () => {
               Start Mining
             </Typography>
 
-            <Divider
+           {/* <Divider
               sx={{
                 marginTop: "8px",
                 height: 0.25,
@@ -275,7 +277,7 @@ export const MinerStarter = () => {
                   24H estimate
                 </Typography>
               </Box>
-            </div>
+            </div>*/}
           </Stack>
         </Box>
       </Stack>

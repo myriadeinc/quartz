@@ -36,7 +36,7 @@ export const MiningSchedulerBox = () => {
         </Box>
         <Box alignSelf={{ md: "auto", lg: "auto", xl: "auto" }}>
           <img
-            src="/assets/Illustrations/Illustration.webp"
+            src="https://i.ibb.co/HtvWS21/Illustration.png"
             alt="Plan your Mining Image"
             style={{
               zIndex: 3,

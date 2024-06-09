@@ -8,7 +8,7 @@ const WITHDRAW_ICONS = [
     title: "Monero",
     Icon: "/assets/svg/MoneroBalanceIcon.svg",
   },
-  { title: "Etherum", Icon: "/assets/svg/Ethereum.svg" },
+  /**{ title: "Etherum", Icon: "/assets/svg/Ethereum.svg" },
   {
     title: "Bitcoin",
     Icon: "/assets/svg/Bitcoin.svg",
@@ -17,7 +17,7 @@ const WITHDRAW_ICONS = [
     title: "Binance",
     Icon: "/assets/svg/Binance.svg",
   },
-  { title: "Tether", Icon: "/assets/svg/Tether.svg" },
+  { title: "Tether", Icon: "/assets/svg/Tether.svg" }, */
 ];
 
 export const WithdrawIconBox = () => {

@@ -43,8 +43,7 @@ export const Mining = () => {
       }}
     >
       <Grid container>
-        <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
-          <Box>
+      <Box>
             <Typography
               fontFamily="Poppins, sans-serif"
               style={{
@@ -58,8 +57,12 @@ export const Mining = () => {
               Start Mining
             </Typography>
           </Box>
+        {/*
+        <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+          
           <MiningInstructionsBox />
         </Box>
+            */}
         <Grid
           container
           spacing={2}
@@ -95,7 +98,7 @@ export const Mining = () => {
                 xl: "0",
               },
             }}
-          >
+          > 
             <MiningSchedulerBox />
           </Grid>
         </Grid>

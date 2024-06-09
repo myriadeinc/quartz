@@ -84,14 +84,14 @@ const MINER_STATS_ARRAY = [
     heading: "Total Mining Time",
     time: "11:22:51:00",
   },
-  {
+  /*{
     heading: "Mining Bonus from friends",
     time: "0.8%",
-  },
-  {
-    heading: "MC Earned from Referels",
+  },*/
+  /*{
+    heading: "MC Earned from Referrals",
     time: "923,415MC",
-  },
+  },*/
   {
     heading: "Total MC Earned",
     time: "473,581MC",
@@ -132,24 +132,24 @@ const DUMMY_FRIENDS_DATA: readonly IFriend[] = [
   },
 ];
 const MINING_ALLOCATION_WIDGET_BOX = [
-  {
+  /*{
     label: "Unsused Points",
     points: "00",
     isIconShow: false,
-  },
+  },*/
   {
     label: "MC",
-    points: "20",
+    points: "40",
     isIconShow: true,
   },
-  {
+  /*{
     label: "Gift Card",
     points: "50",
     isIconShow: true,
-  },
+  },*/
   {
     label: "XMR",
-    points: "10",
+    points: "60",
     isIconShow: true,
   },
 ];

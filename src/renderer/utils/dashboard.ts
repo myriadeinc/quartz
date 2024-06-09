@@ -38,7 +38,7 @@ export const dashboardRoutes: DashboardRoute[] = [
     alt: "Gift Cards Room",
     ref: "/giftcards",
     component: GiftCards,
-    visible: true,
+    visible: false,
     Icon: GiftcardIcon,
   },
   {
@@ -54,14 +54,14 @@ export const dashboardRoutes: DashboardRoute[] = [
     alt: "Friends Room",
     ref: "/friends",
     component: Friends,
-    visible: true,
+    visible: false,
     Icon: FriendsIcon,
   },
   {
     name: "Workers",
     ref: "/workers",
     component: Workers,
-    visible: true,
+    visible: false,
     Icon: WorkersIcon,
   },
   {
@@ -76,7 +76,7 @@ export const dashboardRoutes: DashboardRoute[] = [
     name: "Referrals",
     ref: "/referrals",
     component: Referrals,
-    visible: true,
+    visible: false,
     Icon: ReferelIcon,
   },
 ];

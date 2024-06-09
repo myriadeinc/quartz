@@ -5,7 +5,7 @@ type Props = {};
 export const PlayIcon = (props: Props) => {
   return (
     <svg
-      width="44"
+      width="4"
       height="44"
       viewBox="0 0 44 44"
       fill="none"

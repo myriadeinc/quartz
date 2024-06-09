@@ -56,7 +56,7 @@ export const UserProfileInfo = ({
           </Typography>
           <IconLabelMenu />
         </Box>
-        <Box
+        {/*<Box
           sx={{
             width: "100%",
             maxHeight: "40px",
@@ -70,11 +70,11 @@ export const UserProfileInfo = ({
             <Typography variant="body" color="#EAEAEA">
               Level {level}
             </Typography>
-          </Box>
+        </Box>
           <Box sx={{ padding: "3px 4px" }}>
             <CopperRightIcon />
-          </Box>
         </Box>
+        </Box>*/}
         <Box sx={{ width: "100%" }}>
           <Typography variant="bodySmall" color="#8C8C8C">
             {userEmail}
