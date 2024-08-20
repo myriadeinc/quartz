@@ -8,6 +8,8 @@ import { FriendsActivityCard } from "renderer/components/components/Friends/Frie
 import { Grid } from "@mui/material";
 import Typography from "renderer/components/atoms/TextStyles";
 import { RangeSelectorButtonGroup } from "renderer/components/atoms/Dashboard/RangeSelectors";
+import Chart from './Chart'
+
 export const Analytics = () => {
   const [screenSize, setScreenSize] = useState({
     width: window.innerWidth,
@@ -27,6 +29,12 @@ export const Analytics = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const [selectedRange, setSelectedRange] = useState<string>('');
+  const handleButtonClick = (title: string) => {
+    setSelectedRange(title);
+  };
+
   console.log("screenSizescreenSize", screenSize);
   return (
     <MinerConsumer>
@@ -140,10 +148,11 @@ export const Analytics = () => {
                 position: "relative",
                 borderRadius: "7px",
                 boxSizing: "border-box",
+                paddingLeft: "0px !important"
               }}
             >
               <Box
-                sx={{ display: "flex", flexDirection: "column", gap: "8px" }}
+                sx={{ display: "flex", flexDirection: "column", gap: "8px", pl: "20px" }}
               >
                 <Typography variant="heading2" color="#EAEAEA">
                   Historical Metrics
@@ -165,19 +174,12 @@ export const Analytics = () => {
                   ThirdButtonTitle="Week"
                   FourthButtonTitle="3 Month"
                   FifthButtonTitle="Year"
+                  onButtonClick={handleButtonClick}
                 />
               </Box>
               <Box sx={{ height: "100%" }}>
                 <Box
                   style={{
-                    backgroundColor: "#0F141F",
-                    backgroundImage: "none",
-                    backgroundSize: "cover",
-                    marginRight: "10px",
-                    zIndex: 2,
-                    borderRadius: "7px",
-                    position: "relative",
-                    minWidth: "400px",
                   }}
                   sx={{
                     height: {
@@ -192,7 +194,7 @@ export const Analytics = () => {
                     },
                   }}
                 >
-                  <img
+                  {/* <img
                     src="/assets/Illustrations/Historical-Metrics-3-Month-Card.webp"
                     alt="Your Image Alt Text"
                     style={{
@@ -202,7 +204,8 @@ export const Analytics = () => {
                       position: "absolute",
                       zIndex: 3,
                     }}
-                  />
+                  /> */}
+                  <Chart selectedRange={selectedRange} />
                 </Box>
               </Box>
             </Grid>
@@ -221,8 +224,8 @@ export const Analytics = () => {
               }}
             >
 
-              
-              
+
+
             </Grid>
           </Grid>
         </Grid>

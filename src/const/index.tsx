@@ -131,28 +131,23 @@ const DUMMY_FRIENDS_DATA: readonly IFriend[] = [
     avatar: "A",
   },
 ];
-const MINING_ALLOCATION_WIDGET_BOX = [
-  /*{
-    label: "Unsused Points",
-    points: "00",
-    isIconShow: false,
-  },*/
+
+const MINING_ALLOCATION_WIDGET_BOX_MC = [
   {
     label: "MC",
-    points: "40",
-    isIconShow: true,
-  },
-  /*{
-    label: "Gift Card",
-    points: "50",
-    isIconShow: true,
-  },*/
-  {
-    label: "XMR",
-    points: "60",
     isIconShow: true,
   },
 ];
+
+const MINING_ALLOCATION_WIDGET_BOX_XMR = [
+  {
+    label: "XMR",
+    isIconShow: true,
+  },
+];
+
+
+
 interface CountryType {
   code: string;
   label: string;
@@ -590,7 +585,8 @@ export {
   MINER_ARRAY,
   MINER_STATS_ARRAY,
   MINER_INSTRUCTIONS_ARRAY,
-  MINING_ALLOCATION_WIDGET_BOX,
+  MINING_ALLOCATION_WIDGET_BOX_MC,
+  MINING_ALLOCATION_WIDGET_BOX_XMR,
   GAME_INSTRUCTIONS_DATA,
   countries,
 };

@@ -10,7 +10,7 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import { CircularProgressLoader } from "./components/CircularLoader";
 
 const darkTheme = createTheme({ palette: { mode: "dark" } });
-console.log("inside app component");
+
 
 export default function App() {
   return (

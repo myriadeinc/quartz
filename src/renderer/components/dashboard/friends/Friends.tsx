@@ -1,14 +1,14 @@
-import Grid from "@mui/material/Grid";
+import { CardActions, CardContent } from "@mui/material";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import { BonusforFriends } from "renderer/components/components/Gameroom/components/BonusforFriends";
-import Typography from "renderer/components/atoms/TextStyles";
-import PrimaryButton from "renderer/components/atoms/Login/PrimaryButtons";
+import Grid from "@mui/material/Grid";
 import { RangeSelectorButtonGroup } from "renderer/components/atoms/Dashboard/RangeSelectors";
-import { InformationBox } from "renderer/components/molecules/StartMining-I/InformationBox";
-import { FriendsActivityCardHeader } from "renderer/components/molecules/Friends/FriendsActivityCardHeader";
-import { CardActions, CardContent, Divider } from "@mui/material";
+import PrimaryButton from "renderer/components/atoms/Login/PrimaryButtons";
+import Typography from "renderer/components/atoms/TextStyles";
+import { BonusforFriends } from "renderer/components/components/Gameroom/components/BonusforFriends";
 import { FriendsMolecule } from "renderer/components/molecules/Friends/Friends";
+import { FriendsActivityCardHeader } from "renderer/components/molecules/Friends/FriendsActivityCardHeader";
+import { InformationBox } from "renderer/components/molecules/StartMining-I/InformationBox";
 export const Friends = () => {
   return (
     <Grid

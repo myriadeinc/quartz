@@ -5,15 +5,19 @@ import { UpArrow } from "renderer/components/atoms/StartMining-I/ScrollArrows/Up
 import Typography from "renderer/components/atoms/TextStyles";
 
 type Props = {
-  points: string;
+  points: number;
   label: string;
   isIconshows: boolean;
+  onIncreasePoints: any,
+  onDecreasePoints: any,
 };
 
 export const MiningAllocationWidgetBox = ({
   points,
   label,
   isIconshows,
+  onIncreasePoints,
+  onDecreasePoints
 }: Props) => {
   console.log("lable", label.trim() != "Unused Points");
   return (
@@ -36,6 +40,7 @@ export const MiningAllocationWidgetBox = ({
               left: 0,
               padding: "0px",
             }}
+            onClick={onDecreasePoints}
           >
             <UpArrow />
           </IconButton>
@@ -51,6 +56,7 @@ export const MiningAllocationWidgetBox = ({
               left: 0,
               padding: "0px",
             }}
+            onClick={onIncreasePoints}
           >
             <DownArrow />
           </IconButton>
@@ -59,7 +65,7 @@ export const MiningAllocationWidgetBox = ({
       <Typography
         variant="bodySmall"
         centered
-        color={label === "MC" ? "#EAEAEA" : "#8C8C8C"}
+        color={label === "MC" ? "#EAEAEA" : "#EAEAEA"}
       >
         {label}
       </Typography>

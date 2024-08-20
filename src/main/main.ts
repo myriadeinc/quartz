@@ -1,7 +1,11 @@
-import { app, BrowserWindow, shell } from "electron";
-import { autoUpdater } from "electron-updater";
+import { app, BrowserWindow, ipcMain, shell } from "electron";
 import log from "electron-log";
+import { autoUpdater } from "electron-updater";
 import { resolveHtmlPath } from "./util";
+const { spawn } = require('child_process');
+const os = require('os');
+import systeminformation from 'systeminformation';
+
 export default class AppUpdater {
   constructor() {
     log.transports.file.level = "info";
@@ -53,6 +57,7 @@ const createWindow = async () => {
       return path.join(__dirname, "icons", "icon-512x512.png"); // Linux and others
     }
   }
+
   mainWindow = new BrowserWindow({
     width: 1920,
     height: 1020,
@@ -65,10 +70,12 @@ const createWindow = async () => {
     resizable: true,
     icon: getPlatformIcon(),
     webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: true,
     },
   });
+
 
   mainWindow.loadURL(resolveHtmlPath("index.html"));
   app.on("ready", () => {
@@ -101,12 +108,81 @@ const createWindow = async () => {
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
   // new AppUpdater();
+
+
+  ipcMain.handle('get-system-info', async () => {
+    try {
+      // This brings the temperature however the temperature is not shown correctly
+      let { main: temperature } = await systeminformation.cpuTemperature()
+      // over-riding the temperature variable with a hard coaded string
+      temperature = "N/A"
+      const currentLoad = await systeminformation.currentLoad();
+      const cpu = await systeminformation.cpu();
+
+      return {
+        temperature,
+        load: currentLoad.currentload,
+        cpu: cpu.manufacturer + ' ' + cpu.brand
+      };
+    } catch (error) {
+      console.error('Error getting system information:', error);
+      return { error: error.message };
+    }
+  });
+
 };
 
 app.whenReady().then(() => {
   createWindow();
-
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
   });
+});
+
+let appProcess: any;
+
+ipcMain.on('start-xmrig', (event) => {
+  let appPath;
+  // For Windows
+  if (os.platform() === 'win32') {
+    // Path for windows
+    appPath = 'C:\\Program Files\\xmrig\\start.cmd';
+    // For Linux
+  } else if (os.platform() === 'linux') {
+    // Path for linux
+    appPath = '/home/user/Documents/xmrig/xmrig';
+    // For Mac
+  } else if (os.platform() === 'darwin') {
+    // Path for Mac
+    appPath = '/Users/admin/xmrig/xmrig';
+  }
+
+  if (!appProcess) {
+    appProcess = spawn(appPath, ['--config=config.json']);
+    appProcess.stdout.on('data', (data: any) => {
+      console.log(`stdout: ${data}`);
+      event.reply('xmrig-output', `${data}`);
+    });
+    appProcess.stderr.on('data', (data: any) => {
+      event.reply('xmrig-output', `stderr: ${data}`);
+    });
+    appProcess.on('close', (code: any) => {
+      appProcess = null;
+      event.reply('xmrig-exit', `Process exited with code ${code}`);
+    });
+  }
+});
+
+ipcMain.on('stop-xmrig', (event) => {
+  if (appProcess) {
+    appProcess.stdout.removeAllListeners('data');
+    appProcess.stderr.removeAllListeners('data');
+    console.log("xmRig app paused...")
+    // Kill the process after the timeout
+    appProcess.kill('SIGTERM');
+    appProcess = null;
+    event.reply('xmrig-output', appProcess);
+  } else {
+    console.log("xmRig is not running.");
+  }
 });

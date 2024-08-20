@@ -208,7 +208,7 @@ export const GameRoom = () => {
                 <MiningAllocationWidget />
               </Grid>
             </Grid>
-            <CurrentDrawings />
+            <CurrentDrawings raffles={raffles} />
             <Box sx={{ marginTop: "32px", width: "99%" }}>
               <History history={history} />
             </Box>
