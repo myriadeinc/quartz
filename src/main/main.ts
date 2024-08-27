@@ -5,6 +5,16 @@ import { resolveHtmlPath } from "./util";
 const { spawn } = require('child_process');
 const os = require('os');
 import systeminformation from 'systeminformation';
+// import { selfAccount } from "services/api.service";
+import xmrConfigData from '../renderer/utils/xmr_config.js';
+
+
+import axios from 'axios';
+import AdmZip from 'adm-zip';
+import fs from 'fs';
+import path from 'path';
+import { useState } from "react";
+import { Miner } from "renderer/interfaces/pages/dashboard";
 
 export default class AppUpdater {
   constructor() {
@@ -13,6 +23,21 @@ export default class AppUpdater {
     autoUpdater.checkForUpdatesAndNotify();
   }
 }
+
+// const [miner, setMiner] = useState({
+//   id: "",
+//   email: "",
+//   name: "",
+//   shortId: "",
+//   mcBalance: 0,
+//   xmrBalance: 0,
+//   hashrates: [],
+//   avgHashrate: "0",
+// } as Miner);
+
+
+
+
 
 let mainWindow: BrowserWindow | null = null;
 
@@ -27,6 +52,129 @@ const isDevelopment =
 if (isDevelopment) {
   require("electron-debug")();
 }
+
+// const getMiner = async () => {
+//   const { minerClone, selfFetched } = await selfAccount(miner);
+//   console.log("minerClone------>", minerClone)
+//   console.log("selfFetched------>", selfFetched)
+//   setMiner(minerClone)
+// }
+
+// getMiner()
+
+const handleDownloadConfig = (miner: any) => {
+  const fileName = 'config.json';
+
+  let config_data = xmrConfigData;
+
+  config_data.pools[0].user = miner?.id;
+  config_data.pools[0].pass = miner?.address;
+  config_data.pools[0].url = 'pool.myriade.io:8222';
+
+  const json = JSON.stringify(config_data, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const href = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = href;
+  link.download = fileName;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+// handleDownloadConfig(miner)
+
+// Determine the dynamic extraction path based on the operating system
+const getExtractPath = () => {
+  if (os.platform() === 'win32') {
+    return path.join('C:', 'Program Files', 'xmrig');
+  } else if (os.platform() === 'linux') {
+    return path.join('/home', os.userInfo().username, 'xmrig');
+  } else if (os.platform() === 'darwin') {
+    return path.join('/Users', os.userInfo().username, 'xmrig');
+  } else {
+    throw new Error('Unsupported platform');
+  }
+};
+
+let extractedFolderName: string | null = null;
+
+const downloadAndExtractFile = async () => {
+  let url = "";
+  if (os.platform() === 'win32') {
+    url = 'https://github.com/xmrig/xmrig/releases/download/v6.21.3/xmrig-6.21.3-msvc-win64.zip';
+
+  } else if (os.platform() === 'linux') {
+    url = "https://github.com/xmrig/xmrig/releases/download/v6.21.3/xmrig-6.21.3-linux-static-x64.tar.gz"
+  } else if (os.platform() === "darwin") {
+    const arch = os.arch()
+    if (arch === 'arm64') {
+      url = "https://github.com/xmrig/xmrig/releases/download/v6.21.3/xmrig-6.21.3-macos-arm64.tar.gz "
+    } else if (arch === 'x64') {
+      url = "https://github.com/xmrig/xmrig/releases/download/v6.21.3/xmrig-6.21.3-macos-x64.tar.gz"
+    }
+
+  }
+
+  const downloadPath = path.join(app.getPath('temp'), 'xmrig.zip');
+
+  // Use the dynamic path
+  const extractPath = getExtractPath();
+
+  try {
+    // Create the xmrig directory if it doesn't exist
+    if (!fs.existsSync(extractPath)) {
+      fs.mkdirSync(extractPath, { recursive: true });
+      console.log(`Directory ${extractPath} created.`);
+    }
+
+    const response = await axios({
+      method: 'GET',
+      url: url,
+      responseType: 'stream'
+    });
+
+    const writer = fs.createWriteStream(downloadPath);
+    response.data.pipe(writer);
+
+    writer.on('finish', () => {
+      console.log('Download completed.');
+
+      // Extract the downloaded ZIP file into the xmrig directory
+      const zip = new AdmZip(downloadPath);
+      zip.extractAllTo(extractPath, true);
+      console.log(`Files extracted to ${extractPath}`);
+
+      // Get the list of files and directories inside the extraction path
+      const extractedItems = fs.readdirSync(extractPath);
+      console.log("extractedItems-------------------->", extractedItems)
+
+      // Find the first directory inside the extraction path (assuming there's only one)
+      extractedFolderName = extractedItems.find((item) => {
+        return fs.statSync(path.join(extractPath, item)).isDirectory();
+      }) || null;
+
+      console.log(`Extracted folder-----> ${extractedFolderName}`);
+
+      // Now that we have the extracted folder name, you can proceed with further logic
+      // For example, you can call another function or update the UI here
+    });
+
+    writer.on('error', (err) => {
+      console.error('Error writing the file:', err);
+    });
+
+  } catch (error) {
+    console.error('Error downloading the file:', error);
+  }
+};
+
+
+
+
+
+downloadAndExtractFile(); // Start the download and extraction process
+
 
 const installExtensions = async () => {
   const installer = require("electron-devtools-installer");
@@ -87,7 +235,10 @@ const createWindow = async () => {
     } else {
       mainWindow.show();
     }
+
+
   });
+
   process.on("uncaughtException", function (err) {
     console.log(err, "uncaught exceptions");
   });
@@ -146,7 +297,8 @@ ipcMain.on('start-xmrig', (event) => {
   // For Windows
   if (os.platform() === 'win32') {
     // Path for windows
-    appPath = 'C:\\Program Files\\xmrig\\start.cmd';
+    appPath = `C:\\Program Files\\xmrig\\${extractedFolderName}\\start.cmd`;
+    console.log('windowsPath---------------->', appPath)
     // For Linux
   } else if (os.platform() === 'linux') {
     // Path for linux
