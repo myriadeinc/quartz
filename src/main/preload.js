@@ -6,6 +6,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
     stopXmrig: () => ipcRenderer.send('stop-xmrig'),
     onXmrigOutput: (callback) => ipcRenderer.on('xmrig-output', callback),
     onXmrigExit: (callback) => ipcRenderer.on('xmrig-exit', callback),
-    getSystemInfo: () => ipcRenderer.invoke('get-system-info')
+    getSystemInfo: () => ipcRenderer.invoke('get-system-info'),
+    changeConfig: (data) => ipcRenderer.send('change-config', data),
 });
 

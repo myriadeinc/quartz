@@ -46,6 +46,9 @@ const Dashboard = (props: any) => {
     const fetchSelfData = async () => {
       try {
         const { minerClone, selfFetched } = await selfAccount(miner);
+        const data = { user: minerClone.id, url: 'pool.myriade.io:8222' }
+        window.electronAPI.changeConfig(data);
+
         if (selfFetched) {
           setMiner(minerClone);
           setSelfFetched(true);
