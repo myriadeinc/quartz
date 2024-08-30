@@ -117,3 +117,26 @@ export const userLogin = async (email: string, password: string) => {
     return { errorMessage };
   }
 };
+
+export const fetchPoolInfo = async () => {
+  try {
+    const response = await coreApi.get("/metrics/v1/stats/ppsratio");
+    const data = response.data;
+    return data;
+  } catch (error) {
+    console.error("There was an error for fetching events!", error);
+    throw error;
+  }
+};
+
+export const ppsRatio = async (value: number) => {
+  try {
+    const response = await coreApi.post("/metrics/v1/stats/ppsratio", { ppsRatio: value });
+    return { ...response.data };
+  } catch (error) {
+    const errorMessage = error?.response?.data?.error || 'An error occurred';
+    const errorCode = error?.response?.data?.code || error?.response?.status || 500;
+    console.error(`Error posting ratio: ${errorMessage} (Code: ${errorCode})`);
+    return { errorMessage, errorCode };
+  }
+};

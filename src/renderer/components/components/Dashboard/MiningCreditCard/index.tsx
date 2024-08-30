@@ -9,11 +9,13 @@ import { MiningRefreshButton } from "renderer/components/molecules/Settings-I/MI
 type MiningCreditCardProps = {
   minerBalance: number;
   moneroBalance: number;
+  setReload: Boolean
 };
 
 export const MiningCreditCard = ({
   minerBalance,
   moneroBalance,
+  setReload
 }: MiningCreditCardProps) => {
   return (
     <Box
@@ -43,7 +45,7 @@ export const MiningCreditCard = ({
             bottom: 5,
           }}
         >
-          <MiningRefreshButton />
+          <MiningRefreshButton setReload={setReload} />
         </Box>
       </Box>
       <Box sx={{ display: "flex", margin: "8px 0", marginLeft: "15px" }}>

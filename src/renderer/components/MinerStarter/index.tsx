@@ -1,12 +1,59 @@
-import Stack from "@mui/material/Stack";
+import PauseIcon from "@mui/icons-material/Pause";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import Card from "@mui/material/Card";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import { useState, useEffect } from "react";
 
 export const MinerStarter = () => {
+  const [miningStarted, setMiningStarted] = useState(true)
+
+  const [systemInfo, setSystemInfo] = useState<{
+    cpu: string;
+    load: number;
+    temperature: number;
+    error?: string;
+  }>({
+    cpu: '',
+    load: 0,
+    temperature: 0
+  });
+
+  useEffect(() => {
+    const fetchSystemInfo = async () => {
+      const info = await window?.electronAPI?.getSystemInfo();
+      setSystemInfo({
+        ...info,
+        load: parseFloat(info.load?.toFixed(2))
+      });
+    };
+
+    fetchSystemInfo();
+    const intervalId = setInterval(fetchSystemInfo, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+
+  const miningRun = () => {
+    window.electronAPI.startXmrig();
+  };
+  const miningStop = () => {
+    window.electronAPI.stopXmrig();
+  };
+
+  useEffect(() => {
+    window.electronAPI.onXmrigOutput((event, data) => {
+      setMiningStarted(false);
+      if (data === null) setMiningStarted(true)
+      // TODO: Will capture [ stdout: [2024-07-24 18:27:11.738]  miner    speed 10s/60s/15m n/a n/a n/a H/s max 1911.4 H/s ]
+
+    });
+  }, [miningRun, miningStop]);
+
   return (
     <Card
       style={{
@@ -70,7 +117,8 @@ export const MinerStarter = () => {
                 textAlign: "left",
               }}
             >
-              Ryzen 7 5700
+              {/* Ryzen 7 */}
+              {systemInfo.cpu}
             </Typography>
             <Typography
               fontFamily="Poppins, sans-serif"
@@ -81,7 +129,8 @@ export const MinerStarter = () => {
                 textAlign: "left",
               }}
             >
-              82°C
+
+              Temperature: {systemInfo.temperature}
             </Typography>
           </Stack>
           <Stack direction="row" justifyContent={"space-between"} width="100%">
@@ -107,12 +156,13 @@ export const MinerStarter = () => {
                 textAlign: "left",
               }}
             >
-              64%
+
+              {systemInfo.load}%
             </Typography>
           </Stack>
         </Box>
       </Stack>
-      
+
       <Stack
         sx={{
           display: "flex",
@@ -121,7 +171,7 @@ export const MinerStarter = () => {
         }}
         alignSelf={"center"}
       >
-        
+
         {/*<Box
           sx={{
             height: "16px",
@@ -132,7 +182,7 @@ export const MinerStarter = () => {
             backgroundColor: "#EC5506",
             borderRadius: "50%",
           }} 
-        ></Box> */} 
+        ></Box> */}
         <Box
           sx={{
             minWidth: "418px",
@@ -149,17 +199,31 @@ export const MinerStarter = () => {
               alignItems: "center",
             }}
             direction={"column"}
-          > 
+          >
             <IconButton>
-              <PlayArrowIcon
-                sx={{
-                  minWidth: 188,
-                  minHeight: 188,
-                  color: "#FA6F15",
-                  backgroundColor: "transparent",
-                }}
-              />
+              {miningStarted ?
+                <PlayArrowIcon
+                  sx={{
+                    minWidth: 188,
+                    minHeight: 188,
+                    color: "#FA6F15",
+                    backgroundColor: "transparent",
+                  }}
+                  onClick={miningRun}
+                />
+                :
+                <PauseIcon
+                  sx={{
+                    minWidth: 188,
+                    minHeight: 188,
+                    color: "#FA6F15",
+                    backgroundColor: "transparent",
+                  }}
+                  onClick={miningStop}
+                />
+              }
             </IconButton>
+
             <Typography
               fontFamily="Poppins, sans-serif"
               style={{
@@ -170,10 +234,10 @@ export const MinerStarter = () => {
                 textAlign: "center",
               }}
             >
-              Start Mining
+              {miningStarted ? "Start Mining" : "Pause Mining"}
             </Typography>
 
-           {/* <Divider
+            {/* <Divider
               sx={{
                 marginTop: "8px",
                 height: 0.25,

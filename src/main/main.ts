@@ -1,7 +1,15 @@
-import { app, BrowserWindow, shell } from "electron";
-import { autoUpdater } from "electron-updater";
+import { app, BrowserWindow, ipcMain, shell } from "electron";
 import log from "electron-log";
+import { autoUpdater } from "electron-updater";
 import { resolveHtmlPath } from "./util";
+const { spawn, exec } = require('child_process');
+const os = require('os');
+import systeminformation from 'systeminformation';
+import axios from 'axios';
+import AdmZip from 'adm-zip';
+import fs from 'fs';
+import path from 'path';
+
 export default class AppUpdater {
   constructor() {
     log.transports.file.level = "info";
@@ -19,16 +27,129 @@ if (process.env.NODE_ENV === "production") {
 
 const isDevelopment =
   process.env.NODE_ENV === "development" || process.env.DEBUG_PROD === "true";
-
 if (isDevelopment) {
   require("electron-debug")();
 }
+
+// Determine the dynamic extraction path based on the operating system
+const getExtractPath = () => {
+  if (os.platform() === 'win32') {
+    return path.join('C:', 'Program Files', 'xmrig');
+  } else if (os.platform() === 'linux') {
+    // return path.join('/home', os.userInfo().username, 'xmrig');
+    return path.join(os.homedir(), 'xmrig');
+  } else if (os.platform() === 'darwin') {
+    return path.join('/Users', os.userInfo().username, 'xmrig');
+  } else {
+    throw new Error('Unsupported platform');
+  }
+};
+
+let extractedFolderName: string = "";
+
+const getDownloadPath = () => {
+  const tempPath = app.getPath('temp');
+  switch (os.platform()) {
+    case 'win32':
+    case 'linux':
+    case 'darwin':
+      return path.join(tempPath, 'xmrig.tar.gz');
+    default:
+      throw new Error('Unsupported platform');
+  }
+};
+
+const getDownloadUrl = () => {
+  switch (os.platform()) {
+    case 'win32':
+      return 'https://github.com/xmrig/xmrig/releases/download/v6.21.3/xmrig-6.21.3-msvc-win64.zip';
+    case 'linux':
+      return 'https://github.com/xmrig/xmrig/releases/download/v6.21.3/xmrig-6.21.3-linux-static-x64.tar.gz';
+    case 'darwin':
+      const arch = os.arch();
+      return arch === 'arm64' ?
+        'https://github.com/xmrig/xmrig/releases/download/v6.21.3/xmrig-6.21.3-macos-arm64.tar.gz' :
+        'https://github.com/xmrig/xmrig/releases/download/v6.21.3/xmrig-6.21.3-macos-x64.tar.gz';
+    default:
+      throw new Error('Unsupported platform');
+  }
+};
+
+const findExtractedFolderName = (extractPath: string): string => {
+  const extractedItems = fs.readdirSync(extractPath);
+  return extractedItems.find((item) => {
+    return fs.statSync(path.join(extractPath, item)).isDirectory();
+  }) || "";
+};
+
+const downloadAndExtractFile = async () => {
+  const url = getDownloadUrl();
+  const downloadPath = getDownloadPath();
+  const extractPath = getExtractPath();
+  try {
+    if (!fs.existsSync(extractPath)) {
+      fs.mkdirSync(extractPath, { recursive: true });
+      console.log(`Directory ${extractPath} created if the path does not exist.`);
+    }
+
+    const response = await axios({
+      method: 'GET',
+      url: url,
+      responseType: 'stream'
+    });
+
+    const writer = fs.createWriteStream(downloadPath);
+    response.data.pipe(writer);
+
+    writer.on('finish', () => {
+      if (os.platform() === "darwin" || os.platform() === "linux") {
+        extractedFolderName = findExtractedFolderName(extractPath)
+        if (!extractedFolderName) {
+          // If the folder does not exist. Then unzip the downloaded file.
+          exec(`tar -xzf ${downloadPath} -C ${extractPath}`, (error, stdout, stderr) => {
+            extractedFolderName = findExtractedFolderName(extractPath)
+            if (error) {
+              console.error(`Error extracting file: ${error}`);
+              return;
+            }
+            console.log(`Files extracted to ${extractPath}`);
+          });
+          // Reassigning the name to extractedFolderName after unzipping the file
+          extractedFolderName = findExtractedFolderName(extractPath)
+        } else {
+          console.log(`Folder ${path.join(extractPath, extractedFolderName)} already exists, skipping extraction.`);
+        }
+      } else {
+        // Check if the extracted folder already exists        
+        extractedFolderName = findExtractedFolderName(extractPath)
+        if (!extractedFolderName) {
+          // If the folder does not exist. Then unzip the downloaded file.
+          console.log("Unzipping Process starts")
+          const zip = new AdmZip(downloadPath);
+          zip.extractAllTo(extractPath, true);
+          console.log(`Files extracted to ${extractPath}`);
+          // Reassigning the name to extractedFolderName after unzipping the file
+          extractedFolderName = findExtractedFolderName(extractPath)
+        } else {
+          console.log(`Folder ${path.join(extractPath, extractedFolderName)} already exists, skipping extraction.`);
+        }
+      }
+    });
+
+    writer.on('error', (err) => {
+      console.error('Error writing the file:', err);
+    });
+  } catch (error) {
+    console.error('Error downloading the file:', error);
+  }
+};
+
+downloadAndExtractFile()
 
 const installExtensions = async () => {
   const installer = require("electron-devtools-installer");
   const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
   const extensions = ["REACT_DEVELOPER_TOOLS"];
-
   return installer
     .default(
       extensions.map((name) => installer[name]),
@@ -41,7 +162,6 @@ const createWindow = async () => {
   if (isDevelopment) {
     await installExtensions();
   }
-
   app.commandLine.appendSwitch("enable-features=OverlayScrollbar");
   const path = require("path");
   function getPlatformIcon() {
@@ -53,6 +173,7 @@ const createWindow = async () => {
       return path.join(__dirname, "icons", "icon-512x512.png"); // Linux and others
     }
   }
+
   mainWindow = new BrowserWindow({
     width: 1920,
     height: 1020,
@@ -65,8 +186,9 @@ const createWindow = async () => {
     resizable: true,
     icon: getPlatformIcon(),
     webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
-      contextIsolation: false,
+      contextIsolation: true,
     },
   });
 
@@ -81,6 +203,7 @@ const createWindow = async () => {
       mainWindow.show();
     }
   });
+
   process.on("uncaughtException", function (err) {
     console.log(err, "uncaught exceptions");
   });
@@ -91,8 +214,8 @@ const createWindow = async () => {
 
   //const menuBuilder = new MenuBuilder(mainWindow);
   //menuBuilder.buildMenu();
-
   // Open urls in the user's browser
+
   mainWindow.webContents.on("new-window", (event, url) => {
     event.preventDefault();
     shell.openExternal(url);
@@ -101,12 +224,127 @@ const createWindow = async () => {
   // Remove this if your app does not use auto updates
   // eslint-disable-next-line
   // new AppUpdater();
+
+  ipcMain.handle('get-system-info', async () => {
+    try {
+      // This brings the temperature however the temperature is not shown correctly
+      let { main: temperature } = await systeminformation.cpuTemperature()
+      // over-riding the temperature variable with a hard coaded string
+      temperature = "N/A"
+      const currentLoad = await systeminformation.currentLoad();
+      const cpu = await systeminformation.cpu();
+      return {
+        temperature,
+        load: currentLoad.currentload,
+        cpu: cpu.manufacturer + ' ' + cpu.brand
+      };
+    } catch (error) {
+      console.error('Error getting system information:', error);
+      return { error: error.message };
+    }
+  });
 };
 
 app.whenReady().then(() => {
   createWindow();
-
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
+
+let appProcess: any;
+
+ipcMain.on('start-xmrig', (event) => {
+  let appPath;
+  // For Windows
+  if (os.platform() === 'win32') {
+    // Path for windows
+    appPath = `C:\\Program Files\\xmrig\\${extractedFolderName}\\start.cmd`;
+    // For Linux
+  } else if (os.platform() === 'linux') {
+    // Path for linux
+    appPath = `${os.homedir()}/xmrig/${extractedFolderName}/xmrig`;
+    // For Mac
+  } else if (os.platform() === 'darwin') {
+    // Path for Mac
+    appPath = `${os.homedir()}/xmrig/${extractedFolderName}/xmrig`;
+  }
+
+  if (!appProcess) {
+    appProcess = spawn(appPath, ['--config=config.json']);
+    appProcess.stdout.on('data', (data: any) => {
+      console.log(`stdout: ${data}`);
+      event.reply('xmrig-output', `${data}`);
+    });
+
+    appProcess.stderr.on('data', (data: any) => {
+      event.reply('xmrig-output', `stderr: ${data}`);
+    });
+
+    appProcess.on('close', (code: any) => {
+      appProcess = null;
+      event.reply('xmrig-exit', `Process exited with code ${code}`);
+    });
+  }
+});
+
+ipcMain.on('stop-xmrig', (event) => {
+  if (appProcess) {
+    appProcess.stdout.removeAllListeners('data');
+    appProcess.stderr.removeAllListeners('data');
+    console.log("xmRig app paused...")
+    // Kill the process after the timeout
+    appProcess.kill('SIGTERM');
+    appProcess = null;
+    event.reply('xmrig-output', appProcess);
+  } else {
+    console.log("xmRig is not running.");
+  }
+});
+
+ipcMain.on('change-config', (event, data) => {
+  const extractPath = getExtractPath();
+  const configFilePath = path.join(extractPath, extractedFolderName, 'config.json');
+
+  // Define the new config object
+  const newConfig = {
+    "autosave": true,
+    "cpu": {
+      "memory-pool": true
+    },
+    "donate-level": 0, // Set donate-level to 0 as per your requirement
+    "donate-over-proxy": 1,
+    "pools": [
+      {
+        "algo": "rx/0",
+        "coin": "monero",
+        "url": data.url, // Use data.url
+        "user": data.user, // Use data.user
+        "rig-id": null,
+        "nicehash": false,
+        "keepalive": true,
+        "enabled": true,
+        "tls": false,
+        "tls-fingerprint": null,
+        "daemon": false,
+        "self-select": null
+      }
+    ],
+    "print-time": 10,
+    "health-print-time": 60,
+    "retries": 5,
+    "retry-pause": 5,
+    "syslog": false,
+    "user-agent": "Myriade Client",
+    "watch": true
+  };
+
+  // Write the new config object to the config.json file
+  fs.writeFile(configFilePath, JSON.stringify(newConfig, null, 2), 'utf8', (err) => {
+    if (err) {
+      console.error("Error writing to config.json:", err);
+    } else {
+      console.log("config.json updated successfully");
+    }
   });
 });

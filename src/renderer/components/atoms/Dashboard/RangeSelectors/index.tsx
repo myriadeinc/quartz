@@ -1,5 +1,6 @@
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
+
 interface buttonGroupName {
   firstButtonTitle: string;
   SecondButtonTitle: string;
@@ -8,15 +9,18 @@ interface buttonGroupName {
   FifthButtonTitle: string;
   length?: number;
   width?: string;
+  onButtonClick: (title: string) => void;
 }
+
 export function RangeSelectorButtonGroup({
   firstButtonTitle,
   SecondButtonTitle,
   ThirdButtonTitle,
-  FifthButtonTitle,
   FourthButtonTitle,
+  FifthButtonTitle,
   length,
   width,
+  onButtonClick,
 }: buttonGroupName) {
   return (
     <ButtonGroup
@@ -45,6 +49,7 @@ export function RangeSelectorButtonGroup({
             color: "#EAEAEA",
           },
         }}
+        onClick={() => onButtonClick(firstButtonTitle)}
       >
         {firstButtonTitle}
       </Button>
@@ -60,6 +65,7 @@ export function RangeSelectorButtonGroup({
             color: "#EAEAEA",
           },
         }}
+        onClick={() => onButtonClick(SecondButtonTitle)}
       >
         {SecondButtonTitle}
       </Button>
@@ -75,6 +81,7 @@ export function RangeSelectorButtonGroup({
             color: "#EAEAEA",
           },
         }}
+        onClick={() => onButtonClick(ThirdButtonTitle)}
       >
         {ThirdButtonTitle}
       </Button>
@@ -90,6 +97,7 @@ export function RangeSelectorButtonGroup({
             color: "#EAEAEA",
           },
         }}
+        onClick={() => onButtonClick(FourthButtonTitle)}
       >
         {FourthButtonTitle}
       </Button>
@@ -105,6 +113,7 @@ export function RangeSelectorButtonGroup({
             color: "#EAEAEA",
           },
         }}
+        onClick={() => onButtonClick(FifthButtonTitle)}
       >
         {FifthButtonTitle}
       </Button>

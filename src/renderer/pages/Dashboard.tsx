@@ -12,10 +12,18 @@ import { CircularProgressLoader } from "renderer/components/CircularLoader";
 
 const minerContext = createContext({} as Miner);
 
+interface Reload {
+  reload: Boolean,
+  setReload: (value: boolean | ((prev: boolean) => boolean)) => void;
+}
+
+export const reloadContext = createContext({} as Reload);
+
 const Dashboard = (props: any) => {
   const [vantaEffect, setVantaEffect] = useState(0);
   const [selfFetched, setSelfFetched] = useState(false);
   const [creditsFetched, setCreditsFetched] = useState(false);
+  const [reload, setReload] = useState(false);
   const [miner, setMiner] = useState({
     id: "",
     email: "",
@@ -31,13 +39,16 @@ const Dashboard = (props: any) => {
   useEffect(() => {
     if (!vantaEffect) {
     }
-    return () => {};
+    return () => { };
   }, [vantaEffect]);
 
   useEffect(() => {
     const fetchSelfData = async () => {
       try {
         const { minerClone, selfFetched } = await selfAccount(miner);
+        const data = { user: minerClone.id, url: 'pool.myriade.io:8222' }
+        window.electronAPI.changeConfig(data);
+
         if (selfFetched) {
           setMiner(minerClone);
           setSelfFetched(true);
@@ -48,7 +59,7 @@ const Dashboard = (props: any) => {
     };
 
     fetchSelfData();
-  }, []);
+  }, [reload]);
 
   useEffect(() => {
     if (selfFetched) {
@@ -65,7 +76,7 @@ const Dashboard = (props: any) => {
       };
       fetchCreditData();
     }
-  }, [selfFetched]);
+  }, [selfFetched, reload]);
 
   useEffect(() => {
     if (creditsFetched) {
@@ -87,35 +98,38 @@ const Dashboard = (props: any) => {
     <AuthConsumer>
       {({ authenticated }) => (
         <minerContext.Provider value={miner}>
-          <Grid
-            ref={myRef}
-            style={{
-              minHeight: "100vh",
-              backgroundColor: "#080A0F",
-              width: "100vw",
-            }}
-          >
-            <Suspense fallback={<CircularProgressLoader />}>
-              <Sidebar path={props.match.path} />
-            </Suspense>
-            <Switch>
-              {dashboardRoutes.map(
-                (view, index) =>
-                  view.visible && (
-                    <ProtectedRoute
-                      exact={view.name == "Dashboard"}
-                      path={`${props.match.path}${view.ref}`}
-                      component={view.component}
-                      authenticated={authenticated}
-                      key={index}
-                    />
-                  )
-              )}
-            </Switch>
-          </Grid>
+          <reloadContext.Provider value={{ reload, setReload }}>
+            <Grid
+              ref={myRef}
+              style={{
+                minHeight: "100vh",
+                backgroundColor: "#080A0F",
+                width: "100vw",
+              }}
+            >
+              <Suspense fallback={<CircularProgressLoader />}>
+                <Sidebar path={props.match.path} />
+              </Suspense>
+              <Switch>
+                {dashboardRoutes.map(
+                  (view, index) =>
+                    view.visible && (
+                      <ProtectedRoute
+                        exact={view.name == "Dashboard"}
+                        path={`${props.match.path}${view.ref}`}
+                        component={view.component}
+                        authenticated={authenticated}
+                        key={index}
+                      />
+                    )
+                )}
+              </Switch>
+            </Grid>
+          </reloadContext.Provider>
         </minerContext.Provider>
-      )}
-    </AuthConsumer>
+      )
+      }
+    </AuthConsumer >
   );
 };
 export default Dashboard;

@@ -20,7 +20,7 @@ export const GiveAwayPriceCardTag = ({ backgroundColor, text }: Props) => {
       }}
     >
       <Typography variant="heading2" color="#0F141F">
-        $ {text}
+        {text}
       </Typography>
     </Box>
   );

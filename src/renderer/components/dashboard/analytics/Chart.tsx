@@ -11,6 +11,7 @@ import {
 import _ from "lodash";
 import moment from "moment";
 import Card from "@mui/material/Card";
+import { MinerConsumer } from "renderer/pages/Dashboard";
 
 class Chart extends Component<any, any> {
   constructor(props: any) {
@@ -61,66 +62,74 @@ class Chart extends Component<any, any> {
           borderRadius: "7px",
         }}
       >
-        <ResponsiveContainer>
-          <AreaChart data={this.getMovingAverage([], 120)}>
-            <XAxis
-              dataKey="time"
-              axisLine={false}
-              tickLine={false}
-              tick={{
-                fontSize: 12,
-                transform: "translate(0, 10)",
-              }}
-              domain={["auto", "auto"]}
-              tickFormatter={(unixTime) => moment(unixTime).format("MMM D LT")}
-              type="number"
-              scale="time"
-            />
+        <MinerConsumer>
+          {(miner) => (
+            <ResponsiveContainer>
+              <AreaChart data={this.getMovingAverage(miner.hashrates, 120)}>
+                <XAxis
+                  dataKey="time"
+                  axisLine={false}
+                  tickLine={false}
+                  tick={{
+                    fontSize: 12,
+                    transform: "translate(0, 10)",
+                  }}
+                  domain={["auto", "auto"]}
+                  tickFormatter={(unixTime) =>
+                    moment(unixTime).format("MMM D LT")
+                  }
+                  type="number"
+                  scale="time"
+                />
 
-            <YAxis
-              dataKey="rate"
-              axisLine={false}
-              tickLine={false}
-              allowDecimals={false}
-              tick={{
-                fontSize: 12,
-              }}
-              domain={[0, "auto"]}
-            >
-              <Label
-                value="Hashrate (H/s)"
-                position="insideLeft"
-                angle={-90}
-                style={{
-                  textAnchor: "middle",
-                  fontSize: 16,
-                }}
-              />
-            </YAxis>
-            <Tooltip
-              contentStyle={{
-                border: "none",
-                fontSize: 14,
-              }}
-              itemStyle={{ color: "#f07c00" }}
-              labelFormatter={(unixTime) => moment(unixTime).format("LLLL")}
-            />
-            <defs>
-              <linearGradient id="colorUv" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stopColor="orange" />
-                <stop offset="100%" stopColor="blue" />
-              </linearGradient>
-            </defs>
-            <Area
-              type="monotone"
-              dataKey="rate"
-              dot={false}
-              strokeWidth={4}
-              stroke="#4E69FF"
-              fill="#BAC1FF"
-            />
-          </AreaChart>
-        </ResponsiveContainer>
+                <YAxis
+                  dataKey="rate"
+                  axisLine={false}
+                  tickLine={false}
+                  allowDecimals={false}
+                  tick={{
+                    fontSize: 12,
+                  }}
+                  domain={[0, "auto"]}
+                >
+                  <Label
+                    value="Hashrate (H/s)"
+                    position="insideLeft"
+                    angle={-90}
+                    style={{
+                      textAnchor: "middle",
+                      fontSize: 16,
+                    }}
+                  />
+                </YAxis>
+                <Tooltip
+                  contentStyle={{
+                    border: "none",
+                    fontSize: 14,
+                  }}
+                  itemStyle={{ color: "#f07c00" }}
+                  labelFormatter={(unixTime) =>
+                    moment(unixTime).format("LLLL")
+                  }
+                />
+                <defs>
+                  <linearGradient id="colorUv" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="orange" />
+                    <stop offset="100%" stopColor="blue" />
+                  </linearGradient>
+                </defs>
+                <Area
+                  type="monotone"
+                  dataKey="rate"
+                  dot={false}
+                  strokeWidth={4}
+                  stroke="#4E69FF"
+                  fill="#0F141F"
+                />
+              </AreaChart>
+            </ResponsiveContainer>
+          )}
+        </MinerConsumer>
       </Card>
     );
   }
