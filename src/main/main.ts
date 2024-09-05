@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, shell } from "electron";
+import { app, BrowserWindow, ipcMain, shell, globalShortcut } from "electron";
 import log from "electron-log";
 import { autoUpdater } from "electron-updater";
 import { resolveHtmlPath } from "./util";
@@ -36,7 +36,6 @@ const getExtractPath = () => {
   if (os.platform() === 'win32') {
     return path.join('C:', 'Program Files', 'xmrig');
   } else if (os.platform() === 'linux') {
-    // return path.join('/home', os.userInfo().username, 'xmrig');
     return path.join(os.homedir(), 'xmrig');
   } else if (os.platform() === 'darwin') {
     return path.join('/Users', os.userInfo().username, 'xmrig');
@@ -67,9 +66,9 @@ const getDownloadUrl = () => {
       return 'https://github.com/xmrig/xmrig/releases/download/v6.21.3/xmrig-6.21.3-linux-static-x64.tar.gz';
     case 'darwin':
       const arch = os.arch();
-      return arch === 'arm64' ?
-        'https://github.com/xmrig/xmrig/releases/download/v6.21.3/xmrig-6.21.3-macos-arm64.tar.gz' :
-        'https://github.com/xmrig/xmrig/releases/download/v6.21.3/xmrig-6.21.3-macos-x64.tar.gz';
+      return arch === 'arm64'
+        ? 'https://github.com/xmrig/xmrig/releases/download/v6.21.3/xmrig-6.21.3-macos-arm64.tar.gz'
+        : 'https://github.com/xmrig/xmrig/releases/download/v6.21.3/xmrig-6.21.3-macos-x64.tar.gz';
     default:
       throw new Error('Unsupported platform');
   }
@@ -106,7 +105,7 @@ const downloadAndExtractFile = async () => {
         extractedFolderName = findExtractedFolderName(extractPath)
         if (!extractedFolderName) {
           // If the folder does not exist. Then unzip the downloaded file.
-          exec(`tar -xzf ${downloadPath} -C ${extractPath}`, (error, stdout, stderr) => {
+          exec(`tar -xzf ${downloadPath} -C ${extractPath}`, (error) => {
             extractedFolderName = findExtractedFolderName(extractPath)
             if (error) {
               console.error(`Error extracting file: ${error}`);
@@ -120,11 +119,11 @@ const downloadAndExtractFile = async () => {
           console.log(`Folder ${path.join(extractPath, extractedFolderName)} already exists, skipping extraction.`);
         }
       } else {
-        // Check if the extracted folder already exists        
+        // Check if the extracted folder already exists  
         extractedFolderName = findExtractedFolderName(extractPath)
         if (!extractedFolderName) {
           // If the folder does not exist. Then unzip the downloaded file.
-          console.log("Unzipping Process starts")
+          console.log("Unzipping Process starts");
           const zip = new AdmZip(downloadPath);
           zip.extractAllTo(extractPath, true);
           console.log(`Files extracted to ${extractPath}`);
@@ -163,7 +162,7 @@ const createWindow = async () => {
     await installExtensions();
   }
   app.commandLine.appendSwitch("enable-features=OverlayScrollbar");
-  const path = require("path");
+
   function getPlatformIcon() {
     if (process.platform === "win32") {
       return path.join(__dirname, "icons", "icon.ico"); // Windows
@@ -267,40 +266,69 @@ ipcMain.on('start-xmrig', (event) => {
     // For Mac
   } else if (os.platform() === 'darwin') {
     // Path for Mac
-    appPath = `${os.homedir()}/xmrig/${extractedFolderName}/xmrig`;
+    appPath = `/Users/${os.userInfo().username}/xmrig/${extractedFolderName}/xmrig`;
+  } else {
+    console.error('Unsupported platform');
+    return;
   }
 
-  if (!appProcess) {
-    appProcess = spawn(appPath, ['--config=config.json']);
-    appProcess.stdout.on('data', (data: any) => {
-      console.log(`stdout: ${data}`);
-      event.reply('xmrig-output', `${data}`);
-    });
+  appProcess = spawn(appPath, {
+    detached: false,
+    stdio: ['pipe', 'pipe']
+  });
 
-    appProcess.stderr.on('data', (data: any) => {
-      event.reply('xmrig-output', `stderr: ${data}`);
-    });
+  appProcess.stdout.on('data', (data) => {
+    console.log(`stdout: ${data}`);
+  });
 
-    appProcess.on('close', (code: any) => {
-      appProcess = null;
-      event.reply('xmrig-exit', `Process exited with code ${code}`);
-    });
-  }
+  appProcess.stderr.on('data', (data) => {
+    console.error(`stderr: ${data}`);
+  });
+
+  appProcess.on('close', (code) => {
+    console.log(`Child process exited with code ${code}`);
+  });
+  event.reply('xmrig-started', true);
 });
 
 ipcMain.on('stop-xmrig', (event) => {
   if (appProcess) {
-    appProcess.stdout.removeAllListeners('data');
-    appProcess.stderr.removeAllListeners('data');
-    console.log("xmRig app paused...")
-    // Kill the process after the timeout
-    appProcess.kill('SIGTERM');
-    appProcess = null;
-    event.reply('xmrig-output', appProcess);
-  } else {
-    console.log("xmRig is not running.");
+    // First, kill the XMRig process
+    appProcess.kill("SIGTERM");
+    exec('netstat -ano', (error, stdout, stderr) => {
+      if (error) {
+        console.error(`Error executing netstat: ${error.message}`);
+        return;
+      }
+      if (stderr) {
+        console.error(`Error output from netstat: ${stderr}`);
+        return;
+      }
+      // stdout contains the entire netstat output
+      const lines = stdout.split('\n');
+
+      lines.forEach(line => {
+        // Match lines with TCP and extract local port and remote port
+        const match = line.match(/TCP\s+\S+:(\d+)\s+\S+:8222\s+\S+\s+(\d+)/);
+
+        if (match) {
+          const localPort = match[1]; // Local port
+          const pid = match[2];        // Process ID
+          // Then, kill the specific cmd.exe process using its PID
+          exec(`taskkill /pid ${pid} /t /f`, (err, stdout, stderr) => {
+            if (err) {
+              console.error(`Error closing cmd window: ${err.message}`);
+              return;
+            }
+            console.log("cmd window closed successfully.");
+          });
+          console.log("XMRig process terminated.");
+        }
+      });
+    });
   }
 });
+
 
 ipcMain.on('change-config', (event, data) => {
   const extractPath = getExtractPath();

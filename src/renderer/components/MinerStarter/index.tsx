@@ -1,4 +1,5 @@
-import PauseIcon from "@mui/icons-material/Pause";
+// import PauseIcon from "@mui/icons-material/Pause";
+import StopIcon from "@mui/icons-material/Stop";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -33,26 +34,20 @@ export const MinerStarter = () => {
 
     fetchSystemInfo();
     const intervalId = setInterval(fetchSystemInfo, 1000);
-
     return () => clearInterval(intervalId);
   }, []);
 
 
   const miningRun = () => {
     window.electronAPI.startXmrig();
+    setMiningStarted(false)
   };
   const miningStop = () => {
     window.electronAPI.stopXmrig();
+    setMiningStarted(true)
   };
 
-  useEffect(() => {
-    window.electronAPI.onXmrigOutput((event, data) => {
-      setMiningStarted(false);
-      if (data === null) setMiningStarted(true)
-      // TODO: Will capture [ stdout: [2024-07-24 18:27:11.738]  miner    speed 10s/60s/15m n/a n/a n/a H/s max 1911.4 H/s ]
 
-    });
-  }, [miningRun, miningStop]);
 
   return (
     <Card
@@ -212,7 +207,7 @@ export const MinerStarter = () => {
                   onClick={miningRun}
                 />
                 :
-                <PauseIcon
+                <StopIcon
                   sx={{
                     minWidth: 188,
                     minHeight: 188,
@@ -234,7 +229,7 @@ export const MinerStarter = () => {
                 textAlign: "center",
               }}
             >
-              {miningStarted ? "Start Mining" : "Pause Mining"}
+              {miningStarted ? "Start Mining" : "Stop Mining"}
             </Typography>
 
             {/* <Divider
