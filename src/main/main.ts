@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, shell, globalShortcut } from "electron";
+import { app, BrowserWindow, ipcMain, shell } from "electron";
 import log from "electron-log";
 import { autoUpdater } from "electron-updater";
 import { resolveHtmlPath } from "./util";
