@@ -55,13 +55,14 @@ class SignUpPage extends Component<any, any> {
           ref={this.vantaRef}
           style={{ height: "100vh" }}
         >
-          <Grid item sm={2}>
+          <Grid item xs ={12} sm={4}>
             <Paper
               elevation={3}
               style={{
                 width: "400px",
                 height: "250px",
                 backgroundColor: "#0F141F",
+                
               }}
             >
               <Typography

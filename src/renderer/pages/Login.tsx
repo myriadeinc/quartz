@@ -102,14 +102,14 @@ const LoginPage: React.FC<LoginPageProps> = ({ authenticated, login }) => {
     );
   } else {
     return (
-      <Grid
+      <Grid 
         container
         justifyContent="center"
         alignItems="center"
         ref={vantaRef}
         style={{ height: "100vh" }}
       >
-        <Grid>
+        <Grid item xs ={12} sm={4}>
           <LoginMolecule
             onEmailChange={(e) => setState({ ...state, email: e.target.value })}
             onPasswordChange={(e) => setState({ ...state, password: e.target.value })}
