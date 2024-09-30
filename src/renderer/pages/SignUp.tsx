@@ -53,15 +53,29 @@ class SignUpPage extends Component<any, any> {
           justifyContent="center"
           alignItems="center"
           ref={this.vantaRef}
-          style={{ height: "100vh" }}
+          style={{ height: "100vh",
+                  
+                  display: "flex"
+           }}
+          
         >
-          <Grid item xs ={12} sm={4}>
+          <Grid item xs ={12} sm={6} md = {6} lg = {4}>
             <Paper
               elevation={3}
               style={{
-                width: "400px",
+
+                maxWidth: "600px",
+                width: "90%",
                 height: "250px",
                 backgroundColor: "#0F141F",
+                //backgroundColor: "#FFFFFF",
+                
+                
+                margin: "auto"
+                
+                
+                
+                
                 
               }}
             >
@@ -79,7 +93,7 @@ class SignUpPage extends Component<any, any> {
               <div style={{ margin: "auto", textAlign: "center" }}>
                 <TextField
                   style={{
-                    width: "360px",
+                    width: "90%",
                     height: "32px",
                     marginTop: "20px",
                   }}

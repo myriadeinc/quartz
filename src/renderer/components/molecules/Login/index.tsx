@@ -33,15 +33,17 @@ const LoginMolecule = ({
     <Paper
       elevation={3}
       style={{
-        width: "400px",
+        maxWidth: "400px",
         height: "288px",
         borderRadius: "7px",
         backgroundColor: "#0F141F",
         padding: "20px",
+        margin: "0 10px"
       }}
     >
       <Box
         sx={{
+
           maxWidth: "360px",
           maxHeight: "28px",
           paddingBottom: "20px",
