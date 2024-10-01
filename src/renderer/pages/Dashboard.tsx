@@ -94,6 +94,33 @@ const Dashboard = (props: any) => {
     }
   }, [creditsFetched]);
 
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver(entries => {
+      let resizeTimeout;
+
+      if (resizeTimeout) clearTimeout(resizeTimeout);
+
+      resizeTimeout = setTimeout(() => {
+        entries.forEach(entry => {
+         
+          const { width, height } = entry.contentRect;
+          console.log("Resized: ", width, height);
+        });
+      }, 100); 
+    });
+
+    if (myRef.current) {
+      resizeObserver.observe(myRef.current);
+    }
+
+    return () => {
+      if (myRef.current) {
+        resizeObserver.unobserve(myRef.current);
+      }
+    };
+  }, []);
+
+
   return (
     <AuthConsumer>
       {({ authenticated }) => (
@@ -125,6 +152,30 @@ const Dashboard = (props: any) => {
                 )}
               </Switch>
             </Grid>
+            <style>
+              {`
+                @media (max-width: 768px) {
+                  #myRef {
+                    width: 100% !important;
+                    padding: 0 !important;
+                  }
+                  .Sidebar {
+                    width: 100vw;
+                  }
+                }
+                @media (min-width: 769px) and (max-width: 1024px) {
+                  #myRef {
+                    width: 80% !important;
+                  }
+                }
+                @media (min-width: 1025px) {
+                  #myRef {
+                    width: 60% !important;
+                  }
+                }
+              `}
+              </style>
+
           </reloadContext.Provider>
         </minerContext.Provider>
       )
