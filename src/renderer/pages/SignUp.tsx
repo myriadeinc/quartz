@@ -52,9 +52,9 @@ class SignUpPage extends Component<any, any> {
           container
           justifyContent="center"
           alignItems="center"
+          
           ref={this.vantaRef}
-          style={{ height: "100vh",
-                  
+          style={{ height: "100vh",                  
                   display: "flex"
            }}
           
@@ -71,7 +71,9 @@ class SignUpPage extends Component<any, any> {
                 //backgroundColor: "#FFFFFF",
                 
                 
-                margin: "auto"
+                margin: "auto",
+
+                
                 
                 
                 

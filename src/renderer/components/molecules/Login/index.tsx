@@ -30,17 +30,29 @@ const LoginMolecule = ({
   signupRoute,
 }: LoginMoleculeProps) => {
   return (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
+        padding: "10px", 
+      }}
+  >
+
     <Paper
       elevation={3}
       style={{
         maxWidth: "400px",
+        width: "100%",
         height: "288px",
         borderRadius: "7px",
         backgroundColor: "#0F141F",
         padding: "20px",
-        margin: "0 10px"
+       
       }}
     >
+      
       <Box
         sx={{
 
@@ -95,6 +107,7 @@ const LoginMolecule = ({
         </Typography>
       </div>
     </Paper>
+  </Box>
   );
 };
 
