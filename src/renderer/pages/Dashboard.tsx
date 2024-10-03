@@ -1,3 +1,4 @@
+
 import Grid from "@mui/material/Grid";
 import { createContext, useEffect, useMemo, useRef, useState } from "react";
 import { Switch } from "react-router-dom";
@@ -94,31 +95,36 @@ const Dashboard = (props: any) => {
     }
   }, [creditsFetched]);
 
+  const debounce = (callback, delay) => {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => callback(...args), delay);
+    };
+  };
+
+
   useEffect(() => {
-    const resizeObserver = new ResizeObserver(entries => {
-      let resizeTimeout;
+    const handleResize = debounce(() => {
+      if (myRef.current) {
+        
+      }
+    }, 200);  // Delay of 200ms for debounce
 
-      if (resizeTimeout) clearTimeout(resizeTimeout);
-
-      resizeTimeout = setTimeout(() => {
-        entries.forEach(entry => {
-         
-          const { width, height } = entry.contentRect;
-          console.log("Resized: ", width, height);
-        });
-      }, 100); 
-    });
+    const resizeObserver = new ResizeObserver(handleResize);
 
     if (myRef.current) {
       resizeObserver.observe(myRef.current);
     }
 
     return () => {
-      if (myRef.current) {
+      if (resizeObserver && myRef.current) {
         resizeObserver.unobserve(myRef.current);
       }
     };
   }, []);
+  
+ 
 
 
   return (
@@ -152,30 +158,6 @@ const Dashboard = (props: any) => {
                 )}
               </Switch>
             </Grid>
-            <style>
-              {`
-                @media (max-width: 768px) {
-                  #myRef {
-                    width: 100% !important;
-                    padding: 0 !important;
-                  }
-                  .Sidebar {
-                    width: 100vw;
-                  }
-                }
-                @media (min-width: 769px) and (max-width: 1024px) {
-                  #myRef {
-                    width: 80% !important;
-                  }
-                }
-                @media (min-width: 1025px) {
-                  #myRef {
-                    width: 60% !important;
-                  }
-                }
-              `}
-              </style>
-
           </reloadContext.Provider>
         </minerContext.Provider>
       )

@@ -3,6 +3,8 @@ import App from "./App";
 
 render(<App />, document.getElementById("root"));
 
+
+
 window.ChatraSetup = {
   chatHeight: 550,
   zIndex: 9999,
@@ -13,8 +15,6 @@ window.ChatraSetup = {
     buttonBg: "#FA6F15",
   },
 };
-
-
 
 
 (function (d, w, c) {
@@ -29,5 +29,3 @@ window.ChatraSetup = {
   s.src = "https://call.chatra.io/chatra.js";
   if (d.head) d.head.appendChild(s);
 })(document, window, "Chatra");
-
-

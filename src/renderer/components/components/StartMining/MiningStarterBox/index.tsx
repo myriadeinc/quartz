@@ -72,7 +72,10 @@ export const MinerStarter = () => {
             }}
             direction={"column"}
           >
-            <IconButton sx={{}}>
+            <IconButton sx={{
+
+              
+            }}>
               <PlayArrowIcon
                 sx={{
                   minWidth: 100,
@@ -99,7 +102,9 @@ export const MinerStarter = () => {
               sx={{
                 marginTop: "8px",
                 height: 0.25,
+                
                 bgcolor: "#293040",
+
               }}
             />
 
@@ -200,7 +205,7 @@ export const MinerStarter = () => {
           </Stack>
         </Box>
       </Stack>
-      <Stack alignSelf={"end"} order={{ md: 1, lg: 1, xl: 0 }}>
+      <Stack alignSelf={"end"} order={{sm:1, md: 1, lg: 1, xl: 0 }}>
         <Box>
           <Box
             sx={{
