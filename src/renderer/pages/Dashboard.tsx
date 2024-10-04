@@ -43,6 +43,10 @@ const Dashboard = (props: any) => {
     return () => { };
   }, [vantaEffect]);
 
+ 
+
+  
+
   useEffect(() => {
     const fetchSelfData = async () => {
       try {
@@ -123,6 +127,8 @@ const Dashboard = (props: any) => {
       }
     };
   }, []);
+
+  
   
  
 

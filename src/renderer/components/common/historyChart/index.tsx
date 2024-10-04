@@ -67,6 +67,8 @@ export const HistoryChart = ({ isAnalytics, padding, text }: ChartProps) => {
               lg: "52 vh",
               xl: "48vh",
             },
+
+            
           }}
         >
           <img
