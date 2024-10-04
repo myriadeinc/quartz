@@ -70,7 +70,7 @@ class SignUpPage extends Component<any, any> {
                 width: "90%",
                 height: "250px",
                 backgroundColor: "#0F141F",
-                //backgroundColor: "#FFFFFF",
+               =
                 
                 
                 margin: "auto",
