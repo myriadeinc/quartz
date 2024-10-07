@@ -34,7 +34,7 @@ if (isDevelopment) {
 // Determine the dynamic extraction path based on the operating system
 const getExtractPath = () => {
   if (os.platform() === 'win32') {
-    return path.join('C:', 'Documents', 'xmrig');
+    return path.join('C:', 'Program Files', 'xmrig');
   } else if (os.platform() === 'linux') {
     return path.join(os.homedir(), 'xmrig');
   } else if (os.platform() === 'darwin') {
