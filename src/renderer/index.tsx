@@ -3,14 +3,40 @@ import App from "./App";
 
 render(<App />, document.getElementById("root"));
 
+
+
 window.ChatraSetup = {
-  chatHeight: 550,
   zIndex: 9999,
+  
   colors: {
     buttonText: "#FFFFFF",
     buttonBg: "#FA6F15",
   },
+  
+
+  get chatHeight() {
+ 
+    const windowHeight = window.innerHeight;
+    return Math.max(200, windowHeight * 0.75);  
+  }
 };
+
+
+function updateChatraHeight() {
+  const chatraIframe = document.querySelector('.chatra--iframe');
+  if (chatraIframe) {
+    chatraIframe.style.height = `${window.ChatraSetup.chatHeight}px`;
+  }
+}
+
+
+window.addEventListener('resize', updateChatraHeight);
+
+
+window.addEventListener('DOMContentLoaded', () => {
+  updateChatraHeight();
+});
+
 
 (function (d, w, c) {
   w.ChatraID = "kzQzfDagyXR78mcF3";

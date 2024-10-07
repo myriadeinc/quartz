@@ -98,14 +98,43 @@ const Sidebar = (props: SidebarProps) => {
     <MinerConsumer>
       {(miner) => (
         <>
+
+          <Box
+            sx={{
+             
+            }}
+          >
+        <Grid container
+      
+        >
           <Drawer
             sx={{
               width: "406px",
               flexShrink: 0,
               "& .MuiDrawer-paper": {
-                width: "406px",
+                  width: {
+                  xs: "406px",  
+                  sm: "406px",  
+                  md: "406px", 
+                  lg: "406px", 
+                  xl: "406px", 
+                },
+
+                
+                height: {
+                  xs: "100%",  
+                  sm: "100%",  
+                  md: "100%", 
+                  lg: "100%", 
+                  xl: "100%", 
+                },
+
                 boxSizing: "border-box",
                 backgroundColor: "#080A0F",
+                
+
+
+
               },
             }}
             variant="permanent"
@@ -233,6 +262,8 @@ const Sidebar = (props: SidebarProps) => {
               <SupportSocialHandles />
             </Grid>
           </Drawer>
+          </Grid>
+          </Box>
         </>
       )}
     </MinerConsumer>

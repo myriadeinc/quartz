@@ -1,3 +1,4 @@
+
 import Grid from "@mui/material/Grid";
 import { createContext, useEffect, useMemo, useRef, useState } from "react";
 import { Switch } from "react-router-dom";
@@ -41,6 +42,10 @@ const Dashboard = (props: any) => {
     }
     return () => { };
   }, [vantaEffect]);
+
+ 
+
+  
 
   useEffect(() => {
     const fetchSelfData = async () => {
@@ -93,6 +98,40 @@ const Dashboard = (props: any) => {
       fetchHashratesData();
     }
   }, [creditsFetched]);
+
+  const debounce = (callback, delay) => {
+    let timeout;
+    return (...args) => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => callback(...args), delay);
+    };
+  };
+
+
+  useEffect(() => {
+    const handleResize = debounce(() => {
+      if (myRef.current) {
+        
+      }
+    }, 200);  // Delay of 200ms for debounce
+
+    const resizeObserver = new ResizeObserver(handleResize);
+
+    if (myRef.current) {
+      resizeObserver.observe(myRef.current);
+    }
+
+    return () => {
+      if (resizeObserver && myRef.current) {
+        resizeObserver.unobserve(myRef.current);
+      }
+    };
+  }, []);
+
+  
+  
+ 
+
 
   return (
     <AuthConsumer>

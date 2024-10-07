@@ -30,12 +30,23 @@ export const CreditCardII = ({ info }: CreditCardIIProps) => {
         gap: "16px",
         width: "100%",
         paddingLeft: "35px",
+        paddingRight: {
+          xs: "30px", 
+          sm: "20px",  
+          md: "30px",  
+          lg: "40px", 
+          xl: "50px"   
+        },
+
       }}
     >
       <MoneroIcon rectangleColor="0F141F" pathColor="#EAEAEA" />
       <TextElement
         info={`${info} ($${(currenUSDRateForMonero * info).toFixed(2)} USD)`}
         label="Monero Balance"
+        
+       
+
       />
     </Box>
   );

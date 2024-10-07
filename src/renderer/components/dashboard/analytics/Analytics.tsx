@@ -39,18 +39,30 @@ export const Analytics = () => {
   return (
     <MinerConsumer>
       {(miner) => (
+        
+        
         <Grid
           container
           spacing={2}
           sx={{
             width: {
-              xs: "100vw",
+              xs: "80px",
+              sm: "80vw",
+              md: "calc(100% - 406px)",
+              lg: "calc(100% - 406px)",
+            },
+
+            height: {
+              xs: "50px",
               sm: "100vw",
               md: "calc(100% - 406px)",
               lg: "calc(100% - 406px)",
             },
             marginLeft: "406px",
+            
             padding: "0 21px",
+
+            
             marginTop: "24px",
           }}
         >
@@ -73,22 +85,42 @@ export const Analytics = () => {
             container
             lg={12}
             spacing={2}
-            sx={{ paddingLeft: "0px !important" }}
+            sx={{ 
+              paddingLeft: "0px !important",
+              
+            }}
           >
-            <Grid item md={12} lg={6} xl={4}>
+            <Grid item md={12} lg={6} xl={4}
+            
+            >
               <Link
                 to={""}
                 style={{ textDecoration: "none", cursor: "pointer" }}
               >
                 <Grow in={true}>
-                  <div style={{ position: "relative" }}>
+                  <Box sx={{
+                    position: 'relative',
+                    paddingRight: {
+                      xs: '150px', 
+                      sm: '80px',
+                      md: '30px',
+                      lg: '40px',
+                    },
+                    
+                    width: '100%',  
+                    height: 'auto', 
+                  }}>
+                              
+
                     <AverageHashrateCard
                       cardPointUnit="H/sec"
                       cardTitle="Average Hashrate(24h)"
                       cardPoints={miner.avgHashrate}
                       imgSrc="/assets/Illustrations/DM.webp"
+                      
                     />
-                  </div>
+                    
+                  </Box>
                 </Grow>
               </Link>
             </Grid>
@@ -98,14 +130,24 @@ export const Analytics = () => {
                 style={{ textDecoration: "none", cursor: "pointer" }}
               >
                 <Grow in={true}>
-                  <div style={{ position: "relative" }}>
+                <Box sx={{
+                    position: 'relative',
+                    paddingRight: {
+                      xs: '170px', 
+                      sm: '120px',
+                      md: '30px',
+                      lg: '40px',
+                    },
+                    width: '100%',  
+                    height: 'auto', 
+                  }}>
                     <AverageHashrateCard
                       cardTitle="Pool Hashrate"
                       cardPoints={"2039570"}
                       cardPointUnit="H/sec"
                       imgSrc="/assets/Illustrations/DM2.webp"
                     />
-                  </div>
+                  </Box>
                 </Grow>
               </Link>
             </Grid>
@@ -115,14 +157,26 @@ export const Analytics = () => {
                 style={{ textDecoration: "none", cursor: "pointer" }}
               >
                 <Grow in={true}>
-                  <div style={{ position: "relative" }}>
+                <Box sx={{
+                    position: 'relative',
+                    paddingRight: {
+                      xs: '150px', 
+                      sm: '100px',
+                      md: '30px',
+                      lg: '40px',
+                    },
+                    
+                    
+                    width: '100%',  
+                    height: 'auto', 
+                  }}>
                     <AverageHashrateCard
                       cardPointUnit=""
                       cardTitle="Total Mining Time"
                       cardPoints={"11:22:51:00"}
                       imgSrc="/assets/Illustrations/DM3.webp"
                     />
-                  </div>
+                  </Box>
                 </Grow>
               </Link>
             </Grid>
@@ -189,9 +243,13 @@ export const Analytics = () => {
                       lg: "52 vh",
                       xl: "65 vh",
                     },
+                    padding: "20px",
                     width: {
-                      sm: "100%",
+                      sm: "500px",
+
+                    
                     },
+                    
                   }}
                 >
                   {/* <img

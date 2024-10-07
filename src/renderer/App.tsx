@@ -1,5 +1,5 @@
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { HashRouter as Router, Route, Switch} from "react-router-dom";
+import { lazy, Suspense, useEffect } from "react";
 import AuthLayer, { AuthConsumer, ProtectedRoute } from "./layers/AuthLayer";
 const LoginPage = lazy(() => import("./pages/Login"));
 const SignUpPage = lazy(() => import("./pages/SignUp"));
@@ -8,11 +8,47 @@ import * as ROUTES from "./utils/routes";
 import "./styles/app.css";
 import { createTheme, ThemeProvider } from "@mui/material";
 import { CircularProgressLoader } from "./components/CircularLoader";
+import { useLocation } from 'react-router-dom';
+
 
 const darkTheme = createTheme({ palette: { mode: "dark" } });
+/*
 
+function ZoomHandler() {
+  const location = useLocation();
+
+  useEffect(() => {
+    document.body.style.zoom = "100%"; 
+  }, [location.pathname]);
+
+  return null; 
+}
+
+*/
+
+
+function applyGlobalZoom() {
+  document.body.style.zoom = "100%"; 
+  document.documentElement.style.zoom = "100%"; 
+}
+
+function ZoomHandler() {
+  const location = useLocation();
+
+  useEffect(() => {
+    applyGlobalZoom(); 
+  }, [location]);
+
+  useEffect(() => {
+    window.onload = applyGlobalZoom; 
+  }, []);
+
+  return null;
+}
 
 export default function App() {
+  
+  
   return (
     <Router hashType="slash">
       <AuthLayer>

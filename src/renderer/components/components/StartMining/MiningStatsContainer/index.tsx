@@ -18,7 +18,9 @@ export const MiningStatsContainer = ({ CurrentHashrateData }: any) => {
         </Typography>
       </Box>
       <Stack
-        sx={{ backgroundColor: "#0F141F", borderRadius: "7px", width: "100%" }}
+        sx={{ backgroundColor: "#0F141F", borderRadius: "7px", width: "100%"
+          
+         }}
         display={"flex"}
         flexWrap={"wrap"}
         // direction={"row"}
